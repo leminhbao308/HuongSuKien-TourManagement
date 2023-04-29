@@ -36,7 +36,7 @@ public class ModifyPanel extends JPanel {
 	private JPanel pnModify, pnControl;
 	private ArrayList<JLabel> listTitle;
 	private ArrayList<JTextField> listInput;
-	private RoundJButton btnModify, btnCancel, btnPrint;
+	private RoundJButton btnModify, btnCancel;
 	private DefaultTableModel tblModel;
 	private JTable tblMain;
 	private JScrollPane scrMain;
@@ -147,7 +147,6 @@ public class ModifyPanel extends JPanel {
 		// Button
 		btnModify = new RoundJButton("them");
 		btnCancel = new RoundJButton("them");
-		btnPrint = new RoundJButton("them");
 
 		// Model
 		if (o instanceof DiaDanh) {
@@ -204,7 +203,7 @@ public class ModifyPanel extends JPanel {
 //	pnInput.setBackground(ColorConstant.BACKGROUND_HEADER_FOOTER);
 
 //	pnControl.setBackground(ColorConstant.BACKGROUND_HEADER_FOOTER);
-		pnControl.setBorder(BorderFactory.createTitledBorder("Lá»±a Chá»�n Thao TÃ¡c"));
+		pnControl.setBorder(BorderFactory.createTitledBorder("Lựa Chọn Thao Tác"));
 
 		javax.swing.GroupLayout pnControlLayout = new javax.swing.GroupLayout(pnControl);
 		pnControl.setLayout(pnControlLayout);
@@ -220,8 +219,6 @@ public class ModifyPanel extends JPanel {
 										.addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 170,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
 										.addGap(18, 18, 18)
-										.addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 170,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
 										.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 		pnControlLayout.setVerticalGroup(pnControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnControlLayout.createSequentialGroup()
@@ -229,7 +226,7 @@ public class ModifyPanel extends JPanel {
 						.addGroup(pnControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
 								.addComponent(btnModify, javax.swing.GroupLayout.DEFAULT_SIZE,
 										javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnCancel).addComponent(btnPrint))
+								.addComponent(btnCancel))
 						.addContainerGap()));
 
 		tblMain.setBackground(ColorConstant.BACKGROUND_NORMAL);
@@ -245,14 +242,11 @@ public class ModifyPanel extends JPanel {
 			lbl.setFont(new Font("Arial", Font.PLAIN, 15));
 		}
 
-		btnPrint.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-		btnPrint.setText("IN");
-
 		btnCancel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-		btnCancel.setText("Há»¦Y");
+		btnCancel.setText("HỦY");
 
 		btnModify.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-		btnModify.setText("THAY Ä�á»”I");
+		btnModify.setText("THAY ĐỔI");
 
 		tblMain.getTableHeader().setReorderingAllowed(false);
 
@@ -312,7 +306,6 @@ public class ModifyPanel extends JPanel {
 		}
 		pnControl.add(btnModify);
 		pnControl.add(btnCancel);
-		pnControl.add(btnPrint);
 
 		Box b1 = Box.createHorizontalBox();
 		Box b2 = Box.createVerticalBox();
@@ -328,7 +321,6 @@ public class ModifyPanel extends JPanel {
 
 		pnControl.add(btnModify);
 		pnControl.add(btnCancel);
-		pnControl.add(btnPrint);
 
 	}
 

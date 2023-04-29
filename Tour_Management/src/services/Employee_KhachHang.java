@@ -80,9 +80,9 @@ public class Employee_KhachHang extends JPanel {
 
 	private void preset() {
 		// TODO Auto-generated method stub
-		tbpnKhachHang.add("ThÃªm KhÃ¡ch HÃ ng", pnThem);
-		tbpnKhachHang.add("XÃ³a KhÃ¡ch HÃ ng", pnXoa);
-		tbpnKhachHang.add("Sá»­a KhÃ¡ch HÃ ng", pnSua);
+		tbpnKhachHang.add("Thêm Khách Hàng", pnThem);
+		tbpnKhachHang.add("Xóa Khách Hàng", pnXoa);
+		tbpnKhachHang.add("Sửa Khách Hàng", pnSua);
 
 		for (int i = 0; i < tbpnKhachHang.getTabCount(); i++) {
 			JLabel tab = new JLabel(tbpnKhachHang.getTitleAt(i));

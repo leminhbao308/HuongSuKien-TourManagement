@@ -205,7 +205,7 @@ public class AddPanel extends JPanel {
 //	pnInput.setBackground(ColorConstant.BACKGROUND_HEADER_FOOTER);
 
 //	pnControl.setBackground(ColorConstant.BACKGROUND_HEADER_FOOTER);
-		pnControl.setBorder(BorderFactory.createTitledBorder("Lá»±a Chá»�n Thao TÃ¡c"));
+		pnControl.setBorder(BorderFactory.createTitledBorder("Lựa Chọn Thao Tác"));
 
 		javax.swing.GroupLayout pnControlLayout = new javax.swing.GroupLayout(pnControl);
 		pnControl.setLayout(pnControlLayout);
@@ -250,10 +250,10 @@ public class AddPanel extends JPanel {
 		btnPrint.setText("IN");
 
 		btnCancel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-		btnCancel.setText("Há»¦Y");
+		btnCancel.setText("HỦY");
 
 		btnAdd.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-		btnAdd.setText("THÃŠM");
+		btnAdd.setText("THÊM");
 
 		tblMain.getTableHeader().setReorderingAllowed(false);
 

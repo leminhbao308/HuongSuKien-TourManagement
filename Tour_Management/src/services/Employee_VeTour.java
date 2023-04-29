@@ -83,9 +83,9 @@ public class Employee_VeTour extends JPanel {
 	private void preset() {
 		// TODO Auto-generated method stub
 
-		tbpnVeTour.add("Xem VÃ© Tour", pnXem);
-		tbpnVeTour.add("XÃ³a VÃ© Tour", pnXoa);
-		tbpnVeTour.add("Sá»­a VÃ© Tour", pnSua);
+		tbpnVeTour.add("Xem Vé Tour", pnXem);
+		tbpnVeTour.add("Xóa Vé Tour", pnXoa);
+		tbpnVeTour.add("Sửa Vé Tour", pnSua);
 
 		for (int i = 0; i < tbpnVeTour.getTabCount(); i++) {
 			JLabel tab = new JLabel(tbpnVeTour.getTitleAt(i));

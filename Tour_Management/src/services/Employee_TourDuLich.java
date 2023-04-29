@@ -82,9 +82,9 @@ public class Employee_TourDuLich extends JPanel {
 	private void preset() {
 		// TODO Auto-generated method stub
 
-		tbpnTourDuLich.add("ThÃªm Tour Du Lá»‹ch", pnThem);
-		tbpnTourDuLich.add("XÃ³a Tour Du Lá»‹ch", pnXoa);
-		tbpnTourDuLich.add("Sá»­a Tour Du Lá»‹ch", pnSua);
+		tbpnTourDuLich.add("Thêm Tour Du Lịch", pnThem);
+		tbpnTourDuLich.add("Xóa Tour Du Lịch", pnXoa);
+		tbpnTourDuLich.add("Sửa Tour Du Lịch", pnSua);
 
 		for (int i = 0; i < tbpnTourDuLich.getTabCount(); i++) {
 			JLabel tab = new JLabel(tbpnTourDuLich.getTitleAt(i));

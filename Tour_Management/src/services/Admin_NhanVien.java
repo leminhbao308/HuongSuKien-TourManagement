@@ -80,9 +80,9 @@ public class Admin_NhanVien extends JPanel {
 
 	private void preset() {
 		// TODO Auto-generated method stub
-		tbpnNhanVien.add("ThÃªm NhÃ¢n ViÃªn", pnThem);
-		tbpnNhanVien.add("XÃ³a NhÃ¢n ViÃªn", pnXoa);
-		tbpnNhanVien.add("Sua Nhan Vien", pnSua);
+		tbpnNhanVien.add("Thêm Nhân Viên", pnThem);
+		tbpnNhanVien.add("Xóa Nhân Viên", pnXoa);
+		tbpnNhanVien.add("Sửa Nhân Viên", pnSua);
 
 		for (int i = 0; i < tbpnNhanVien.getTabCount(); i++) {
 			JLabel tab = new JLabel(tbpnNhanVien.getTitleAt(i));
