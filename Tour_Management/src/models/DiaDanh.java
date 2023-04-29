@@ -44,6 +44,6 @@ public class DiaDanh {
 	}
 
 	public String getTitle() {
-		return "MÃ£ Ä�á»‹a Danh;TÃªn Ä�á»‹a Danh;Tá»‰nh ThÃ nh";
+		return "Mã Địa Danh;Tên Địa Danh;Tỉnh Thành";
 	}
 }

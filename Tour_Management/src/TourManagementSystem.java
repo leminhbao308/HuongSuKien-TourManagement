@@ -4,7 +4,7 @@ import javax.swing.UIManager;
 import view.Login;
 
 /**
- * Khá»Ÿi cháº¡y giao diá»‡n cá»§a pháº§n má»�m
+ * Khởi chạy giao diện của phần mềm
  * 
  * @author LeMinhBao
  */

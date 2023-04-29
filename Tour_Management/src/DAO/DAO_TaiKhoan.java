@@ -11,6 +11,12 @@ import models.NhanVien;
 import models.TaiKhoan;
 import utils.PasswordEncoder;
 
+/**
+ * Truy vấn dữ liệu về Tài Khoản
+ * 
+ * @author Pham Nhat Linh
+ *
+ */
 public class DAO_TaiKhoan {
 	public static ArrayList<TaiKhoan> getAllTaiKhoan() {
 		ArrayList<TaiKhoan> dsTaiKhoan = new ArrayList<TaiKhoan>();

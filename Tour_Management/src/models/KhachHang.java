@@ -130,7 +130,7 @@ public class KhachHang {
 	}
 
 	public String getTitle() {
-		return "MÃ£ KhÃ¡ch HÃ ng;CCCD/HC;TÃªn KhÃ¡ch HÃ ng;Giá»›i TÃ­nh;NgÃ y Sinh;Ä�á»‹a Chá»‰;Email;Sá»‘ Ä�iá»‡n Thoáº¡i;Tiá»�n Tour;MÃ£ Tour;MÃ£ Dá»‹ch Vá»¥";
+		return "Mã Khách Hàng;CCCD/HC;Tên Khách Hàng;Giới Tính;Ngày Sinh;Địa Chỉ;Email;Số Điện Thoại;Tiền Tour;Mã Tour;Mã Dịch Vụ";
 	}
 
 }

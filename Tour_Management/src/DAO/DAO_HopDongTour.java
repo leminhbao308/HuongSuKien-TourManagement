@@ -13,6 +13,12 @@ import models.HopDongTour;
 import models.KhachHang;
 import models.NhanVien;
 
+/**
+ * Truy vấn dữ liệu về Hợp Đồng Tour
+ * 
+ * @author Pham Nhat Linh
+ *
+ */
 public class DAO_HopDongTour {
 	public static ArrayList<HopDongTour> getAllHopDongTour() {
 		ArrayList<HopDongTour> dsHopDong = new ArrayList<HopDongTour>();

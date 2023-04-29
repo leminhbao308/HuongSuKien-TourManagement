@@ -12,6 +12,12 @@ import connect.ConnnectDB;
 import models.DiaDanh;
 import models.TourDuLich;
 
+/**
+ * Truy vấn dữ liệu về Tour Du Lịch
+ * 
+ * @author Pham Nhat Linh
+ *
+ */
 public class DAO_TourDuLich {
 	public static ArrayList<TourDuLich> getAllTourDuLich() {
 		ArrayList<TourDuLich> dsTour = new ArrayList<TourDuLich>();

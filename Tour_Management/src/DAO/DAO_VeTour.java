@@ -10,6 +10,12 @@ import connect.ConnnectDB;
 import models.KhachHang;
 import models.VeTour;
 
+/**
+ * Truy vấn dữ liệu về Vé Tour
+ * 
+ * @author Pham Nhat Linh
+ *
+ */
 public class DAO_VeTour {
 	public static ArrayList<VeTour> getAllVeTour() {
 		ArrayList<VeTour> dsVeTour = new ArrayList<VeTour>();

@@ -25,9 +25,9 @@ public class DropdownMenu extends HeaderButton implements ActionListener {
 		super(title, backgroundColor, textColor);
 		this.window = window;
 
-		accountInfo = new JMenuItem("ThÃ´ng Tin TÃ i Khoáº£n");
-		setting = new JMenuItem("CÃ i Ä�áº·t");
-		logout = new JMenuItem("Ä�Äƒng Xuáº¥t");
+		accountInfo = new JMenuItem("Thông Tin Tài Khoản");
+		setting = new JMenuItem("Cài Đặt");
+		logout = new JMenuItem("Đăng Xuất");
 
 		this.popupMenu.add(accountInfo);
 		this.popupMenu.add(setting);
@@ -52,8 +52,8 @@ public class DropdownMenu extends HeaderButton implements ActionListener {
 
 		}
 		if (o.equals(logout)) {
-			int choice = JOptionPane.showConfirmDialog(null, "Báº¡n cÃ³ muá»‘n Ä‘Äƒng xuáº¥t?",
-					"XÃ¡c nháº­n Ä‘Äƒng xuáº¥t", JOptionPane.YES_NO_OPTION);
+			int choice = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn đăng xuất?", "Xác nhận đăng xuất",
+					JOptionPane.YES_NO_OPTION);
 			if (choice == JOptionPane.YES_OPTION) {
 				window.dispose();
 				Login login = new Login();

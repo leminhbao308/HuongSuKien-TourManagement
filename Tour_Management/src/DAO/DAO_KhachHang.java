@@ -13,6 +13,12 @@ import models.DichVu;
 import models.KhachHang;
 import models.TourDuLich;
 
+/**
+ * Truy vấn dữ liệu về Khách Hàng
+ * 
+ * @author Pham Nhat Linh
+ *
+ */
 public class DAO_KhachHang {
 	public static ArrayList<KhachHang> getAllKhachHang() {
 		ArrayList<KhachHang> dsKhachHang = new ArrayList<KhachHang>();

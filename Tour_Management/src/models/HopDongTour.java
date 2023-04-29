@@ -89,7 +89,7 @@ public class HopDongTour {
 	}
 
 	public String getTitle() {
-		return "MÃ£ Há»£p Ä�á»“ng;Thá»�i Gian Láº­p;Ghi ChÃº;Tá»•ng Tiá»�n;Tráº¡ng ThÃ¡i;MÃ£ NhÃ¢n ViÃªn;MÃ£ KhÃ¡ch HÃ ng";
+		return "Mã Hợp Đồng;Thời Gian Lập;Ghi Chú;Tổng Tiền;Trạng Thái;Mã Nhân Viên;Mã Khách Hàng";
 	}
 
 }

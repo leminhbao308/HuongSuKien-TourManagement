@@ -10,6 +10,12 @@ import connect.ConnnectDB;
 import models.DiaDanh;
 import models.TourDuLich;
 
+/**
+ * Truy vấn dữ liệu về Địa Danh
+ * 
+ * @author Pham Nhat Linh
+ *
+ */
 public class DAO_DiaDanh {
 	/**
 	 * @return ArrayList<DiaDanh> from db
@@ -38,8 +44,8 @@ public class DAO_DiaDanh {
 	}
 
 	/**
-	 * @param ma
-	 * @return DiaDanh
+	 * @param ma Mã Địa Danh
+	 * @return DiaDanh Địa Danh có mã cần tìm
 	 */
 	public static DiaDanh timDiaDanh(String ma) {
 		ArrayList<DiaDanh> ds = getAllDiaDanh();
