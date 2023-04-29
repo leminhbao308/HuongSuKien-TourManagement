@@ -11,7 +11,9 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -23,7 +25,18 @@ import models.VeTour;
 public class PDFCreator {
 
     public static void createTicketPDF(VeTour veTour, BufferedImage logo) throws DocumentException, IOException {
-	Document document = new Document();
+	// Kích thước trang A4
+	float pageWidth = PageSize.A4.getWidth();
+	float pageHeight = PageSize.A4.getHeight();
+
+	// Thiết lập kích thước trang PDF bằng một nửa kích thước trang A4
+	float quadPageHeight = pageHeight / 4;
+	System.out.println(pageWidth);
+	System.out.println(quadPageHeight);
+	Rectangle pageSize = new Rectangle(pageWidth, quadPageHeight);
+
+	// Tạo đối tượng Document với kích thước trang tùy chỉnh
+	Document document = new Document(pageSize);
 
 	// Tạo tên file
 	String fileName = veTour.getMaVe() + "_" + veTour.getKhachHang().getMaKhachHang() + ".pdf";
@@ -48,15 +61,15 @@ public class PDFCreator {
 	document.add(company);
 
 	PdfContentByte canvas = writer.getDirectContent();
-	canvas.moveTo(30, 826);
-	canvas.lineTo(30, 650);
-	canvas.lineTo(570, 650);
-	canvas.lineTo(570, 826);
+	canvas.moveTo(10, 10);
+	canvas.lineTo(10, 200);
+	canvas.lineTo(585, 200);
+	canvas.lineTo(585, 10);
 	canvas.closePathStroke();
 
 	// Add logo
 	Image image = Image.getInstance(logo, null);
-	image.setAbsolutePosition(36, 770);
+	image.setAbsolutePosition(20, 145);
 	document.add(image);
 
 	// Add code
