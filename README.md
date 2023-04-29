@@ -13,20 +13,22 @@
 │   └───sqlJDBC
 ├───res
 │   ├───background
+│   ├───font
 │   ├───icon
 │   └───logo
 ├───DATA
 │   └───ScriptDBFull
-└───src
-    ├───connect
-    ├───controllers
-    ├───DAO
-    ├───elements
-    ├───models
-    ├───services
-    ├───utils
-    │   └───constants
-    └───view
+├───src
+│   ├───connect
+│   ├───controllers
+│   ├───DAO
+│   ├───elements
+│   ├───models
+│   ├───services
+│   ├───utils
+│   │   └───constants
+│   └───view
+└───ticket
 ```
 
 <b><i>Please keep this format when update project.</i></b>
