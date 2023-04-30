@@ -36,9 +36,11 @@
 <h4>Please Notice</h4>
 When use Date class, remember to -1900
 Ex:
+
 ```java
 Date example = new Date(2023 - 1900, 4, 29); //this will return 2023
 ```
+
 If you don't -1900, result will be 3923 instead
 <br>
 <h5><i>Le Minh Bao</i></h5>
