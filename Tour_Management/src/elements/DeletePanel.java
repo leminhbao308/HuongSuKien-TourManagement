@@ -273,7 +273,7 @@ public class DeletePanel extends JPanel {
 
 	public void loadTable(Object o) {
 		if (o instanceof NhanVien) {
-			ArrayList<NhanVien> list = DAO_NhanVien.getAllNhanVien();
+    			ArrayList<NhanVien> list = DAO_NhanVien.getAllNhanVien();
 			for (NhanVien nv : list) {
 				String[] rowData = nv.toString().split(";");
 				tblModel.addRow(rowData);
