@@ -85,13 +85,13 @@ public class Dashboard_Employee extends JFrame implements ActionListener {
 				SwingConstants.LEFT);
 
 		// Button
-		btnKhachHang = new HeaderButton("Khách Hàng", ColorConstant.BACKGROUND_NORMAL, ColorConstant.TEXT_NORMAL);
-		btnDiaDanh = new HeaderButton("Địa Danh", ColorConstant.BACKGROUND_NORMAL, ColorConstant.TEXT_NORMAL);
-		btnTourDuLich = new HeaderButton("Tour Du Lịch", ColorConstant.BACKGROUND_NORMAL, ColorConstant.TEXT_NORMAL);
-		btnDichVu = new HeaderButton("Dịch Vụ", ColorConstant.BACKGROUND_NORMAL, ColorConstant.TEXT_NORMAL);
-		btnHopDongTour = new HeaderButton("Hợp Đồng Tour", ColorConstant.BACKGROUND_NORMAL,
+		btnKhachHang = new HeaderButton("KhÃ¡ch HÃ ng", ColorConstant.BACKGROUND_NORMAL, ColorConstant.TEXT_NORMAL);
+		btnDiaDanh = new HeaderButton("Ä�á»‹a Danh", ColorConstant.BACKGROUND_NORMAL, ColorConstant.TEXT_NORMAL);
+		btnTourDuLich = new HeaderButton("Tour Du Lá»‹ch", ColorConstant.BACKGROUND_NORMAL, ColorConstant.TEXT_NORMAL);
+		btnDichVu = new HeaderButton("Dá»‹ch Vá»¥", ColorConstant.BACKGROUND_NORMAL, ColorConstant.TEXT_NORMAL);
+		btnHopDongTour = new HeaderButton("Há»£p Ä�á»“ng Tour", ColorConstant.BACKGROUND_NORMAL,
 				ColorConstant.TEXT_NORMAL);
-		btnVeTour = new HeaderButton("Vé Tour", ColorConstant.BACKGROUND_NORMAL, ColorConstant.TEXT_NORMAL);
+		btnVeTour = new HeaderButton("VÃ© Tour", ColorConstant.BACKGROUND_NORMAL, ColorConstant.TEXT_NORMAL);
 		btnAccount = new DropdownMenu("Employee", ColorConstant.BACKGROUND_HEADER_FOOTER, ColorConstant.TEXT_NORMAL,
 				this);
 
