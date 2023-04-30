@@ -3,13 +3,13 @@ import java.util.Date;
 
 import com.itextpdf.text.DocumentException;
 
-import controllers.PDFCreator;
 import models.DiaDanh;
 import models.DichVu;
 import models.KhachHang;
 import models.TourDuLich;
 import models.VeTour;
 import utils.LoadSave;
+import utils.PDFCreator;
 import utils.PasswordEncoder;
 
 public class Test {
