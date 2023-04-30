@@ -31,11 +31,11 @@ public class VeTour {
 
 	@Override
 	public String toString() {
-		return maVe + ";" + khachHang;
+		return maVe + ";" + khachHang.getMaKhachHang();
 	}
 
 	public String getTitle() {
-		return "M√£ V√©;M√£ Kh√°ch H√†ng";
+		return "M„ VÈ;M„ Kh·ch H‡ng";
 	}
 
 }

@@ -81,9 +81,9 @@ public class Employee_DichVu extends JPanel {
 
 	private void preset() {
 		// TODO Auto-generated method stub
-		tbpnDichVu.add("ThÃªm Dá»‹ch Vá»¥", pnThem);
-		tbpnDichVu.add("XÃ³a Dá»‹ch Vá»¥", pnXoa);
-		tbpnDichVu.add("Sá»­a Dá»‹ch Vá»¥", pnSua);
+		tbpnDichVu.add("Thêm Dịch Vụ", pnThem);
+		tbpnDichVu.add("Xóa Dịch Vụ", pnXoa);
+		tbpnDichVu.add("Sửa Dịch Vụ", pnSua);
 
 		for (int i = 0; i < tbpnDichVu.getTabCount(); i++) {
 			JLabel tab = new JLabel(tbpnDichVu.getTitleAt(i));

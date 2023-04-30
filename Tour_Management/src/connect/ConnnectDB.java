@@ -6,6 +6,12 @@ import java.sql.SQLException;
 
 import utils.constants.DatabaseConstant;
 
+/**
+ * Kết nối tới Database
+ * 
+ * @author Pham Nhat Linh
+ *
+ */
 public class ConnnectDB {
 	public static Connection con = null;
 	private static ConnnectDB instance = new ConnnectDB();

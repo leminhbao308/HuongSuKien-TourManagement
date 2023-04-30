@@ -81,9 +81,9 @@ public class Employee_HopDongTour extends JPanel {
 
 	private void preset() {
 		// TODO Auto-generated method stub
-		tbpnHopDongTour.add("ThÃªm Há»£p Ä�á»“ng", pnThem);
-		tbpnHopDongTour.add("XÃ³a Há»£p Ä�á»“ng", pnXoa);
-		tbpnHopDongTour.add("Sá»­a Há»£p Ä�á»“ng", pnSua);
+		tbpnHopDongTour.add("Thêm Hợp Đồng", pnThem);
+		tbpnHopDongTour.add("Xóa Hợp Đồng", pnXoa);
+		tbpnHopDongTour.add("Sửa Hợp Đồng", pnSua);
 
 		for (int i = 0; i < tbpnHopDongTour.getTabCount(); i++) {
 			JLabel tab = new JLabel(tbpnHopDongTour.getTitleAt(i));

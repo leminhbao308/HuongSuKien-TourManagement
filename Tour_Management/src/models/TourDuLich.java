@@ -110,6 +110,6 @@ public class TourDuLich {
 	}
 
 	public String getTitle() {
-		return "MÃ£ Tour;TÃªn Tour;MÃ´ Táº£;NgÃ y Ä�i;NÆ¡i Ä�i;Sá»‘ NgÃ y Dá»± Kiáº¿n;GiÃ¡ Tour;Tráº¡ng ThÃ¡i Tour;MÃ£ Ä�á»‹a Danh";
+		return "Mã Tour;Tên Tour;Mô Tả;Ngày Đi;Nơi Đi;Số Ngày Dự Kiến;Giá Tour;Trạng Thái Tour;Mã Địa Danh";
 	}
 }

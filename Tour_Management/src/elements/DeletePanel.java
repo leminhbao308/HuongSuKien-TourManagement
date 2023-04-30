@@ -140,63 +140,63 @@ public class DeletePanel extends JPanel {
 		pnFindToDelete = new javax.swing.JPanel();
 
 		// Button
-		btnFind = new RoundJButton("TÃ¬m");
+		btnFind = new RoundJButton("TÌM");
 
 		// Model
 		if (o instanceof DiaDanh) {
 			DiaDanh diaDanh = (DiaDanh) o;
 			String[] cols = diaDanh.getTitle().split(";");
 			tblModel = new DefaultTableModel(cols, 0);
-			tblModel.addColumn("HÃ nh Ä�á»™ng");
+			tblModel.addColumn("Hành Động");
 			loadTable(o);
 		}
 		if (o instanceof DichVu) {
 			DichVu dichVu = (DichVu) o;
 			String[] cols = dichVu.getTitle().split(";");
 			tblModel = new DefaultTableModel(cols, 0);
-			tblModel.addColumn("HÃ nh Ä�á»™ng");
+			tblModel.addColumn("Hành Động");
 			loadTable(o);
 		}
 		if (o instanceof HopDongTour) {
 			HopDongTour hopDongTour = (HopDongTour) o;
 			String[] cols = hopDongTour.getTitle().split(";");
 			tblModel = new DefaultTableModel(cols, 0);
-			tblModel.addColumn("HÃ nh Ä�á»™ng");
+			tblModel.addColumn("Hành Động");
 			loadTable(o);
 		}
 		if (o instanceof KhachHang) {
 			KhachHang khachHang = (KhachHang) o;
 			String[] cols = khachHang.getTitle().split(";");
 			tblModel = new DefaultTableModel(cols, 0);
-			tblModel.addColumn("HÃ nh Ä�á»™ng");
+			tblModel.addColumn("Hành Động");
 			loadTable(o);
 		}
 		if (o instanceof NhanVien) {
 			NhanVien nhanVien = (NhanVien) o;
 			String[] cols = nhanVien.getTitle().split(";");
 			tblModel = new DefaultTableModel(cols, 0);
-			tblModel.addColumn("HÃ nh Ä�á»™ng");
+			tblModel.addColumn("Hành Động");
 			loadTable(o);
 		}
 		if (o instanceof TaiKhoan) {
 			TaiKhoan taiKhoan = (TaiKhoan) o;
 			String[] cols = taiKhoan.getTitle().split(";");
 			tblModel = new DefaultTableModel(cols, 0);
-			tblModel.addColumn("HÃ nh Ä�á»™ng");
+			tblModel.addColumn("Hành Động");
 			loadTable(o);
 		}
 		if (o instanceof TourDuLich) {
 			TourDuLich tourDuLich = (TourDuLich) o;
 			String[] cols = tourDuLich.getTitle().split(";");
 			tblModel = new DefaultTableModel(cols, 0);
-			tblModel.addColumn("HÃ nh Ä�á»™ng");
+			tblModel.addColumn("Hành Động");
 			loadTable(o);
 		}
 		if (o instanceof VeTour) {
 			VeTour veTour = (VeTour) o;
 			String[] cols = veTour.getTitle().split(";");
 			tblModel = new DefaultTableModel(cols, 0);
-			tblModel.addColumn("HÃ nh Ä�á»™ng");
+			tblModel.addColumn("Hành Động");
 			loadTable(o);
 		}
 
@@ -207,10 +207,10 @@ public class DeletePanel extends JPanel {
 
 	private void style() {
 		// TODO Auto-generated method stub
-		pnFindToDelete.setBorder(javax.swing.BorderFactory.createTitledBorder("KhÃ´ng TÃ¬m Tháº¥y TrÃªn Báº£ng?"));
+		pnFindToDelete.setBorder(javax.swing.BorderFactory.createTitledBorder("Không Tìm Thấy Trên Bảng?"));
 
 		btnFind.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-		btnFind.setText("TÃ¬m");
+		btnFind.setText("TÌM");
 
 		for (JTextField txt : listInput) {
 			txt.setBackground(ColorConstant.BACKGROUND_NORMAL);
@@ -277,7 +277,7 @@ public class DeletePanel extends JPanel {
 			for (NhanVien nv : list) {
 				String[] rowData = nv.toString().split(";");
 				tblModel.addRow(rowData);
-				tblModel.setValueAt(new JButton("XÃ³a"), tblModel.getRowCount() - 1, tblModel.getColumnCount() - 1);
+				tblModel.setValueAt(new JButton("XÓA"), tblModel.getRowCount() - 1, tblModel.getColumnCount() - 1);
 			}
 		} else if (o instanceof DiaDanh) {
 			ArrayList<DiaDanh> list = DAO_DiaDanh.getAllDiaDanh();

@@ -11,6 +11,12 @@ import java.util.Date;
 import connect.ConnnectDB;
 import models.NhanVien;
 
+/**
+ * Truy vấn dữ liệu về Nhân Viên
+ * 
+ * @author Pham Nhat Linh
+ *
+ */
 public class DAO_NhanVien {
 	public static ArrayList<NhanVien> getAllNhanVien() {
 		ArrayList<NhanVien> dsNhanVien = new ArrayList<NhanVien>();

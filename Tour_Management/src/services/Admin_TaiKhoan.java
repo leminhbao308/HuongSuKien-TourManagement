@@ -81,9 +81,9 @@ public class Admin_TaiKhoan extends JPanel {
 
 	private void preset() {
 		// TODO Auto-generated method stub
-		tbpnTaiKhoan.add("ThÃªm TÃ i Khoáº£n", pnThem);
-		tbpnTaiKhoan.add("XÃ³a TÃ i Khoáº£n", pnXoa);
-		tbpnTaiKhoan.add("Sá»­a TÃ i Khoáº£n", pnSua);
+		tbpnTaiKhoan.add("Thêm Tài Khoản", pnThem);
+		tbpnTaiKhoan.add("Xóa Tài Khoản", pnXoa);
+		tbpnTaiKhoan.add("Sửa Tài Khoản", pnSua);
 
 		for (int i = 0; i < tbpnTaiKhoan.getTabCount(); i++) {
 			JLabel tab = new JLabel(tbpnTaiKhoan.getTitleAt(i));

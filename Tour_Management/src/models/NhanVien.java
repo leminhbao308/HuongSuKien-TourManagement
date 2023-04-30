@@ -95,7 +95,7 @@ public class NhanVien {
 	}
 
 	public String getTitle() {
-		return "MÃ£ NhÃ¢n ViÃªn;TÃªn NhÃ¢n ViÃªn;Giá»›i TÃ­nh;NgÃ y Sinh;Ä�á»‹a Chá»‰;Email;Sá»‘ Ä�iá»‡n Thoáº¡i";
+		return "Mã Nhân Viên;Tên Nhân Viên;Giới Tính;Ngày Sinh;Địa Chỉ;Email;Số Điện Thoại";
 	}
 
 }

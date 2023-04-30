@@ -30,7 +30,7 @@ import utils.LoadSave;
 import utils.constants.ColorConstant;
 
 /**
- * Giao diện chính của chương trình
+ * Giao diá»‡n chÃ­nh cá»§a chÆ°Æ¡ng trÃ¬nh
  * 
  * @author LeMinhBao
  *
@@ -50,7 +50,7 @@ public class Dashboard_Admin extends JFrame implements ActionListener {
 	private GroupLayout pnNorthLayout;
 
 	/**
-	 * Khởi tạo giao diện
+	 * Khá»Ÿi táº¡o giao diá»‡n
 	 */
 	public Dashboard_Admin() {
 		Dimension DimMax = Toolkit.getDefaultToolkit().getScreenSize();
@@ -72,7 +72,7 @@ public class Dashboard_Admin extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Khởi tạo các phần tử
+	 * Khá»Ÿi táº¡o cÃ¡c pháº§n tá»­
 	 */
 	private void init() {
 		// Panel
@@ -101,7 +101,7 @@ public class Dashboard_Admin extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Tùy chỉnh các phần tử
+	 * TÃ¹y chá»‰nh cÃ¡c pháº§n tá»­
 	 */
 	private void style() {
 		// Panel
@@ -140,7 +140,7 @@ public class Dashboard_Admin extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Sắp xếp các phần tử
+	 * Sáº¯p xáº¿p cÃ¡c pháº§n tá»­
 	 */
 	private void preset() {
 
@@ -159,7 +159,7 @@ public class Dashboard_Admin extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Sự kiện các phần tử
+	 * Sá»± kiá»‡n cÃ¡c pháº§n tá»­
 	 */
 	private void event() {
 		this.btnNhanVien.addActionListener(this);
