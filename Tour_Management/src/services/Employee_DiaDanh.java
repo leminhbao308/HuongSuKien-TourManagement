@@ -94,7 +94,7 @@ public class Employee_DiaDanh extends JPanel {
 			tab.setPreferredSize(new Dimension(150, 25)); // thiáº¿t láº­p kÃ­ch thÆ°á»›c
 			tbpnDiaDanh.setTabComponentAt(i, tab); // Ä‘áº·t tab component cho má»—i tab
 		}
-
+		
 		b_content.add(tbpnDiaDanh);
 
 		this.add(b_content);
