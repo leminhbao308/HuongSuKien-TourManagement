@@ -30,9 +30,8 @@ public class DAO_DichVu {
 			while (rs.next()) {
 				String maDichVu = rs.getString(1).trim();
 				String phuongTien = rs.getString(2).trim();
-				String ChiTietDichVu = rs.getString(3).trim();
-				float giaDichVu = Float.parseFloat(rs.getString(4));
-				DichVu dv = new DichVu(maDichVu, phuongTien, ChiTietDichVu, giaDichVu);
+				float giaDichVu = Float.parseFloat(rs.getString(3));
+				DichVu dv = new DichVu(maDichVu, phuongTien, giaDichVu);
 				list.add(dv);
 			}
 		} catch (SQLException e) {
@@ -65,8 +64,7 @@ public class DAO_DichVu {
 			statement = con.prepareStatement(sql);
 			statement.setString(1, d.getMaDichVu());
 			statement.setString(2, d.getPhuongTienDiChuyen());
-			statement.setString(3, d.getChiTietDichVu());
-			statement.setFloat(4, d.getGiaDichVu());
+			statement.setFloat(3, d.getGiaDichVu());
 			int kq = statement.executeUpdate();
 			statement.close();
 			if (kq == 1)
@@ -117,9 +115,8 @@ public class DAO_DichVu {
 			statement = con.prepareStatement(sql);
 			statement.setString(1, dichVu.getMaDichVu());
 			statement.setString(2, dichVu.getPhuongTienDiChuyen());
-			statement.setString(3, dichVu.getChiTietDichVu());
-			statement.setFloat(4, dichVu.getGiaDichVu());
-			statement.setString(5, dichVu.getMaDichVu());
+			statement.setFloat(3, dichVu.getGiaDichVu());
+			statement.setString(4, dichVu.getMaDichVu());
 			statement.executeUpdate();
 			return true;
 		} catch (Exception e) {

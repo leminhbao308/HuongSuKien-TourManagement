@@ -1,19 +1,27 @@
 package entity;
 
+import java.util.Objects;
+
 public class DichVu {
 	private String maDichVu;
 	private String phuongTienDiChuyen;
-	private String chiTietDichVu;
 	private float giaDichVu;
 
-	public DichVu() {
-	}
-
-	public DichVu(String maDichVu, String phuongTienDiChuyen, String chiTietDichVu, float giaDichVu) {
+	public DichVu(String maDichVu, String phuongTienDiChuyen, float giaDichVu) {
+		super();
 		this.maDichVu = maDichVu;
 		this.phuongTienDiChuyen = phuongTienDiChuyen;
-		this.chiTietDichVu = chiTietDichVu;
 		this.giaDichVu = giaDichVu;
+	}
+
+	public DichVu(String maDichVu) {
+		super();
+		this.maDichVu = maDichVu;
+	}
+
+	public DichVu() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getMaDichVu() {
@@ -32,14 +40,6 @@ public class DichVu {
 		this.phuongTienDiChuyen = phuongTienDiChuyen;
 	}
 
-	public String getChiTietDichVu() {
-		return chiTietDichVu;
-	}
-
-	public void setChiTietDichVu(String chiTietDichVu) {
-		this.chiTietDichVu = chiTietDichVu;
-	}
-
 	public float getGiaDichVu() {
 		return giaDichVu;
 	}
@@ -49,11 +49,28 @@ public class DichVu {
 	}
 
 	@Override
+	public int hashCode() {
+		return Objects.hash(maDichVu);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DichVu other = (DichVu) obj;
+		return Objects.equals(maDichVu, other.maDichVu);
+	}
+
+	@Override
 	public String toString() {
-		return maDichVu + ";" + phuongTienDiChuyen + ";" + chiTietDichVu + ";" + giaDichVu;
+		return maDichVu + ";" + phuongTienDiChuyen + ";" + giaDichVu + ";";
 	}
 
 	public String getTitle() {
-		return "Mã Dịch Vụ;Phương Tiện Di Chuyển;Chi Tiết Dịch Vụ;Giá Dịch Vụ";
+		return "Mã Dịch Vụ;Phương Tiện Di Chuyển;Giá Dịch Vụ";
 	}
 }
