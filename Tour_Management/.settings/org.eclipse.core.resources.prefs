@@ -10,6 +10,7 @@ encoding//src/DAO/DAO_VeTour.java=UTF-8
 encoding//src/Test.java=UTF-8
 encoding//src/TourManagementSystem.java=UTF-8
 encoding//src/connect/ConnnectDB.java=UTF-8
+encoding//src/controllers/CtrlTourDuLich.java=UTF-8
 encoding//src/elements/AddPanel.java=UTF-8
 encoding//src/elements/CustomTabbedPane.java=UTF-8
 encoding//src/elements/DeletePanel.java=UTF-8
