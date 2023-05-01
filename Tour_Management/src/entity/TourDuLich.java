@@ -1,4 +1,4 @@
-package models;
+package entity;
 
 import java.util.Date;
 
@@ -110,6 +110,6 @@ public class TourDuLich {
 	}
 
 	public String getTitle() {
-		return "Mã Tour;Tên Tour;Mô Tả;Ngày Đi;Nơi Đi;Số Ngày Dự Kiến;Giá Tour;Trạng Thái Tour;Mã Địa Danh";
+		return "Mã Tour;Tên Tour;Mô Tả;Ngày �?i;Nơi �?i;Số Ngày Dự Kiến;Giá Tour;Trạng Thái Tour;Mã �?ịa Danh";
 	}
 }

@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import connect.ConnnectDB;
-import models.DiaDanh;
-import models.TourDuLich;
+import entity.DiaDanh;
+import entity.TourDuLich;
 
 /**
  * Truy vấn dữ liệu về Địa Danh

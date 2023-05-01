@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import connect.ConnnectDB;
-import models.HopDongTour;
-import models.KhachHang;
-import models.NhanVien;
+import entity.HopDongTour;
+import entity.KhachHang;
+import entity.NhanVien;
 
 /**
  * Truy vấn dữ liệu về Hợp Đồng Tour

@@ -1,4 +1,4 @@
-package models;
+package entity;
 
 public class VeTour {
 	private String maVe;

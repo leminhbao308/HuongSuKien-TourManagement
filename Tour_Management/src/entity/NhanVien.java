@@ -1,7 +1,7 @@
 /**
  * 
  */
-package models;
+package entity;
 
 import java.util.Date;
 
@@ -95,7 +95,7 @@ public class NhanVien {
 	}
 
 	public String getTitle() {
-		return "Mã Nhân Viên;Tên Nhân Viên;Giới Tính;Ngày Sinh;Địa Chỉ;Email;Số Điện Thoại";
+		return "Mã Nhân Viên;Tên Nhân Viên;Giới Tính;Ngày Sinh;�?ịa Chỉ;Email;Số �?iện Thoại";
 	}
 
 }

@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import connect.ConnnectDB;
-import models.KhachHang;
-import models.VeTour;
+import entity.KhachHang;
+import entity.VeTour;
 
 /**
  * Truy vấn dữ liệu về Vé Tour

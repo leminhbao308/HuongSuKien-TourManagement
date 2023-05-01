@@ -17,7 +17,7 @@ import elements.AddPanel;
 import elements.CustomTabbedPane;
 import elements.DeletePanel;
 import elements.ModifyPanel;
-import models.DichVu;
+import entity.DichVu;
 import utils.AddList;
 import utils.constants.ColorConstant;
 

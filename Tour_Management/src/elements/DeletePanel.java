@@ -14,14 +14,14 @@ import javax.swing.table.DefaultTableModel;
 import DAO.DAO_DiaDanh;
 import DAO.DAO_NhanVien;
 import DAO.DAO_TaiKhoan;
-import models.DiaDanh;
-import models.DichVu;
-import models.HopDongTour;
-import models.KhachHang;
-import models.NhanVien;
-import models.TaiKhoan;
-import models.TourDuLich;
-import models.VeTour;
+import entity.DiaDanh;
+import entity.DichVu;
+import entity.HopDongTour;
+import entity.KhachHang;
+import entity.NhanVien;
+import entity.TaiKhoan;
+import entity.TourDuLich;
+import entity.VeTour;
 import utils.constants.ColorConstant;
 
 public class DeletePanel extends JPanel {

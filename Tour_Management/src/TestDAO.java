@@ -9,12 +9,12 @@ import DAO.DAO_KhachHang;
 import DAO.DAO_NhanVien;
 import DAO.DAO_TaiKhoan;
 import DAO.DAO_TourDuLich;
-import models.DichVu;
-import models.HopDongTour;
-import models.KhachHang;
-import models.NhanVien;
-import models.TaiKhoan;
-import models.TourDuLich;
+import entity.DichVu;
+import entity.HopDongTour;
+import entity.KhachHang;
+import entity.NhanVien;
+import entity.TaiKhoan;
+import entity.TourDuLich;
 
 public class TestDAO {
 	/**

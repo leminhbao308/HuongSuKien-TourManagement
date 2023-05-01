@@ -3,11 +3,11 @@ import java.util.Date;
 
 import com.itextpdf.text.DocumentException;
 
-import models.DiaDanh;
-import models.DichVu;
-import models.KhachHang;
-import models.TourDuLich;
-import models.VeTour;
+import entity.DiaDanh;
+import entity.DichVu;
+import entity.KhachHang;
+import entity.TourDuLich;
+import entity.VeTour;
 import utils.LoadSave;
 import utils.PDFCreator;
 import utils.PasswordEncoder;

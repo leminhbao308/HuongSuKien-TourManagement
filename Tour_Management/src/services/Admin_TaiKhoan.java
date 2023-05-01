@@ -17,7 +17,7 @@ import elements.AddPanel;
 import elements.CustomTabbedPane;
 import elements.DeletePanel;
 import elements.ModifyPanel;
-import models.TaiKhoan;
+import entity.TaiKhoan;
 import utils.AddList;
 import utils.constants.ColorConstant;
 

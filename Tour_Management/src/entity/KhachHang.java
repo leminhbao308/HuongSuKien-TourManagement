@@ -1,4 +1,4 @@
-package models;
+package entity;
 
 import java.util.Date;
 
@@ -130,7 +130,7 @@ public class KhachHang {
 	}
 
 	public String getTitle() {
-		return "Mã Khách Hàng;CCCD/HC;Tên Khách Hàng;Giới Tính;Ngày Sinh;Địa Chỉ;Email;Số Điện Thoại;Tiền Tour;Mã Tour;Mã Dịch Vụ";
+		return "Mã Khách Hàng;CCCD/HC;Tên Khách Hàng;Giới Tính;Ngày Sinh;�?ịa Chỉ;Email;Số �?iện Thoại;Ti�?n Tour;Mã Tour;Mã Dịch Vụ";
 	}
 
 }

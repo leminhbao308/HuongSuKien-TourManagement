@@ -1,4 +1,4 @@
-package models;
+package entity;
 
 public class DiaDanh {
 	private String maDiaDanh;
@@ -44,6 +44,6 @@ public class DiaDanh {
 	}
 
 	public String getTitle() {
-		return "Mã Địa Danh;Tên Địa Danh;Tỉnh Thành";
+		return "Mã �?ịa Danh;Tên �?ịa Danh;Tỉnh Thành";
 	}
 }

@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import connect.ConnnectDB;
-import models.DichVu;
-import models.KhachHang;
+import entity.DichVu;
+import entity.KhachHang;
 
 /**
  * Truy vấn dữ liệu về Dịch Vụ

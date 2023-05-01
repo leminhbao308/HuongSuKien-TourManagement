@@ -1,4 +1,4 @@
-package models;
+package entity;
 
 public class TaiKhoan {
 	private String maTaiKhoan;

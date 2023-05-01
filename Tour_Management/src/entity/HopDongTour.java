@@ -1,4 +1,4 @@
-package models;
+package entity;
 
 import java.util.Date;
 
@@ -89,7 +89,7 @@ public class HopDongTour {
 	}
 
 	public String getTitle() {
-		return "Mã Hợp Đồng;Thời Gian Lập;Ghi Chú;Tổng Tiền;Trạng Thái;Mã Nhân Viên;Mã Khách Hàng";
+		return "Mã Hợp �?ồng;Th�?i Gian Lập;Ghi Chú;Tổng Ti�?n;Trạng Thái;Mã Nhân Viên;Mã Khách Hàng";
 	}
 
 }

@@ -17,7 +17,7 @@ import elements.AddPanel;
 import elements.CustomTabbedPane;
 import elements.DeletePanel;
 import elements.ModifyPanel;
-import models.HopDongTour;
+import entity.HopDongTour;
 import utils.AddList;
 import utils.constants.ColorConstant;
 

@@ -5,7 +5,7 @@ import java.io.IOException;
 import com.itextpdf.text.DocumentException;
 
 import DAO.DAO_VeTour;
-import models.VeTour;
+import entity.VeTour;
 import utils.LoadSave;
 import utils.PDFCreator;
 

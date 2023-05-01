@@ -17,10 +17,11 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
+
+import entity.VeTour;
+
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
-
-import models.VeTour;
 
 public class PDFCreator {
 

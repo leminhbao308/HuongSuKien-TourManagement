@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import connect.ConnnectDB;
-import models.NhanVien;
+import entity.NhanVien;
 
 /**
  * Truy vấn dữ liệu về Nhân Viên

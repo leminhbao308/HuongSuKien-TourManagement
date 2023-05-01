@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 import com.itextpdf.text.List;
 
 import DAO.DAO_TourDuLich;
-import models.TourDuLich;
+import entity.TourDuLich;
 
 public class CtrlTourDuLich {
 	public static ArrayList<TourDuLich> locTourTongHopTheoChuoi(ArrayList<TourDuLich> dsIn, String txt) {

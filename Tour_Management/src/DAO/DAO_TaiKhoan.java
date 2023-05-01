@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import connect.ConnnectDB;
-import models.NhanVien;
-import models.TaiKhoan;
+import entity.NhanVien;
+import entity.TaiKhoan;
 import utils.PasswordEncoder;
 
 /**

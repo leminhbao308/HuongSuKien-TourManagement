@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import connect.ConnnectDB;
-import models.DiaDanh;
-import models.TourDuLich;
+import entity.DiaDanh;
+import entity.TourDuLich;
 
 /**
  * Truy vấn dữ liệu về Tour Du Lịch
