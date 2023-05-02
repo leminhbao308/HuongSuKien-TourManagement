@@ -50,6 +50,9 @@ If you don't -1900, result will be 3923 instead
 import *; //import everything here
 
 public class className extends JFrame { // Or extends JPanel as anyway
+      
+      private ElementClass elementName; // Declare your Elements here
+
       public className() {
             // Setup
             // Set title, icon blah blah...
