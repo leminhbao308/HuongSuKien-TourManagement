@@ -2,7 +2,6 @@ package services;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,9 +9,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.sql.Date;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -27,7 +24,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
-import javax.swing.UIManager;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -35,7 +31,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import org.jdatepicker.JDatePicker;
 
 import DAO.DAO_NhanVien;
+import DAO.DAO_TaiKhoan;
 import entity.NhanVien;
+import entity.TaiKhoan;
 import utils.LoadSave;
 import utils.constants.ColorConstant;
 
@@ -445,6 +443,11 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	    // Set the cell renderer for all columns
 	    for (int i = 0; i < tblNhanVien.getColumnModel().getColumnCount(); i++) {
 		tblNhanVien.getColumnModel().getColumn(i).setCellRenderer(new DefaultTableCellRenderer() {
+		    /**
+		     * 
+		     */
+		    private static final long serialVersionUID = 1L;
+
 		    @Override
 		    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
 			    boolean hasFocus, int row, int column) {
@@ -502,6 +505,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 		String data = tblNhanVien.getValueAt(selectedRow, 0).toString();
 
 		DAO_NhanVien.xoaNhanVien(data);
+		DAO_TaiKhoan.xoaTaiKhoan(data);
 		tblModel.setRowCount(0);
 		loadData();
 	    }
@@ -929,7 +933,8 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	    lblChucVu.setText("Chuc Vu:");
 
 	    cbxChucVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    cbxChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quan Ly", "Nhan Vien" }));
+	    cbxChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(
+		    new String[] { "Quản lý kinh doanh", "Nhân viên bán hàng" }));
 	    cbxChucVu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
 	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder("Chon Tac Vu"));
@@ -1133,9 +1138,9 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 			&& txtSDT.getText().trim().matches("^(03|05|07|08|09)+([0-9]{8})$")) {
 		    boolean gender = false;
 		    if (radNam.isSelected())
-			gender = false;
-		    if (radNu.isSelected())
 			gender = true;
+		    if (radNu.isSelected())
+			gender = false;
 
 		    // Lấy ngày tháng được chọn từ JDatePicker
 		    Calendar selectedDate = (Calendar) dpkNgaySinh.getModel().getValue();
@@ -1151,6 +1156,12 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Them Thanh Cong");
 			tblModel.setRowCount(0);
 			loadData();
+
+			// Tạo tài khoản cho nhân viên đăng nhập
+			TaiKhoan newTK = new TaiKhoan(newNV, "password123.");
+			DAO_TaiKhoan.themTaiKhoan(newTK);
+
+			this.dispose();
 		    } else {
 			JOptionPane.showMessageDialog(null, "Them That Bai");
 			this.dispose();
@@ -1819,9 +1830,9 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 			&& txtSDTNew.getText().trim().matches("^(03|05|07|08|09)+([0-9]{8})$")) {
 		    boolean gender = true;
 		    if (radNamNew.isSelected())
-			gender = false;
-		    if (radNuNew.isSelected())
 			gender = true;
+		    if (radNuNew.isSelected())
+			gender = false;
 
 		    // Lấy ngày tháng được chọn từ JDatePicker
 		    Calendar selectedDate = (Calendar) dpkNgaySinhNew.getModel().getValue();
@@ -1837,6 +1848,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Cap Nhat Thanh Cong");
 			tblModel.setRowCount(0);
 			loadData();
+			this.dispose();
 		    } else {
 			JOptionPane.showMessageDialog(null, "Cap Nhat That Bai");
 			this.dispose();
