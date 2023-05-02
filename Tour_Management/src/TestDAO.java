@@ -26,14 +26,6 @@ public class TestDAO {
 	 *             từ SQL
 	 */
 		public static void main(String[] args) {
-		ArrayList<HopDongTour> dsHopDong = new ArrayList<HopDongTour>();
-		dsHopDong = DAO_HopDongTour.getAllHopDongTour();
-		for(HopDongTour hd:dsHopDong) {
-			System.out.println(hd.toString());
-			System.out.println("-----------------");
-			System.out.println("Gia Tien : " + DAO_HopDongTour.getTongTienTour(hd.getDichVu().getMaDichVu(), hd.getTourDuLich().getMaTour()));
-			System.out.println("-----------------");
-		}
 		ArrayList<DiaDanh> dsDD = new ArrayList<DiaDanh>();
 		dsDD = DAO_DiaDanh.getAllDiaDanh();
 		for(DiaDanh hd:dsDD) {
@@ -65,6 +57,10 @@ public class TestDAO {
 			System.out.println(hd.toString());
 		}
 		
+		
+		
+		
+		
 		System.out.println("-----------------");
 		ArrayList<TourDuLich> dsT = new ArrayList<TourDuLich>();
 		dsT = DAO_TourDuLich.getAllTourDuLich();
@@ -80,6 +76,8 @@ public class TestDAO {
 		for(TourDuLich hd:dsT1) {
 			System.out.println(hd.toString());
 		}
+		
+		
 		System.out.println("-----------------");
 		KhachHang k = new KhachHang("test001", "12345678910121", "Tést success", false, LocalDate.now(), "linh", "012134567");
 		ArrayList<KhachHang> dsKH = new ArrayList<KhachHang>();
@@ -89,11 +87,37 @@ public class TestDAO {
 		}
 		System.out.println("-----------------");
 		//DAO_KhachHang.themKhachHang(k);
-		DAO_KhachHang.suaKhachHang(k);
+		//DAO_KhachHang.suaKhachHang(k);
 		ArrayList<KhachHang> dsKHt = new ArrayList<KhachHang>();
 		dsKHt = DAO_KhachHang.getAllKhachHang();
 		for(KhachHang hd:dsKHt) {
 			System.out.println(hd.toString());
 		}
+		
+		
+		
+		System.out.println("-----------------");
+		ArrayList<HopDongTour> dsHopDong = new ArrayList<HopDongTour>();
+		dsHopDong = DAO_HopDongTour.getAllHopDongTour();
+		for(HopDongTour hd:dsHopDong) {
+			System.out.println(hd.toString());
+			System.out.println("-----------------");
+			System.out.println("Gia Tien : " + DAO_HopDongTour.getTongTienTour(hd.getDichVu().getMaDichVu(), hd.getTourDuLich().getMaTour()));
+			System.out.println("-----------------");
+		}
+		System.out.println("-----------------");
+		HopDongTour h = new HopDongTour("test003", LocalDate.now(), "Test sua", 0, DAO_NhanVien.timKiemNhanVien("NV001"), DAO_KhachHang.timKiemKhachHang("KH001"), DAO_TourDuLich.timKiemTour("TDL001"), DAO_DichVu.timKiemDichVu("DV001"));
+		//DAO_HopDongTour.themHopDongTour(h);
+		//DAO_HopDongTour.xoaHopDongTour("test003");
+		DAO_HopDongTour.suaHopDongTour(h);
+		ArrayList<HopDongTour> dsHopDongT = new ArrayList<HopDongTour>();
+		dsHopDongT = DAO_HopDongTour.getAllHopDongTour();
+		for(HopDongTour hd:dsHopDongT) {
+			System.out.println(hd.toString());
+			System.out.println("-----------------");
+			System.out.println("Gia Tien : " + DAO_HopDongTour.getTongTienTour(hd.getDichVu().getMaDichVu(), hd.getTourDuLich().getMaTour()));
+			System.out.println("-----------------");
+		}
+		System.out.println("-----------------");
 	}
 }

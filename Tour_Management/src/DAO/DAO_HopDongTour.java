@@ -62,19 +62,19 @@ public class DAO_HopDongTour {
 		ConnnectDB.getInstance();
 		Connection con = ConnnectDB.getConnection();
 		PreparedStatement statement = null;
-		String sql = "insert into [dbo].[HopDongTour]"
-				+ " ([maHopDong], [thoiGianLap], [ghiChu], [tongTien], [maNhanVien], [maKhachHang], [maTour], [maDichVu])"
-				+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO [dbo].[HopDongTour] ([maHopDong],[thoiGianLap],[ghiChu],[tongTien],[maNhanVien],[maKhachHang],[maTour],[maDichVu])"
+				+ " VALUES (?,?,?,(SELECT giaTour + giaDichVu FROM TourDuLich t, DichVu d WHERE t.maTour = ? AND d.maDichVu = ?),?,?,?,?)";
 		try {
 			statement = con.prepareStatement(sql);
 			statement.setString(1, hopDongTour.getMaHopDong());
 			statement.setDate(2, java.sql.Date.valueOf(hopDongTour.getThoiGianLap()));
 			statement.setString(3, hopDongTour.getGhiChu());
-			statement.setFloat(4, hopDongTour.getTongTien());
-			statement.setString(5, hopDongTour.getNhanVien().getMaNhanVien());
-			statement.setString(6, hopDongTour.getKhachHang().getMaKhachHang());
-			statement.setString(7, hopDongTour.getTourDuLich().getMaTour());
-			statement.setString(8, hopDongTour.getDichVu().getMaDichVu());
+			statement.setString(4, hopDongTour.getTourDuLich().getMaTour());
+			statement.setString(5, hopDongTour.getDichVu().getMaDichVu());
+			statement.setString(6, hopDongTour.getNhanVien().getMaNhanVien());
+			statement.setString(7, hopDongTour.getKhachHang().getMaKhachHang());
+			statement.setString(8, hopDongTour.getTourDuLich().getMaTour());
+			statement.setString(9, hopDongTour.getDichVu().getMaDichVu());
 			statement.executeUpdate();
 			statement.close();
 			return true;
@@ -108,14 +108,14 @@ public class DAO_HopDongTour {
 		Connection con = ConnnectDB.getConnection();
 		PreparedStatement statement = null;
 		String sql = "update [dbo].[HopDongTour]"
-				+ "set [maHopDong] = ?, [thoiGianLap]= ?, [ghiChu]= ?, [tongTien]= ?, [maNhanVien]= ?, [maKhachHang]= ?, [maTour]=?, [maDichVu]=?"
+				+ "set [maHopDong] = ?, [thoiGianLap]= ?, [ghiChu]= ?,[tongTien]=?, [maNhanVien]= ?, [maKhachHang]= ?, [maTour]=?, [maDichVu]=?"
 				+ " where [maHopDong] = ?";
 		try {
 			statement = con.prepareStatement(sql);
 			statement.setString(1, hopDongTour.getMaHopDong());
 			statement.setDate(2, java.sql.Date.valueOf(hopDongTour.getThoiGianLap()));
 			statement.setString(3, hopDongTour.getGhiChu());
-			statement.setFloat(4, hopDongTour.getTongTien());
+			statement.setFloat(4, getTongTienTour(hopDongTour.getDichVu().getMaDichVu(), hopDongTour.getTourDuLich().getMaTour()));
 			statement.setString(5, hopDongTour.getNhanVien().getMaNhanVien());
 			statement.setString(6, hopDongTour.getKhachHang().getMaKhachHang());
 			statement.setString(7, hopDongTour.getTourDuLich().getMaTour());
@@ -132,28 +132,8 @@ public class DAO_HopDongTour {
 	}
 	
 	public static float getTongTienTour(String maDichVu, String maTour) {
-	    float giaTien = 0;
-
-	    ConnnectDB.getInstance();
-	    Connection con = ConnnectDB.getConnection();
-	    String sql = "SELECT SUM(TourDuLich.giaTour + DichVu.giaDichVu) as tongTien "
-	            + " FROM HopDongTour "
-	            + " JOIN TourDuLich ON HopDongTour.maTour = TourDuLich.maTour "
-	            + " JOIN DichVu ON HopDongTour.maDichVu = DichVu.maDichVu "
-	            + " WHERE HopDongTour.maDichVu = ? AND HopDongTour.maTour = ?";
-	    try (PreparedStatement statement = con.prepareStatement(sql)) {
-	        statement.setString(1, maDichVu);
-	        statement.setString(2, maTour);
-	        try (ResultSet rs = statement.executeQuery()) {
-	            while (rs.next()) {
-	                giaTien = rs.getFloat("tongTien");
-	            }
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	    return giaTien;
+	    float giaDV = DAO_DichVu.timKiemDichVu(maDichVu).getGiaDichVu();
+	    float giaTour = DAO_TourDuLich.timKiemTour(maTour).getGiaTour();
+	    return giaDV+giaTour;
 	}
 }
