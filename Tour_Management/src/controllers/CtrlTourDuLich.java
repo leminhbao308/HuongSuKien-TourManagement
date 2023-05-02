@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.itextpdf.text.List;
-
 import DAO.DAO_TourDuLich;
 import entity.TourDuLich;
 

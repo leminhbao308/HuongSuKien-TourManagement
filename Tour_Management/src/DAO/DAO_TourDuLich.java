@@ -32,7 +32,7 @@ public class DAO_TourDuLich {
 				String tenTour = rs.getString(2).trim();
 				String moTa = rs.getString(3).trim();
 				LocalDate ngayDi = LocalDate.parse(rs.getString(4).trim(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-				String noiDi = rs.getString(5).trim();
+				String noiDi = rs.getString(5);
 				int soNgayDuKien = Integer.parseInt(rs.getString(6));
 				float giaTour = rs.getFloat(7);
 				boolean trangThaiTour = rs.getString(8).equals("0");

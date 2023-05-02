@@ -26,75 +26,6 @@ public class TestDAO {
 	 *             từ SQL
 	 */
 		public static void main(String[] args) {
-//		ArrayList<KhachHang> dsKH = new ArrayList<KhachHang>();
-//		dsKH = DAO_KhachHang.getAllKhachHang();
-//		ArrayList<TourDuLich> dsTour = new ArrayList<TourDuLich>();
-//		dsTour = DAO_TourDuLich.getAllTourDuLich();
-//		ArrayList<DichVu> dsDv = new ArrayList<DichVu>();
-//		dsDv = DAO_DichVu.getAllDichVu();
-//		ArrayList<NhanVien> dsNv = new ArrayList<NhanVien>();
-//		dsNv = DAO_NhanVien.getAllNhanVien();
-//		ArrayList<HopDongTour> dsHD = new ArrayList<HopDongTour>();
-//		dsHD = DAO_HopDongTour.getAllHopDongTour();
-//		ArrayList<TaiKhoan> dsTK = new ArrayList<TaiKhoan>();
-//		dsTK = DAO_TaiKhoan.getAllTaiKhoan();
-//
-//		
-//		// HopDongTour hd = new HopDongTour(null, null, null, 0, 0, null, kh);
-//		// DAO_DichVu.themDichVu(dv);
-//		// DAO_DichVu.xoaDichVu("DV0010");
-//		// DAO_DichVu.suaThongTin("DV0010", "Tau hoa", "ok", 5000000);
-//		// DAO_TourDuLich.xoaTourDuLich("test035");
-//		// DAO_TourDuLich.suaTuorDuLich("test111", "test success", "test", new Date(),
-//		// "test", 1, 1, false, DAO_DiaDanh.timDiaDanh("DD001"));
-//		// dsTour = DAO_TourDuLich.getAllTourDuLich();
-//		System.out.println("-------------------");
-//		for (TourDuLich d : dsTour) {
-//			System.out.println(d.toString());
-//		}
-//		System.out.println("-------------------");
-//		for (DichVu d : dsDv) {
-//			System.out.println(d.toString());
-//		}
-//		System.out.println("-------------------");
-//		dsDv = DAO_DichVu.getAllDichVu();
-//		for (KhachHang d : dsKH) {
-//			System.out.println(d.toString());
-//		}
-//		System.out.println("-------------------");
-//		dsDv = DAO_DichVu.getAllDichVu();
-//		for (NhanVien d : dsNv) {
-//			System.out.println(d.toString());
-//		}
-//		System.out.println("-------------------");
-//		for (HopDongTour d : dsHD) {
-//			System.out.println(d.toString());
-//		}
-//		// Thêm tài khoản mới
-//		
-//		System.out.println("-------------------");
-//		for (TaiKhoan tk : dsTK) {
-//			System.out.println(tk.toString());
-//		}
-//		System.out.println("-------------------");
-		// DAO_KhachHang.suaKhachHang("KH_Test2", "test succes", "test", false, new
-		// Date(), "test", "test", "test", 100, DAO_TourDuLich.timKiemTour("TDL001"),
-		// DAO_DichVu.timKiemDichVu("DV001"));
-		// DAO_HopDongTour.themHopDongTour(hd);
-		// DAO_HopDongTour.xoaHopDongTour("HD_test00");
-//		ArrayList<HopDongTour> dsHDn = new ArrayList<HopDongTour>();
-//		dsHDn = DAO_HopDongTour.getAllHopDongTour();
-//		for (HopDongTour d : dsHDn) {
-//			System.out.println(d.toString());
-//		}
-//		System.out.println("-------------------");
-//		ArrayList<DiaDanh> dsDD = new ArrayList<DiaDanh>();
-//		dsDD = DAO_DiaDanh.getAllDiaDanh();
-//		for (DiaDanh d : dsDD) {
-//			System.out.println(d.toString());
-//		}
-//		System.out.println("-------------------");
-	
 		ArrayList<HopDongTour> dsHopDong = new ArrayList<HopDongTour>();
 		dsHopDong = DAO_HopDongTour.getAllHopDongTour();
 		for(HopDongTour hd:dsHopDong) {
@@ -115,12 +46,7 @@ public class TestDAO {
 			System.out.println(hd.toString());
 		}
 		System.out.println("-----------------");
-		ArrayList<KhachHang> dsKH = new ArrayList<KhachHang>();
-		dsKH = DAO_KhachHang.getAllKhachHang();
-		for(KhachHang hd:dsKH) {
-			System.out.println(hd.toString());
-		}
-		System.out.println("-----------------");
+		
 		ArrayList<NhanVien> dsNV = new ArrayList<NhanVien>();
 		dsNV = DAO_NhanVien.getAllNhanVien();
 		for(NhanVien hd:dsNV) {
@@ -133,15 +59,39 @@ public class TestDAO {
 			System.out.println(hd.toString());
 		}
 		System.out.println("-----------------");
+		ArrayList<VeTour> dsVT = new ArrayList<VeTour>();
+		dsVT = DAO_VeTour.getAllVeTour();
+		for(VeTour hd:dsVT) {
+			System.out.println(hd.toString());
+		}
+		
+		System.out.println("-----------------");
 		ArrayList<TourDuLich> dsT = new ArrayList<TourDuLich>();
 		dsT = DAO_TourDuLich.getAllTourDuLich();
 		for(TourDuLich hd:dsT) {
 			System.out.println(hd.toString());
 		}
+		TourDuLich t = new TourDuLich("Tets001", "Xin chào", "tses", LocalDate.now(), "Hà Nội", 0, 0, false, DAO_DiaDanh.timDiaDanh("DD001"));
 		System.out.println("-----------------");
-		ArrayList<VeTour> dsVT = new ArrayList<VeTour>();
-		dsVT = DAO_VeTour.getAllVeTour();
-		for(VeTour hd:dsVT) {
+		//DAO_TourDuLich.themTourDuLich(t);
+		//DAO_TourDuLich.xoaTourDuLich("Tets");
+		ArrayList<TourDuLich> dsT1 = new ArrayList<TourDuLich>();
+		dsT1 = DAO_TourDuLich.getAllTourDuLich();
+		for(TourDuLich hd:dsT1) {
+			System.out.println(hd.toString());
+		}
+		System.out.println("-----------------");
+		KhachHang k = new KhachHang("test001", "12345678910121", "Tést", false, LocalDate.now(), "linh", "012134567");
+		ArrayList<KhachHang> dsKH = new ArrayList<KhachHang>();
+		dsKH = DAO_KhachHang.getAllKhachHang();
+		for(KhachHang hd:dsKH) {
+			System.out.println(hd.toString());
+		}
+		System.out.println("-----------------");
+		DAO_KhachHang.themKhachHang(k);
+		ArrayList<KhachHang> dsKHt = new ArrayList<KhachHang>();
+		dsKHt = DAO_KhachHang.getAllKhachHang();
+		for(KhachHang hd:dsKHt) {
 			System.out.println(hd.toString());
 		}
 	}
