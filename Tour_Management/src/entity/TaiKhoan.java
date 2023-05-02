@@ -17,6 +17,10 @@ public class TaiKhoan {
 		this.nhanVien = nhanVien;
 	}
 
+	public TaiKhoan() {
+	    // TODO Auto-generated constructor stub
+	}
+
 	public NhanVien getNhanVien() {
 		return nhanVien;
 	}

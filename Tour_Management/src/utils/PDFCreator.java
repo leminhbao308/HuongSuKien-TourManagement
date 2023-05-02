@@ -40,7 +40,7 @@ public class PDFCreator {
 	Document document = new Document(pageSize);
 
 	// Tạo tên file
-	String fileName = veTour.getMaVe() + "_" + veTour.getKhachHang().getMaKhachHang() + ".pdf";
+	String fileName = veTour.getMaVe() + "_" + veTour.getHopDong().getKhachHang().getMaKhachHang() + ".pdf";
 	// Tạo đường dẫn đến thư mục Ticket
 	String filePath = "./Ticket/" + fileName;
 
@@ -85,21 +85,22 @@ public class PDFCreator {
 	document.add(code);
 
 	// Add name
-	Paragraph name = new Paragraph("Tên khách hàng: " + veTour.getKhachHang().getTenKhachHang(), nameFont);
+	Paragraph name = new Paragraph("Tên khách hàng: " + veTour.getHopDong().getKhachHang().getTenKhachHang(),
+		nameFont);
 	name.setAlignment(Element.ALIGN_LEFT);
 	document.add(name);
 
 	// Add Location
 	Paragraph location = new Paragraph(
-		"Địa Danh: " + veTour.getKhachHang().getTourDuLich().getDiaDanh().getTenDiaDanh() + " - Tỉnh "
-			+ veTour.getKhachHang().getTourDuLich().getDiaDanh().getTinhThanh(),
+		"Địa Danh: " + veTour.getHopDong().getTourDuLich().getDiaDanh().getTenDiaDanh() + " - Tỉnh "
+			+ veTour.getHopDong().getTourDuLich().getDiaDanh().getTinhThanh(),
 		nameFont);
 	code.setAlignment(Element.ALIGN_CENTER);
 	document.add(location);
 
 	// Add Go Date
 	Paragraph godate = new Paragraph("Ngày đi: "
-		+ new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(veTour.getKhachHang().getTourDuLich().getNgayDi()),
+		+ new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(veTour.getHopDong().getTourDuLich().getNgayDi()),
 		nameFont);
 	code.setAlignment(Element.ALIGN_CENTER);
 	document.add(godate);

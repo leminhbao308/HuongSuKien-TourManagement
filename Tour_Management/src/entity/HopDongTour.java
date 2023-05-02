@@ -4,127 +4,127 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class HopDongTour {
-	private String maHopDong;
-	private LocalDate thoiGianLap;
-	private String ghiChu;
-	private float tongTien;
-	private NhanVien nhanVien;
-	private KhachHang khachHang;
-	private TourDuLich tourDuLich;
-	private DichVu dichVu;
-	
-	public HopDongTour(String maHopDong, LocalDate thoiGianLap, String ghiChu, float tongTien, NhanVien nhanVien,
-			KhachHang khachHang, TourDuLich tourDuLich, DichVu dichVu) {
-		super();
-		this.maHopDong = maHopDong;
-		this.thoiGianLap = thoiGianLap;
-		this.ghiChu = ghiChu;
-		this.tongTien = tongTien;
-		this.nhanVien = nhanVien;
-		this.khachHang = khachHang;
-		this.tourDuLich = tourDuLich;
-		this.dichVu = dichVu;
-	}
+    private String maHopDong;
+    private LocalDate thoiGianLap;
+    private String ghiChu;
+    private float tongTien;
+    private NhanVien nhanVien;
+    private KhachHang khachHang;
+    private TourDuLich tourDuLich;
+    private DichVu dichVu;
 
-	public HopDongTour(String maHopDong) {
-		super();
-		this.maHopDong = maHopDong;
-	}
+    public HopDongTour(String maHopDong, LocalDate thoiGianLap, String ghiChu, float tongTien, NhanVien nhanVien,
+	    KhachHang khachHang, TourDuLich tourDuLich, DichVu dichVu) {
+	super();
+	this.maHopDong = maHopDong;
+	this.thoiGianLap = thoiGianLap;
+	this.ghiChu = ghiChu;
+	this.tongTien = tongTien;
+	this.nhanVien = nhanVien;
+	this.khachHang = khachHang;
+	this.tourDuLich = tourDuLich;
+	this.dichVu = dichVu;
+    }
 
-	public HopDongTour() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    public HopDongTour(String maHopDong) {
+	super();
+	this.maHopDong = maHopDong;
+    }
 
-	public String getMaHopDong() {
-		return maHopDong;
-	}
+    public HopDongTour() {
+	super();
+	// TODO Auto-generated constructor stub
+    }
 
-	public void setMaHopDong(String maHopDong) {
-		this.maHopDong = maHopDong;
-	}
+    public String getMaHopDong() {
+	return maHopDong;
+    }
 
-	public LocalDate getThoiGianLap() {
-		return thoiGianLap;
-	}
+    public void setMaHopDong(String maHopDong) {
+	this.maHopDong = maHopDong;
+    }
 
-	public void setThoiGianLap(LocalDate thoiGianLap) {
-		this.thoiGianLap = thoiGianLap;
-	}
+    public LocalDate getThoiGianLap() {
+	return thoiGianLap;
+    }
 
-	public String getGhiChu() {
-		return ghiChu;
-	}
+    public void setThoiGianLap(LocalDate thoiGianLap) {
+	this.thoiGianLap = thoiGianLap;
+    }
 
-	public void setGhiChu(String ghiChu) {
-		this.ghiChu = ghiChu;
-	}
+    public String getGhiChu() {
+	return ghiChu;
+    }
 
-	public float getTongTien() {
-		return tongTien;
-	}
+    public void setGhiChu(String ghiChu) {
+	this.ghiChu = ghiChu;
+    }
 
-	public void setTongTien(float tongTien) {
-		this.tongTien = tongTien;
-	}
+    public float getTongTien() {
+	return tongTien;
+    }
 
-	public NhanVien getNhanVien() {
-		return nhanVien;
-	}
+    public void setTongTien(float tongTien) {
+	this.tongTien = tongTien;
+    }
 
-	public void setNhanVien(NhanVien nhanVien) {
-		this.nhanVien = nhanVien;
-	}
+    public NhanVien getNhanVien() {
+	return nhanVien;
+    }
 
-	public KhachHang getKhachHang() {
-		return khachHang;
-	}
+    public void setNhanVien(NhanVien nhanVien) {
+	this.nhanVien = nhanVien;
+    }
 
-	public void setKhachHang(KhachHang khachHang) {
-		this.khachHang = khachHang;
-	}
+    public KhachHang getKhachHang() {
+	return khachHang;
+    }
 
-	public TourDuLich getTourDuLich() {
-		return tourDuLich;
-	}
+    public void setKhachHang(KhachHang khachHang) {
+	this.khachHang = khachHang;
+    }
 
-	public void setTourDuLich(TourDuLich tourDuLich) {
-		this.tourDuLich = tourDuLich;
-	}
+    public TourDuLich getTourDuLich() {
+	return tourDuLich;
+    }
 
-	public DichVu getDichVu() {
-		return dichVu;
-	}
+    public void setTourDuLich(TourDuLich tourDuLich) {
+	this.tourDuLich = tourDuLich;
+    }
 
-	public void setDichVu(DichVu dichVu) {
-		this.dichVu = dichVu;
-	}
+    public DichVu getDichVu() {
+	return dichVu;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(maHopDong);
-	}
+    public void setDichVu(DichVu dichVu) {
+	this.dichVu = dichVu;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		HopDongTour other = (HopDongTour) obj;
-		return Objects.equals(maHopDong, other.maHopDong);
-	}
+    @Override
+    public int hashCode() {
+	return Objects.hash(maHopDong);
+    }
 
-	@Override
-	public String toString() {
-		return maHopDong + ";" + thoiGianLap + ";" + ghiChu + ";" + tongTien + ";"
-				+ nhanVien.getMaNhanVien() + ";" + khachHang.getMaKhachHang() + ";" + tourDuLich.getTenTour() + ";" + dichVu.getMaDichVu();
-	}
+    @Override
+    public boolean equals(Object obj) {
+	if (this == obj)
+	    return true;
+	if (obj == null)
+	    return false;
+	if (getClass() != obj.getClass())
+	    return false;
+	HopDongTour other = (HopDongTour) obj;
+	return Objects.equals(maHopDong, other.maHopDong);
+    }
 
-	public String getTitle() {
-		return "Mã Hợp Đồng;Th�?i Gian Lập;Ghi Chú;Tổng Tiền;Trạng Thái;Mã Nhân Viên;Mã Khách Hàng;Tour Du Lịch;Dịch Vụ";
-	}
+    @Override
+    public String toString() {
+	return maHopDong + ";" + thoiGianLap + ";" + ghiChu + ";" + tongTien + ";" + nhanVien.getMaNhanVien() + ";"
+		+ khachHang.getMaKhachHang() + ";" + tourDuLich.getTenTour() + ";" + dichVu.getMaDichVu();
+    }
+
+    public String getTitle() {
+	return "Mã Hợp Đồng;Thời Gian Lập;Ghi Chú;Tổng Tiền;Trạng Thái;Mã Nhân Viên;Mã Khách Hàng;Tour Du Lịch;Dịch Vụ";
+    }
 
 }
