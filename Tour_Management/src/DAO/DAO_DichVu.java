@@ -6,11 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 
 import connect.ConnnectDB;
 import entity.DichVu;
-import entity.KhachHang;
 
 /**
  * Truy vấn dữ liệu về Dịch Vụ

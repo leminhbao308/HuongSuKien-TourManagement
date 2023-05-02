@@ -130,4 +130,35 @@ public class DAO_HopDongTour {
 			return false;
 		}
 	}
+	
+	public static float getTongTienTour(String maDichVu, String maTour) {
+		float giaTien=0;
+		
+		ConnnectDB.getInstance();
+		Connection con = ConnnectDB.getConnection();
+		String sql = "SELECT SUM(TourDuLich.giaTour + DichVu.giaDichVu) as tongTien "
+					+ " FROM HopDongTour "
+					+ " JOIN TourDuLich ON HopDongTour.maTour = TourDuLich.maTour "
+					+ " JOIN DichVu ON HopDongTour.maDichVu = DichVu.maDichVu "
+					+ " WHERE HopDongTour.maDichVu = ? AND HopDongTour.maTour = ?'";
+		try {	
+			PreparedStatement statement = con.prepareStatement(sql);
+			statement.setString(1, maDichVu);
+			statement.setString(2, maTour);
+			try {
+				ResultSet rs = statement.executeQuery(sql);
+				while(rs.next()) {
+					giaTien = rs.getFloat("tongTien");
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return giaTien;
+	}
 }
