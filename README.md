@@ -23,7 +23,7 @@
 │   ├───controllers
 │   ├───DAO
 │   ├───elements
-│   ├───models
+│   ├───entities
 │   ├───services
 │   ├───utils
 │   │   └───constants
