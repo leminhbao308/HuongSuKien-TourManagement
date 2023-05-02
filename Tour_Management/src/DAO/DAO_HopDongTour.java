@@ -31,14 +31,14 @@ public class DAO_HopDongTour {
 			Statement statement = con.createStatement();
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
-				String maHopDong = rs.getString(1);
+				String maHopDong = rs.getString(1).trim();
 				LocalDate thoiGianLap = LocalDate.parse(rs.getString(2).trim(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				String ghiChu = rs.getString(3).trim();
 				float tongTien = rs.getFloat(4);
-				NhanVien nhanVien = DAO_NhanVien.timKiemNhanVien(rs.getString(6).trim());
-				KhachHang khachHang = DAO_KhachHang.timKiemKhachHang(rs.getString(7).trim());
-				TourDuLich tour = DAO_TourDuLich.timKiemTour(rs.getString(8).trim());
-				DichVu dichVu = DAO_DichVu.timKiemDichVu(rs.getString(9).trim());
+				NhanVien nhanVien = DAO_NhanVien.timKiemNhanVien(rs.getString(5).trim());
+				KhachHang khachHang = DAO_KhachHang.timKiemKhachHang(rs.getString(6).trim());
+				TourDuLich tour = DAO_TourDuLich.timKiemTour(rs.getString(7).trim());
+				DichVu dichVu = DAO_DichVu.timKiemDichVu(rs.getString(8).trim());
 				HopDongTour hopDong = new HopDongTour(maHopDong, thoiGianLap, ghiChu, tongTien, nhanVien, khachHang, tour, dichVu);
 				dsHopDong.add(hopDong);
 			}
@@ -145,8 +145,8 @@ public class DAO_HopDongTour {
 			PreparedStatement statement = con.prepareStatement(sql);
 			statement.setString(1, maDichVu);
 			statement.setString(2, maTour);
+			ResultSet rs = statement.executeQuery(sql);
 			try {
-				ResultSet rs = statement.executeQuery(sql);
 				while(rs.next()) {
 					giaTien = rs.getFloat("tongTien");
 				}
