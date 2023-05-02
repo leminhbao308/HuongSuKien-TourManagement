@@ -17,6 +17,7 @@ public class NhanVien {
 	private String diaChi;
 	private String email;
 	private String soDienThoai;
+	private String chucVu;
 
 	public NhanVien() {
 	}
@@ -88,14 +89,22 @@ public class NhanVien {
 		this.soDienThoai = soDienThoai;
 	}
 
+	public String getChucVu() {
+		return chucVu;
+	}
+
+	public void setChucVu(String chucVu) {
+		this.chucVu = chucVu;
+	}
+
 	@Override
 	public String toString() {
 		return maNhanVien + ";" + tenNhanVien + ";" + gioiTinh + ";" + ngaySinh + ";" + diaChi + ";" + email + ";"
-				+ soDienThoai;
+				+ soDienThoai + ";" + chucVu;
 	}
 
 	public String getTitle() {
-		return "Mã Nhân Viên;Tên Nhân Viên;Giới Tính;Ngày Sinh;�?ịa Chỉ;Email;Số �?iện Thoại";
+		return "Mã Nhân Viên;Tên Nhân Viên;Giới Tính;Ngày Sinh;Địa Chỉ;Email;Số Điện Thoại;Chức Vụ";
 	}
 
 }

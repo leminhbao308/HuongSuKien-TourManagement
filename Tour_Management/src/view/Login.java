@@ -14,7 +14,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
+import elements.ImagePanel;
 import elements.RoundJButton;
 import elements.RoundJPasswordField;
 import elements.RoundJTextField;
@@ -22,155 +25,174 @@ import utils.LoadSave;
 
 public class Login extends JFrame implements ActionListener {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 8390616510415779560L;
-    private JLabel lbl_title;
-    private JButton btn_login;
-    private RoundJTextField txt_username;
-    private RoundJPasswordField txt_password;
-    private JPanel jp_login;
-    private ImageIcon logo = new ImageIcon(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
-
-    public Login() {
-	this.setTitle("SETourist - Login");
-	super.setSize(600, 400);
-	this.setLocationRelativeTo(null);
-	this.setResizable(false);
-	this.setIconImage(logo.getImage());
-	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-	init();
-	style();
-	preset();
-    }
-
-    /**
-     * Khởi tạo các phần tử
-     */
-    private void init() {
-	this.lbl_title = new JLabel("Login");
-	this.txt_username = new RoundJTextField(40);
-	this.txt_password = new RoundJPasswordField(40);
-	this.btn_login = new RoundJButton("Login");
-	this.jp_login = new JPanel();
-    }
-
-    /**
-     * Tùy chỉnh các phần tử
-     */
-    private void style() {
-	// Style color text
-	Color color_Title = new Color(239, 245, 245);
-	Color color_Forget = new Color(235, 100, 64);
-	this.lbl_title.setForeground(color_Title);
-
-	this.btn_login.setBackground(color_Forget);
-
-	// Set font
-	Font font_Title = new Font("Arial", Font.BOLD, 50);
-	Font font_Text = new Font("Arial", Font.PLAIN, 18);
-	Font font_btn = new Font("Arial", Font.PLAIN, 24);
-	this.lbl_title.setFont(font_Title);
-	this.txt_username.setFont(font_Text);
-	this.txt_password.setFont(font_Text);
-	this.btn_login.setFont(font_btn);
-	// Set size
-	this.txt_username.setPreferredSize(new Dimension(100, 30));
-	this.txt_password.setPreferredSize(new Dimension(100, 30));
-
-	// Set text in Field
-	this.txt_username.setText("Username");
-	this.txt_username.setColumns(20);
-	this.txt_password.setText("Password");
-	this.txt_password.setColumns(20);
-
-	// Set layout
-	jp_login.setLayout(new BoxLayout(jp_login, BoxLayout.Y_AXIS));
-    }
-
-    /**
-     * Sắp xếp các phần tử
-     */
-    private void preset() {
-	this.setLayoutFormLogin();
-	this.add(jp_login);
-
-	this.btn_login.addActionListener(this);
-    }
-
-    public void setLayoutFormLogin() {
-	Box b = Box.createVerticalBox();
-	Box b1 = Box.createHorizontalBox();
-	Box b2 = Box.createHorizontalBox();
-	Box b3 = Box.createHorizontalBox();
-	Box b4 = Box.createHorizontalBox();
-
-	b1.add(lbl_title);
-	b2.add(Box.createHorizontalStrut(30));
-	b2.add(txt_username);
-	b2.add(Box.createHorizontalStrut(30));
-	b3.add(Box.createHorizontalStrut(30));
-	b3.add(txt_password);
-	b3.add(Box.createHorizontalStrut(30));
-
-	b4.add(Box.createHorizontalStrut(100));
-	b4.add(btn_login);
-	b4.add(Box.createHorizontalStrut(100));
-
-	b.add(Box.createVerticalStrut(50));
-	b.add(b1);
-	b.add(Box.createVerticalStrut(30));
-	b.add(b2);
-	b.add(Box.createVerticalStrut(10));
-	b.add(b3);
-	b.add(Box.createVerticalStrut(50));
-	b.add(b4);
-	b.add(Box.createVerticalStrut(40));
-
-	// Set color
-	b.setBackground(new Color(73, 113, 116));
-	b1.setBackground(new Color(73, 113, 116));
-	b2.setBackground(new Color(73, 113, 116));
-	b3.setBackground(new Color(73, 113, 116));
-	b4.setBackground(new Color(73, 113, 116));
-
-	jp_login.add(b);
-	jp_login.setBackground(new Color(73, 113, 116));
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-	Object o = e.getSource();
-
 	/**
-	 * Kiểm tra mật khẩu
+	 * 
 	 */
-	if (o.equals(btn_login)) {
-	    if (txt_username.getText().equals("Username")) {
-		char[] passwordChars = txt_password.getPassword();
-		String password = new String(passwordChars);
-		if (password.equals("Password")) {
-		    JOptionPane.showMessageDialog(null, "Admin Login Successfull");
-		    this.dispose();
-		    Dashboard_Admin dashboard = new Dashboard_Admin();
-		    dashboard.setLocationRelativeTo(null);
-		    dashboard.setVisible(true);
-		} else if (password.equals("Employee")) {
-		    JOptionPane.showMessageDialog(null, "Employee Login Successfull");
-		    this.dispose();
-		    Dashboard_Employee dashboard = new Dashboard_Employee();
-		    dashboard.setLocationRelativeTo(null);
-		    dashboard.setVisible(true);
-		} else {
-		    JOptionPane.showMessageDialog(null, "Incorrect Password");
-		    txt_password.requestFocus();
-		}
-	    } else {
-		JOptionPane.showMessageDialog(null, "Incorrect Username");
-		txt_username.requestFocus();
-	    }
+	private static final long serialVersionUID = 8390616510415779560L;
+	private JPanel loginPanel;
+	private JLabel lblTitle, lblPass, lblMaNV, lblCheckPass;
+	private RoundJTextField txtMaNV;
+	private RoundJPasswordField txtMatKhau;
+	private RoundJButton btnLogin;
+
+	public Login() {
+		setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
+		setTitle("SE Tourist - Login");
+		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setBackground(new java.awt.Color(73, 113, 116));
+		setMaximumSize(new java.awt.Dimension(550, 355));
+		setMinimumSize(new java.awt.Dimension(550, 355));
+		setLocationRelativeTo(null);
+		setResizable(false);
+
+		init();
+		style();
+		preset();
+		event();
 	}
-    }
+
+	private void init() {
+		// TODO Auto-generated method stub
+		loginPanel = new javax.swing.JPanel();
+		lblTitle = new javax.swing.JLabel();
+		lblPass = new javax.swing.JLabel();
+		lblMaNV = new javax.swing.JLabel();
+		txtMaNV = new RoundJTextField("");
+		txtMatKhau = new RoundJPasswordField(1000);
+		lblCheckPass = new javax.swing.JLabel();
+		btnLogin = new RoundJButton("");
+	}
+
+	private void style() {
+		// TODO Auto-generated method stub
+		loginPanel.setBackground(new java.awt.Color(73, 113, 116));
+
+		lblTitle.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
+		lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+		lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		lblTitle.setText("LOGIN");
+		lblTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+		lblTitle.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+		lblPass.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+		lblPass.setForeground(new java.awt.Color(77, 69, 93));
+		lblPass.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+		lblPass.setText("Mật Khẩu");
+
+		lblMaNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+		lblMaNV.setForeground(new java.awt.Color(77, 69, 93));
+		lblMaNV.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+		lblMaNV.setText("Mã Nhân Viên");
+
+		txtMaNV.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+		txtMaNV.setToolTipText("Nhập mã nhân viên");
+
+		txtMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+		txtMatKhau.setToolTipText("Nhập mật khẩu");
+
+		lblCheckPass.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+		lblCheckPass.setForeground(new java.awt.Color(255, 0, 0));
+		lblCheckPass.setText("(*)");
+
+		btnLogin.setBackground(new java.awt.Color(235, 100, 64));
+		btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+		btnLogin.setForeground(new java.awt.Color(77, 69, 93));
+		btnLogin.setText("LOGIN");
+		btnLogin.setToolTipText("Đăng Nhập");
+		btnLogin.setIcon(new ImageIcon(LoadSave.GetSpriteAtlas(LoadSave.ICON_LOGIN)));
+		btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+	}
+
+	private void preset() {
+		// TODO Auto-generated method stub
+		javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
+		loginPanel.setLayout(loginPanelLayout);
+		loginPanelLayout
+				.setHorizontalGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+						.addGroup(loginPanelLayout.createSequentialGroup().addContainerGap()
+								.addGroup(loginPanelLayout
+										.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+										.addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(txtMaNV).addComponent(txtMatKhau)
+										.addGroup(loginPanelLayout.createSequentialGroup().addGroup(loginPanelLayout
+												.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+												.addComponent(lblPass, javax.swing.GroupLayout.PREFERRED_SIZE, 89,
+														javax.swing.GroupLayout.PREFERRED_SIZE)
+												.addComponent(lblMaNV)).addGap(0, 0, Short.MAX_VALUE))
+										.addComponent(lblCheckPass, javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addContainerGap()));
+		loginPanelLayout
+				.setVerticalGroup(
+						loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addGroup(loginPanelLayout.createSequentialGroup()
+										.addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 52,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+										.addComponent(lblMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 30,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 36,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addComponent(lblPass, javax.swing.GroupLayout.PREFERRED_SIZE, 30,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 36,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addGap(2, 2, 2).addComponent(lblCheckPass).addGap(18, 18, 18)
+										.addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 50,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addGap(0, 15, Short.MAX_VALUE)));
+
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+		getContentPane().setLayout(layout);
+		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(
+				loginPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE,
+				javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+		layout.setVerticalGroup(
+				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(loginPanel,
+						javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+	}
+
+	private void event() {
+		// TODO Auto-generated method stub
+		this.btnLogin.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object o = e.getSource();
+
+		/**
+		 * Kiểm tra mật khẩu
+		 */
+		if (o.equals(btnLogin)) {
+			if (txtMaNV.getText().equals("Username")) {
+				char[] passwordChars = txtMatKhau.getPassword();
+				String password = new String(passwordChars);
+				if (password.equals("Password")) {
+					JOptionPane.showMessageDialog(null, "Admin Login Successfull");
+					this.dispose();
+					Dashboard_Admin dashboard = new Dashboard_Admin();
+					dashboard.setLocationRelativeTo(null);
+					dashboard.setVisible(true);
+				} else if (password.equals("Employee")) {
+					JOptionPane.showMessageDialog(null, "Employee Login Successfull");
+					this.dispose();
+					Dashboard_Employee dashboard = new Dashboard_Employee();
+					dashboard.setLocationRelativeTo(null);
+					dashboard.setVisible(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "Incorrect Password");
+					txtMatKhau.requestFocus();
+				}
+			} else {
+				JOptionPane.showMessageDialog(null, "Incorrect Username");
+				txtMaNV.requestFocus();
+			}
+		}
+	}
 }
