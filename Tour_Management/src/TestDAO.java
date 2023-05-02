@@ -10,6 +10,7 @@ import DAO.DAO_KhachHang;
 import DAO.DAO_NhanVien;
 import DAO.DAO_TaiKhoan;
 import DAO.DAO_TourDuLich;
+import DAO.DAO_VeTour;
 import entity.DiaDanh;
 import entity.DichVu;
 import entity.HopDongTour;
@@ -17,6 +18,7 @@ import entity.KhachHang;
 import entity.NhanVien;
 import entity.TaiKhoan;
 import entity.TourDuLich;
+import entity.VeTour;
 
 public class TestDAO {
 	/**
@@ -101,6 +103,46 @@ public class TestDAO {
 			System.out.println("Gia Tien : " + DAO_HopDongTour.getTongTienTour(hd.getDichVu().getMaDichVu(), hd.getTourDuLich().getMaTour()));
 			System.out.println("-----------------");
 		}
-		
+		ArrayList<DiaDanh> dsDD = new ArrayList<DiaDanh>();
+		dsDD = DAO_DiaDanh.getAllDiaDanh();
+		for(DiaDanh hd:dsDD) {
+			System.out.println(hd.toString());
+		}
+		System.out.println("-----------------");
+		ArrayList<DichVu> dsDV = new ArrayList<DichVu>();
+		dsDV = DAO_DichVu.getAllDichVu();
+		for(DichVu hd:dsDV) {
+			System.out.println(hd.toString());
+		}
+		System.out.println("-----------------");
+		ArrayList<KhachHang> dsKH = new ArrayList<KhachHang>();
+		dsKH = DAO_KhachHang.getAllKhachHang();
+		for(KhachHang hd:dsKH) {
+			System.out.println(hd.toString());
+		}
+		System.out.println("-----------------");
+		ArrayList<NhanVien> dsNV = new ArrayList<NhanVien>();
+		dsNV = DAO_NhanVien.getAllNhanVien();
+		for(NhanVien hd:dsNV) {
+			System.out.println(hd.toString());
+		}
+		System.out.println("-----------------");
+		ArrayList<TaiKhoan> dsTK = new ArrayList<TaiKhoan>();
+		dsTK = DAO_TaiKhoan.getAllTaiKhoan();
+		for(TaiKhoan hd:dsTK) {
+			System.out.println(hd.toString());
+		}
+		System.out.println("-----------------");
+		ArrayList<TourDuLich> dsT = new ArrayList<TourDuLich>();
+		dsT = DAO_TourDuLich.getAllTourDuLich();
+		for(TourDuLich hd:dsT) {
+			System.out.println(hd.toString());
+		}
+		System.out.println("-----------------");
+		ArrayList<VeTour> dsVT = new ArrayList<VeTour>();
+		dsVT = DAO_VeTour.getAllVeTour();
+		for(VeTour hd:dsVT) {
+			System.out.println(hd.toString());
+		}
 	}
 }
