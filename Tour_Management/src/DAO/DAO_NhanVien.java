@@ -4,16 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 
 import connect.ConnnectDB;
 import entity.NhanVien;
 
 /**
  * Truy vấn dữ liệu về Nhân Viên
- * 
  * @author Pham Nhat Linh
  *
  */
@@ -30,11 +29,13 @@ public class DAO_NhanVien {
 				String maNhanVien = rs.getString(1).trim();
 				String tenNhanVien = rs.getString(2).trim();
 				boolean gioiTinh = rs.getString(3).equals("0");
-				Date ngaySinh = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString(4).trim());
+				LocalDate ngaySinh = LocalDate.parse(rs.getString(4).trim(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				String diaChi = rs.getString(5).trim();
 				String email = rs.getString(6).trim();
 				String soDienThoai = rs.getString(7).trim();
-				NhanVien nv = new NhanVien(maNhanVien, tenNhanVien, gioiTinh, ngaySinh, diaChi, email, soDienThoai);
+				String chucVu = rs.getString(8).trim();
+				
+				NhanVien nv = new NhanVien(maNhanVien, tenNhanVien, gioiTinh, ngaySinh, diaChi, email, soDienThoai, chucVu);
 				dsNhanVien.add(nv);
 			}
 		} catch (Exception e) {
@@ -64,11 +65,12 @@ public class DAO_NhanVien {
 			statement = con.prepareStatement(sql);
 			statement.setString(1, nhanVien.getMaNhanVien());
 			statement.setString(2, nhanVien.getTenNhanVien());
-			statement.setBoolean(3, nhanVien.getGioiTinh());
-			statement.setDate(4, new java.sql.Date(nhanVien.getNgaySinh().getTime()));
+			statement.setBoolean(3, nhanVien.isGioiTinh());
+			statement.setDate(4, java.sql.Date.valueOf(nhanVien.getNgaySinh()));
 			statement.setString(5, nhanVien.getDiaChi());
 			statement.setString(6, nhanVien.getEmail());
 			statement.setString(7, nhanVien.getSoDienThoai());
+			statement.setString(8, nhanVien.getChucVu());
 			statement.executeUpdate();
 			statement.close();
 			return true;
@@ -108,12 +110,13 @@ public class DAO_NhanVien {
 			statement = con.prepareStatement(sql);
 			statement.setString(1, nhanVien.getMaNhanVien());
 			statement.setString(2, nhanVien.getTenNhanVien());
-			statement.setBoolean(3, nhanVien.getGioiTinh());
-			statement.setDate(4, new java.sql.Date(nhanVien.getNgaySinh().getTime()));
+			statement.setBoolean(3, nhanVien.isGioiTinh());
+			statement.setDate(4, java.sql.Date.valueOf(nhanVien.getNgaySinh()));
 			statement.setString(5, nhanVien.getDiaChi());
 			statement.setString(6, nhanVien.getEmail());
 			statement.setString(7, nhanVien.getSoDienThoai());
-			statement.setString(8, nhanVien.getMaNhanVien());
+			statement.setString(8, nhanVien.getChucVu());
+			statement.setString(9, nhanVien.getMaNhanVien());
 			statement.executeUpdate();
 			statement.close();
 			return true;

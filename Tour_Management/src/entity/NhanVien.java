@@ -1,29 +1,25 @@
-/**
- * 
- */
 package entity;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.Objects;
 
 /**
- * @author LeMinhBao
+ * @author Pham Nhat Linh
  *
  */
 public class NhanVien {
 	private String maNhanVien;
 	private String tenNhanVien;
 	private boolean gioiTinh;
-	private Date ngaySinh;
+	private LocalDate ngaySinh;
 	private String diaChi;
 	private String email;
 	private String soDienThoai;
 	private String chucVu;
 
-	public NhanVien() {
-	}
-
-	public NhanVien(String maNhanVien, String tenNhanVien, boolean gioiTinh, Date ngaySinh, String diaChi, String email,
-			String soDienThoai) {
+	public NhanVien(String maNhanVien, String tenNhanVien, boolean gioiTinh, LocalDate ngaySinh, String diaChi,
+			String email, String soDienThoai, String chucVu) {
+		super();
 		this.maNhanVien = maNhanVien;
 		this.tenNhanVien = tenNhanVien;
 		this.gioiTinh = gioiTinh;
@@ -31,6 +27,17 @@ public class NhanVien {
 		this.diaChi = diaChi;
 		this.email = email;
 		this.soDienThoai = soDienThoai;
+		this.chucVu = chucVu;
+	}
+
+	public NhanVien() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public NhanVien(String maNhanVien) {
+		super();
+		this.maNhanVien = maNhanVien;
 	}
 
 	public String getMaNhanVien() {
@@ -49,7 +56,7 @@ public class NhanVien {
 		this.tenNhanVien = tenNhanVien;
 	}
 
-	public boolean getGioiTinh() {
+	public boolean isGioiTinh() {
 		return gioiTinh;
 	}
 
@@ -57,11 +64,11 @@ public class NhanVien {
 		this.gioiTinh = gioiTinh;
 	}
 
-	public Date getNgaySinh() {
+	public LocalDate getNgaySinh() {
 		return ngaySinh;
 	}
 
-	public void setNgaySinh(Date ngaySinh) {
+	public void setNgaySinh(LocalDate ngaySinh) {
 		this.ngaySinh = ngaySinh;
 	}
 
@@ -98,9 +105,26 @@ public class NhanVien {
 	}
 
 	@Override
+	public int hashCode() {
+		return Objects.hash(maNhanVien);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		NhanVien other = (NhanVien) obj;
+		return Objects.equals(maNhanVien, other.maNhanVien);
+	}
+
+	@Override
 	public String toString() {
 		return maNhanVien + ";" + tenNhanVien + ";" + gioiTinh + ";" + ngaySinh + ";" + diaChi + ";" + email + ";"
-				+ soDienThoai + ";" + chucVu;
+				+ soDienThoai + ";" + chucVu + ";";
 	}
 
 	public String getTitle() {

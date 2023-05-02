@@ -1,4 +1,5 @@
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -9,6 +10,7 @@ import DAO.DAO_KhachHang;
 import DAO.DAO_NhanVien;
 import DAO.DAO_TaiKhoan;
 import DAO.DAO_TourDuLich;
+import entity.DiaDanh;
 import entity.DichVu;
 import entity.HopDongTour;
 import entity.KhachHang;
@@ -35,7 +37,7 @@ public class TestDAO {
 		ArrayList<TaiKhoan> dsTK = new ArrayList<TaiKhoan>();
 		dsTK = DAO_TaiKhoan.getAllTaiKhoan();
 
-		DichVu dv = new DichVu("DV0010", "May bay", "Test add dich vu", 5000000);
+		DichVu dv = new DichVu("DV0010", "May bay", 5000000);
 		TourDuLich t = new TourDuLich("test035", "test", "test", new Date(), "test", 1, 1, false,
 				DAO_DiaDanh.timDiaDanh("DD001"));
 		KhachHang kh = new KhachHang("KH_Test2", "test", "test", false, new Date(), "test", "test", "test", 100,
@@ -74,7 +76,7 @@ public class TestDAO {
 		}
 		// Thêm tài khoản mới
 		DAO_TaiKhoan.themTaiKhoan(new TaiKhoan("AD000", "admin", "00000000",
-				new NhanVien("AD000", "ADMIN", true, new Date(2000, 01, 01), null, null, null)));
+				new NhanVien("AD000", "ADMIN", true, LocalDate.now(), null, null, null, "NO")));
 
 		System.out.println("-------------------");
 		for (TaiKhoan tk : dsTK) {
@@ -89,6 +91,12 @@ public class TestDAO {
 		ArrayList<HopDongTour> dsHDn = new ArrayList<HopDongTour>();
 		dsHDn = DAO_HopDongTour.getAllHopDongTour();
 		for (HopDongTour d : dsHDn) {
+			System.out.println(d.toString());
+		}
+		System.out.println("-------------------");
+		ArrayList<DiaDanh> dsDD = new ArrayList<DiaDanh>();
+		dsDD = DAO_DiaDanh.getAllDiaDanh();
+		for (DiaDanh d : dsDD) {
 			System.out.println(d.toString());
 		}
 		System.out.println("-------------------");

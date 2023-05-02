@@ -18,7 +18,7 @@ import entity.TourDuLich;
  */
 public class DAO_DiaDanh {
 	/**
-	 * @return ArrayList<DiaDanh> from db
+	 * @return ArrayList<DiaDanh> 
 	 */
 	public static ArrayList<DiaDanh> getAllDiaDanh() {
 		ArrayList<DiaDanh> dsDiaDanh = new ArrayList<DiaDanh>();

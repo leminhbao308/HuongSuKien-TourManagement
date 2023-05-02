@@ -1,15 +1,24 @@
 package entity;
 
+import java.util.Objects;
+
 public class VeTour {
 	private String maVe;
-	private KhachHang khachHang;
-
-	public VeTour(String maVe, KhachHang khachHang) {
+	private HopDongTour hopDong;
+	
+	public VeTour(String maVe, HopDongTour hopDong) {
+		super();
 		this.maVe = maVe;
-		this.khachHang = khachHang;
+		this.hopDong = hopDong;
+	}
+
+	public VeTour(String maVe) {
+		super();
+		this.maVe = maVe;
 	}
 
 	public VeTour() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -21,17 +30,34 @@ public class VeTour {
 		this.maVe = maVe;
 	}
 
-	public KhachHang getKhachHang() {
-		return khachHang;
+	public HopDongTour getHopDong() {
+		return hopDong;
 	}
 
-	public void setKhachHang(KhachHang khachHang) {
-		this.khachHang = khachHang;
+	public void setHopDong(HopDongTour hopDong) {
+		this.hopDong = hopDong;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(maVe);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		VeTour other = (VeTour) obj;
+		return Objects.equals(maVe, other.maVe);
 	}
 
 	@Override
 	public String toString() {
-		return maVe + ";" + khachHang.getMaKhachHang();
+		return maVe + ";" + hopDong.toString() + ";";
 	}
 
 	public String getTitle() {

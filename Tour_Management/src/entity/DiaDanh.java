@@ -40,10 +40,10 @@ public class DiaDanh {
 
 	@Override
 	public String toString() {
-		return maDiaDanh + ";" + tenDiaDanh + ";" + tinhThanh;
+		return maDiaDanh + ";" + tenDiaDanh + ";" + tinhThanh + ";";
 	}
 
 	public String getTitle() {
-		return "Mã �?ịa Danh;Tên �?ịa Danh;Tỉnh Thành";
+		return "Mã Địa Danh;Tên Địa Danh;Tỉnh Thành";
 	}
 }
