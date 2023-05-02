@@ -81,14 +81,15 @@ public class TestDAO {
 			System.out.println(hd.toString());
 		}
 		System.out.println("-----------------");
-		KhachHang k = new KhachHang("test001", "12345678910121", "Tést", false, LocalDate.now(), "linh", "012134567");
+		KhachHang k = new KhachHang("test001", "12345678910121", "Tést success", false, LocalDate.now(), "linh", "012134567");
 		ArrayList<KhachHang> dsKH = new ArrayList<KhachHang>();
 		dsKH = DAO_KhachHang.getAllKhachHang();
 		for(KhachHang hd:dsKH) {
 			System.out.println(hd.toString());
 		}
 		System.out.println("-----------------");
-		DAO_KhachHang.themKhachHang(k);
+		//DAO_KhachHang.themKhachHang(k);
+		DAO_KhachHang.suaKhachHang(k);
 		ArrayList<KhachHang> dsKHt = new ArrayList<KhachHang>();
 		dsKHt = DAO_KhachHang.getAllKhachHang();
 		for(KhachHang hd:dsKHt) {

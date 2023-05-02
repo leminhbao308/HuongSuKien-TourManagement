@@ -100,14 +100,14 @@ public class DAO_KhachHang {
 		Connection con = ConnnectDB.getConnection();
 		PreparedStatement statement = null;
 		String sql = "update [dbo].[KhachHang]"
-				+ " set [maKhachHang]= ?, [soCCCD_HC]= ?, [tenKhachHang]= ?, [gioiTinh]= ?, [ngaySinh]= ?, [diaChi]= ?, [email]= ?, [soDienThoai]= ?, [tienTour]= ?, [maTour]= ?, [maDichVu]= ?"
-				+ " where maKhachHang = ?";
+				+ " set [maKhachHang]= ?, [soCCCD_HC]= ?, [tenKhachHang]= ?, [gioiTinh]= ?, [ngaySinh]= ?, [email]= ?, [soDienThoai]= ?"
+				+ " where [maKhachHang] = ?";
 		try {
 			statement = con.prepareStatement(sql);
 			statement.setString(1, khachHang.getMaKhachHang());
 			statement.setString(2, khachHang.getSoCCCD_HC());
 			statement.setString(3, khachHang.getTenKhachHang());
-			statement.setBoolean(4, timKiemKhachHang(sql).isGioiTinh());
+			statement.setBoolean(4, khachHang.isGioiTinh());
 			statement.setDate(5, java.sql.Date.valueOf(khachHang.getNgaySinh()));
 			statement.setString(6, khachHang.getEmail());
 			statement.setString(7, khachHang.getSoDienThoai());
