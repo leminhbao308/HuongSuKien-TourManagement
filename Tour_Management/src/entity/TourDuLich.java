@@ -1,19 +1,19 @@
 package entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class TourDuLich {
 	private String maTour;
 	private String tenTour;
 	private String moTa;
-	private Date ngayDi;
+	private LocalDate ngayDi;
 	private String noiDi;
 	private int soNgayDuKien;
 	private float giaTour;
 	private boolean trangThaiTour;
-	private DiaDanh diaDanh;
+	private DiaDanh diaDanh; 
 
-	public TourDuLich(String maTour, String tenTour, String moTa, Date ngayDi, String noiDi, int soNgayDuKien,
+	public TourDuLich(String maTour, String tenTour, String moTa, LocalDate ngayDi, String noiDi, int soNgayDuKien,
 			float giaTour, boolean trangThaiTour, DiaDanh diaDanh) {
 		super();
 		this.maTour = maTour;
@@ -55,11 +55,11 @@ public class TourDuLich {
 		this.moTa = moTa;
 	}
 
-	public Date getNgayDi() {
+	public LocalDate getNgayDi() {
 		return ngayDi;
 	}
 
-	public void setNgayDi(Date ngayDi) {
+	public void setNgayDi(LocalDate ngayDi) {
 		this.ngayDi = ngayDi;
 	}
 
@@ -110,6 +110,6 @@ public class TourDuLich {
 	}
 
 	public String getTitle() {
-		return "Mã Tour;Tên Tour;Mô Tả;Ngày �?i;Nơi �?i;Số Ngày Dự Kiến;Giá Tour;Trạng Thái Tour;Mã �?ịa Danh";
+		return "Mã Tour;Tên Tour;Mô Tả;Ngày �?i;Nơi �?i;Số Ngày Dự Kiến;Giá Tour;Trạng Thái Tour;Mã �?ịa Danh";
 	}
 }

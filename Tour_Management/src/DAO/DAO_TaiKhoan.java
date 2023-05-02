@@ -27,11 +27,9 @@ public class DAO_TaiKhoan {
 			Statement statement = con.createStatement();
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
-				String maTaiKhoan = rs.getString(1).trim();
-				String maDangNhap = rs.getString(2).trim();
-				String matKhau = rs.getString(3).trim();
-				NhanVien nhanVien = DAO_NhanVien.timKiemNhanVien(rs.getString(4).trim());
-				TaiKhoan taiKhoan = new TaiKhoan(maTaiKhoan, maDangNhap, matKhau, nhanVien);
+				NhanVien nhanVien = DAO_NhanVien.timKiemNhanVien(rs.getString(1).trim());
+				String matKhau = rs.getString(2).trim();
+				TaiKhoan taiKhoan = new TaiKhoan(nhanVien, matKhau);
 				dsTaiKhoan.add(taiKhoan);
 			}
 		} catch (Exception e) {
@@ -44,7 +42,7 @@ public class DAO_TaiKhoan {
 	public static TaiKhoan timKiemTaiKhoan(String ma) {
 		ArrayList<TaiKhoan> dsTaiKhoan = getAllTaiKhoan();
 		for (TaiKhoan t : dsTaiKhoan) {
-			if (t.getMaTaiKhoan().trim().equals(ma))
+			if (t.getNhanVien().getMaNhanVien().equals(ma))
 				return t;
 		}
 		return null;
@@ -54,14 +52,12 @@ public class DAO_TaiKhoan {
 		ConnnectDB.getInstance();
 		Connection con = ConnnectDB.getConnection();
 		PreparedStatement statement = null;
-		String sql = "insert into [dbo].[TaiKhoan]" + " ([maTaiKhoan], [maDangNhap], [matKhau], [maNhanVien])"
-				+ " values (?, ?, ?, ?)";
+		String sql = "insert into [dbo].[TaiKhoan]" + " ([maNhanVien],[matKhau])"
+				+ " values (?, ?)";
 		try {
 			statement = con.prepareStatement(sql);
-			statement.setString(1, taiKhoan.getMaTaiKhoan());
-			statement.setString(2, taiKhoan.getMaDangNhap());
-			statement.setString(3, PasswordEncoder.hashPassword(taiKhoan.getMatKhau()));
-			statement.setString(4, taiKhoan.getNhanVien().getMaNhanVien());
+			statement.setString(1, taiKhoan.getNhanVien().getMaNhanVien());
+			statement.setString(2, PasswordEncoder.hashPassword(taiKhoan.getMatKhau()));
 			statement.executeUpdate();
 			statement.close();
 			return true;
@@ -76,7 +72,7 @@ public class DAO_TaiKhoan {
 		ConnnectDB.getInstance();
 		Connection con = ConnnectDB.getConnection();
 		PreparedStatement statement = null;
-		String sql = "delete from [dbo].[TaiKhoan]" + " where maTaiKhoan = ?";
+		String sql = "delete from [dbo].[TaiKhoan]" + " where maNhanVien = ?";
 		try {
 			statement = con.prepareStatement(sql);
 			statement.setString(1, ma);
@@ -94,15 +90,13 @@ public class DAO_TaiKhoan {
 		ConnnectDB.getInstance();
 		Connection con = ConnnectDB.getConnection();
 		PreparedStatement statement = null;
-		String sql = "update [dbo].[TaiKhoan]" + " set [maTaiKhoan]= ?, [maDangNhap]= ?, [matKhau]= ?, [maNhanVien]= ?"
-				+ " where [maTaiKhoan] = ?";
+		String sql = "update [dbo].[TaiKhoan]" + " set [maNhanVien]= ?, [matKhau]= ?"
+				+ " where [maNhanVien] = ?";
 		try {
 			statement = con.prepareStatement(sql);
-			statement.setString(1, taiKhoan.getMaTaiKhoan());
-			statement.setString(2, taiKhoan.getMaDangNhap());
-			statement.setString(3, PasswordEncoder.hashPassword(taiKhoan.getMatKhau()));
-			statement.setString(4, taiKhoan.getNhanVien().getMaNhanVien());
-			statement.setString(5, taiKhoan.getMaTaiKhoan());
+			statement.setString(1, taiKhoan.getNhanVien().getMaNhanVien());
+			statement.setString(2, PasswordEncoder.hashPassword(taiKhoan.getMatKhau()));
+			statement.setString(3, taiKhoan.getNhanVien().getMaNhanVien());
 			statement.executeUpdate();
 			statement.close();
 			return true;

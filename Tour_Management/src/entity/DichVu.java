@@ -5,23 +5,20 @@ import java.util.Objects;
 public class DichVu {
 	private String maDichVu;
 	private String phuongTienDiChuyen;
+	private String chiTietDichVu;
 	private float giaDichVu;
 
-	public DichVu(String maDichVu, String phuongTienDiChuyen, float giaDichVu) {
+	public DichVu(String maDichVu, String phuongTienDiChuyen, String chiTietDichVu, float giaDichVu) {
 		super();
 		this.maDichVu = maDichVu;
 		this.phuongTienDiChuyen = phuongTienDiChuyen;
+		this.chiTietDichVu = chiTietDichVu;
 		this.giaDichVu = giaDichVu;
 	}
 
 	public DichVu(String maDichVu) {
 		super();
 		this.maDichVu = maDichVu;
-	}
-
-	public DichVu() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getMaDichVu() {
@@ -40,6 +37,14 @@ public class DichVu {
 		this.phuongTienDiChuyen = phuongTienDiChuyen;
 	}
 
+	public String getChiTietDichVu() {
+		return chiTietDichVu;
+	}
+
+	public void setChiTietDichVu(String chiTietDichVu) {
+		this.chiTietDichVu = chiTietDichVu;
+	}
+
 	public float getGiaDichVu() {
 		return giaDichVu;
 	}
@@ -48,9 +53,9 @@ public class DichVu {
 		this.giaDichVu = giaDichVu;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(maDichVu);
+	public DichVu() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override

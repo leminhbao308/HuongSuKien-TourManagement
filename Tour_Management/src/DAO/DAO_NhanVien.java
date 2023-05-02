@@ -59,8 +59,8 @@ public class DAO_NhanVien {
 		Connection con = ConnnectDB.getConnection();
 		PreparedStatement statement = null;
 		String sql = "insert into [dbo].[NhanVien]"
-				+ " ([maNhanVien], [tenNhanVien], [gioiTinh], [ngaySinh], [diaChi], [email], [soDienThoai])"
-				+ " values (?, ?, ?, ?, ?, ?, ?)";
+				+ " ([maNhanVien], [tenNhanVien], [gioiTinh], [ngaySinh], [diaChi], [email], [soDienThoai], [chucVu])"
+				+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			statement = con.prepareStatement(sql);
 			statement.setString(1, nhanVien.getMaNhanVien());
@@ -104,7 +104,7 @@ public class DAO_NhanVien {
 		Connection con = ConnnectDB.getConnection();
 		PreparedStatement statement = null;
 		String sql = "update [dbo].[NhanVien]"
-				+ " set [maNhanVien], [tenNhanVien], [gioiTinh], [ngaySinh], [diaChi], [email], [soDienThoai]"
+				+ " set [maNhanVien], [tenNhanVien], [gioiTinh], [ngaySinh], [diaChi], [email], [soDienThoai], [chucVu]"
 				+ " where [maNhanVien] = ?";
 		try {
 			statement = con.prepareStatement(sql);

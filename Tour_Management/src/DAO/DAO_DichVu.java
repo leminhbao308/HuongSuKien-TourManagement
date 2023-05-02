@@ -30,8 +30,9 @@ public class DAO_DichVu {
 			while (rs.next()) {
 				String maDichVu = rs.getString(1).trim();
 				String phuongTien = rs.getString(2).trim();
-				float giaDichVu = Float.parseFloat(rs.getString(3));
-				DichVu dv = new DichVu(maDichVu, phuongTien, giaDichVu);
+				String chiTietDichVu = rs.getString(3).trim();
+				float giaDichVu = rs.getFloat(4);
+				DichVu dv = new DichVu(maDichVu, phuongTien, chiTietDichVu, giaDichVu);
 				list.add(dv);
 			}
 		} catch (SQLException e) {
@@ -64,7 +65,8 @@ public class DAO_DichVu {
 			statement = con.prepareStatement(sql);
 			statement.setString(1, d.getMaDichVu());
 			statement.setString(2, d.getPhuongTienDiChuyen());
-			statement.setFloat(3, d.getGiaDichVu());
+			statement.setString(3, d.getChiTietDichVu());
+			statement.setFloat(4, d.getGiaDichVu());
 			int kq = statement.executeUpdate();
 			statement.close();
 			if (kq == 1)
@@ -84,15 +86,6 @@ public class DAO_DichVu {
 		PreparedStatement statement = null;
 		String sql = "DELETE FROM [dbo].[DichVu]" + " WHERE maDichVu=?";
 		try {
-			ArrayList<KhachHang> dsKhachHang = DAO_KhachHang.getAllKhachHang();
-			for (KhachHang k : dsKhachHang) {
-				if (k.getDichVu().getMaDichVu().equals(ma)) {
-					if (k.getTourDuLich().getNgayDi().after(new Date()))
-						return false;
-				}
-				;
-			}
-			// truong hop dich vu khach hang dang dung tour, khong the xoa.
 			statement = con.prepareStatement(sql);
 			statement.setString(1, ma);
 			statement.executeUpdate();
@@ -115,8 +108,9 @@ public class DAO_DichVu {
 			statement = con.prepareStatement(sql);
 			statement.setString(1, dichVu.getMaDichVu());
 			statement.setString(2, dichVu.getPhuongTienDiChuyen());
-			statement.setFloat(3, dichVu.getGiaDichVu());
-			statement.setString(4, dichVu.getMaDichVu());
+			statement.setString(3, dichVu.getChiTietDichVu());
+			statement.setFloat(4, dichVu.getGiaDichVu());
+			statement.setString(5, dichVu.getMaDichVu());
 			statement.executeUpdate();
 			return true;
 		} catch (Exception e) {

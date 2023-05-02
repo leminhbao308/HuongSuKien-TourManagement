@@ -1,37 +1,37 @@
 package entity;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.Objects;
 
 public class KhachHang {
 	private String maKhachHang;
 	private String soCCCD_HC;
 	private String tenKhachHang;
 	private boolean gioiTinh;
-	private Date ngaySinh;
-	private String diaChi;
+	private LocalDate ngaySinh;
 	private String email;
 	private String soDienThoai;
-	private float tienTour;
-	private TourDuLich tourDuLich;
-	private DichVu dichVu;
 
-	public KhachHang() {
-	}
-
-	public KhachHang(String maKhachHang, String soCCCD_HC, String tenKhachHang, boolean gioiTinh, Date ngaySinh,
-			String diaChi, String email, String soDienThoai, float tienTour, TourDuLich tourDuLich, DichVu dichVu) {
+	public KhachHang(String maKhachHang, String soCCCD_HC, String tenKhachHang, boolean gioiTinh, LocalDate ngaySinh,
+			String email, String soDienThoai) {
 		super();
 		this.maKhachHang = maKhachHang;
 		this.soCCCD_HC = soCCCD_HC;
 		this.tenKhachHang = tenKhachHang;
 		this.gioiTinh = gioiTinh;
 		this.ngaySinh = ngaySinh;
-		this.diaChi = diaChi;
 		this.email = email;
 		this.soDienThoai = soDienThoai;
-		this.tienTour = tienTour;
-		this.tourDuLich = tourDuLich;
-		this.dichVu = dichVu;
+	}
+
+	public KhachHang(String maKhachHang) {
+		super();
+		this.maKhachHang = maKhachHang;
+	}
+
+	public KhachHang() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getMaKhachHang() {
@@ -58,7 +58,7 @@ public class KhachHang {
 		this.tenKhachHang = tenKhachHang;
 	}
 
-	public boolean getGioiTinh() {
+	public boolean isGioiTinh() {
 		return gioiTinh;
 	}
 
@@ -66,20 +66,12 @@ public class KhachHang {
 		this.gioiTinh = gioiTinh;
 	}
 
-	public Date getNgaySinh() {
+	public LocalDate getNgaySinh() {
 		return ngaySinh;
 	}
 
-	public void setNgaySinh(Date ngaySinh) {
+	public void setNgaySinh(LocalDate ngaySinh) {
 		this.ngaySinh = ngaySinh;
-	}
-
-	public String getDiaChi() {
-		return diaChi;
-	}
-
-	public void setDiaChi(String diaChi) {
-		this.diaChi = diaChi;
 	}
 
 	public String getEmail() {
@@ -98,39 +90,31 @@ public class KhachHang {
 		this.soDienThoai = soDienThoai;
 	}
 
-	public float getTienTour() {
-		return tienTour;
+	@Override
+	public int hashCode() {
+		return Objects.hash(maKhachHang);
 	}
 
-	public void setTienTour(float tienTour) {
-		this.tienTour = tienTour;
-	}
-
-	public TourDuLich getTourDuLich() {
-		return tourDuLich;
-	}
-
-	public void setTourDuLich(TourDuLich tourDuLich) {
-		this.tourDuLich = tourDuLich;
-	}
-
-	public DichVu getDichVu() {
-		return dichVu;
-	}
-
-	public void setDichVu(DichVu dichVu) {
-		this.dichVu = dichVu;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		KhachHang other = (KhachHang) obj;
+		return Objects.equals(maKhachHang, other.maKhachHang);
 	}
 
 	@Override
 	public String toString() {
-		return maKhachHang + ";" + soCCCD_HC + ";" + tenKhachHang + ";" + gioiTinh + ";" + ngaySinh + ";" + diaChi + ";"
-				+ email + ";" + soDienThoai + ";" + tienTour + ";" + tourDuLich.getMaTour() + ";"
-				+ dichVu.getMaDichVu();
+		return maKhachHang + ";" + soCCCD_HC + ";" + tenKhachHang+ ";" + gioiTinh + ";" + ngaySinh + ";" + email + ";"
+				+ soDienThoai + ";";
 	}
 
 	public String getTitle() {
-		return "Mã Khách Hàng;CCCD/HC;Tên Khách Hàng;Giới Tính;Ngày Sinh;�?ịa Chỉ;Email;Số �?iện Thoại;Ti�?n Tour;Mã Tour;Mã Dịch Vụ";
+		return "Mã Khách Hàng;CCCD/HC;Tên Khách Hàng;Giới Tính;Ngày Sinh;Email;Số Điện Thoại";
 	}
 
 }

@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,28 +19,27 @@ import entity.TourDuLich;
  * 
  * @author Pham Nhat Linh
  *
- */
+ */ 
 public class DAO_TourDuLich {
 	public static ArrayList<TourDuLich> getAllTourDuLich() {
 		ArrayList<TourDuLich> dsTour = new ArrayList<TourDuLich>();
 		try {
 			ConnnectDB.connect();
 			Connection con = ConnnectDB.getConnection();
-			String sql = "select * from TourDuLich";
+			String sql = "select * from TourDuLich order by ngayDi asc";
 			Statement statement = con.createStatement();
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				String maTour = rs.getString(1).trim();
 				String tenTour = rs.getString(2).trim();
 				String moTa = rs.getString(3).trim();
-				Date ngayDi = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString(4));
+				LocalDate ngayDi = LocalDate.parse(rs.getString(4).trim(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				String noiDi = rs.getString(5).trim();
 				int soNgayDuKien = Integer.parseInt(rs.getString(6));
-				float giaTour = Float.parseFloat(rs.getString(7));
+				float giaTour = rs.getFloat(7);
 				boolean trangThaiTour = rs.getString(8).equals("0");
 				DiaDanh diaDanh = DAO_DiaDanh.timDiaDanh(rs.getString(9).trim());
-				TourDuLich tour = new TourDuLich(maTour, tenTour, moTa, ngayDi, noiDi, soNgayDuKien, giaTour,
-						trangThaiTour, diaDanh);
+				TourDuLich tour = new TourDuLich(maTour, tenTour, moTa, ngayDi, noiDi, soNgayDuKien, giaTour, trangThaiTour, diaDanh);
 				dsTour.add(tour);
 			}
 		} catch (Exception e) {
@@ -68,7 +69,7 @@ public class DAO_TourDuLich {
 			statement.setString(1, tour.getMaTour());
 			statement.setString(2, tour.getTenTour());
 			statement.setString(3, tour.getMoTa());
-			statement.setDate(4, new java.sql.Date(tour.getNgayDi().getTime()));
+			statement.setDate(4, java.sql.Date.valueOf(tour.getNgayDi()));
 			statement.setString(5, tour.getNoiDi());
 			statement.setInt(6, tour.getSoNgayDuKien());
 			statement.setFloat(7, tour.getGiaTour());
@@ -114,7 +115,7 @@ public class DAO_TourDuLich {
 			statement.setString(1, tour.getMaTour());
 			statement.setString(2, tour.getTenTour());
 			statement.setString(3, tour.getMoTa());
-			statement.setDate(4, new java.sql.Date(tour.getNgayDi().getTime()));
+			statement.setDate(4, java.sql.Date.valueOf(tour.getNgayDi()));
 			statement.setString(5, tour.getNoiDi());
 			statement.setInt(6, tour.getSoNgayDuKien());
 			statement.setFloat(7, tour.getGiaTour());

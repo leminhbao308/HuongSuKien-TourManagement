@@ -66,12 +66,9 @@ public class DAO_DiaDanh {
 			statement.setString(1, d.getMaDiaDanh());
 			statement.setString(2, d.getTenDiaDanh());
 			statement.setString(3, d.getTinhThanh());
-			int r = statement.executeUpdate();
+			statement.executeUpdate();
 			statement.close();
-			if (r == 1)
-				return true;
-			else
-				return false;
+			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

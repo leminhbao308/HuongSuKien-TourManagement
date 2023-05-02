@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import connect.ConnnectDB;
-import entity.KhachHang;
+import entity.HopDongTour;
 import entity.VeTour;
 
 /**
@@ -27,8 +27,8 @@ public class DAO_VeTour {
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				String maVe = rs.getString(1).trim();
-				KhachHang khachHang = DAO_KhachHang.timKiemKhachHang(rs.getString(2).trim());
-				VeTour veTour = new VeTour(maVe, khachHang);
+				HopDongTour hopDong = DAO_HopDongTour.timKiemHopDong(rs.getString(2).trim());
+				VeTour veTour = new VeTour(maVe, hopDong);
 				dsVeTour.add(veTour);
 			}
 		} catch (Exception e) {
@@ -51,11 +51,11 @@ public class DAO_VeTour {
 		ConnnectDB.getInstance();
 		Connection con = ConnnectDB.getConnection();
 		PreparedStatement statement = null;
-		String sql = "insert into [dbo].[VeTour]" + " ([maVe], [maKhachHang])" + " values (?, ?)";
+		String sql = "insert into [dbo].[VeTour]" + " ([maVe], [maHopDong])" + " values (?, ?)";
 		try {
 			statement = con.prepareStatement(sql);
 			statement.setString(1, ve.getMaVe());
-			statement.setString(2, ve.getKhachHang().getMaKhachHang());
+			statement.setString(2, ve.getHopDong().getMaHopDong());
 			statement.executeUpdate();
 			statement.close();
 			return true;
@@ -92,7 +92,7 @@ public class DAO_VeTour {
 		try {
 			statement = con.prepareStatement(sql);
 			statement.setString(1, ve.getMaVe());
-			statement.setString(2, ve.getKhachHang().getMaKhachHang());
+			statement.setString(2, ve.getHopDong().getMaHopDong());
 			statement.setString(3, ve.getMaVe());
 			statement.executeUpdate();
 			statement.close();

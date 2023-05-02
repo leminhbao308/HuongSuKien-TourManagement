@@ -1,44 +1,20 @@
 package entity;
 
+import java.util.Objects;
+
 public class TaiKhoan {
-	private String maTaiKhoan;
-	private String maDangNhap;
-	private String matKhau;
 	private NhanVien nhanVien;
+	private String matKhau;
 
-	public TaiKhoan() {
-	}
-
-	public TaiKhoan(String maTaiKhoan, String maDangNhap, String matKhau, NhanVien nhanVien) {
+	public TaiKhoan(NhanVien nhanVien, String matKhau) {
 		super();
-		this.maTaiKhoan = maTaiKhoan;
-		this.maDangNhap = maDangNhap;
-		this.matKhau = matKhau;
 		this.nhanVien = nhanVien;
-	}
-
-	public String getMaTaiKhoan() {
-		return maTaiKhoan;
-	}
-
-	public void setMaTaiKhoan(String maTaiKhoan) {
-		this.maTaiKhoan = maTaiKhoan;
-	}
-
-	public String getMaDangNhap() {
-		return maDangNhap;
-	}
-
-	public void setMaDangNhap(String taiKhoan) {
-		this.maDangNhap = taiKhoan;
-	}
-
-	public String getMatKhau() {
-		return matKhau;
-	}
-
-	public void setMatKhau(String matKhau) {
 		this.matKhau = matKhau;
+	}
+
+	public TaiKhoan(NhanVien nhanVien) {
+		super();
+		this.nhanVien = nhanVien;
 	}
 
 	public NhanVien getNhanVien() {
@@ -49,13 +25,38 @@ public class TaiKhoan {
 		this.nhanVien = nhanVien;
 	}
 
+	public String getMatKhau() {
+		return matKhau;
+	}
+
+	public void setMatKhau(String matKhau) {
+		this.matKhau = matKhau;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nhanVien);
+	}
+
 	@Override
 	public String toString() {
-		return maTaiKhoan + ";" + maDangNhap + ";" + matKhau + ";" + nhanVien.getMaNhanVien();
+		return nhanVien.getTenNhanVien()+";"+matKhau+";";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TaiKhoan other = (TaiKhoan) obj;
+		return Objects.equals(nhanVien, other.nhanVien);
 	}
 
 	public String getTitle() {
-		return "Mã Tài Khoản;Tài Khoản;Mật Khẩu;Mã Nhân Viên";
+		return "Nhân Viên;Mật Khẩu;";
 	}
 
 }

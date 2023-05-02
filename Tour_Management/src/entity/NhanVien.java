@@ -124,7 +124,7 @@ public class NhanVien {
 	@Override
 	public String toString() {
 		return maNhanVien + ";" + tenNhanVien + ";" + gioiTinh + ";" + ngaySinh + ";" + diaChi + ";" + email + ";"
-				+ soDienThoai + ";" + chucVu + ";";
+				+ soDienThoai + ";" + chucVu + ";" ;
 	}
 
 	public String getTitle() {
