@@ -190,7 +190,12 @@ public class Login extends JFrame implements ActionListener {
 //	}
 
 	if (o.equals(btnLogin)) {
-	    new Dashboard_Admin().setVisible(true);
+	    this.dispose();
+	    Dashboard_Admin admin = new Dashboard_Admin();
+	    admin.setVisible(true);
+	    admin.requestFocus();
+	    admin.setAlwaysOnTop(true);
+	    admin.setAlwaysOnTop(false);
 	}
     }
 }
