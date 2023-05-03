@@ -551,8 +551,8 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
 	    this.setLocationRelativeTo(null);
-	    this.setMaximumSize(new java.awt.Dimension(500, 350));
-	    this.setMinimumSize(new java.awt.Dimension(500, 350));
+	    this.setMaximumSize(new java.awt.Dimension(450, 390));
+	    this.setMinimumSize(new java.awt.Dimension(450, 390));
 
 	    this.init();
 	    this.style();
@@ -716,12 +716,34 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	private void event() {
 	    // TODO Auto-generated method stub
 	    this.btnAdd.addActionListener(this);
+	    this.btnCancel.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	    // TODO Auto-generated method stub
-	    
+	    Object o = e.getSource();
+
+	    if (o.equals(btnCancel)) {
+		this.dispose();
+	    }
+
+	    if (o.equals(btnAdd)) {
+		if (cbxTinhThanh.getSelectedIndex() == -1) {
+		    JOptionPane.showInternalMessageDialog(null, "Hay Chon Tinh Thanh", "Thieu Thong Tin",
+			    JOptionPane.ERROR_MESSAGE);
+		} else {
+		    DiaDanh newDD = new DiaDanh(txtMaDiaDanh.getText(), txtTenDiaDanh.getText(),
+			    cbxTinhThanh.getSelectedItem().toString());
+		    if (DAO_DiaDanh.themDiaDanh(newDD)) {
+			JOptionPane.showInternalMessageDialog(null, "Them Thanh Cong");
+			tblModel.setRowCount(0);
+			loadData();
+			this.dispose();
+		    } else
+			JOptionPane.showInternalMessageDialog(null, "Them That Bai");
+		}
+	    }
 	}
     }
 
