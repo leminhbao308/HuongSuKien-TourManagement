@@ -10,10 +10,14 @@ import entity.TourDuLich;
 
 public class CtrlTourDuLich {
 	/**
+	 * @author : Pham Nhat Linh
 	 * @param dsIn
 	 * @param txt
-	 * Lọc tổng hợp tất cả thông tin
-	 * Sử dụng cho tìm kiếm tổng hợp không theo một tiêu chuẩn nhật định
+	 * Lọc tổng hợp tất cả thông tin  Sử dụng cho tìm kiếm tổng hợp không theo một tiêu chuẩn nhật định
+	 * Lọc Theo Ngày đi
+	 * Lọc theo địa danh
+	 * lọc theo tỉnh thành
+	 * Lọc Tour có trạng thái True : locTourDangMo()
 	 * @return
 	 */
 	public static ArrayList<TourDuLich> locTourTongHopTheoChuoi(ArrayList<TourDuLich> dsIn, String txt) {
@@ -74,6 +78,16 @@ public class CtrlTourDuLich {
 		return dsOut;
 	}
 	
+	public static ArrayList<TourDuLich> locTourDangMo(ArrayList<TourDuLich> dsIn) {
+		ArrayList<TourDuLich> dsOut = new ArrayList<TourDuLich>();
+		for(TourDuLich tour :dsIn) {
+			if(tour.getTrangThaiTour()) {
+				dsOut.add(tour);
+			}
+		}
+		return dsOut;
+	}
+	
 	public static void main(String[] args) {
 		// test lọc tour => ok
 		System.out.println("----------------------");
@@ -87,7 +101,8 @@ public class CtrlTourDuLich {
 		//dsr = locTourTongHopTheoChuoi(ds, "Hội An");
 		//dsr = locTourTheoTenTour(ds, "Tour Phú Quốc");
 		//dsr = locTourTheoDiaDanh(ds, " rồng");
-		dsr = locTourTheoNgayDi(ds, LocalDate.of(2023, 6, 8));
+		//dsr = locTourTheoNgayDi(ds, LocalDate.of(2023, 6, 8));
+		dsr = locTourDangMo(ds);
 		for (TourDuLich t: dsr) {
 			System.out.println(t.toString());
 		}
