@@ -1,5 +1,6 @@
 package controllers;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,22 +9,65 @@ import DAO.DAO_TourDuLich;
 import entity.TourDuLich;
 
 public class CtrlTourDuLich {
+	/**
+	 * @param dsIn
+	 * @param txt
+	 * Lọc tổng hợp tất cả thông tin
+	 * Sử dụng cho tìm kiếm tổng hợp không theo một tiêu chuẩn nhật định
+	 * @return
+	 */
 	public static ArrayList<TourDuLich> locTourTongHopTheoChuoi(ArrayList<TourDuLich> dsIn, String txt) {
 		ArrayList<TourDuLich> dsOut = new ArrayList<TourDuLich>();
 		for(TourDuLich tour :dsIn) {
-			Pattern pa = Pattern.compile(".*" + txt + ".*");
-			Matcher ma = pa.matcher(tour.toString());
+			Pattern pa = Pattern.compile(".*" + txt.toLowerCase() + ".*");
+			Matcher ma = pa.matcher(tour.toString().toLowerCase());
 			if(ma.matches()) {
 				dsOut.add(tour);
 			}
 		}
 		return dsOut;
 	}
-	
-	public static ArrayList<TourDuLich> locTourTheoMa(ArrayList<TourDuLich> dsIn, String ma) {
+
+	public static ArrayList<TourDuLich> locTourTheoTenTour(ArrayList<TourDuLich> dsIn, String tenTimKiem) {
 		ArrayList<TourDuLich> dsOut = new ArrayList<TourDuLich>();
 		for(TourDuLich tour :dsIn) {
-			if(tour.toString().matches("^"+ma+"$")) {
+			Pattern pa = Pattern.compile(".*" + tenTimKiem.toLowerCase() + ".*");
+			Matcher t = pa.matcher(tour.getTenTour().toLowerCase()+ " " + tour.getMoTa().toLowerCase());
+			if(t.matches()) {
+				dsOut.add(tour);
+			}
+		}
+		return dsOut;
+	}
+	
+	public static ArrayList<TourDuLich> locTourTheoTinhThanh(ArrayList<TourDuLich> dsIn, String tinhThanh) {
+		ArrayList<TourDuLich> dsOut = new ArrayList<TourDuLich>();
+		for(TourDuLich tour :dsIn) {
+			Pattern pa = Pattern.compile(".*" + tinhThanh.toLowerCase() + ".*");
+			Matcher t = pa.matcher(tour.getDiaDanh().getTinhThanh().toLowerCase());
+			if(t.matches()) {
+				dsOut.add(tour);
+			}
+		}
+		return dsOut;
+	}
+	
+	public static ArrayList<TourDuLich> locTourTheoDiaDanh(ArrayList<TourDuLich> dsIn, String diaDanh) {
+		ArrayList<TourDuLich> dsOut = new ArrayList<TourDuLich>();
+		for(TourDuLich tour :dsIn) {
+			Pattern pa = Pattern.compile(".*" + diaDanh.toLowerCase() + ".*");
+			Matcher t = pa.matcher(tour.getDiaDanh().getTenDiaDanh() .toLowerCase());
+			if(t.matches()) {
+				dsOut.add(tour);
+			}
+		}
+		return dsOut;
+	}
+	
+	public static ArrayList<TourDuLich> locTourTheoNgayDi(ArrayList<TourDuLich> dsIn, LocalDate ngayDi) {
+		ArrayList<TourDuLich> dsOut = new ArrayList<TourDuLich>();
+		for(TourDuLich tour :dsIn) {
+			if(ngayDi.equals(tour.getNgayDi())) {
 				dsOut.add(tour);
 			}
 		}
@@ -31,6 +75,7 @@ public class CtrlTourDuLich {
 	}
 	
 	public static void main(String[] args) {
+		// test lọc tour => ok
 		System.out.println("----------------------");
 		ArrayList<TourDuLich> ds = new ArrayList<TourDuLich>();
 		ds = DAO_TourDuLich.getAllTourDuLich();
@@ -39,7 +84,10 @@ public class CtrlTourDuLich {
 		}
 		System.out.println("----------------------");
 		ArrayList<TourDuLich> dsr = new ArrayList<TourDuLich>();
-		dsr = locTourTongHopTheoChuoi(ds, "Hội An");
+		//dsr = locTourTongHopTheoChuoi(ds, "Hội An");
+		//dsr = locTourTheoTenTour(ds, "Tour Phú Quốc");
+		//dsr = locTourTheoDiaDanh(ds, " rồng");
+		dsr = locTourTheoNgayDi(ds, LocalDate.of(2023, 6, 8));
 		for (TourDuLich t: dsr) {
 			System.out.println(t.toString());
 		}
