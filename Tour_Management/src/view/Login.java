@@ -178,10 +178,20 @@ public class Login extends JFrame implements ActionListener {
 //	    if (CtrlLogin.checkLoginStatus(account, password)) {
 //		if (CtrlLogin.checkAccountType(account) == 1) {
 //		    JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công!");
-//		    new Dashboard_Admin().setVisible(true);
+////		    new Dashboard_Admin().setVisible(true);
+//		    Dashboard_Admin admin = new Dashboard_Admin();
+//		    admin.setVisible(true);
+//		    admin.requestFocus();
+//		    admin.setAlwaysOnTop(true);
+//		    admin.setAlwaysOnTop(false);
 //		} else if (CtrlLogin.checkAccountType(account) == 2) {
 //		    JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công!");
-//		    new Dashboard_Employee().setVisible(true);
+////		    new Dashboard_Employee().setVisible(true);
+//		    Dashboard_Employee employee = new Dashboard_Employee();
+//		    employee.setVisible(true);
+//		    employee.requestFocus();
+//		    employee.setAlwaysOnTop(true);
+//		    employee.setAlwaysOnTop(false);
 //		}
 //	    } else {
 //		JOptionPane.showMessageDialog(null,
