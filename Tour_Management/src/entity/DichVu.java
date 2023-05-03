@@ -72,7 +72,7 @@ public class DichVu {
 
     @Override
     public String toString() {
-	return maDichVu + ";" + phuongTienDiChuyen + ";" + giaDichVu + ";";
+	return maDichVu + ";" + phuongTienDiChuyen + ";"+ chiTietDichVu + ";" + giaDichVu + ";";
     }
 
     public String getTitle() {
