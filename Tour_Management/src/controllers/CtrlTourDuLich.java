@@ -88,6 +88,16 @@ public class CtrlTourDuLich {
 		return dsOut;
 	}
 	
+	public static ArrayList<TourDuLich> locTourDaDong(ArrayList<TourDuLich> dsIn) {
+		ArrayList<TourDuLich> dsOut = new ArrayList<TourDuLich>();
+		for(TourDuLich tour :dsIn) {
+			if(!tour.getTrangThaiTour()) {
+				dsOut.add(tour);
+			}
+		}
+		return dsOut;
+	}
+	
 	public static void main(String[] args) {
 		// test lọc tour => ok
 		System.out.println("----------------------");
@@ -102,7 +112,7 @@ public class CtrlTourDuLich {
 		//dsr = locTourTheoTenTour(ds, "Tour Phú Quốc");
 		//dsr = locTourTheoDiaDanh(ds, " rồng");
 		//dsr = locTourTheoNgayDi(ds, LocalDate.of(2023, 6, 8));
-		dsr = locTourDangMo(ds);
+		//dsr = locTourDangMo(ds);
 		for (TourDuLich t: dsr) {
 			System.out.println(t.toString());
 		}
