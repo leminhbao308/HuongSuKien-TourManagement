@@ -20,10 +20,10 @@ public class CtrlTourDuLich {
 	 * Lọc Tour có trạng thái True : locTourDangMo()
 	 * @return
 	 */
-	public static ArrayList<TourDuLich> locTourTongHopTheoChuoi(ArrayList<TourDuLich> dsIn, String txt) {
+	public static ArrayList<TourDuLich> locTourTheoThongTinTour(ArrayList<TourDuLich> dsIn, String thongTin) {
 		ArrayList<TourDuLich> dsOut = new ArrayList<TourDuLich>();
 		for(TourDuLich tour :dsIn) {
-			Pattern pa = Pattern.compile(".*" + txt.toLowerCase() + ".*");
+			Pattern pa = Pattern.compile(".*" + thongTin.toLowerCase() + ".*");
 			Matcher ma = pa.matcher(tour.toString().toLowerCase());
 			if(ma.matches()) {
 				dsOut.add(tour);

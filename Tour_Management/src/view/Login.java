@@ -75,13 +75,14 @@ public class Login extends JFrame implements ActionListener {
 	lblTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 	lblTitle.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-	lblPass.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	lblPass.setForeground(new java.awt.Color(77, 69, 93));
+	lblPass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	lblPass.setForeground(Color.WHITE);
 	lblPass.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 	lblPass.setText("Mật Khẩu");
 
-	lblMaNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	lblMaNV.setForeground(new java.awt.Color(77, 69, 93));
+	lblMaNV.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+//	new java.awt.Color(77, 69, 93)
+	lblMaNV.setForeground(Color.WHITE);
 	lblMaNV.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 	lblMaNV.setText("Mã Nhân Viên");
 
@@ -91,9 +92,9 @@ public class Login extends JFrame implements ActionListener {
 	txtMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	txtMatKhau.setToolTipText("Nhập mật khẩu");
 
-	lblCheckPass.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-	lblCheckPass.setForeground(new java.awt.Color(255, 0, 0));
-	lblCheckPass.setText("(*)");
+	lblCheckPass.setFont(new java.awt.Font("Segoe UI", 2, 15)); // NOI18N
+	lblCheckPass.setForeground(new java.awt.Color(231, 97, 97));
+	lblCheckPass.setText("(*) Mật khẩu không được để trống");
 
 	btnLogin.setBackground(new java.awt.Color(235, 100, 64));
 	btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -170,24 +171,34 @@ public class Login extends JFrame implements ActionListener {
 	/**
 	 * Kiểm tra mật khẩu
 	 */
-//	if (o.equals(btnLogin)) {
-//	    String account = txtMaNV.getText();
-//	    char[] passwordChars = txtMatKhau.getPassword();
-//	    String password = new String(passwordChars);
+//		if (o.equals(btnLogin)) {
+//			String account = txtMaNV.getText();
+//			char[] passwordChars = txtMatKhau.getPassword();
+//			String password = new String(passwordChars);
 //
-//	    if (CtrlLogin.checkLoginStatus(account, password)) {
-//		if (CtrlLogin.checkAccountType(account) == 1) {
-//		    JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công!");
-//		    new Dashboard_Admin().setVisible(true);
-//		} else if (CtrlLogin.checkAccountType(account) == 2) {
-//		    JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công!");
-//		    new Dashboard_Employee().setVisible(true);
+//			if (CtrlLogin.checkLoginStatus(account, password)) {
+//				if (CtrlLogin.checkAccountType(account) == 1) {
+//					JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công!");
+////					new Dashboard_Admin().setVisible(true);
+//					Dashboard_Admin admin = new Dashboard_Admin();
+//					admin.setVisible(true);
+//					admin.requestFocus();
+//					admin.setAlwaysOnTop(true);
+//					admin.setAlwaysOnTop(false);
+//				} else if (CtrlLogin.checkAccountType(account) == 2) {
+//					JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công!");
+////					new Dashboard_Employee().setVisible(true);
+//					Dashboard_Employee ey = new Dashboard_Employee();
+//					ey.setVisible(true);
+//					ey.requestFocus();
+//					ey.setAlwaysOnTop(true);
+//					ey.setAlwaysOnTop(false);
+//				}
+//			} else {
+//				JOptionPane.showMessageDialog(null,
+//						"Mã Nhân Viên không tồn tại \n\t               Hoặc \nMật Khẩu không chính xác");
+//			}
 //		}
-//	    } else {
-//		JOptionPane.showMessageDialog(null,
-//			"Mã Nhân Viên không tồn tại \n\t               Hoặc \nMật Khẩu không chính xác");
-//	    }
-//	}
 
 	if (o.equals(btnLogin)) {
 	    this.dispose();
