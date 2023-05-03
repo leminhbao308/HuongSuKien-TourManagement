@@ -1,11 +1,12 @@
 
-
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
 
+import controllers.PrintTicket;
 import services.Admin_NhanVien;
 import services.Admin_TaiKhoan;
+import utils.PDFCreator;
 
 public class Testing extends JFrame {
     /**
@@ -29,9 +30,10 @@ public class Testing extends JFrame {
 	try {
 	    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 	    System.setProperty("apple.laf.useScreenMenuBar", "true");
-	    new Testing().setVisible(true);
+//	    new Testing().setVisible(true);
+	    PrintTicket.printContract();
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
-}
+    }
 }

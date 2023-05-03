@@ -15,22 +15,30 @@ public class Employee_TourDuLich extends JPanel {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnModify;
-    private javax.swing.JButton btnSearchMa;
-    private javax.swing.JButton btnSearchTen;
+    private javax.swing.JButton btnSearchDiaDanh;
+    private javax.swing.JButton btnSearchMaVe;
+    private javax.swing.JButton btnSearchNgayDi;
+    private javax.swing.JButton btnSearchTinhThanh;
     private javax.swing.JComboBox<String> cbxFilter;
+    private org.jdatepicker.JDatePicker dpkNgayDi;
     private javax.swing.JLabel lblFilter;
-    private javax.swing.JLabel lblSearchMa;
-    private javax.swing.JLabel lblSearchTen;
+    private javax.swing.JLabel lblSearchDiaDanh;
+    private javax.swing.JLabel lblSearchMaVe;
+    private javax.swing.JLabel lblSearchNgayDi;
+    private javax.swing.JLabel lblSearchTinhThanh;
     private javax.swing.JPanel pnAction;
     private javax.swing.JPanel pnData;
-    private javax.swing.JPanel pnSearchMa;
-    private javax.swing.JPanel pnSearchTen;
+    private javax.swing.JPanel pnSearchDiaDanh;
+    private javax.swing.JPanel pnSearchMaTour;
+    private javax.swing.JPanel pnSearchNgayDi;
+    private javax.swing.JPanel pnSearchTinhThanh;
     private javax.swing.JScrollPane scrData;
     private javax.swing.JTable tblTourDuLich;
     private javax.swing.table.DefaultTableModel tblModel;
     private javax.swing.JTabbedPane tpnSearch;
-    private javax.swing.JTextField txtSearchMa;
-    private javax.swing.JTextField txtSearchTen;
+    private javax.swing.JTextField txtSearchDiaDanh;
+    private javax.swing.JTextField txtSearchMaVe;
+    private javax.swing.JTextField txtSearchTinhThanh;
 
     public Employee_TourDuLich() {
 	setBackground(ColorConstant.BACKGROUND_NORMAL);
@@ -44,14 +52,22 @@ public class Employee_TourDuLich extends JPanel {
     private void init() {
 	// TODO Auto-generated method stub
 	tpnSearch = new javax.swing.JTabbedPane();
-	pnSearchMa = new javax.swing.JPanel();
-	lblSearchMa = new javax.swing.JLabel();
-	txtSearchMa = new javax.swing.JTextField();
-	btnSearchMa = new javax.swing.JButton();
-	pnSearchTen = new javax.swing.JPanel();
-	lblSearchTen = new javax.swing.JLabel();
-	txtSearchTen = new javax.swing.JTextField();
-	btnSearchTen = new javax.swing.JButton();
+	pnSearchMaTour = new javax.swing.JPanel();
+	lblSearchMaVe = new javax.swing.JLabel();
+	txtSearchMaVe = new javax.swing.JTextField();
+	btnSearchMaVe = new javax.swing.JButton();
+	pnSearchDiaDanh = new javax.swing.JPanel();
+	lblSearchDiaDanh = new javax.swing.JLabel();
+	txtSearchDiaDanh = new javax.swing.JTextField();
+	btnSearchDiaDanh = new javax.swing.JButton();
+	pnSearchTinhThanh = new javax.swing.JPanel();
+	lblSearchTinhThanh = new javax.swing.JLabel();
+	txtSearchTinhThanh = new javax.swing.JTextField();
+	btnSearchTinhThanh = new javax.swing.JButton();
+	pnSearchNgayDi = new javax.swing.JPanel();
+	lblSearchNgayDi = new javax.swing.JLabel();
+	btnSearchNgayDi = new javax.swing.JButton();
+	dpkNgayDi = new org.jdatepicker.JDatePicker();
 	pnData = new javax.swing.JPanel();
 	lblFilter = new javax.swing.JLabel();
 	cbxFilter = new javax.swing.JComboBox<>();
@@ -73,23 +89,41 @@ public class Employee_TourDuLich extends JPanel {
 
     private void style() {
 	// TODO Auto-generated method stub
-	lblSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	lblSearchMa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchMa.setText("Ma Tour Du Lich Can Tim:");
+	lblSearchMaVe.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	lblSearchMaVe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+	lblSearchMaVe.setText("Ma Tour Can Tim:");
 
-	txtSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	txtSearchMaVe.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-	btnSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	btnSearchMa.setText("Tim");
+	btnSearchMaVe.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	btnSearchMaVe.setText("Tim");
 
-	lblSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	lblSearchTen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchTen.setText("Ten Dia Danh Can Tim:");
+	lblSearchDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	lblSearchDiaDanh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+	lblSearchDiaDanh.setText("Ten Dia Danh Can Tim:");
 
-	txtSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	txtSearchDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-	btnSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	btnSearchTen.setText("Tim");
+	btnSearchDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	btnSearchDiaDanh.setText("Tim");
+
+	lblSearchTinhThanh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	lblSearchTinhThanh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+	lblSearchTinhThanh.setText("Ten Tinh Thanh Can Tim:");
+
+	txtSearchTinhThanh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+	btnSearchTinhThanh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	btnSearchTinhThanh.setText("Tim");
+
+	tpnSearch.addTab("Tim Theo Tinh Thanh", pnSearchTinhThanh);
+
+	lblSearchNgayDi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	lblSearchNgayDi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+	lblSearchNgayDi.setText("Nhap Ngay Di:");
+
+	btnSearchNgayDi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	btnSearchNgayDi.setText("Tim");
 
 	pnData.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
@@ -120,57 +154,117 @@ public class Employee_TourDuLich extends JPanel {
 
     private void preset() {
 	// TODO Auto-generated method stub
-	javax.swing.GroupLayout pnSearchMaLayout = new javax.swing.GroupLayout(pnSearchMa);
-	pnSearchMa.setLayout(pnSearchMaLayout);
-	pnSearchMaLayout.setHorizontalGroup(pnSearchMaLayout
-		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-		.addGroup(pnSearchMaLayout.createSequentialGroup().addContainerGap()
-			.addComponent(lblSearchMa, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
-				javax.swing.GroupLayout.PREFERRED_SIZE)
-			.addGap(18, 18, 18)
-			.addComponent(txtSearchMa, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
-			.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED).addComponent(btnSearchMa,
-				javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-			.addContainerGap()));
-	pnSearchMaLayout.setVerticalGroup(pnSearchMaLayout
-		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-		.addGroup(pnSearchMaLayout.createSequentialGroup().addContainerGap().addGroup(pnSearchMaLayout
-			.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-			.addGroup(pnSearchMaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-				.addComponent(txtSearchMa, javax.swing.GroupLayout.PREFERRED_SIZE,
-					javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addComponent(lblSearchMa, javax.swing.GroupLayout.PREFERRED_SIZE, 31,
-					javax.swing.GroupLayout.PREFERRED_SIZE))
-			.addComponent(btnSearchMa, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-			.addContainerGap(9, Short.MAX_VALUE)));
-
-	tpnSearch.addTab("Tim Theo Ma", pnSearchMa);
-
-	javax.swing.GroupLayout pnSearchTenLayout = new javax.swing.GroupLayout(pnSearchTen);
-	pnSearchTen.setLayout(pnSearchTenLayout);
-	pnSearchTenLayout
-		.setHorizontalGroup(pnSearchTenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-			.addGroup(pnSearchTenLayout.createSequentialGroup().addContainerGap()
-				.addComponent(lblSearchTen, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
+	javax.swing.GroupLayout pnSearchMaTourLayout = new javax.swing.GroupLayout(pnSearchMaTour);
+	pnSearchMaTour.setLayout(pnSearchMaTourLayout);
+	pnSearchMaTourLayout
+		.setHorizontalGroup(pnSearchMaTourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			.addGroup(pnSearchMaTourLayout.createSequentialGroup().addContainerGap()
+				.addComponent(lblSearchMaVe, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
 					javax.swing.GroupLayout.PREFERRED_SIZE)
 				.addGap(18, 18, 18)
-				.addComponent(txtSearchTen, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+				.addComponent(txtSearchMaVe, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
 				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-				.addComponent(btnSearchTen, javax.swing.GroupLayout.PREFERRED_SIZE, 165,
+				.addComponent(btnSearchMaVe, javax.swing.GroupLayout.PREFERRED_SIZE, 165,
 					javax.swing.GroupLayout.PREFERRED_SIZE)
 				.addContainerGap()));
-	pnSearchTenLayout.setVerticalGroup(pnSearchTenLayout
+	pnSearchMaTourLayout.setVerticalGroup(pnSearchMaTourLayout
 		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-		.addGroup(pnSearchTenLayout.createSequentialGroup().addContainerGap().addGroup(pnSearchTenLayout
+		.addGroup(pnSearchMaTourLayout.createSequentialGroup().addContainerGap().addGroup(pnSearchMaTourLayout
 			.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-			.addGroup(pnSearchTenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-				.addComponent(txtSearchTen, javax.swing.GroupLayout.PREFERRED_SIZE,
+			.addGroup(pnSearchMaTourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+				.addComponent(txtSearchMaVe, javax.swing.GroupLayout.PREFERRED_SIZE,
 					javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addComponent(lblSearchTen))
-			.addComponent(btnSearchTen, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+				.addComponent(lblSearchMaVe, javax.swing.GroupLayout.PREFERRED_SIZE, 31,
+					javax.swing.GroupLayout.PREFERRED_SIZE))
+			.addComponent(btnSearchMaVe, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
 			.addContainerGap(9, Short.MAX_VALUE)));
 
-	tpnSearch.addTab("Tim Theo Dia Danh", pnSearchTen);
+	tpnSearch.addTab("Tim Theo Ma Tour", pnSearchMaTour);
+
+	javax.swing.GroupLayout pnSearchDiaDanhLayout = new javax.swing.GroupLayout(pnSearchDiaDanh);
+	pnSearchDiaDanh.setLayout(pnSearchDiaDanhLayout);
+	pnSearchDiaDanhLayout.setHorizontalGroup(pnSearchDiaDanhLayout
+		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		.addGroup(pnSearchDiaDanhLayout.createSequentialGroup().addContainerGap()
+			.addComponent(lblSearchDiaDanh, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
+				javax.swing.GroupLayout.PREFERRED_SIZE)
+			.addGap(18, 18, 18)
+			.addComponent(txtSearchDiaDanh, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+			.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+			.addComponent(btnSearchDiaDanh, javax.swing.GroupLayout.PREFERRED_SIZE, 165,
+				javax.swing.GroupLayout.PREFERRED_SIZE)
+			.addContainerGap()));
+	pnSearchDiaDanhLayout.setVerticalGroup(pnSearchDiaDanhLayout
+		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		.addGroup(pnSearchDiaDanhLayout.createSequentialGroup().addContainerGap().addGroup(pnSearchDiaDanhLayout
+			.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+			.addGroup(pnSearchDiaDanhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+				.addComponent(txtSearchDiaDanh, javax.swing.GroupLayout.PREFERRED_SIZE,
+					javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+				.addComponent(lblSearchDiaDanh))
+			.addComponent(btnSearchDiaDanh, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+			.addContainerGap(9, Short.MAX_VALUE)));
+
+	tpnSearch.addTab("Tim Theo Dia Danh", pnSearchDiaDanh);
+
+	javax.swing.GroupLayout pnSearchTinhThanhLayout = new javax.swing.GroupLayout(pnSearchTinhThanh);
+	pnSearchTinhThanh.setLayout(pnSearchTinhThanhLayout);
+	pnSearchTinhThanhLayout.setHorizontalGroup(pnSearchTinhThanhLayout
+		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		.addGroup(pnSearchTinhThanhLayout.createSequentialGroup().addContainerGap()
+			.addComponent(lblSearchTinhThanh, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
+				javax.swing.GroupLayout.PREFERRED_SIZE)
+			.addGap(18, 18, 18)
+			.addComponent(txtSearchTinhThanh, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+			.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+			.addComponent(btnSearchTinhThanh, javax.swing.GroupLayout.PREFERRED_SIZE, 165,
+				javax.swing.GroupLayout.PREFERRED_SIZE)
+			.addContainerGap()));
+	pnSearchTinhThanhLayout.setVerticalGroup(pnSearchTinhThanhLayout
+		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		.addGroup(pnSearchTinhThanhLayout.createSequentialGroup().addContainerGap()
+			.addGroup(pnSearchTinhThanhLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+				.addGroup(pnSearchTinhThanhLayout
+					.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+					.addComponent(txtSearchTinhThanh, javax.swing.GroupLayout.PREFERRED_SIZE,
+						javax.swing.GroupLayout.DEFAULT_SIZE,
+						javax.swing.GroupLayout.PREFERRED_SIZE)
+					.addComponent(lblSearchTinhThanh, javax.swing.GroupLayout.PREFERRED_SIZE, 31,
+						javax.swing.GroupLayout.PREFERRED_SIZE))
+				.addComponent(btnSearchTinhThanh, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
+					Short.MAX_VALUE))
+			.addContainerGap(9, Short.MAX_VALUE)));
+
+	tpnSearch.addTab("Tim Theo Tinh Thanh", pnSearchTinhThanh);
+
+	javax.swing.GroupLayout pnSearchNgayDiLayout = new javax.swing.GroupLayout(pnSearchNgayDi);
+	pnSearchNgayDi.setLayout(pnSearchNgayDiLayout);
+	pnSearchNgayDiLayout.setHorizontalGroup(pnSearchNgayDiLayout
+		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		.addGroup(pnSearchNgayDiLayout.createSequentialGroup().addContainerGap()
+			.addComponent(lblSearchNgayDi, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
+				javax.swing.GroupLayout.PREFERRED_SIZE)
+			.addGap(18, 18, 18)
+			.addComponent(dpkNgayDi, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+			.addGap(18, 18, 18).addComponent(btnSearchNgayDi, javax.swing.GroupLayout.PREFERRED_SIZE, 165,
+				javax.swing.GroupLayout.PREFERRED_SIZE)
+			.addContainerGap()));
+	pnSearchNgayDiLayout.setVerticalGroup(pnSearchNgayDiLayout
+		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		.addGroup(pnSearchNgayDiLayout.createSequentialGroup().addContainerGap()
+			.addGroup(pnSearchNgayDiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+				.addGroup(pnSearchNgayDiLayout
+					.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+					.addComponent(lblSearchNgayDi, javax.swing.GroupLayout.PREFERRED_SIZE, 31,
+						javax.swing.GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnSearchNgayDi, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
+						Short.MAX_VALUE))
+				.addComponent(dpkNgayDi, javax.swing.GroupLayout.PREFERRED_SIZE,
+					javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+			.addContainerGap(9, Short.MAX_VALUE)));
+
+	tpnSearch.addTab("Tim Theo Ngay Di", pnSearchNgayDi);
 
 	javax.swing.GroupLayout pnActionLayout = new javax.swing.GroupLayout(pnAction);
 	pnAction.setLayout(pnActionLayout);
