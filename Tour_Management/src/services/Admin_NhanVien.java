@@ -113,29 +113,29 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 
 	lblSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	lblSearchMa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchMa.setText("Ma Nhan Vien Can Tim:");
+	lblSearchMa.setText("Mã Nhân Viên Cần Tìm:");
 
 	txtSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
 	btnSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	btnSearchMa.setText("Tim");
+	btnSearchMa.setText("Tìm");
 
 	lblSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	lblSearchTen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchTen.setText("Ten Nhan Vien Can Tim:");
+	lblSearchTen.setText("Tên Nhân Viên Cần Tìm:");
 
 	txtSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
 	btnSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	btnSearchTen.setText("Tim");
+	btnSearchTen.setText("Tìm");
 
 	pnData.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
-		"Danh Sach Nhan Vien", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		"Danh Sách Nhân Viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	lblFilter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblFilter.setText("Loc Theo:");
+	lblFilter.setText("Lọc Theo:");
 
 	cbxFilter.setModel(
 		new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -143,24 +143,24 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	scrData.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	scrData.setViewportView(tblNhanVien);
 
-	pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chon Tac Vu",
+	pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chọn Tác Vụ",
 		javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,
 		new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-	btnInfo.setText("Xem Thong Tin");
+	btnInfo.setText("Xem Thông Tin");
 	btnInfo.setEnabled(false);
-	btnInfo.setToolTipText("Xem thong tin nhan vien duoc chon (Ctrl + I)");
+	btnInfo.setToolTipText("Xem thông tin nhân viên được chọn (Ctrl + I)");
 
 	btnAdd.setText("Them Nhan Vien");
-	btnAdd.setToolTipText("Them nhan vien moi (Ctrl + T)");
+	btnAdd.setToolTipText("Thêm nhân viên mới (Ctrl + T)");
 
 	btnDelete.setText("Xoa Nhan Vien");
 	btnDelete.setEnabled(false);
-	btnDelete.setToolTipText("Xoa nhan vien duoc chon (Ctrl + D)");
+	btnDelete.setToolTipText("Xóa nhân viên được chọn (Ctrl + D)");
 
-	btnModify.setText("Sua Nhan Vien");
+	btnModify.setText("Sửa Nhân Viên");
 	btnModify.setEnabled(false);
-	btnModify.setToolTipText("Sua thong tin nhan vien duoc chon (Ctrl + M)");
+	btnModify.setToolTipText("Sửa thông tin nhân viên được chọn (Ctrl + M)");
     }
 
     private void preset() {
@@ -189,7 +189,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 			.addComponent(btnSearchMa, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
 			.addContainerGap(9, Short.MAX_VALUE)));
 
-	tpnSearch.addTab("Tim Theo Ma", pnSearchMa);
+	tpnSearch.addTab("Tìm Theo Mã", pnSearchMa);
 
 	javax.swing.GroupLayout pnSearchTenLayout = new javax.swing.GroupLayout(pnSearchTen);
 	pnSearchTen.setLayout(pnSearchTenLayout);
@@ -215,7 +215,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 			.addComponent(btnSearchTen, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
 			.addContainerGap(9, Short.MAX_VALUE)));
 
-	tpnSearch.addTab("Tim Theo Ten", pnSearchTen);
+	tpnSearch.addTab("Tìm Theo Tên", pnSearchTen);
 
 	javax.swing.GroupLayout pnActionLayout = new javax.swing.GroupLayout(pnAction);
 	pnAction.setLayout(pnActionLayout);
@@ -434,7 +434,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	for (NhanVien nhanVien : dsnv) {
 	    String[] data = nhanVien.toString().split(";");
 	    if (data[2].equalsIgnoreCase("true"))
-		data[2] = "Nu";
+		data[2] = "Nữ";
 	    else
 		data[2] = "Nam";
 	    // Create a font with a larger size
@@ -554,7 +554,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	private javax.swing.JTextField txtTenNV;
 
 	private FrameInfoNhanVien(String[] data) {
-	    this.setTitle("SE Tourist - Thong Tin Nhan Vien");
+	    this.setTitle("SE Tourist - Thông Tin Nhân Viên");
 	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
@@ -594,22 +594,22 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	    // TODO Auto-generated method stub
 	    pnInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
-		    "Thong Tin Nhan Vien", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    "Thông Tin Nhân Viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblMaNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaNV.setText("Ma Nhan Vien:");
+	    lblMaNV.setText("Mã Nhân Viên:");
 
 	    txtMaNV.setEditable(false);
 	    txtMaNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblTenNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTenNV.setText("Ten Nhan Vien:");
+	    lblTenNV.setText("Tên Nhân Viên:");
 
 	    txtTenNV.setEditable(false);
 	    txtTenNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-	    pnGioiTinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gioi Tinh",
+	    pnGioiTinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giới Tính",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
@@ -620,18 +620,18 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	    radNam.setEnabled(false);
 
 	    radNu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    radNu.setText("Nu");
+	    radNu.setText("Nữ");
 	    radNu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 	    radNu.setEnabled(false);
 
-	    pnNgaySinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngay Sinh",
+	    pnNgaySinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngày Sinh",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    txtNgaySinh.setEditable(false);
 
 	    lblDiaChi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblDiaChi.setText("Dia Chi:");
+	    lblDiaChi.setText("Địa Chỉ:");
 
 	    txtDiaChi.setEditable(false);
 	    txtDiaChi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -643,13 +643,13 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	    txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblSDT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblSDT.setText("So Dien Thoai:");
+	    lblSDT.setText("Số Điện Thoại:");
 
 	    txtSDT.setEditable(false);
 	    txtSDT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblChucVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblChucVu.setText("Chuc Vu:");
+	    lblChucVu.setText("Chức Vụ:");
 
 	    txtChucVu.setEditable(false);
 	    txtChucVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -838,7 +838,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	private JButton btnThem, btnHuy;
 
 	private FrameAddNhanVien() {
-	    this.setTitle("SE Tourist - Them Nhan Vien");
+	    this.setTitle("SE Tourist - Thêm Nhân Viên");
 	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
@@ -881,17 +881,17 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	    // TODO Auto-generated method stub
 	    pnInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
-		    "Thong Tin Nhan Vien", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    "Thông Tin Nhân Viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblMaNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaNV.setText("Ma Nhan Vien:");
+	    lblMaNV.setText("Mã Nhân Viên:");
 
 //	    txtMaNV.setEditable(false);
 	    txtMaNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblTenNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTenNV.setText("Ten Nhan Vien:");
+	    lblTenNV.setText("Tên Nhân Viên:");
 
 	    txtTenNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -905,17 +905,17 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	    radNam.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
 	    radNu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    radNu.setText("Nu");
+	    radNu.setText("Nữ");
 	    radNu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-	    pnNgaySinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngay Sinh",
+	    pnNgaySinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngày Sinh",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    dpkNgaySinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblDiaChi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblDiaChi.setText("Dia Chi:");
+	    lblDiaChi.setText("Địa Chỉ:");
 
 	    txtDiaChi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -925,30 +925,30 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	    txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblSDT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblSDT.setText("So Dien Thoai:");
+	    lblSDT.setText("Số Điện Thoại:");
 
 	    txtSDT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblChucVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblChucVu.setText("Chuc Vu:");
+	    lblChucVu.setText("Chức Vụ:");
 
 	    cbxChucVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    cbxChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(
 		    new String[] { "Quản lý kinh doanh", "Nhân viên bán hàng" }));
 	    cbxChucVu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder("Chon Tac Vu"));
+	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder("Chọn Tác Vụ"));
 
 	    btnThem.setBackground(new java.awt.Color(51, 204, 0));
 	    btnThem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 	    btnThem.setForeground(new java.awt.Color(255, 255, 255));
-	    btnThem.setText("Them");
+	    btnThem.setText("Thêm");
 	    btnThem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
 	    btnHuy.setBackground(new java.awt.Color(255, 0, 0));
 	    btnHuy.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 	    btnHuy.setForeground(new java.awt.Color(255, 255, 255));
-	    btnHuy.setText("Huy");
+	    btnHuy.setText("Hủy");
 	    btnHuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 	}
 
@@ -1153,7 +1153,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 			    cbxChucVu.getSelectedItem().toString());
 
 		    if (DAO_NhanVien.themNhanVien(newNV)) {
-			JOptionPane.showMessageDialog(null, "Them Thanh Cong");
+			JOptionPane.showMessageDialog(null, "Thêm Thành Công");
 			tblModel.setRowCount(0);
 			loadData();
 
@@ -1163,11 +1163,11 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 
 			this.dispose();
 		    } else {
-			JOptionPane.showMessageDialog(null, "Them That Bai");
+			JOptionPane.showMessageDialog(null, "Thêm Thất Bại");
 			this.dispose();
 		    }
 		} else {
-		    JOptionPane.showMessageDialog(null, "Kiem tra lai thong tin nhap vao");
+		    JOptionPane.showMessageDialog(null, "Kiểm tra lại thông tin nhập vào");
 		}
 
 	    }
@@ -1370,17 +1370,17 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 		    new java.awt.Color(0, 204, 0))); // NOI18N
 
 	    lblMaNVNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaNVNew.setText("Ma Nhan Vien:");
+	    lblMaNVNew.setText("Mã Nhân Viên:");
 
 	    txtMaNVNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    txtMaNVNew.setEditable(false);
 
 	    lblTenNVNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTenNVNew.setText("Ten Nhan Vien:");
+	    lblTenNVNew.setText("Tên Nhân Viên:");
 
 	    txtTenNVNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-	    pnGioiTinhNew.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gioi Tinh",
+	    pnGioiTinhNew.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giới Tính",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
@@ -1390,15 +1390,15 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	    radNamNew.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
 	    radNuNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    radNuNew.setText("Nu");
+	    radNuNew.setText("Nữ");
 	    radNuNew.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-	    pnNgaySinhNew.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngay Sinh",
+	    pnNgaySinhNew.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngày Sinh",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblDiaChiNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblDiaChiNew.setText("Dia Chi:");
+	    lblDiaChiNew.setText("Địa Chỉ:");
 
 	    txtDiaChiNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -1408,36 +1408,36 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	    txtEmailNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblSDTNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblSDTNew.setText("So Dien Thoai:");
+	    lblSDTNew.setText("Số Điện Thoại:");
 
 	    txtSDTNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblChucVuNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblChucVuNew.setText("Chuc Vu:");
+	    lblChucVuNew.setText("Chức Vụ:");
 
 	    cbxChucVuNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    cbxChucVuNew.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quan Ly", "Nhan Vien" }));
+	    cbxChucVuNew.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản Lý", "Nhân Viên" }));
 	    cbxChucVuNew.setToolTipText("");
 
 	    pnOld.setBorder(javax.swing.BorderFactory.createTitledBorder(
-		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Thong Tin Cu",
+		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Thôn Tin Cũ",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14),
 		    new java.awt.Color(255, 0, 0))); // NOI18N
 
 	    lblMaNVOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaNVOld.setText("Ma Nhan Vien:");
+	    lblMaNVOld.setText("Mã Nhân Viên:");
 
 	    txtMaNVOld.setEditable(false);
 	    txtMaNVOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblTenNVOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTenNVOld.setText("Ten Nhan Vien:");
+	    lblTenNVOld.setText("Tên Nhân Viên:");
 
 	    txtTenNVOld.setEditable(false);
 	    txtTenNVOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-	    pnGioiTinhOld.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gioi Tinh",
+	    pnGioiTinhOld.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giới Tính",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
@@ -1448,18 +1448,18 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	    radNamOld.setEnabled(false);
 
 	    radNuOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    radNuOld.setText("Nu");
+	    radNuOld.setText("Nữ");
 	    radNuOld.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 	    radNuOld.setEnabled(false);
 
-	    pnNgaySinhOld.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngay Sinh",
+	    pnNgaySinhOld.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngày Sinh",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    txtNgaySinhOld.setEditable(false);
 
 	    lblDiaChiOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblDiaChiOld.setText("Dia Chi:");
+	    lblDiaChiOld.setText("Địa Chỉ:");
 
 	    txtDiaChiOld.setEditable(false);
 	    txtDiaChiOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1471,31 +1471,31 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	    txtEmailOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblSDTOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblSDTOld.setText("So Dien Thoai:");
+	    lblSDTOld.setText("Số Điện Thoại:");
 
 	    txtSDTOld.setEditable(false);
 	    txtSDTOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblChucVuOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblChucVuOld.setText("Chuc Vu:");
+	    lblChucVuOld.setText("Chức Vụ:");
 
 	    txtChucVuOld.setEditable(false);
 	    txtChucVuOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chon Tac Vu",
+	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chọn Tác Vụ",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    btnUpdate.setBackground(new java.awt.Color(255, 0, 0));
 	    btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
-	    btnUpdate.setText("Cap Nhat Thay Doi");
+	    btnUpdate.setText("Cập Nhật Thay Đổi");
 	    btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
 	    btnCancel.setBackground(new java.awt.Color(0, 255, 0));
 	    btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnCancel.setForeground(new java.awt.Color(255, 255, 255));
-	    btnCancel.setText("Huy Bo Thay Doi");
+	    btnCancel.setText("Hủy Bỏ Thay Đổi");
 	    btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 	}
 
@@ -1845,16 +1845,16 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 			    cbxChucVuNew.getSelectedItem().toString());
 
 		    if (DAO_NhanVien.suaNhanVien(updateNV)) {
-			JOptionPane.showMessageDialog(null, "Cap Nhat Thanh Cong");
+			JOptionPane.showMessageDialog(null, "Cập Nhật Thành Công");
 			tblModel.setRowCount(0);
 			loadData();
 			this.dispose();
 		    } else {
-			JOptionPane.showMessageDialog(null, "Cap Nhat That Bai");
+			JOptionPane.showMessageDialog(null, "Cập Nhật Thất Bại");
 			this.dispose();
 		    }
 		} else {
-		    JOptionPane.showMessageDialog(null, "Kiem tra lai thong tin nhap vao");
+		    JOptionPane.showMessageDialog(null, "Kiểm tra lại thông tin nhập vào");
 		}
 	    }
 	}

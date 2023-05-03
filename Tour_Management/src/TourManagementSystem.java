@@ -11,15 +11,15 @@ import view.Login;
  * @author LeMinhBao
  */
 public class TourManagementSystem {
-    public static void main(String args[]) {
+	public static void main(String args[]) {
 
-	try {
-	    UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); // Nimbus
+		try {
+			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); // Nimbus
 //	    UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel"); // Metal
-	    new Login().setVisible(true);
-	} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-		| UnsupportedLookAndFeelException ex) {
-	    ex.printStackTrace();
+			new Login().setVisible(true);
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException ex) {
+			ex.printStackTrace();
+		}
 	}
-    }
 }
