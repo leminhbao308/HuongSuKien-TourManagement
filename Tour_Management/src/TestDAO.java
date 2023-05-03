@@ -138,7 +138,7 @@ public class TestDAO {
 				System.out.println(hd.toString());
 			}
 			System.out.println("-----------------");
-			TaiKhoan tk = new TaiKhoan(DAO_NhanVien.timKiemNhanVien("testtk001"), "1288000");
+			TaiKhoan tk = new TaiKhoan(DAO_NhanVien.timKiemNhanVien("NV000"), "1288000");
 			//DAO_TaiKhoan.themTaiKhoan(tk);
 			DAO_TaiKhoan.suaTaiKhoan(tk);
 			ArrayList<TaiKhoan> dsTKt = new ArrayList<TaiKhoan>();
