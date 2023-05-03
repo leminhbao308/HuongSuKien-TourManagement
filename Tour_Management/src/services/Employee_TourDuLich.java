@@ -13,7 +13,7 @@ import DAO.DAO_TourDuLich;
 import entity.TourDuLich;
 import utils.constants.ColorConstant;
 
-public class Employee_TourDuLich extends JPanel  implements ActionListener,MouseListener{
+public class Employee_TourDuLich extends JPanel implements ActionListener, MouseListener {
 
     /**
      * 
@@ -47,7 +47,7 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
     private javax.swing.JTextField txtSearchDiaDanh;
     private javax.swing.JTextField txtSearchMaTour;
     private javax.swing.JTextField txtSearchThongTin;
-    
+
     private ArrayList<TourDuLich> dsTourDuLich = new ArrayList<TourDuLich>();
 
     public Employee_TourDuLich() {
@@ -161,17 +161,17 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 	// TODO Auto-generated method stub
 	javax.swing.GroupLayout pnSearchMaTourLayout = new javax.swing.GroupLayout(pnSearchMaTour);
 	pnSearchMaTour.setLayout(pnSearchMaTourLayout);
-	pnSearchMaTourLayout
-		.setHorizontalGroup(pnSearchMaTourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-			.addGroup(pnSearchMaTourLayout.createSequentialGroup().addContainerGap()
-				.addComponent(lblSearchMaTour, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
-					javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addGap(18, 18, 18)
-				.addComponent(txtSearchMaTour, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
-				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-				.addComponent(btnSearchMaTour, javax.swing.GroupLayout.PREFERRED_SIZE, 165,
-					javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addContainerGap()));
+	pnSearchMaTourLayout.setHorizontalGroup(pnSearchMaTourLayout
+		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		.addGroup(pnSearchMaTourLayout.createSequentialGroup().addContainerGap()
+			.addComponent(lblSearchMaTour, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
+				javax.swing.GroupLayout.PREFERRED_SIZE)
+			.addGap(18, 18, 18)
+			.addComponent(txtSearchMaTour, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+			.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+			.addComponent(btnSearchMaTour, javax.swing.GroupLayout.PREFERRED_SIZE, 165,
+				javax.swing.GroupLayout.PREFERRED_SIZE)
+			.addContainerGap()));
 	pnSearchMaTourLayout.setVerticalGroup(pnSearchMaTourLayout
 		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 		.addGroup(pnSearchMaTourLayout.createSequentialGroup().addContainerGap().addGroup(pnSearchMaTourLayout
@@ -253,24 +253,24 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 			.addContainerGap(9, Short.MAX_VALUE)));
 
 	tpnSearch.addTab("Tìm theo ngày đi", pnSearchNgayDi);
-	
-	pnSearchThongTinLayout.setVerticalGroup(pnSearchThongTinLayout
-			.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-			.addGroup(pnSearchThongTinLayout.createSequentialGroup().addContainerGap()
-				.addGroup(pnSearchThongTinLayout
-					.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-					.addGroup(pnSearchThongTinLayout
-						.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-						.addComponent(txtSearchThongTin, javax.swing.GroupLayout.PREFERRED_SIZE,
-							javax.swing.GroupLayout.DEFAULT_SIZE,
-							javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblSearchThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 31,
-							javax.swing.GroupLayout.PREFERRED_SIZE))
-					.addComponent(btnSearchThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
-						Short.MAX_VALUE))
-				.addContainerGap(9, Short.MAX_VALUE)));
 
-		tpnSearch.addTab("Tìm theo thông tin Tour", pnSearchThongTin);
+	pnSearchThongTinLayout.setVerticalGroup(pnSearchThongTinLayout
+		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		.addGroup(pnSearchThongTinLayout.createSequentialGroup().addContainerGap()
+			.addGroup(pnSearchThongTinLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+				.addGroup(pnSearchThongTinLayout
+					.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+					.addComponent(txtSearchThongTin, javax.swing.GroupLayout.PREFERRED_SIZE,
+						javax.swing.GroupLayout.DEFAULT_SIZE,
+						javax.swing.GroupLayout.PREFERRED_SIZE)
+					.addComponent(lblSearchThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 31,
+						javax.swing.GroupLayout.PREFERRED_SIZE))
+				.addComponent(btnSearchThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
+					Short.MAX_VALUE))
+			.addContainerGap(9, Short.MAX_VALUE)));
+
+	tpnSearch.addTab("Tìm theo thông tin Tour", pnSearchThongTin);
 
 	javax.swing.GroupLayout pnActionLayout = new javax.swing.GroupLayout(pnAction);
 	pnAction.setLayout(pnActionLayout);
@@ -321,7 +321,8 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 	pnDataLayout.setVerticalGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 		.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDataLayout.createSequentialGroup()
 			.addGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-				.addComponent(lblLocTheo).addComponent(cbxLocTheo, javax.swing.GroupLayout.PREFERRED_SIZE,
+				.addComponent(lblLocTheo)
+				.addComponent(cbxLocTheo, javax.swing.GroupLayout.PREFERRED_SIZE,
 					javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
 			.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 			.addComponent(scrData, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
@@ -346,74 +347,88 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 					.addComponent(pnData, javax.swing.GroupLayout.DEFAULT_SIZE,
 						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addContainerGap()));
-	String[] tinhThanh = {"Hà Nội", "Hồ Chí Minh", "Hải Phòng", "Cần Thơ", "Đà Nẵng", "Hà Giang", "Cao Bằng", "Bắc Kạn", "Lạng Sơn", "Tuyên Quang", "Thái Nguyên", "Yên Bái", "Lào Cai", "Điện Biên", "Lai Châu", "Sơn La", "Hòa Bình", "Thái Bình", "Nam Định", "Ninh Bình", "Thanh Hóa", "Nghệ An", "Hà Tĩnh", "Quảng Bình", "Quảng Trị", "Thừa Thiên Huế", "Quảng Nam", "Quảng Ngãi", "Bình Định", "Phú Yên", "Khánh Hòa", "Ninh Thuận", "Bình Thuận", "Kon Tum", "Gia Lai", "Đắk Lắk", "Đắk Nông", "Lâm Đồng", "Bình Phước", "Tây Ninh", "Bình Dương", "Đồng Nai", "Bà Rịa - Vũng Tàu", "Long An", "Tiền Giang", "Bến Tre", "Trà Vinh", "Vĩnh Long", "Đồng Tháp", "An Giang", "Kiên Giang", "Cần Thơ", "Hậu Giang", "Sóc Trăng", "Bạc Liêu", "Cà Mau", "Điện Biên", "Đăk Nông", "Hà Nam", "Hưng Yên", "Nam Định", "Phú Thọ", "Vĩnh Phúc", "Bắc Giang", "Bắc Ninh", "Hải Dương", "Hải Dương", "Hưng Yên", "Ninh Bình"};
-    for(int i=0; i<tinhThanh.length;i++) {
-    	cbxLocTheo.addItem(tinhThanh[i]);
-    }
+	String[] tinhThanh = { "An Giang", "Bà Rịa – Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh",
+		"Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng",
+		"Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam",
+		"Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa",
+		"Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định",
+		"Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi",
+		"Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa",
+		"Thừa Thiên Huế", "Tiền Giang", "Thành phố Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long",
+		"Vĩnh Phúc", "Yên Bái" };
+	for (int i = 0; i < tinhThanh.length; i++) {
+	    cbxLocTheo.addItem(tinhThanh[i]);
+	}
 	dsTourDuLich = DAO_TourDuLich.getAllTourDuLich();
 	loadDataToTable(dsTourDuLich, tblModel);
     }
-    
+
     private void event() {
-    	this.btnSearchMaTour.addActionListener(this);
-    	this.btnSearchNgayDi.addActionListener(this);
-    	this.btnSearchThongTin.addActionListener(this);
-    	this.btnSearchDiaDanh.addActionListener(this);
-    	this.cbxLocTheo.addActionListener(this);
-    	
-    	this.btnInfo.addActionListener(this);
-    	this.btnAdd.addActionListener(this);
-    	this.btnDelete.addActionListener(this);
-    	this.btnModify.addActionListener(this);
-    	
-    	this.tblTourDuLich.addMouseListener(this);
+	// Search
+	this.btnSearchMaTour.addActionListener(this);
+	this.btnSearchNgayDi.addActionListener(this);
+	this.btnSearchThongTin.addActionListener(this);
+	this.btnSearchDiaDanh.addActionListener(this);
+
+	// Filter
+	this.cbxLocTheo.addActionListener(this);
+
+	// Button
+	this.btnInfo.addActionListener(this);
+	this.btnAdd.addActionListener(this);
+	this.btnDelete.addActionListener(this);
+	this.btnModify.addActionListener(this);
+
+	this.tblTourDuLich.addMouseListener(this);
     }
-    
+
     private void loadDataToTable(ArrayList<TourDuLich> dsIn, DefaultTableModel model) {
-    	for(TourDuLich tour:dsIn) {
-    		addOneRowToTable(tour, model);
-    	}
+	for (TourDuLich tour : dsIn) {
+	    addOneRowToTable(tour, model);
+	}
     }
-    
+
     private void addOneRowToTable(TourDuLich tour, DefaultTableModel model) {
-    	String trangThai;
-    	trangThai = tour.getTrangThaiTour()?"Hoạt động":"Đã đóng";
-    	model.addRow(new Object [] {tour.getMaTour(), tour.getTenTour(), tour.getMoTa(), tour.getNgayDi(), tour.getNoiDi(), tour.getSoNgayDuKien(), tour.getGiaTour(), trangThai, tour.getDiaDanh().getTenDiaDanh()});
+	String trangThai;
+	trangThai = tour.getTrangThaiTour() ? "Hoạt động" : "Đã đóng";
+	model.addRow(
+		new Object[] { tour.getMaTour(), tour.getTenTour(), tour.getMoTa(), tour.getNgayDi(), tour.getNoiDi(),
+			tour.getSoNgayDuKien(), tour.getGiaTour(), trangThai, tour.getDiaDanh().getTenDiaDanh() });
     }
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void mouseClicked(MouseEvent e) {
+	// TODO Auto-generated method stub
 
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void mousePressed(MouseEvent e) {
+	// TODO Auto-generated method stub
 
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+	// TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+	// TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+	// TODO Auto-generated method stub
+
+    }
 }

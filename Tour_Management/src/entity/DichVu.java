@@ -72,10 +72,10 @@ public class DichVu {
 
     @Override
     public String toString() {
-	return maDichVu + ";" + phuongTienDiChuyen + ";"+ chiTietDichVu + ";" + giaDichVu + ";";
+	return maDichVu + ";" + phuongTienDiChuyen + ";" + chiTietDichVu + ";" + giaDichVu;
     }
 
     public String getTitle() {
-	return "Mã Dịch Vụ;Phương Tiện Di Chuyển;Giá Dịch Vụ";
+	return "Mã Dịch Vụ;Phương Tiện Di Chuyển;Chi Tiết Dịch Vụ;Giá Dịch Vụ";
     }
 }
