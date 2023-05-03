@@ -38,13 +38,7 @@ public class TestDAO {
 //		for(NhanVien hd:dsNV) {
 //			System.out.println(hd.toString());
 //		}
-//		System.out.println("-----------------");
-//		ArrayList<TaiKhoan> dsTK = new ArrayList<TaiKhoan>();
-//		dsTK = DAO_TaiKhoan.getAllTaiKhoan();
-//		for(TaiKhoan hd:dsTK) {
-//			System.out.println(hd.toString());
-//		}
-//		System.out.println("-----------------");
+
 //		ArrayList<VeTour> dsVT = new ArrayList<VeTour>();
 //		dsVT = DAO_VeTour.getAllVeTour();
 //		for(VeTour hd:dsVT) {
@@ -112,23 +106,47 @@ public class TestDAO {
 //			System.out.println(hd.toString());
 //		}
 //		System.out.println("-----------------");
-		ArrayList<DichVu> dsDV = new ArrayList<DichVu>();
-		dsDV = DAO_DichVu.getAllDichVu();
-		for(DichVu hd:dsDV) {
-			System.out.println(hd.toString());
-		}
-		System.out.println("-----------------");
-		DichVu dt = new DichVu("DVTest", "Thành công", "Update success", 5);
-		//DAO_DichVu.themDichVu(dt);
-		//DAO_DichVu.suaDichVu(dt);
-		DAO_DichVu.xoaDichVu("DVTest");
-		System.out.println("-----------------");
-		ArrayList<DichVu> dsDVt = new ArrayList<DichVu>();
-		dsDVt = DAO_DichVu.getAllDichVu();
-		for(DichVu hd:dsDVt) {
-			System.out.println(hd.toString());
-		}
-		
+//		ArrayList<DichVu> dsDV = new ArrayList<DichVu>();
+//		dsDV = DAO_DichVu.getAllDichVu();
+//		for(DichVu hd:dsDV) {
+//			System.out.println(hd.toString());
+//		}
+//		System.out.println("-----------------");
+//		DichVu dt = new DichVu("DVTest", "Thành công", "Update success", 5);
+//		//DAO_DichVu.themDichVu(dt);
+//		//DAO_DichVu.suaDichVu(dt);
+//		DAO_DichVu.xoaDichVu("DVTest");
+//		System.out.println("-----------------");
+//		ArrayList<DichVu> dsDVt = new ArrayList<DichVu>();
+//		dsDVt = DAO_DichVu.getAllDichVu();
+//		for(DichVu hd:dsDVt) {
+//			System.out.println(hd.toString());
+//		}
+//		
+			System.out.println("-----------------");
+			ArrayList<TaiKhoan> dsTK = new ArrayList<TaiKhoan>();
+			dsTK = DAO_TaiKhoan.getAllTaiKhoan();
+			for(TaiKhoan hd:dsTK) {
+				System.out.println(hd.toString());
+			}
+			System.out.println("-----------------");
+			NhanVien nv = new NhanVien("testtk001", "t", false, LocalDate.now(), "abc", "abc", "0132", "ksd");
+			//DAO_NhanVien.themNhanVien(nv);
+			ArrayList<NhanVien> dsNV = new ArrayList<NhanVien>();
+			dsNV = DAO_NhanVien.getAllNhanVien();
+			for(NhanVien hd:dsNV) {
+				System.out.println(hd.toString());
+			}
+			System.out.println("-----------------");
+			TaiKhoan tk = new TaiKhoan(DAO_NhanVien.timKiemNhanVien("testtk001"), "1288000");
+			//DAO_TaiKhoan.themTaiKhoan(tk);
+			DAO_TaiKhoan.suaTaiKhoan(tk);
+			ArrayList<TaiKhoan> dsTKt = new ArrayList<TaiKhoan>();
+			dsTKt = DAO_TaiKhoan.getAllTaiKhoan();
+			for(TaiKhoan hd:dsTKt) {
+				System.out.println(hd.toString());
+			}
+			System.out.println("-----------------");
 		
 	}
 }
