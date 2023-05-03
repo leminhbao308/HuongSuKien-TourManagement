@@ -104,29 +104,29 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	// TODO Auto-generated method stub
 	lblSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	lblSearchMa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchMa.setText("Ma Khach Hang Can Tim:");
+	lblSearchMa.setText("Mã Khách Hàng Cần Tìm:");
 
 	txtSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
 	btnSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	btnSearchMa.setText("Tim");
+	btnSearchMa.setText("Tìm");
 
 	lblSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	lblSearchTen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchTen.setText("Ten Khach Hang Can Tim:");
+	lblSearchTen.setText("Tên Khách Hàng Cần Tìm:");
 
 	txtSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
 	btnSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	btnSearchTen.setText("Tim");
+	btnSearchTen.setText("Tìm");
 
 	pnData.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
-		"Danh Sach Khach Hang", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		"Danh Sách Khách Hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	lblFilter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblFilter.setText("Loc Theo:");
+	lblFilter.setText("Lọc Theo:");
 
 	cbxFilter.setModel(
 		new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -134,24 +134,24 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	scrData.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	scrData.setViewportView(tblKhachHang);
 
-	pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chon Tac Vu",
+	pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chọn Tác Vụ",
 		javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,
 		new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-	btnInfo.setText("Xem Thong Tin");
+	btnInfo.setText("Xem Thông Tin");
 	btnInfo.setEnabled(false);
-	btnInfo.setToolTipText("Xem Thong Tin Khach Hang (Ctrl + I)");
+	btnInfo.setToolTipText("Xem Thông Tin Khách Hàng (Ctrl + I)");
 
-	btnAdd.setText("Them Khach Hang");
-	btnAdd.setToolTipText("Them Khach Hang Moi (Ctrl + T)");
+	btnAdd.setText("Thêm Khách Hàng");
+	btnAdd.setToolTipText("Thêm Khách Hàng Mới (Ctrl + T)");
 
-	btnDelete.setText("Xoa Khach Hang");
+	btnDelete.setText("Xóa Khách Hàng");
 	btnDelete.setEnabled(false);
-	btnDelete.setToolTipText("Xoa Khach Hang Duoc Chon (Ctrl + D)");
+	btnDelete.setToolTipText("Xóa Khách Hàng Được Chọn (Ctrl + D)");
 
-	btnModify.setText("Sua Thong Tin");
+	btnModify.setText("Sửa Thông Tin");
 	btnModify.setEnabled(false);
-	btnModify.setToolTipText("Sua Thong Tin Khach Hang Duoc Chon (Ctrl + M)");
+	btnModify.setToolTipText("Sửa Thông Tin Khách Hàng Được Chọn (Ctrl + M)");
     }
 
     private void preset() {
@@ -180,7 +180,7 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 			.addComponent(btnSearchMa, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
 			.addContainerGap(9, Short.MAX_VALUE)));
 
-	tpnSearch.addTab("Tim Theo Ma", pnSearchMa);
+	tpnSearch.addTab("Tìm Theo Mã", pnSearchMa);
 
 	javax.swing.GroupLayout pnSearchTenLayout = new javax.swing.GroupLayout(pnSearchTen);
 	pnSearchTen.setLayout(pnSearchTenLayout);
@@ -206,7 +206,7 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 			.addComponent(btnSearchTen, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
 			.addContainerGap(9, Short.MAX_VALUE)));
 
-	tpnSearch.addTab("Tim Theo Ten", pnSearchTen);
+	tpnSearch.addTab("Tìm Theo Tên", pnSearchTen);
 
 	javax.swing.GroupLayout pnActionLayout = new javax.swing.GroupLayout(pnAction);
 	pnAction.setLayout(pnActionLayout);
@@ -427,7 +427,7 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    String[] data = khachHang.toString().split(";");
 
 	    if (data[3].equalsIgnoreCase("true"))
-		data[3] = "Nu";
+		data[3] = "Nữ";
 	    else
 		data[3] = "Nam";
 	    // Create a font with a larger size
@@ -546,7 +546,7 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	private javax.swing.JTextField txtTenKH;
 
 	private FrameInfoKhachHang(String[] data) {
-	    this.setTitle("SE Tourist - Thong Tin Khach Hang");
+	    this.setTitle("SE Tourist - Thông Tin Khách Hàng");
 	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
@@ -584,11 +584,11 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    // TODO Auto-generated method stub
 	    pnInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
-		    "Thong Tin Khach Hang", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    "Thông Tin Khách Hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblMaKH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaKH.setText("Ma Khach Hang:");
+	    lblMaKH.setText("Mã Khách Hàng:");
 
 	    txtMaKH.setEditable(false);
 	    txtMaKH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -600,12 +600,12 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    lblCCCD.setText("So CCCD / HC:");
 
 	    lblTenKH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTenKH.setText("Ten Khach Hang:");
+	    lblTenKH.setText("Tên Khách Hàng:");
 
 	    txtTenKH.setEditable(false);
 	    txtTenKH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-	    pnGioiTinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gioi Tinh",
+	    pnGioiTinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giới Tính",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
@@ -616,11 +616,11 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    radNam.setEnabled(false);
 
 	    radNu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    radNu.setText("Nu");
+	    radNu.setText("Nữ");
 	    radNu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 	    radNu.setEnabled(false);
 
-	    pnNgaySinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngay Sinh",
+	    pnNgaySinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngày Sinh",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
@@ -634,7 +634,7 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblSDT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblSDT.setText("So Dien Thoai:");
+	    lblSDT.setText("Số Điện Thoại:");
 
 	    txtSDT.setEditable(false);
 	    txtSDT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -802,7 +802,7 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	private javax.swing.JTextField txtTenKH;
 
 	private FrameAddKhachHang() {
-	    this.setTitle("SE Tourist - Them Khach Hang");
+	    this.setTitle("SE Tourist - Thêm Khách Hàng");
 	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
@@ -844,11 +844,11 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    // TODO Auto-generated method stub
 	    pnInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
-		    "Thong Tin Khach Hang", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    "Thông Tin Khách Hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblMaKH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaKH.setText("Ma Khach Hang:");
+	    lblMaKH.setText("Mã Khách Hàng:");
 
 	    txtMaKH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -858,11 +858,11 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    lblCCCD.setText("So CCCD / HC:");
 
 	    lblTenKH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTenKH.setText("Ten Khach Hang:");
+	    lblTenKH.setText("Tên Khách Hàng:");
 
 	    txtTenKH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-	    pnGioiTinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gioi Tinh",
+	    pnGioiTinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giới Tính",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
@@ -874,10 +874,10 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 
 	    btgGioiTinh.add(radNu);
 	    radNu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    radNu.setText("Nu");
+	    radNu.setText("Nữ");
 	    radNu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-	    pnNgaySinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngay Sinh",
+	    pnNgaySinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngày Sinh",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
@@ -889,24 +889,24 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblSDT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblSDT.setText("So Dien Thoai:");
+	    lblSDT.setText("Số Điện Thoại:");
 
 	    txtSDT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(
-		    new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Chon Tac Vu",
+		    new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Chọn Tác Vụ",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    btnAdd.setBackground(new java.awt.Color(0, 255, 0));
 	    btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnAdd.setForeground(new java.awt.Color(255, 255, 255));
-	    btnAdd.setText("Them Khach Hang");
+	    btnAdd.setText("Thêm Khách Hàng");
 
 	    btnCancel.setBackground(new java.awt.Color(255, 0, 0));
 	    btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnCancel.setForeground(new java.awt.Color(255, 255, 255));
-	    btnCancel.setText("Huy");
+	    btnCancel.setText("Hủy");
 
 	}
 
@@ -1113,16 +1113,16 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 		    KhachHang newKH = new KhachHang(txtMaKH.getText(), txtCCCD.getText(), txtTenKH.getText(), gender,
 			    localDate, txtEmail.getText(), txtSDT.getText());
 		    if (DAO_KhachHang.themKhachHang(newKH)) {
-			JOptionPane.showMessageDialog(null, "Them Thanh Cong");
+			JOptionPane.showMessageDialog(null, "Thêm Thành Công");
 			tblModel.setRowCount(0);
 			loadData();
 			this.dispose();
 		    } else {
-			JOptionPane.showMessageDialog(null, "Them That Bai");
+			JOptionPane.showMessageDialog(null, "Thêm Thất Bại");
 			this.dispose();
 		    }
 		} else {
-		    JOptionPane.showMessageDialog(null, "Kiem tra lai thong tin nhap vao");
+		    JOptionPane.showMessageDialog(null, "Kiểm tra lại thông tin nhập vào");
 		}
 	    }
 	}
@@ -1279,7 +1279,7 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	private javax.swing.JTextField txtTenKHOld;
 
 	private FrameModifyKhachHang(String[] data) {
-	    this.setTitle("SE Tourist - Sua Thong Tin Khach Hang");
+	    this.setTitle("SE Tourist - Sửa Thông Tin Khách Hàng");
 	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
@@ -1336,13 +1336,13 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	private void style() {
 	    // TODO Auto-generated method stub
 	    pnOld.setBorder(javax.swing.BorderFactory.createTitledBorder(
-		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Thong Tin Cu",
+		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Thông Tin Cũ",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14),
 		    new java.awt.Color(255, 0, 0))); // NOI18N
 
 	    lblMaKHOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaKHOld.setText("Ma Khach Hang:");
+	    lblMaKHOld.setText("Mã Khách Hàng:");
 
 	    txtMaKHOld.setEditable(false);
 	    txtMaKHOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1354,12 +1354,12 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    lblCCCDOld.setText("So CCCD / HC:");
 
 	    lblTenKHOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTenKHOld.setText("Ten Khach Hang:");
+	    lblTenKHOld.setText("Tên Khách Hàng:");
 
 	    txtTenKHOld.setEditable(false);
 	    txtTenKHOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-	    pnGioiTinhOld.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gioi Tinh",
+	    pnGioiTinhOld.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giới Tính",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
@@ -1370,11 +1370,11 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    radNamOld.setEnabled(false);
 
 	    radNuOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    radNuOld.setText("Nu");
+	    radNuOld.setText("Nữ");
 	    radNuOld.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 	    radNuOld.setEnabled(false);
 
-	    pnNgaySinhOld.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngay Sinh",
+	    pnNgaySinhOld.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngày Sinh",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
@@ -1388,19 +1388,19 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    txtEmailOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblSDTOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblSDTOld.setText("So Dien Thoai:");
+	    lblSDTOld.setText("Số Điện Thoại:");
 
 	    txtSDTOld.setEditable(false);
 	    txtSDTOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    pnNew.setBorder(javax.swing.BorderFactory.createTitledBorder(
-		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Thong Tin Moi",
+		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Thông Tin Mới",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14),
 		    new java.awt.Color(0, 255, 0))); // NOI18N
 
 	    lblMaKHNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaKHNew.setText("Ma Khach Hang:");
+	    lblMaKHNew.setText("Mã Khách Hàng:");
 
 	    txtMaKHNew.setEditable(false);
 	    txtMaKHNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1411,11 +1411,11 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    lblCCCDNew.setText("So CCCD / HC:");
 
 	    lblTenKHNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTenKHNew.setText("Ten Khach Hang:");
+	    lblTenKHNew.setText("Tên Khách Hàng:");
 
 	    txtTenKHNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-	    pnGioiTinhNew.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gioi Tinh",
+	    pnGioiTinhNew.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giới Tính",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
@@ -1427,10 +1427,10 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 
 	    btgGioiTinhNew.add(radNuNew);
 	    radNuNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    radNuNew.setText("Nu");
+	    radNuNew.setText("Nữ");
 	    radNuNew.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-	    pnNgaySinhNew.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngay Sinh",
+	    pnNgaySinhNew.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngày Sinh",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
@@ -1442,24 +1442,24 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    txtEmailNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblSDTNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblSDTNew.setText("So Dien Thoai:");
+	    lblSDTNew.setText("Số Điện Thoại:");
 
 	    txtSDTNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(
-		    new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Chon Tac Vu",
+		    new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Chọn Tác Vụ",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    btnUpdate.setBackground(new java.awt.Color(0, 255, 0));
 	    btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
-	    btnUpdate.setText("Cap Nhat Thong Tin");
+	    btnUpdate.setText("Cập Nhật Thông Tin");
 
 	    btnCancel.setBackground(new java.awt.Color(255, 0, 0));
 	    btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnCancel.setForeground(new java.awt.Color(255, 255, 255));
-	    btnCancel.setText("Huy");
+	    btnCancel.setText("Hủy");
 	}
 
 	private void preset() {
@@ -1783,16 +1783,16 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 		    KhachHang newKH = new KhachHang(txtMaKHNew.getText(), txtCCCDNew.getText(), txtTenKHNew.getText(),
 			    gender, localDate, txtEmailNew.getText(), txtSDTNew.getText());
 		    if (DAO_KhachHang.suaKhachHang(newKH)) {
-			JOptionPane.showMessageDialog(null, "Cap Nhat Thanh Cong");
+			JOptionPane.showMessageDialog(null, "Cập Nhật Thành Công");
 			tblModel.setRowCount(0);
 			loadData();
 			this.dispose();
 		    } else {
-			JOptionPane.showMessageDialog(null, "Cap Nhat That Bai");
+			JOptionPane.showMessageDialog(null, "Cập Nhật Thất Bại");
 			this.dispose();
 		    }
 		} else {
-		    JOptionPane.showMessageDialog(null, "Kiem tra lai thong tin nhap vao");
+		    JOptionPane.showMessageDialog(null, "Kiểm tra lại thông tin nhập vào");
 		}
 	    }
 	}

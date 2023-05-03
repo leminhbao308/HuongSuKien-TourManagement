@@ -96,20 +96,20 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 	// TODO Auto-generated method stub
 	lblSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	lblSearchMa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchMa.setText("Ma Nhan Vien Can Tim:");
+	lblSearchMa.setText("Mã Nhân Viên Cần Tìm:");
 
 	txtSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
 	btnSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	btnSearchMa.setText("Tim");
+	btnSearchMa.setText("Tìm");
 
 	pnData.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
-		"Danh Sach Tai Khoan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		"Danh Sách Tài Khoản", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	lblFilter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblFilter.setText("Loc Theo:");
+	lblFilter.setText("Lọc Theo:");
 
 	cbxFilter.setModel(
 		new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -117,24 +117,24 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 	scrData.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	scrData.setViewportView(tblTaiKhoan);
 
-	pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chon Tac Vu",
+	pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chọn Tác Vụ",
 		javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,
 		new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-	btnInfo.setText("Xem Thong Tin");
-	btnInfo.setToolTipText("Xem thong tin tai khoan (Ctrl + I)");
+	btnInfo.setText("Xem Thông Tin");
+	btnInfo.setToolTipText("Xem thông tin tài khỏan (Ctrl + I)");
 	btnInfo.setEnabled(false);
 
-	btnAdd.setText("Them Tai Khoan");
-	btnAdd.setToolTipText("Tai khoan duoc them tu dong khi them nhan vien");
+	btnAdd.setText("Thêm Tài Khoản");
+	btnAdd.setToolTipText("Tài khoản được thêm tự động khi thêm nhân viên");
 	btnAdd.setEnabled(false);
 
-	btnDelete.setText("Xoa Tai Khoan");
-	btnDelete.setToolTipText("Tai khoan duoc xoa tu dong khi xoa nhan vien");
+	btnDelete.setText("Xóa Tài Khoản");
+	btnDelete.setToolTipText("Tài khoản được xóa tự động khi thêm nhân viên");
 	btnDelete.setEnabled(false);
 
-	btnModify.setText("Sua Tai Khoan");
-	btnModify.setToolTipText("Cap nhat mat khau (Ctrl + M)");
+	btnModify.setText("Sửa Tài Khoản");
+	btnModify.setToolTipText("Cập nhật mật khẩu (Ctrl + M)");
 	btnModify.setEnabled(false);
     }
 
@@ -422,7 +422,7 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 	private javax.swing.JTextField txtMaNV;
 
 	private FrameInfoTaiKhoan(String[] data) {
-	    this.setTitle("SE Tourist - Thong Tin Tai Khoan");
+	    this.setTitle("SE Tourist - Thông Tin Tài Khoản");
 	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
@@ -447,11 +447,11 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 	private void style() {
 	    // TODO Auto-generated method stub
 	    pnInfo.setBorder(javax.swing.BorderFactory
-		    .createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Thong Tin Tai Khoan"));
+		    .createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Thông Tin Tài Khoản"));
 
 	    lblMaNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    lblMaNV.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-	    lblMaNV.setText("Ma Nhan Vien:");
+	    lblMaNV.setText("Mã Nhân Viên:");
 
 	    txtMaNV.setEditable(false);
 	    txtMaNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -460,7 +460,7 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 	    lblAlert.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
 	    lblAlert.setForeground(new java.awt.Color(255, 0, 0));
 	    lblAlert.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	    lblAlert.setText("Mat Khau duoc ma hoa vi ly do bao mat!");
+	    lblAlert.setText("Mật khẩu được mã hóa vì lý do bảo mật!");
 	}
 
 	private void preset() {
@@ -528,7 +528,7 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 	private String[] data;
 
 	private FrameModifyTaiKhoan(String[] data) {
-	    this.setTitle("SE Tourist - Doi Mat Khau");
+	    this.setTitle("SE Tourist - Đổi Mật Khẩu");
 	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
@@ -561,16 +561,16 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 	private void style() {
 	    // TODO Auto-generated method stub
 	    pnInfo.setBorder(javax.swing.BorderFactory
-		    .createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Thay Doi Mat Khau"));
+		    .createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Thay Đổi Mật Khẩu"));
 
 	    lblPasswordOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblPasswordOld.setText("Mat Khau Cu:");
+	    lblPasswordOld.setText("Mật Khẩu Cũ:");
 
 	    lblPasswordNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblPasswordNew.setText("Mat Khau Moi:");
+	    lblPasswordNew.setText("Mật Khẩu Mới:");
 
 	    lblConfirmPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblConfirmPassword.setText("Nhap Lai Mat Khau Moi:");
+	    lblConfirmPassword.setText("Nhập Lại Mật Khẩu:");
 
 	    txtPasswordOld.setEditable(false);
 	    txtPasswordOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -582,21 +582,21 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 	    lblAlert.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
 	    lblAlert.setForeground(new java.awt.Color(255, 0, 0));
 	    lblAlert.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-	    lblAlert.setText("Mat khau co toi thieu 8 ki tu, co it nhat 1 chu so va 1 ki tu dac biet");
+	    lblAlert.setText("Mật khẩu có tối thiểu 8 ký tự, có ít nhất 1 chữ số và một ký tự đặc biệt");
 
 	    pnAction.setBorder(javax.swing.BorderFactory
-		    .createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Chon Tac Vu"));
+		    .createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Chọn Tác Vụ"));
 
 	    btnUpdate.setBackground(new java.awt.Color(255, 0, 0));
 	    btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
-	    btnUpdate.setText("Cap Nhat");
+	    btnUpdate.setText("Cập Nhật");
 	    btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
 	    btnCancel.setBackground(new java.awt.Color(0, 255, 0));
 	    btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnCancel.setForeground(new java.awt.Color(255, 255, 255));
-	    btnCancel.setText("Huy");
+	    btnCancel.setText("Hủy");
 	    btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
 	}
@@ -738,16 +738,16 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 		    TaiKhoan modifyTK = new TaiKhoan(DAO_NhanVien.timKiemNhanVien(this.data[0]),
 			    PasswordEncoder.hashPassword(newpass));
 		    if (DAO_TaiKhoan.suaTaiKhoan(modifyTK)) {
-			JOptionPane.showMessageDialog(null, "Cap Nhat Thanh Cong");
+			JOptionPane.showMessageDialog(null, "Cập Nhật Thành Công");
 			tblModel.setRowCount(0);
 			loadData();
 			this.dispose();
 		    } else {
-			JOptionPane.showMessageDialog(null, "Cap Nhat That Bai");
+			JOptionPane.showMessageDialog(null, "Cập Nhật Thất Bại");
 			this.dispose();
 		    }
 		} else {
-		    JOptionPane.showMessageDialog(null, "Kiem tra lai thong tin nhap vao");
+		    JOptionPane.showMessageDialog(null, "Kiểm tra lại thông tin nhập vào");
 		}
 	    }
 	}
