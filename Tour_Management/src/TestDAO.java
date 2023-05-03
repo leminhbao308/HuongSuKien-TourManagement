@@ -60,24 +60,6 @@ public class TestDAO {
 		
 		
 		
-		
-		System.out.println("-----------------");
-		ArrayList<TourDuLich> dsT = new ArrayList<TourDuLich>();
-		dsT = DAO_TourDuLich.getAllTourDuLich();
-		for(TourDuLich hd:dsT) {
-			System.out.println(hd.toString());
-		}
-		TourDuLich t = new TourDuLich("Tets001", "Xin chào", "tses", LocalDate.now(), "Hà Nội", 0, 0, false, DAO_DiaDanh.timDiaDanh("DD001"));
-		System.out.println("-----------------");
-		//DAO_TourDuLich.themTourDuLich(t);
-		//DAO_TourDuLich.xoaTourDuLich("Tets");
-		ArrayList<TourDuLich> dsT1 = new ArrayList<TourDuLich>();
-		dsT1 = DAO_TourDuLich.getAllTourDuLich();
-		for(TourDuLich hd:dsT1) {
-			System.out.println(hd.toString());
-		}
-		
-		
 		System.out.println("-----------------");
 		KhachHang k = new KhachHang("test001", "12345678910121", "Tést success", false, LocalDate.now(), "linh", "012134567");
 		ArrayList<KhachHang> dsKH = new ArrayList<KhachHang>();
@@ -109,7 +91,7 @@ public class TestDAO {
 		HopDongTour h = new HopDongTour("test003", LocalDate.now(), "Test sua", 0, DAO_NhanVien.timKiemNhanVien("NV001"), DAO_KhachHang.timKiemKhachHang("KH001"), DAO_TourDuLich.timKiemTour("TDL001"), DAO_DichVu.timKiemDichVu("DV001"));
 		//DAO_HopDongTour.themHopDongTour(h);
 		//DAO_HopDongTour.xoaHopDongTour("test003");
-		DAO_HopDongTour.suaHopDongTour(h);
+		//DAO_HopDongTour.suaHopDongTour(h);
 		ArrayList<HopDongTour> dsHopDongT = new ArrayList<HopDongTour>();
 		dsHopDongT = DAO_HopDongTour.getAllHopDongTour();
 		for(HopDongTour hd:dsHopDongT) {
@@ -119,5 +101,24 @@ public class TestDAO {
 			System.out.println("-----------------");
 		}
 		System.out.println("-----------------");
+		System.out.println("-----------------");
+		ArrayList<TourDuLich> dsT = new ArrayList<TourDuLich>();
+		dsT = DAO_TourDuLich.getAllTourDuLich();
+		for(TourDuLich hd:dsT) {
+			System.out.println(hd.toString());
+		}
+		TourDuLich t = new TourDuLich("Tets001", "Xin chào", "tses succes", LocalDate.now(), "Hà Nội", 0, 0, false, DAO_DiaDanh.timDiaDanh("DD001"));
+		System.out.println("-----------------");
+		//DAO_TourDuLich.themTourDuLich(t);
+		//DAO_TourDuLich.xoaTourDuLich("Tets");
+		DAO_TourDuLich.suaTuorDuLich(t);
+		ArrayList<TourDuLich> dsT1 = new ArrayList<TourDuLich>();
+		dsT1 = DAO_TourDuLich.getAllTourDuLich();
+		for(TourDuLich hd:dsT1) {
+			System.out.println(hd.toString());
+		}
+		
+		
+		
 	}
 }
