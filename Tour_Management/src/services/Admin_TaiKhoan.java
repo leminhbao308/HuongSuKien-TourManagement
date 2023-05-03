@@ -533,8 +533,8 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
 	    this.setLocationRelativeTo(null);
-	    this.setMaximumSize(new java.awt.Dimension(400, 260));
-	    this.setMinimumSize(new java.awt.Dimension(400, 260));
+	    this.setMaximumSize(new java.awt.Dimension(405, 305));
+	    this.setMinimumSize(new java.awt.Dimension(405, 305));
 	    this.data = data;
 
 	    this.init();
