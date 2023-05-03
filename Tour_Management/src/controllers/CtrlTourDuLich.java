@@ -10,16 +10,12 @@ import entity.TourDuLich;
 
 public class CtrlTourDuLich {
 	/**
-	 * @author : Pham Nhat Linh
-	 * @param dsIn
-	 * @param txt
-	 * Lọc tổng hợp tất cả thông tin  Sử dụng cho tìm kiếm tổng hợp không theo một tiêu chuẩn nhật định
-	 * Lọc Theo Ngày đi
-	 * Lọc theo địa danh
-	 * lọc theo tỉnh thành
-	 * Lọc Tour có trạng thái True : locTourDangMo()
-	 * @return
-	 */
+     * Tìm kiếm các tour có thông tin liên quan với thông tin nhập vào theo thông tin liên quan
+     * @author : 			Pham Nhat Linh
+     * @param dsIn       	Danh sách dữ liệu cần lọc
+     * @param thongTin 		Thông tin tìm kiếm
+     * @return dsOut		ArrayList sau khi lọc
+     */
 	public static ArrayList<TourDuLich> locTourTheoThongTinTour(ArrayList<TourDuLich> dsIn, String thongTin) {
 		ArrayList<TourDuLich> dsOut = new ArrayList<TourDuLich>();
 		for(TourDuLich tour :dsIn) {
@@ -31,7 +27,14 @@ public class CtrlTourDuLich {
 		}
 		return dsOut;
 	}
-
+	
+	/**
+     * Lọc Tour theo tên tour hoặc mô tả, dùng cho lọc 
+     * @author : 			Pham Nhat Linh
+     * @param dsIn       	Danh sách dữ liệu cần lọc
+     * @param thongTin 		Thông tin tìm kiếm
+     * @return dsOut		ArrayList sau khi lọc
+     */
 	public static ArrayList<TourDuLich> locTourTheoTenTour(ArrayList<TourDuLich> dsIn, String tenTimKiem) {
 		ArrayList<TourDuLich> dsOut = new ArrayList<TourDuLich>();
 		for(TourDuLich tour :dsIn) {
