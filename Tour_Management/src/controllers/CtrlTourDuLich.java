@@ -188,26 +188,4 @@ public class CtrlTourDuLich {
 		});
 		return dsOut;
 	}
-	
-	public static void main(String[] args) {
-		// test lọc tour => ok
-		System.out.println("----------------------");
-		ArrayList<TourDuLich> ds = new ArrayList<TourDuLich>();
-		ds = DAO_TourDuLich.getAllTourDuLich();
-		for (TourDuLich t: ds ) {
-			System.out.println(t.toString());
-		}
-		System.out.println("----------------------");
-		ArrayList<TourDuLich> dsr = new ArrayList<TourDuLich>();
-		dsr = sapXepGiaTourGiam(ds);
-		//dsr = locTourTheoTenTour(ds, "Tour Phú Quốc");
-		//dsr = locTourTheoDiaDanh(ds, " rồng");
-		//dsr = locTourTheoNgayDi(ds, LocalDate.of(2023, 6, 8));
-		//dsr = locTourDangMo(ds);
-		//dsr = CtrlTourDuLich.locTourTheoMaTour(DAO_TourDuLich.getAllTourDuLich(), "TDL002");
-		for (TourDuLich t: dsr) {
-			System.out.println(t.toString());
-		}
-		System.out.println("----------------------");
-	}
 }

@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -458,9 +459,8 @@ public class Employee_TourDuLich extends JPanel implements ActionListener, Mouse
 			if(dpkNgayDi.equals(null)) {
 				JOptionPane.showMessageDialog(this, "Vui lòng Chọn ngày đi cần tìm !");
 			} else {
-				// Lấy giá trị ngày tháng được chọn từ JDatePicker
-				Date date = (Date) dpkNgayDi.getModel().getValue();
-				// Chuyển đổi java.util.Date sang java.time.LocalDate
+				GregorianCalendar calendar = (GregorianCalendar) dpkNgayDi.getModel().getValue();
+				Date date = calendar.getTime();
 				LocalDate ngayDi = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 				dsTourDuLich = CtrlTourDuLich.locTourTheoNgayDi(DAO_TourDuLich.getAllTourDuLich(), ngayDi);
 				if(dsTourDuLich.size()==0) {
