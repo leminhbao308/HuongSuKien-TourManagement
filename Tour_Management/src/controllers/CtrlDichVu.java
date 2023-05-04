@@ -18,11 +18,11 @@ public class CtrlDichVu {
      * @param thongTin Thông tin tìm kiếm
      * @return dsOut ArrayList sau khi lọc
      */
-    public static ArrayList<DichVu> locTourTheoThongTinTour(ArrayList<DichVu> dsIn, String tenDichVu) {
+    public static ArrayList<DichVu> locTourTheoMaDV(ArrayList<DichVu> dsIn, String maDV) {
 	ArrayList<DichVu> dsOut = new ArrayList<DichVu>();
 	for (DichVu dv : dsIn) {
-	    Pattern pa = Pattern.compile(".*" + tenDichVu.toLowerCase() + ".*");
-	    Matcher ma = pa.matcher(dv.getChiTietDichVu().toLowerCase() + " " + dv.getPhuongTienDiChuyen());
+	    Pattern pa = Pattern.compile(".*" + maDV.toLowerCase() + ".*");
+	    Matcher ma = pa.matcher(dv.getMaDichVu().toLowerCase());
 	    if (ma.matches()) {
 		dsOut.add(dv);
 	    }

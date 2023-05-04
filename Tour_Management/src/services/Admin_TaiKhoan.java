@@ -23,9 +23,13 @@ import javax.swing.KeyStroke;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
+import DAO.DAO_HopDongTour;
 import DAO.DAO_NhanVien;
 import DAO.DAO_TaiKhoan;
+import controllers.CtrlTaiKhoan;
+import entity.HopDongTour;
 import entity.TaiKhoan;
 import utils.LoadSave;
 import utils.PasswordEncoder;
@@ -52,6 +56,10 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
     private javax.swing.table.DefaultTableModel tblModel;
     private javax.swing.JTabbedPane tpnSearch;
     private javax.swing.JTextField txtSearchMa;
+    private String[] cols = new TaiKhoan().getTitle().split(";");
+    private ArrayList<TaiKhoan> dsTaiKhoan = new ArrayList<TaiKhoan>();
+    private String[] cbxItem = {"sắp xếp theo mã"};
+    
 
     public Admin_TaiKhoan() {
 
@@ -77,7 +85,6 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 	cbxFilter = new javax.swing.JComboBox<>();
 	scrData = new javax.swing.JScrollPane();
 	{
-	    String[] cols = new TaiKhoan().getTitle().split(";");
 	    tblModel = new javax.swing.table.DefaultTableModel(cols, 0);
 	    tblTaiKhoan = new javax.swing.JTable(tblModel);
 	}
@@ -106,9 +113,6 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 
 	lblFilter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 	lblFilter.setText("Lọc Theo:");
-
-	cbxFilter.setModel(
-		new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
 	scrData.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	scrData.setViewportView(tblTaiKhoan);
@@ -236,12 +240,16 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 					.addComponent(pnData, javax.swing.GroupLayout.DEFAULT_SIZE,
 						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addContainerGap()));
+		for(int i=0; i<cbxItem.length;i++) {
+			cbxFilter.addItem(cbxItem[i]);
+		}
     }
 
     private void event() {
 	// TODO Auto-generated method stub
 	// Search
 	this.btnSearchMa.addActionListener(this);
+	this.cbxFilter.addActionListener(this);
 	// Action
 	this.btnInfo.addActionListener(this);
 	this.btnModify.addActionListener(this);
@@ -360,6 +368,17 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 	}
     }
 
+    private void loadDataToTable(ArrayList<TaiKhoan> dsIn, DefaultTableModel model) {
+    	model.setRowCount(0);
+    	for(TaiKhoan tk:dsIn) {
+    		addOneRowToTable(tk, model);
+    	}
+    }
+
+    private void addOneRowToTable(TaiKhoan tk, DefaultTableModel model) {
+		model.addRow(
+			new Object[] {tk.getNhanVien().getMaNhanVien(), tk.getMatKhau()});
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
@@ -367,7 +386,20 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 
 	// Search
 	if (o.equals(btnSearchMa)) {
-
+		dsTaiKhoan = DAO_TaiKhoan.getAllTaiKhoan();
+		if(txtSearchMa.getText().trim().equals("")||txtSearchMa.getText().trim().equals(null)) {
+			loadDataToTable(dsTaiKhoan, tblModel);
+		} else {
+			loadDataToTable(CtrlTaiKhoan.locTaiKHoanTheoMaNV(dsTaiKhoan, txtSearchMa.getText().trim()), tblModel);
+		}
+		txtSearchMa.setText("");
+	}
+	
+	if(o.equals(cbxFilter)) {
+		dsTaiKhoan = DAO_TaiKhoan.getAllTaiKhoan();
+		if(cbxFilter.getSelectedIndex()==0) {
+			loadDataToTable(CtrlTaiKhoan.sapXepTaiKhoanTheoMa(dsTaiKhoan), tblModel);
+		}
 	}
 
 	// Action

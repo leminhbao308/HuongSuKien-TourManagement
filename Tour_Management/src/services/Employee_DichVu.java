@@ -26,9 +26,8 @@ import javax.swing.table.TableColumnModel;
 
 import DAO.DAO_DichVu;
 import DAO.DAO_KhachHang;
+import controllers.CtrlDichVu;
 import entity.DichVu;
-import entity.KhachHang;
-import entity.TourDuLich;
 import utils.LoadSave;
 import utils.constants.ColorConstant;
 
@@ -54,7 +53,10 @@ public class Employee_DichVu extends JPanel implements ActionListener {
     private javax.swing.table.DefaultTableModel tblModel;
     private javax.swing.JTabbedPane tpnSearch;
     private javax.swing.JTextField txtSearchMa;
-
+    private String[] cols = new DichVu().getTitle().split(";");
+    private String[] cbxItem = {"Sắp xếp theo giá tăng", "Sắp xếp theo giá giảm"};
+    private ArrayList<DichVu> dsDichVu = new ArrayList<DichVu>();
+    
     public Employee_DichVu() {
 	setBackground(ColorConstant.BACKGROUND_NORMAL);
 	setForeground(ColorConstant.TEXT_NORMAL);
@@ -78,7 +80,6 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	cbxFilter = new javax.swing.JComboBox<>();
 	scrData = new javax.swing.JScrollPane();
 	{
-	    String[] cols = new DichVu().getTitle().split(";");
 	    tblModel = new javax.swing.table.DefaultTableModel(cols, 0);
 	    tblDichVu = new javax.swing.JTable(tblModel);
 	}
@@ -107,9 +108,6 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 
 	lblFilter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 	lblFilter.setText("Loc Theo:");
-
-	cbxFilter.setModel(
-		new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
 	scrData.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	scrData.setViewportView(tblDichVu);
@@ -236,12 +234,16 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 					.addComponent(pnData, javax.swing.GroupLayout.DEFAULT_SIZE,
 						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addContainerGap()));
+		for(int i=0; i<cbxItem.length;i++) {
+			cbxFilter.addItem(cbxItem[i]);
+		}
     }
 
     private void event() {
 	// TODO Auto-generated method stub
 	// Search
 	this.btnSearchMa.addActionListener(this);
+	this.cbxFilter.addActionListener(this);
 
 	// Action
 	this.btnInfo.addActionListener(this);
@@ -422,6 +424,17 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	}
     }
 
+    private void loadDataToTable(ArrayList<DichVu> dsIn, DefaultTableModel model) {
+    	model.setRowCount(0);
+    	for(DichVu dv:dsIn) {
+    		addOneRowToTable(dv, model);
+    	}
+    }
+
+    private void addOneRowToTable(DichVu dv, DefaultTableModel model) {
+		model.addRow(
+			new Object[] {dv.getMaDichVu(), dv.getPhuongTienDiChuyen(), dv.getChiTietDichVu(), dv.getGiaDichVu()});
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
@@ -429,9 +442,23 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 
 	// Search
 	if (o.equals(btnSearchMa)) {
-
+		dsDichVu = DAO_DichVu.getAllDichVu();
+		if(txtSearchMa.getText().trim().equals("")||txtSearchMa.getText().trim().equals(null)) {
+			loadDataToTable(dsDichVu, tblModel);
+		} else {
+			loadDataToTable(CtrlDichVu.locTourTheoMaDV(dsDichVu, txtSearchMa.getText().trim()), tblModel);
+		}
+		txtSearchMa.setText("");
 	}
-
+	if(o.equals(cbxFilter)) {
+		//"Sắp xếp theo giá tăng", "Sắp xếp theo giá giảm"
+		dsDichVu = DAO_DichVu.getAllDichVu();
+		if(cbxFilter.getSelectedIndex()==0) {
+			loadDataToTable(CtrlDichVu.sapXepGiaDichVuTang(dsDichVu), tblModel);
+		} else if(cbxFilter.getSelectedIndex()==1) {
+			loadDataToTable(CtrlDichVu.sapXepGiaDichVuGiam(dsDichVu), tblModel);
+		}
+	}
 	// Action
 	if (o.equals(btnInfo)) {
 	    // Lấy chỉ số của hàng đang được chọn
