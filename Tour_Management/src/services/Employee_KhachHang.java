@@ -907,7 +907,7 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    txtCCCD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblCCCD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblCCCD.setText("So CCCD / HC:");
+	    lblCCCD.setText("Số CCCD / HC:");
 
 	    lblTenKH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    lblTenKH.setText("Tên Khách Hàng:");

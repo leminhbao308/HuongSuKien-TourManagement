@@ -12,7 +12,6 @@ import java.awt.event.KeyListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
 
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
@@ -35,12 +34,9 @@ import org.jdatepicker.JDatePicker;
 
 import DAO.DAO_NhanVien;
 import DAO.DAO_TaiKhoan;
-import DAO.DAO_TourDuLich;
 import controllers.CtrlNhanVien;
-import controllers.CtrlTourDuLich;
 import entity.NhanVien;
 import entity.TaiKhoan;
-import entity.TourDuLich;
 import utils.LoadSave;
 import utils.constants.ColorConstant;
 
@@ -1989,8 +1985,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 				}
 			}
 		}
-
-	}
+ 	}
 
 	private void loadDataToTable(ArrayList<NhanVien> dsIn, DefaultTableModel model) {
 		model.setRowCount(0);

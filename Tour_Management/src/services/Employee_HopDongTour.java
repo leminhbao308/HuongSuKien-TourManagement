@@ -137,30 +137,30 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	// TODO Auto-generated method stub
 	lblSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	lblSearchMa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchMa.setText("Ma Hop Dong Can Tim:");
+	lblSearchMa.setText("Mã hợp đồng cần tìm:");
 
 	txtSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
 	btnSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	btnSearchMa.setText("Tim");
+	btnSearchMa.setText("Tìm Kiếm");
 
 	lblSearchTenKH.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	lblSearchTenKH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchTenKH.setText("Ten Khach Hang Can Tim:");
+	lblSearchTenKH.setText("Ten Khách hàng Can Tìm Kiếm:");
 
 	txtSearchTenKH.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
 	btnSearchTenKH.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	btnSearchTenKH.setText("Tim");
+	btnSearchTenKH.setText("Tìm Kiếm");
 
 	lblSearchTenNV.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	lblSearchTenNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchTenNV.setText("Ten Nhan Vien Can Tim:");
+	lblSearchTenNV.setText("Ten Nhân viên Can Tìm Kiếm:");
 
 	txtSearchTenNV.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
 	btnSearchTenNV.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	btnSearchTenNV.setText("Tim");
+	btnSearchTenNV.setText("Tìm Kiếm");
 
 	pnData.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
@@ -178,7 +178,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 		new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	btnInfo.setText("Xem Thong Tin");
-	btnInfo.setToolTipText("Xem thong tin hop dong (Ctrl + I)");
+	btnInfo.setToolTipText("Xem Thông tin hợp đồng (Ctrl + I)");
 	btnInfo.setEnabled(false);
 
 	btnAdd.setText("Them Hop Dong");
@@ -223,7 +223,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 			.addComponent(btnSearchMa, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
 			.addContainerGap(9, Short.MAX_VALUE)));
 
-	tpnSearch.addTab("Tim Theo Ma Hop Dong", pnSearchMa);
+	tpnSearch.addTab("Tìm Kiếm Theo Mã hợp đồng", pnSearchMa);
 
 	javax.swing.GroupLayout pnSearchTenKHLayout = new javax.swing.GroupLayout(pnSearchTenKH);
 	pnSearchTenKH.setLayout(pnSearchTenKHLayout);
@@ -249,7 +249,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 			.addComponent(btnSearchTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
 			.addContainerGap(9, Short.MAX_VALUE)));
 
-	tpnSearch.addTab("Tim Theo Ten Khach Hang", pnSearchTenKH);
+	tpnSearch.addTab("Tìm Kiếm Theo Ten Khách hàng", pnSearchTenKH);
 
 	javax.swing.GroupLayout pnSearchTenNVLayout = new javax.swing.GroupLayout(pnSearchTenNV);
 	pnSearchTenNV.setLayout(pnSearchTenNVLayout);
@@ -276,7 +276,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 			.addComponent(btnSearchTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
 			.addContainerGap(9, Short.MAX_VALUE)));
 
-	tpnSearch.addTab("Tim Theo Ten Nhan Vien", pnSearchTenNV);
+	tpnSearch.addTab("Tìm Kiếm Theo tên nhân viên", pnSearchTenNV);
 
 	javax.swing.GroupLayout pnActionLayout = new javax.swing.GroupLayout(pnAction);
 	pnAction.setLayout(pnActionLayout);
@@ -529,7 +529,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 			data[i] = tblHopDongTour.getValueAt(selectedRow, i).toString();
 		    }
 		    JFileChooser fileChooser = new JFileChooser();
-		    fileChooser.setDialogTitle("Chon Vi Tri Luu Hop Dong");
+		    fileChooser.setDialogTitle("Chọn vị trí lưu hợp đồng");
 		    // Chỉ cho phép lưu file với định dạng .pdf
 		    fileChooser.setFileFilter(new FileNameExtensionFilter("PDF files", "pdf"));
 		    // Hiển thị hộp thoại để chọn vị trí lưu file
@@ -711,7 +711,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 		data[i] = tblHopDongTour.getValueAt(selectedRow, i).toString();
 	    }
 	    JFileChooser fileChooser = new JFileChooser();
-	    fileChooser.setDialogTitle("Chon Vi Tri Luu Hop Dong");
+	    fileChooser.setDialogTitle("Chọn vị trí luưu hợp đồng");
 	    // Chỉ cho phép lưu file với định dạng .pdf
 	    fileChooser.setFileFilter(new FileNameExtensionFilter("PDF files", "pdf"));
 	    // Hiển thị hộp thoại để chọn vị trí lưu file
@@ -845,7 +845,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	private javax.swing.JTextField txtTour;
 
 	public FrameInfoHopDongTour(String[] data) {
-	    this.setTitle("SE Tourist - Thong Tin Hop Dong");
+	    this.setTitle("SE Tourist - Thông tin hợp đồng");
 	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
@@ -885,11 +885,11 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	    // TODO Auto-generated method stub
 	    pnInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
-		    "Thong Tin Hop Dong", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    "Thông tin hợp đồng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblMaHopDong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaHopDong.setText("Ma Hop Dong");
+	    lblMaHopDong.setText("Mã hợp đồng");
 
 	    txtMaHopDong.setEditable(false);
 	    txtMaHopDong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -903,7 +903,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	    txtThoiGianLap.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
 	    lblGhiChu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblGhiChu.setText("Ghi Chu");
+	    lblGhiChu.setText("Ghi chú");
 
 	    taGhiChu.setEditable(false);
 	    taGhiChu.setColumns(20);
@@ -912,19 +912,19 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	    txtGhiChu.setViewportView(taGhiChu);
 
 	    lblNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblNhanVien.setText("Nhan Vien Thuc Hien");
+	    lblNhanVien.setText("Nhân viên thực hiện");
 
 	    txtNhanVien.setEditable(false);
 	    txtNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblKhachHang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblKhachHang.setText("Khach Hang Dat Tour");
+	    lblKhachHang.setText("khách hàng đặt tour");
 
 	    txtKhachHang.setEditable(false);
 	    txtKhachHang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblTour.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTour.setText("Tour Khach Hang Dat");
+	    lblTour.setText("Tour khách hàng đặt");
 
 	    txtTour.setEditable(false);
 	    txtTour.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1149,16 +1149,16 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	    // TODO Auto-generated method stub
 	    pnInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
-		    "Thong Tin Hop Dong", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    "Thông tin hợp đồng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblMaHopDong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaHopDong.setText("Ma Hop Dong");
+	    lblMaHopDong.setText("Mã hợp đồng");
 
 	    txtMaHopDong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblGhiChu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblGhiChu.setText("Ghi Chu");
+	    lblGhiChu.setText("Ghi chú");
 
 	    taGhiChu.setColumns(20);
 	    taGhiChu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1166,25 +1166,25 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	    txtGhiChu.setViewportView(taGhiChu);
 
 	    lblNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblNhanVien.setText("Nhan Vien Thuc Hien");
+	    lblNhanVien.setText("Nhân viên thực hiện");
 
 	    txtNhanVien.setEditable(false);
 	    txtNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblKhachHang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblKhachHang.setText("Khach Hang Dat Tour");
+	    lblKhachHang.setText("khách hàng đặt tour");
 
 	    txtKhachHang.setEditable(false);
 	    txtKhachHang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblTour.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTour.setText("Tour Khach Hang Dat");
+	    lblTour.setText("Tour khách hàng đặt");
 
 	    txtTour.setEditable(false);
 	    txtTour.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblDichVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblDichVu.setText("Dich Vu Di Kem");
+	    lblDichVu.setText("Dịch vụ đi kèm");
 
 	    txtDichVu.setEditable(false);
 	    txtDichVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1195,13 +1195,13 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	    tblNhanVien.setModel(tblModelNhanVien);
 	    scrNhanVien.setViewportView(tblNhanVien);
 
-	    tbpnData.addTab("Nhan Vien", scrNhanVien);
+	    tbpnData.addTab("Nhân viên", scrNhanVien);
 
 	    tblKhachHang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    tblKhachHang.setModel(tblModelKhachHang);
 	    scrKhachhang.setViewportView(tblKhachHang);
 
-	    tbpnData.addTab("Khach Hang", scrKhachhang);
+	    tbpnData.addTab("Khách hàng", scrKhachhang);
 
 	    tblTour.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    tblTour.setModel(tblModelTour);
@@ -1464,7 +1464,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 
 	private void loadDataTable() {
 	    // TODO Auto-generated method stub
-	    // Nhan Vien
+	    // Nhân viên
 	    {
 		for (NhanVien nhanVien : dsnv) {
 		    String[] data = nhanVien.toString().split(";");
@@ -1477,7 +1477,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 		}
 	    }
 
-	    // Khach Hang
+	    // Khách hàng
 	    {
 		for (KhachHang khachHang : dskh) {
 		    String[] data = khachHang.toString().split(";");
@@ -1638,17 +1638,17 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	    // TODO Auto-generated method stub
 	    pnInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
-		    "Thong Tin Hop Dong", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    "Thông tin hợp đồng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblMaHopDong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaHopDong.setText("Ma Hop Dong");
+	    lblMaHopDong.setText("Mã hợp đồng");
 
 	    txtMaHopDong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    txtMaHopDong.setEditable(false);
 
 	    lblGhiChu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblGhiChu.setText("Ghi Chu");
+	    lblGhiChu.setText("Ghi chú");
 
 	    taGhiChu.setColumns(20);
 	    taGhiChu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1656,25 +1656,25 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	    txtGhiChu.setViewportView(taGhiChu);
 
 	    lblNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblNhanVien.setText("Nhan Vien Thuc Hien");
+	    lblNhanVien.setText("Nhân viên thực hiện");
 
 	    txtNhanVien.setEditable(false);
 	    txtNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblKhachHang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblKhachHang.setText("Khach Hang Dat Tour");
+	    lblKhachHang.setText("khách hàng đặt tour");
 
 	    txtKhachHang.setEditable(false);
 	    txtKhachHang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblTour.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTour.setText("Tour Khach Hang Dat");
+	    lblTour.setText("Tour khách hàng đặt");
 
 	    txtTour.setEditable(false);
 	    txtTour.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblDichVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblDichVu.setText("Dich Vu Di Kem");
+	    lblDichVu.setText("Dịch vụ đi kèm");
 
 	    txtDichVu.setEditable(false);
 	    txtDichVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1685,25 +1685,25 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	    tblNhanVien.setModel(tblModelNhanVien);
 	    scrNhanVien.setViewportView(tblNhanVien);
 
-	    tbpnData.addTab("Nhan Vien", scrNhanVien);
+	    tbpnData.addTab("Nhân viên", scrNhanVien);
 
 	    tblKhachHang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    tblKhachHang.setModel(tblModelKhachHang);
 	    scrKhachhang.setViewportView(tblKhachHang);
 
-	    tbpnData.addTab("Khach Hang", scrKhachhang);
+	    tbpnData.addTab("Khách hàng", scrKhachhang);
 
 	    tblTour.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    tblTour.setModel(tblModelTour);
 	    scrTour.setViewportView(tblTour);
 
-	    tbpnData.addTab("Tour Du Lich", scrTour);
+	    tbpnData.addTab("Tour du lịch", scrTour);
 
 	    tblDichVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    tblDichVu.setModel(tblModelDichVu);
 	    scrDichVu.setViewportView(tblDichVu);
 
-	    tbpnData.addTab("Dich Vu", scrDichVu);
+	    tbpnData.addTab("Dịch vụ", scrDichVu);
 
 	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chon Tac Vu",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
@@ -1712,14 +1712,14 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	    btnModify.setBackground(new java.awt.Color(0, 255, 0));
 	    btnModify.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnModify.setForeground(new java.awt.Color(255, 255, 255));
-	    btnModify.setText("Cap Nhat Hop Dong");
-	    btnModify.setToolTipText("Cap nhat hop dong moi");
+	    btnModify.setText("Cập nhật hợp đồng");
+	    btnModify.setToolTipText("Cập nhật hợp đồng mới");
 
 	    btnCancel.setBackground(new java.awt.Color(255, 0, 0));
 	    btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnCancel.setForeground(new java.awt.Color(255, 255, 255));
-	    btnCancel.setText("Huy");
-	    btnCancel.setToolTipText("Huy thao tac cap nhat");
+	    btnCancel.setText("Hủy");
+	    btnCancel.setToolTipText("Hủy thao tác cập nhật");
 	}
 
 	private void preset() {
@@ -1906,7 +1906,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	}
 
 	private void loadDataTable() {
-	    // Nhan Vien
+	    // Nhân viên
 	    {
 		for (NhanVien nhanVien : dsnv) {
 		    String[] data = nhanVien.toString().split(";");
@@ -1919,7 +1919,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 		}
 	    }
 
-	    // Khach Hang
+	    // Khách hàng
 	    {
 		for (KhachHang khachHang : dskh) {
 		    String[] data = khachHang.toString().split(";");
@@ -2020,13 +2020,13 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 			DAO_HopDongTour.getTongTienTour(dv.getMaDichVu(), tour.getMaTour()), nv, kh, tour, dv);
 
 		if (DAO_HopDongTour.suaHopDongTour(modifyHD)) {
-		    JOptionPane.showInternalMessageDialog(null, "Cap Nhat Thanh Cong");
+		    JOptionPane.showInternalMessageDialog(null, "Cập nhật thành công");
 		    tblModel.setRowCount(0);
 		    loadData();
 		    DAO_VeTour.suaVeTour(new VeTour(txtMaHopDong.getText().replaceAll("HD", "VT"), modifyHD));
 		    this.dispose();
 		} else {
-		    JOptionPane.showInternalMessageDialog(null, "Cap Nhat That Bai", "Loi", JOptionPane.ERROR_MESSAGE);
+		    JOptionPane.showInternalMessageDialog(null, "Cập nhật thất bại", "Thất bại", JOptionPane.ERROR_MESSAGE);
 		    this.dispose();
 		}
 	    }

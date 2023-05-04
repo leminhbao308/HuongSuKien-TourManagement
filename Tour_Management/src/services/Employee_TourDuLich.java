@@ -440,7 +440,7 @@ public class Employee_TourDuLich extends JPanel implements ActionListener, Mouse
 					JOptionPane.showMessageDialog(this, "Không có dữ liệu phù hợp !");
 				} else {
 					loadDataToTable(dsTourDuLich, tblModel);
-				}
+				} 
 			}
 			txtSearchThongTin.setText("");
 		}else if(o.equals(btnSearchTinhThanh)) {
