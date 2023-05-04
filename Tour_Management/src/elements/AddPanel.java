@@ -33,7 +33,6 @@ import entity.NhanVien;
 import entity.TaiKhoan;
 import entity.TourDuLich;
 import entity.VeTour;
-import utils.LoadSave;
 import utils.constants.ColorConstant;
 
 public class AddPanel extends JPanel {
@@ -374,7 +373,7 @@ public class AddPanel extends JPanel {
 
 		    for (VeTour veTour : dsVeTour) {
 			try {
-			    PrintTicket.printTicket(veTour.getMaVe());
+			    PrintTicket.printTicket(veTour.getMaVe(), getName());
 			} catch (DocumentException e1) {
 			    // TODO Auto-generated catch block
 			    e1.printStackTrace();

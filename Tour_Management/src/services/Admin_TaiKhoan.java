@@ -9,10 +9,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
 import javax.swing.BorderFactory;
@@ -29,7 +26,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 import DAO.DAO_NhanVien;
 import DAO.DAO_TaiKhoan;
-import entity.NhanVien;
 import entity.TaiKhoan;
 import utils.LoadSave;
 import utils.PasswordEncoder;
@@ -807,6 +803,7 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public void keyReleased(KeyEvent e) {
 	    // TODO Auto-generated method stub

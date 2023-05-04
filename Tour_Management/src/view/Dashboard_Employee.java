@@ -114,7 +114,7 @@ public class Dashboard_Employee extends JFrame implements ActionListener {
 	btnMnHelp.setText("Help");
 
 	btnMnAccount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	btnMnAccount.setLabel("Account");
+	btnMnAccount.setText("Account");
 
 	mniLogout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F12,
 		java.awt.event.InputEvent.ALT_DOWN_MASK));
