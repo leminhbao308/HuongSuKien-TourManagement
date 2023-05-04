@@ -22,7 +22,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumnModel;
-import javax.swing.text.NumberFormatter;
 
 import DAO.DAO_DichVu;
 import DAO.DAO_KhachHang;
@@ -679,8 +678,8 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
 	    this.setLocationRelativeTo(null);
-	    this.setMaximumSize(new java.awt.Dimension(455, 485));
-	    this.setMinimumSize(new java.awt.Dimension(455, 485));
+	    this.setMaximumSize(new java.awt.Dimension(465, 485));
+	    this.setMinimumSize(new java.awt.Dimension(465, 485));
 
 	    this.init();
 	    this.style();

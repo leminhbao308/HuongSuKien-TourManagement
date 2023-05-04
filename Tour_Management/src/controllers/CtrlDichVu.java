@@ -9,30 +9,33 @@ import java.util.regex.Pattern;
 import entity.DichVu;
 
 public class CtrlDichVu {
-	/**
-     * Tìm kiếm các dịch vụ có thông tin chi tiết và phương tiện liên quan với thông tin nhập vào 
-     * @author : 			Pham Nhat Linh
-     * @param dsIn       	Danh sách dữ liệu cần lọc
-     * @param thongTin 		Thông tin tìm kiếm
-     * @return dsOut		ArrayList sau khi lọc
+    /**
+     * Tìm kiếm các dịch vụ có thông tin chi tiết và phương tiện liên quan với thông
+     * tin nhập vào
+     * 
+     * @author : Pham Nhat Linh
+     * @param dsIn     Danh sách dữ liệu cần lọc
+     * @param thongTin Thông tin tìm kiếm
+     * @return dsOut ArrayList sau khi lọc
      */
-	public static ArrayList<DichVu> locTourTheoThongTinTour(ArrayList<DichVu> dsIn, String tenDichVu) {
-		ArrayList<DichVu> dsOut = new ArrayList<DichVu>();
-		for(DichVu dv :dsIn) {
-			Pattern pa = Pattern.compile(".*" + tenDichVu.toLowerCase() + ".*");
-			Matcher ma = pa.matcher(dv.getChiTietDichVu().toLowerCase()+" "+dv.getPhuongTienDiChuyen());
-			if(ma.matches()) {
-				dsOut.add(dv);
-			}
-		}
-		return dsOut;
+    public static ArrayList<DichVu> locTourTheoThongTinTour(ArrayList<DichVu> dsIn, String tenDichVu) {
+	ArrayList<DichVu> dsOut = new ArrayList<DichVu>();
+	for (DichVu dv : dsIn) {
+	    Pattern pa = Pattern.compile(".*" + tenDichVu.toLowerCase() + ".*");
+	    Matcher ma = pa.matcher(dv.getChiTietDichVu().toLowerCase() + " " + dv.getPhuongTienDiChuyen());
+	    if (ma.matches()) {
+		dsOut.add(dv);
+	    }
 	}
-	
-	/**
+	return dsOut;
+    }
+
+    /**
      * Sắp xếp danh sách dịch vụ tăng dần theo giá
-     * @author : 			Pham Nhat Linh
-     * @param dsIn       	Danh sách dữ liệu cần sắp xếp
-     * @return dsOut		ArrayList sau khi sắp xếp
+     * 
+     * @author : Pham Nhat Linh
+     * @param dsIn Danh sách dữ liệu cần sắp xếp
+     * @return dsOut ArrayList sau khi sắp xếp
      */
 	public static ArrayList<DichVu> sapXepGiaDichVuTang(ArrayList<DichVu> dsIn) {
 		ArrayList<DichVu> dsOut = new ArrayList<DichVu>();
@@ -48,9 +51,10 @@ public class CtrlDichVu {
 	}
 	/**
      * Sắp xếp danh sách dịch vụ giảm dần theo giá
-     * @author : 			Pham Nhat Linh
-     * @param dsIn       	Danh sách dữ liệu cần sắp xếp
-     * @return dsOut		ArrayList sau khi sắp xếp
+     * 
+     * @author : Pham Nhat Linh
+     * @param dsIn Danh sách dữ liệu cần sắp xếp
+     * @return dsOut ArrayList sau khi sắp xếp
      */
 	public static ArrayList<DichVu> sapXepGiaDichVuGiam(ArrayList<DichVu> dsIn) {
 		ArrayList<DichVu> dsOut = new ArrayList<DichVu>();
