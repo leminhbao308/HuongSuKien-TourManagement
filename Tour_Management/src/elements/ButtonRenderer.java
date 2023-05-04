@@ -7,13 +7,18 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
 public class ButtonRenderer extends JButton implements TableCellRenderer {
-	public ButtonRenderer() {
-		setOpaque(true);
-	}
+    /**
+    * 
+    */
+    private static final long serialVersionUID = 2393773574424077724L;
 
-	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
-			int row, int column) {
-		setText((value == null) ? "" : value.toString());
-		return this;
-	}
+    public ButtonRenderer() {
+	setOpaque(true);
+    }
+
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+	    int row, int column) {
+	setText((value == null) ? "" : value.toString());
+	return this;
+    }
 }

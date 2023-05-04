@@ -56,11 +56,12 @@ public class VeTour {
 
     @Override
     public String toString() {
-	return maVe + ";" + hopDong.toString() + ";";
+	return maVe + ";" + hopDong.getKhachHang().getTenKhachHang() + ";" + hopDong.getTourDuLich().getTenTour() + ";"
+		+ hopDong.getTourDuLich().getNgayDi();
     }
 
     public String getTitle() {
-	return "Mã Vé;Mã Khách Hàng";
+	return "Mã Vé;Tên Khách Hàng;Tên Tour;Ngày Đi";
     }
 
 }

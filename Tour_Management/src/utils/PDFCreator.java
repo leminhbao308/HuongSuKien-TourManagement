@@ -1,8 +1,6 @@
 package utils;
 
-import java.awt.Desktop;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.NumberFormat;
@@ -11,13 +9,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.swing.JOptionPane;
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
@@ -39,7 +34,7 @@ import com.itextpdf.text.Chunk;
 
 public class PDFCreator {
 
-    public static void createTicketPDF(VeTour veTour, BufferedImage logo) throws DocumentException, IOException {
+    public static void createTicketPDF(VeTour veTour, String path) throws DocumentException, IOException {
 	// Kích thước trang A4
 	float pageWidth = PageSize.A4.getWidth();
 	float pageHeight = PageSize.A4.getHeight();
@@ -53,10 +48,8 @@ public class PDFCreator {
 	// Tạo đối tượng Document với kích thước trang tùy chỉnh
 	Document document = new Document(pageSize);
 
-	// Tạo tên file
-	String fileName = veTour.getMaVe() + "_" + veTour.getHopDong().getKhachHang().getMaKhachHang() + ".pdf";
-	// Tạo đường dẫn đến thư mục Ticket
-	String filePath = "./Ticket/" + fileName;
+	// Tạo đường dẫn
+	String filePath = path;
 
 	PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filePath));
 	document.open();
@@ -83,6 +76,7 @@ public class PDFCreator {
 	canvas.closePathStroke();
 
 	// Add logo
+	BufferedImage logo = LoadSave.GetSpriteAtlas(LoadSave.LOGO_LABEL);
 	Image image = Image.getInstance(logo, null);
 	image.setAbsolutePosition(20, 145);
 	document.add(image);
@@ -129,23 +123,21 @@ public class PDFCreator {
 	document.close();
     }
 
-    public static void createContract(HopDongTour hopDong) throws DocumentException, IOException {
+    @SuppressWarnings("unused")
+    public static void createContract(HopDongTour hopDong, String path) throws DocumentException, IOException {
 	Document document = new Document(PageSize.A4);
 
-	// Tạo tên file
-	String fileName = "hopdongtour" + "_" + hopDong.getMaHopDong() + ".pdf";
-	// Tạo đường dẫn đến thư mục Ticket
-	String filePath = "./Ticket/" + fileName;
+	String filePath = path;
 
 	PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filePath));
 	document.open();
 
 	// Set up font
 	BaseFont baseFont = BaseFont.createFont("/font/times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-	Font font = new Font(baseFont, 14, Font.NORMAL, BaseColor.BLACK);
+	Font font = new Font(baseFont, 12, Font.NORMAL, BaseColor.BLACK);
 	Font titleFont = new Font(baseFont, 18, Font.BOLD, BaseColor.BLACK);
 	Font dateFont = new Font(baseFont, 12, Font.ITALIC);
-	Font tableHeader = new Font(baseFont, 14, Font.BOLD, BaseColor.BLACK);
+	Font tableHeader = new Font(baseFont, 12, Font.BOLD, BaseColor.BLACK);
 	Font signFont = new Font(baseFont, 12, Font.BOLDITALIC, BaseColor.BLACK);
 
 	// Thêm tiêu đề
@@ -211,7 +203,7 @@ public class PDFCreator {
 	document.add(table);
 
 	// Thêm thông tin bên B
-	chunk = new Chunk("BÊN B:", titleFont);
+	chunk = new Chunk("BÊN B: ÔNG/BÀ " + hopDong.getKhachHang().getTenKhachHang(), titleFont);
 	document.add(chunk);
 
 	table = new PdfPTable(5);
@@ -353,8 +345,6 @@ public class PDFCreator {
 	// Lấy giá trị của giá tour và giá dịch vụ từ CSDL
 	float giaTour = hopDong.getTourDuLich().getGiaTour();
 	float giaDichVu = hopDong.getDichVu().getGiaDichVu();
-	System.out.println(giaTour);
-	System.err.println(giaDichVu);
 
 	// Tính tổng tiền
 	float tongTien = DAO_HopDongTour.getTongTienTour(hopDong.getDichVu().getMaDichVu(),
