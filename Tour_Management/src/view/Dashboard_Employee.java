@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import elements.ImagePanel;
 import services.Employee_DiaDanh;
 import services.Employee_DichVu;
 import services.Employee_HopDongTour;
@@ -70,7 +71,7 @@ public class Dashboard_Employee extends JFrame implements ActionListener {
 	btnDichVu = new javax.swing.JButton();
 	btnHopDongTour = new javax.swing.JButton();
 	btnVeTour = new javax.swing.JButton();
-	pnMain = new javax.swing.JPanel();
+	pnMain = new ImagePanel(LoadSave.GetSpriteAtlas(LoadSave.BACKGROUND_DASHBOARD), 0.5f);
 	mnMain = new javax.swing.JMenuBar();
 	btnMnFile = new javax.swing.JMenu();
 	btnMnEdit = new javax.swing.JMenu();

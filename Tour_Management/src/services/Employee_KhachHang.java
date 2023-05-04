@@ -63,7 +63,7 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
     private javax.swing.JTextField txtSearchMa;
     private javax.swing.JTextField txtSearchCC_HC;
     private String[] cols = new KhachHang().getTitle().split(";");
-    private String[] cbxItem = {"Sắp xếp theo mã", "Sắp xếp theo tên"};
+    private String[] cbxItem = { "Sắp xếp theo mã", "Sắp xếp theo tên" };
     private ArrayList<KhachHang> dsKhachHangs = new ArrayList<KhachHang>();
 
     public Employee_KhachHang() {
@@ -134,7 +134,6 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	lblFilter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 	lblFilter.setText("Lọc Theo:");
 
-
 	scrData.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	scrData.setViewportView(tblKhachHang);
 
@@ -188,17 +187,17 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 
 	javax.swing.GroupLayout pnSearchCCCD_HCLayout = new javax.swing.GroupLayout(pnSearchCCCD_HC);
 	pnSearchCCCD_HC.setLayout(pnSearchCCCD_HCLayout);
-	pnSearchCCCD_HCLayout
-		.setHorizontalGroup(pnSearchCCCD_HCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-			.addGroup(pnSearchCCCD_HCLayout.createSequentialGroup().addContainerGap()
-				.addComponent(lblSearchCCCD_HC, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
-					javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addGap(18, 18, 18)
-				.addComponent(txtSearchCC_HC, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
-				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-				.addComponent(btnSearchCC_HC, javax.swing.GroupLayout.PREFERRED_SIZE, 165,
-					javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addContainerGap()));
+	pnSearchCCCD_HCLayout.setHorizontalGroup(pnSearchCCCD_HCLayout
+		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		.addGroup(pnSearchCCCD_HCLayout.createSequentialGroup().addContainerGap()
+			.addComponent(lblSearchCCCD_HC, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
+				javax.swing.GroupLayout.PREFERRED_SIZE)
+			.addGap(18, 18, 18)
+			.addComponent(txtSearchCC_HC, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+			.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+			.addComponent(btnSearchCC_HC, javax.swing.GroupLayout.PREFERRED_SIZE, 165,
+				javax.swing.GroupLayout.PREFERRED_SIZE)
+			.addContainerGap()));
 	pnSearchCCCD_HCLayout.setVerticalGroup(pnSearchCCCD_HCLayout
 		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 		.addGroup(pnSearchCCCD_HCLayout.createSequentialGroup().addContainerGap().addGroup(pnSearchCCCD_HCLayout
@@ -286,9 +285,9 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 					.addComponent(pnData, javax.swing.GroupLayout.DEFAULT_SIZE,
 						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addContainerGap()));
-		for(int i=0; i<cbxItem.length; i++) {
-			cbxFilter.addItem(cbxItem[i]);
-		}
+	for (int i = 0; i < cbxItem.length; i++) {
+	    cbxFilter.addItem(cbxItem[i]);
+	}
     }
 
     private void event() {
@@ -466,19 +465,21 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    tblModel.addRow(data);
 	}
     }
+
     private void loadDataToTable(ArrayList<KhachHang> dsIn, DefaultTableModel model) {
-    	model.setRowCount(0);
-    	for(KhachHang kh:dsIn) {
-    		addOneRowToTable(kh, model);
-    	}
+	model.setRowCount(0);
+	for (KhachHang kh : dsIn) {
+	    addOneRowToTable(kh, model);
+	}
     }
 
     private void addOneRowToTable(KhachHang kh, DefaultTableModel model) {
-		String gioiTinh;
-		gioiTinh = kh.isGioiTinh() ? "Nam" : "Nữ";
-		model.addRow(
-			new Object[] {kh.getMaKhachHang(), kh.getSoCCCD_HC(), kh.getTenKhachHang(), gioiTinh, kh.getNgaySinh(), kh.getEmail(), kh.getSoDienThoai()});
+	String gioiTinh;
+	gioiTinh = kh.isGioiTinh() ? "Nữ" : "Nam";
+	model.addRow(new Object[] { kh.getMaKhachHang(), kh.getSoCCCD_HC(), kh.getTenKhachHang(), gioiTinh,
+		kh.getNgaySinh(), kh.getEmail(), kh.getSoDienThoai() });
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
@@ -486,42 +487,42 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 
 	// Search
 	if (o.equals(btnSearchMa)) {
-		dsKhachHangs = DAO_KhachHang.getAllKhachHang();
-		if(txtSearchMa.getText().trim().equals("")||txtSearchMa.getText().trim().equals(null)) {
-			loadDataToTable(dsKhachHangs, tblModel);
+	    dsKhachHangs = DAO_KhachHang.getAllKhachHang();
+	    if (txtSearchMa.getText().trim().equals("") || txtSearchMa.getText().trim().equals(null)) {
+		loadDataToTable(dsKhachHangs, tblModel);
+	    } else {
+		dsKhachHangs = CtrlKHachHang.locKhachHangTheoMa(dsKhachHangs, txtSearchMa.getText().trim());
+		if (dsKhachHangs.size() == 0) {
+		    JOptionPane.showMessageDialog(this, "Không có dữ liệu phù hợp !");
 		} else {
-			dsKhachHangs = CtrlKHachHang.locKhachHangTheoMa(dsKhachHangs, txtSearchMa.getText().trim());
-			if(dsKhachHangs.size()==0) {
-				JOptionPane.showMessageDialog(this, "Không có dữ liệu phù hợp !");
-			} else {
-				loadDataToTable(dsKhachHangs, tblModel);
-			}
+		    loadDataToTable(dsKhachHangs, tblModel);
 		}
-		txtSearchMa.setText("");
+	    }
+	    txtSearchMa.setText("");
 	}
 	if (o.equals(btnSearchCC_HC)) {
-		dsKhachHangs = DAO_KhachHang.getAllKhachHang();
-		if(txtSearchCC_HC.getText().trim().equals("")||txtSearchCC_HC.getText().trim().equals(null)) {
-			loadDataToTable(dsKhachHangs, tblModel);
+	    dsKhachHangs = DAO_KhachHang.getAllKhachHang();
+	    if (txtSearchCC_HC.getText().trim().equals("") || txtSearchCC_HC.getText().trim().equals(null)) {
+		loadDataToTable(dsKhachHangs, tblModel);
+	    } else {
+		dsKhachHangs = CtrlKHachHang.timKhachHangTheoCCCD_HC(dsKhachHangs, txtSearchCC_HC.getText().trim());
+		if (dsKhachHangs.size() == 0) {
+		    JOptionPane.showMessageDialog(this, "Không có dữ liệu phù hợp !");
 		} else {
-			dsKhachHangs = CtrlKHachHang.timKhachHangTheoCCCD_HC(dsKhachHangs, txtSearchCC_HC.getText().trim());
-			if(dsKhachHangs.size()==0) {
-				JOptionPane.showMessageDialog(this, "Không có dữ liệu phù hợp !");
-			} else {
-				loadDataToTable(dsKhachHangs, tblModel);
-			}
+		    loadDataToTable(dsKhachHangs, tblModel);
 		}
-		txtSearchCC_HC.setText("");
+	    }
+	    txtSearchCC_HC.setText("");
 	}
-	
-	if(o.equals(cbxFilter)) {
-		dsKhachHangs = DAO_KhachHang.getAllKhachHang();
-		//{"Sắp xếp theo mã", "Sắp xếp theo tên"}
-		if(cbxFilter.getSelectedIndex()==0) {
-			loadDataToTable(CtrlKHachHang.sapXepKhachHangTheoMa(dsKhachHangs), tblModel);
-		} else {
-			loadDataToTable(CtrlKHachHang.sapXepKhachHangTheoTen(dsKhachHangs), tblModel);
-		}
+
+	if (o.equals(cbxFilter)) {
+	    dsKhachHangs = DAO_KhachHang.getAllKhachHang();
+	    // {"Sắp xếp theo mã", "Sắp xếp theo tên"}
+	    if (cbxFilter.getSelectedIndex() == 0) {
+		loadDataToTable(CtrlKHachHang.sapXepKhachHangTheoMa(dsKhachHangs), tblModel);
+	    } else {
+		loadDataToTable(CtrlKHachHang.sapXepKhachHangTheoTen(dsKhachHangs), tblModel);
+	    }
 	}
 
 	// Action

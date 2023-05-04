@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import elements.ImagePanel;
 import services.Admin_NhanVien;
 import services.Admin_TaiKhoan;
 import services.Employee_DiaDanh;
@@ -83,7 +84,7 @@ public class Dashboard_Admin extends JFrame implements ActionListener {
 	btnDichVu = new JButton();
 	btnHopDongTour = new JButton();
 	btnVeTour = new JButton();
-	pnMain = new javax.swing.JPanel();
+	pnMain = new ImagePanel(LoadSave.GetSpriteAtlas(LoadSave.BACKGROUND_DASHBOARD), 0.5f);
 	mnMain = new javax.swing.JMenuBar();
 	btnMnFile = new javax.swing.JMenu();
 	btnMnEdit = new javax.swing.JMenu();
