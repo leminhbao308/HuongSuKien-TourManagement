@@ -147,13 +147,13 @@ public class TestDAO {
 //				System.out.println(hd.toString());
 //			}
 //			System.out.println("-----------------");
-			System.out.println("-----------------");
-			ArrayList<DichVu> dsDV = new ArrayList<DichVu>();
-			dsDV = DAO_DichVu.getAllDichVu();
-			for(DichVu hd:dsDV) {
-				System.out.println(hd.toString());
-			}
-			System.out.println("-----------------");
-		
+//			System.out.println("-----------------");
+//			ArrayList<DichVu> dsDV = new ArrayList<DichVu>();
+//			dsDV = DAO_DichVu.getAllDichVu();
+//			for(DichVu hd:dsDV) {
+//				System.out.println(hd.toString());
+//			}
+//			System.out.println("-----------------");
+//		
 	}
 }
