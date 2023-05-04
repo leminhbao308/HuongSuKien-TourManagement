@@ -406,9 +406,6 @@ public class Employee_TourDuLich extends JPanel implements ActionListener, Mouse
     	for(TourDuLich tour:dsIn) {
     		addOneRowToTable(tour, model);
     	}
-	for (TourDuLich tour : dsIn) {
-	    addOneRowToTable(tour, model);
-	}
     }
 
     private void addOneRowToTable(TourDuLich tour, DefaultTableModel model) {
@@ -472,6 +469,7 @@ public class Employee_TourDuLich extends JPanel implements ActionListener, Mouse
 		} else if(o.equals(cbxLocTheo)) {
 			//"Tất cả tour","Tour sau hôm nay", "Gía Tour giảm dần", "Giá Tour tăng dần", "Tour đã đóng", "Tour đang mở"
 			if(cbxLocTheo.getSelectedIndex()==0) {
+				dsTourDuLich = DAO_TourDuLich.getAllTourDuLich();
 				loadDataToTable(dsTourDuLich, tblModel);
 			} else if(cbxLocTheo.getSelectedIndex()==1) {
 				loadDataToTable(CtrlTourDuLich.locTourNgayDiTuNgay(dsTourDuLich, LocalDate.now()), tblModel);
