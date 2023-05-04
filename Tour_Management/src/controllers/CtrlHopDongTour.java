@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import entity.HopDongTour;
+import entity.KhachHang;
 import entity.TourDuLich;
 import entity.HopDongTour;
 
@@ -111,7 +112,7 @@ public class CtrlHopDongTour {
      * @param thongTin 		Thông tin tìm kiếm
      * @return dsOut		ArrayList sau khi lọc
      */
-	public static ArrayList<HopDongTour> sapXepHopDongTongTienTang(ArrayList<HopDongTour> dsIn, String tenNV) {
+	public static ArrayList<HopDongTour> sapXepHopDongTongTienTang(ArrayList<HopDongTour> dsIn) {
 		ArrayList<HopDongTour> dsOut = new ArrayList<HopDongTour>();
 		dsOut = dsIn;
 		Collections.sort(dsOut, new Comparator<HopDongTour>() {
@@ -131,7 +132,7 @@ public class CtrlHopDongTour {
      * @param thongTin 		Thông tin tìm kiếm
      * @return dsOut		ArrayList sau khi lọc
      */
-	public static ArrayList<HopDongTour> sapXepHopDongTongTienGiam(ArrayList<HopDongTour> dsIn, String tenNV) {
+	public static ArrayList<HopDongTour> sapXepHopDongTongTienGiam(ArrayList<HopDongTour> dsIn) {
 		ArrayList<HopDongTour> dsOut = new ArrayList<HopDongTour>();
 		dsOut = dsIn;
 		Collections.sort(dsOut, new Comparator<HopDongTour>() {
@@ -139,6 +140,46 @@ public class CtrlHopDongTour {
 			public int compare(HopDongTour o1, HopDongTour o2) {
 				// TODO Auto-generated method stub
 				return Float.compare(o2.getTongTien(), o1.getTongTien());
+			}
+		});
+		return dsOut;
+	}
+	
+	/**
+     * Sắp xếp hợp đồng theo ngày lập
+     * @author : 			Pham Nhat Linh
+     * @param dsIn       	Danh sách dữ liệu cần lọc
+     * @param thongTin 		Thông tin tìm kiếm
+     * @return dsOut		ArrayList sau khi lọc
+     */
+	public static ArrayList<HopDongTour> sapXepHopDongTheoNgay(ArrayList<HopDongTour> dsIn) {
+		ArrayList<HopDongTour> dsOut = new ArrayList<HopDongTour>();
+		dsOut = dsIn;
+		Collections.sort(dsOut, new Comparator<HopDongTour>() {
+			@Override
+			public int compare(HopDongTour o1, HopDongTour o2) {
+				// TODO Auto-generated method stub
+				return o1.getThoiGianLap().compareTo(o2.getThoiGianLap());
+			}
+		});
+		return dsOut;
+	}
+	
+	/**
+     * Sắp xếp hợp đồng theo mã 
+     * @author : 			Pham Nhat Linh
+     * @param dsIn       	Danh sách dữ liệu cần lọc
+     * @param thongTin 		Thông tin tìm kiếm
+     * @return dsOut		ArrayList sau khi lọc
+     */
+	public static ArrayList<HopDongTour> sapXepHopDongTheoMa(ArrayList<HopDongTour> dsIn) {
+		ArrayList<HopDongTour> dsOut = new ArrayList<HopDongTour>();
+		dsOut = dsIn;
+		Collections.sort(dsOut, new Comparator<HopDongTour>() {
+			@Override
+			public int compare(HopDongTour o1, HopDongTour o2) {
+				// TODO Auto-generated method stub
+				return o1.getMaHopDong().compareTo(o2.getMaHopDong());
 			}
 		});
 		return dsOut;
