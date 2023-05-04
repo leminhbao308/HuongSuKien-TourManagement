@@ -146,6 +146,8 @@ public class Login extends JFrame implements ActionListener {
 	layout.setVerticalGroup(
 		layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(loginPanel,
 			javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+	txtMaNV.setText("NV001");
+	txtMatKhau.setText("NV001");
     }
 
     private void event() {

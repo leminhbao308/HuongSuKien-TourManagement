@@ -195,7 +195,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	btnPrint.setToolTipText("In hop dong duoc chon (Ctrl + P)");
 	btnPrint.setEnabled(false);
     }
-
+ 
     private void preset() {
 	// TODO Auto-generated method stub
 	javax.swing.GroupLayout pnSearchMaLayout = new javax.swing.GroupLayout(pnSearchMa);
