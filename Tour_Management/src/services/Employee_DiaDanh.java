@@ -57,16 +57,14 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
     private javax.swing.JTextField txtSearchTen;
     private String[] cols = new DiaDanh().getTitle().split(";");
     private ArrayList<DiaDanh> dsDiaDanh = new ArrayList<DiaDanh>();
-    private String[] tinhThanh = { "An Giang", "Bà Rịa – Vũng Tàu",
-	    "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước",
-	    "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên",
-	    "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương",
-	    "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu",
-	    "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận",
-	    "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị",
-	    "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên Huế",
-	    "Tiền Giang", "Thành phố Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc",
-	    "Yên Bái" };
+    private String[] tinhThanh = { "An Giang", "Bà Rịa – Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh",
+	    "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng",
+	    "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam",
+	    "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa",
+	    "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An",
+	    "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh",
+	    "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên Huế",
+	    "Tiền Giang", "Thành phố Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái" };
 
     public Employee_DiaDanh() {
 	setBackground(ColorConstant.BACKGROUND_NORMAL);
@@ -264,7 +262,8 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	pnDataLayout.setVerticalGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 		.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDataLayout.createSequentialGroup()
 			.addGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-				.addComponent(lblTinhThanh).addComponent(cbxTinhThanh, javax.swing.GroupLayout.PREFERRED_SIZE,
+				.addComponent(lblTinhThanh)
+				.addComponent(cbxTinhThanh, javax.swing.GroupLayout.PREFERRED_SIZE,
 					javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
 			.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 			.addComponent(scrData, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
@@ -289,9 +288,9 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 					.addComponent(pnData, javax.swing.GroupLayout.DEFAULT_SIZE,
 						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addContainerGap()));
-		for(int i=0; i<tinhThanh.length;i++) {
-			cbxTinhThanh.addItem(tinhThanh[i]);
-		}
+	for (int i = 0; i < tinhThanh.length; i++) {
+	    cbxTinhThanh.addItem(tinhThanh[i]);
+	}
     }
 
     private void event() {
@@ -311,7 +310,7 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	this.tblDiaDanh.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
 	    @Override
-	   
+
 	    public void valueChanged(ListSelectionEvent e) {
 		// TODO Auto-generated method stub
 		// Kiểm tra xem có dòng nào được chọn hay không
@@ -475,33 +474,33 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	Object o = e.getSource();
 	// Search
 	if (o.equals(btnSearchMa)) {
-		dsDiaDanh = DAO_DiaDanh.getAllDiaDanh();
-		if(txtSearchMa.getText().trim().equals("")||txtSearchMa.getText().trim().equals(null)) {
-			loadDataToTable(dsDiaDanh, tblModel);
-		} else {
-			dsDiaDanh = CtrlDiaDanh.loTheoMaDiaDanh(dsDiaDanh, txtSearchMa.getText().trim());
-			loadDataToTable(dsDiaDanh, tblModel);
-		}
-		txtSearchMa.setText("");
+	    dsDiaDanh = DAO_DiaDanh.getAllDiaDanh();
+	    if (txtSearchMa.getText().trim().equals("") || txtSearchMa.getText().trim().equals(null)) {
+		loadDataToTable(dsDiaDanh, tblModel);
+	    } else {
+		dsDiaDanh = CtrlDiaDanh.loTheoMaDiaDanh(dsDiaDanh, txtSearchMa.getText().trim());
+		loadDataToTable(dsDiaDanh, tblModel);
+	    }
+	    txtSearchMa.setText("");
 	}
 	if (o.equals(btnSearchTen)) {
-		dsDiaDanh = DAO_DiaDanh.getAllDiaDanh();
-		if(txtSearchTen.getText().trim().equals("")||txtSearchTen.getText().trim().equals(null)) {
-			loadDataToTable(dsDiaDanh, tblModel);
-		} else {
-			dsDiaDanh = CtrlDiaDanh.locDiaDanhTheoTen(dsDiaDanh, txtSearchTen.getText().trim());
-			loadDataToTable(dsDiaDanh, tblModel);
-		}
-		txtSearchTen.setText("");
-	}
-	if(o.equals(cbxTinhThanh)) {
-		dsDiaDanh = DAO_DiaDanh.getAllDiaDanh();
-		for(int i=0; i<tinhThanh.length;i++) {
-			if(cbxTinhThanh.getSelectedIndex()==i) {
-				dsDiaDanh = CtrlDiaDanh.locDiaDanhTheoTinhThanh(dsDiaDanh, tinhThanh[i]);
-			}
-		}
+	    dsDiaDanh = DAO_DiaDanh.getAllDiaDanh();
+	    if (txtSearchTen.getText().trim().equals("") || txtSearchTen.getText().trim().equals(null)) {
 		loadDataToTable(dsDiaDanh, tblModel);
+	    } else {
+		dsDiaDanh = CtrlDiaDanh.locDiaDanhTheoTen(dsDiaDanh, txtSearchTen.getText().trim());
+		loadDataToTable(dsDiaDanh, tblModel);
+	    }
+	    txtSearchTen.setText("");
+	}
+	if (o.equals(cbxTinhThanh)) {
+	    dsDiaDanh = DAO_DiaDanh.getAllDiaDanh();
+	    for (int i = 0; i < tinhThanh.length; i++) {
+		if (cbxTinhThanh.getSelectedIndex() == i) {
+		    dsDiaDanh = CtrlDiaDanh.locDiaDanhTheoTinhThanh(dsDiaDanh, tinhThanh[i]);
+		}
+	    }
+	    loadDataToTable(dsDiaDanh, tblModel);
 	}
 	// Action
 	if (o.equals(btnInfo)) {
@@ -530,8 +529,7 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 		int selectedRow = tblDiaDanh.getSelectedRow();
 		String data = tblDiaDanh.getValueAt(selectedRow, 0).toString();
 
-		DAO_NhanVien.xoaNhanVien(data);
-		DAO_TaiKhoan.xoaTaiKhoan(data);
+		DAO_DiaDanh.xoaDiaDanh(data);
 		tblModel.setRowCount(0);
 		loadData();
 	    }
@@ -860,38 +858,38 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 				    javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 	}
 
-		private void event() {
-		    // TODO Auto-generated method stub
-		    this.btnAdd.addActionListener(this);
-		    this.btnCancel.addActionListener(this);
-		}
-	
-		@Override
-		public void actionPerformed(ActionEvent e) {
-		    // TODO Auto-generated method stub
-		    Object o = e.getSource();
-	
-		    if (o.equals(btnCancel)) {
+	private void event() {
+	    // TODO Auto-generated method stub
+	    this.btnAdd.addActionListener(this);
+	    this.btnCancel.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+	    // TODO Auto-generated method stub
+	    Object o = e.getSource();
+
+	    if (o.equals(btnCancel)) {
+		this.dispose();
+	    }
+
+	    if (o.equals(btnAdd)) {
+		if (cbxTinhThanh.getSelectedIndex() == -1) {
+		    JOptionPane.showInternalMessageDialog(null, "Vui lòng chọn tỉnh thành !", "Thiếu thông tin !",
+			    JOptionPane.ERROR_MESSAGE);
+		} else {
+		    DiaDanh newDD = new DiaDanh(txtMaDiaDanh.getText(), txtTenDiaDanh.getText(),
+			    cbxTinhThanh.getSelectedItem().toString());
+		    if (DAO_DiaDanh.themDiaDanh(newDD)) {
+			JOptionPane.showInternalMessageDialog(null, "Thêm thành công");
+			tblModel.setRowCount(0);
+			loadData();
 			this.dispose();
-		    }
-	
-		    if (o.equals(btnAdd)) {
-				if (cbxTinhThanh.getSelectedIndex() == -1) {
-				    JOptionPane.showInternalMessageDialog(null, "Vui lòng chọn tỉnh thành !", "Thiếu thông tin !",
-					    JOptionPane.ERROR_MESSAGE);
-				} else {
-				    DiaDanh newDD = new DiaDanh(txtMaDiaDanh.getText(), txtTenDiaDanh.getText(),
-					    cbxTinhThanh.getSelectedItem().toString());
-				    if (DAO_DiaDanh.themDiaDanh(newDD)) {
-					JOptionPane.showInternalMessageDialog(null, "Thêm thành công");
-					tblModel.setRowCount(0);
-					loadData();
-					this.dispose();
-				    } else
-					JOptionPane.showInternalMessageDialog(null, "Thêm thất bại");
-				}
-		    }
+		    } else
+			JOptionPane.showInternalMessageDialog(null, "Thêm thất bại");
 		}
+	    }
+	}
     }
 
     private class FrameModifyDiaDanh extends JFrame implements ActionListener {
@@ -1163,41 +1161,40 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	    this.btnCancel.addActionListener(this);
 	}
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-		    // TODO Auto-generated method stub
-		    Object o = e.getSource();
-	
-		    if (o.equals(btnCancel))
-			this.dispose();
-		    if (o.equals(btnModify)) {
-		    	DiaDanh modifyDD = new DiaDanh(txtMaDiaDanhNew.getText(), txtTenDiaDanhNew.getText(),
-				cbxTinhThanhNew.getSelectedItem().toString());
-	
-				if (DAO_DiaDanh.suaDiaDanh(modifyDD)) {
-				    JOptionPane.showInternalMessageDialog(null, "Cập nhật thành công");
-				    tblModel.setRowCount(0);
-				    loadData();
-				    this.dispose();
-				} else {
-				    JOptionPane.showInternalMessageDialog(null, "Cập nhật thất bại !", "Lỗi cập nhật",
-					    JOptionPane.ERROR_MESSAGE);
-				    this.dispose();
-				}
-	
-		    }
+	@Override
+	public void actionPerformed(ActionEvent e) {
+	    // TODO Auto-generated method stub
+	    Object o = e.getSource();
+
+	    if (o.equals(btnCancel))
+		this.dispose();
+	    if (o.equals(btnModify)) {
+		DiaDanh modifyDD = new DiaDanh(txtMaDiaDanhNew.getText(), txtTenDiaDanhNew.getText(),
+			cbxTinhThanhNew.getSelectedItem().toString());
+
+		if (DAO_DiaDanh.suaDiaDanh(modifyDD)) {
+		    JOptionPane.showInternalMessageDialog(null, "Cập nhật thành công");
+		    tblModel.setRowCount(0);
+		    loadData();
+		    this.dispose();
+		} else {
+		    JOptionPane.showInternalMessageDialog(null, "Cập nhật thất bại !", "Lỗi cập nhật",
+			    JOptionPane.ERROR_MESSAGE);
+		    this.dispose();
 		}
+
+	    }
+	}
     }
+
     private void loadDataToTable(ArrayList<DiaDanh> dsIn, DefaultTableModel model) {
-    	model.setRowCount(0);
-    	for(DiaDanh tour:dsIn) {
-    		addOneRowToTable(tour, model);
-    	}
+	model.setRowCount(0);
+	for (DiaDanh tour : dsIn) {
+	    addOneRowToTable(tour, model);
+	}
     }
 
     private void addOneRowToTable(DiaDanh diaDanh, DefaultTableModel model) {
-	model.addRow(
-		new Object[] { diaDanh.getMaDiaDanh(), diaDanh.getTenDiaDanh(), diaDanh.getTinhThanh()});
+	model.addRow(new Object[] { diaDanh.getMaDiaDanh(), diaDanh.getTenDiaDanh(), diaDanh.getTinhThanh() });
     }
 }
-
