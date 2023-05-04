@@ -27,6 +27,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 import com.itextpdf.text.DocumentException;
@@ -37,6 +38,7 @@ import DAO.DAO_KhachHang;
 import DAO.DAO_NhanVien;
 import DAO.DAO_TourDuLich;
 import DAO.DAO_VeTour;
+import controllers.CtrlHopDongTour;
 import controllers.PrintTicket;
 import entity.DichVu;
 import entity.HopDongTour;
@@ -82,6 +84,9 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
     private ArrayList<KhachHang> dskh = DAO_KhachHang.getAllKhachHang();
     private ArrayList<TourDuLich> dstour = DAO_TourDuLich.getAllTourDuLich();
     private ArrayList<DichVu> dsdv = DAO_DichVu.getAllDichVu();
+    private String[] cols = new HopDongTour().getTitle().split(";");
+    private ArrayList<HopDongTour> dsHopDong = new ArrayList<HopDongTour>();
+    private String[] cbxItem = {"Sắp xếp tổng tiền tăng", "Sắp xếp tổng tiền giảm", "Sắp xếp theo mã hợp đồng", "Sắp xếp theo thời gian lập"};
 
     public Employee_HopDongTour() {
 	setBackground(ColorConstant.BACKGROUND_NORMAL);
@@ -117,7 +122,6 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	 * Table
 	 */
 	{
-	    String[] cols = new HopDongTour().getTitle().split(";");
 	    tblModel = new javax.swing.table.DefaultTableModel(cols, 0);
 	    tblHopDongTour = new javax.swing.JTable(tblModel);
 	}
@@ -164,10 +168,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 		javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	lblFilter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblFilter.setText("Loc Theo:");
-
-	cbxFilter.setModel(
-		new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+	lblFilter.setText("Lọc theo: ");
 
 	scrData.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	scrData.setViewportView(tblHopDongTour);
@@ -356,6 +357,9 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 					.addComponent(pnData, javax.swing.GroupLayout.DEFAULT_SIZE,
 						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addContainerGap()));
+		for(int i=0; i<cbxItem.length;i++) {
+			cbxFilter.addItem(cbxItem[i]);
+		}
     }
 
     private void event() {
@@ -364,6 +368,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	this.btnSearchMa.addActionListener(this);
 	this.btnSearchTenKH.addActionListener(this);
 	this.btnSearchTenNV.addActionListener(this);
+	this.cbxFilter.addActionListener(this);
 
 	// Action
 	this.btnInfo.addActionListener(this);
@@ -581,20 +586,66 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 	    }
 	});
     }
+    private void loadDataToTable(ArrayList<HopDongTour> dsIn, DefaultTableModel model) {
+    	model.setRowCount(0);
+    	for(HopDongTour hd:dsIn) {
+    		addOneRowToTable(hd, model);
+    	}
+    }
 
+    private void addOneRowToTable(HopDongTour hd, DefaultTableModel model) {
+		model.addRow(
+			new Object[] {hd.getMaHopDong(), hd.getThoiGianLap(), hd.getGhiChu(), DAO_HopDongTour.getTongTienTour(hd.getDichVu().getMaDichVu(), hd.getTourDuLich().getMaTour()), hd.getNhanVien().getTenNhanVien(), hd.getKhachHang().getTenKhachHang(), hd.getTourDuLich().getTenTour(), hd.getDichVu().getGiaDichVu()});
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	Object o = e.getSource();
 	// Search
 	if (o.equals(btnSearchMa)) {
-
+		dsHopDong = DAO_HopDongTour.getAllHopDongTour();
+		if(txtSearchMa.getText().trim().equals("")||txtSearchMa.getText().trim().equals(null)) {
+			loadDataToTable(dsHopDong, tblModel);
+		} else {
+			dsHopDong = CtrlHopDongTour.locHopDongTheoMa(dsHopDong, txtSearchMa.getText().trim());
+			loadDataToTable(dsHopDong, tblModel);
+		}
+		txtSearchMa.setText("");
 	}
 	if (o.equals(btnSearchTenKH)) {
-
+		dsHopDong = DAO_HopDongTour.getAllHopDongTour();
+		if(txtSearchTenKH.getText().trim().equals("")||txtSearchTenKH.getText().trim().equals(null)) {
+			loadDataToTable(dsHopDong, tblModel);
+		} else {
+			dsHopDong = CtrlHopDongTour.locHopDongTheoKH(dsHopDong, txtSearchTenKH.getText().trim());
+			loadDataToTable(dsHopDong, tblModel);
+		}
+		txtSearchTenKH.setText("");
 	}
 	if (o.equals(btnSearchTenNV)) {
-
+		dsHopDong = DAO_HopDongTour.getAllHopDongTour();
+		if(txtSearchTenNV.getText().trim().equals("")||txtSearchTenNV.getText().trim().equals(null)) {
+			loadDataToTable(dsHopDong, tblModel);
+		} else {
+			dsHopDong = CtrlHopDongTour.locHopDongTheoNV(dsHopDong, txtSearchTenNV.getText().trim());
+			loadDataToTable(dsHopDong, tblModel);
+		}
+		txtSearchTenNV.setText("");
+	}
+	
+	if (o.equals(cbxFilter)) {
+		dsHopDong = DAO_HopDongTour.getAllHopDongTour();
+		//{"Sắp xếp tổng tiền tăng", "Sắp xếp tổng tiền giảm", "Sắp xếp theo mã hợp đồng", "Sắp xếp theo thời gian lập"}
+		if(cbxFilter.getSelectedIndex()==0) {
+			dsHopDong = CtrlHopDongTour.sapXepHopDongTongTienTang(dsHopDong);
+			loadDataToTable(dsHopDong, tblModel);
+		} else if(cbxFilter.getSelectedIndex()==1) {
+			loadDataToTable(CtrlHopDongTour.sapXepHopDongTongTienGiam(dsHopDong), tblModel);
+		} else if(cbxFilter.getSelectedIndex()==2) {
+			loadDataToTable(CtrlHopDongTour.sapXepHopDongTheoMa(dsHopDong), tblModel);
+		} else if(cbxFilter.getSelectedIndex()==3) {
+			loadDataToTable(CtrlHopDongTour.sapXepHopDongTheoNgay(dsHopDong), tblModel);
+		}
 	}
 
 	// Action
