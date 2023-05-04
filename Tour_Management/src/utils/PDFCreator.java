@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
@@ -107,9 +108,12 @@ public class PDFCreator {
 	document.add(location);
 
 	// Add Go Date
-	Paragraph godate = new Paragraph("Ngày đi: "
-		+ new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(veTour.getHopDong().getTourDuLich().getNgayDi()),
-		nameFont);
+
+	LocalDate ngayDi = veTour.getHopDong().getTourDuLich().getNgayDi();
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	String ngayDiFormatted = ngayDi.format(formatter);
+
+	Paragraph godate = new Paragraph("Ngày đi: " + ngayDiFormatted, nameFont);
 	code.setAlignment(Element.ALIGN_CENTER);
 	document.add(godate);
 
