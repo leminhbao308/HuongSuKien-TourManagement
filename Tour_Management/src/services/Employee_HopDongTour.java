@@ -1402,7 +1402,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 		    JOptionPane.showInternalMessageDialog(null, "Them Thanh Cong");
 		    tblModel.setRowCount(0);
 		    loadData();
-		    DAO_VeTour.themVeTour(new VeTour(txtMaHopDong.getText().replaceAll("^HD$", "VT"), newHD));
+		    DAO_VeTour.themVeTour(new VeTour(txtMaHopDong.getText().replaceAll("HD", "VT"), newHD));
 		    this.dispose();
 		} else {
 		    JOptionPane.showInternalMessageDialog(null, "Them That Bai", "Loi", JOptionPane.ERROR_MESSAGE);
@@ -1972,7 +1972,7 @@ public class Employee_HopDongTour extends JPanel implements ActionListener {
 		    JOptionPane.showInternalMessageDialog(null, "Cap Nhat Thanh Cong");
 		    tblModel.setRowCount(0);
 		    loadData();
-		    DAO_VeTour.suaVeTour(new VeTour(txtMaHopDong.getText().replaceAll("^HD$", "VT"), modifyHD));
+		    DAO_VeTour.suaVeTour(new VeTour(txtMaHopDong.getText().replaceAll("HD", "VT"), modifyHD));
 		    this.dispose();
 		} else {
 		    JOptionPane.showInternalMessageDialog(null, "Cap Nhat That Bai", "Loi", JOptionPane.ERROR_MESSAGE);
