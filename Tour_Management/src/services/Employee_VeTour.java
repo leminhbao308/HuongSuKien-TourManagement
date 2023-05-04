@@ -24,10 +24,12 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 import com.itextpdf.text.DocumentException;
 
 import DAO.DAO_VeTour;
+import controllers.CtrlVeTour;
 import controllers.PrintTicket;
 import entity.VeTour;
 import utils.constants.ColorConstant;
@@ -52,6 +54,9 @@ public class Employee_VeTour extends JPanel implements ActionListener {
     private javax.swing.table.DefaultTableModel tblModel;
     private javax.swing.JTabbedPane tpnSearch;
     private javax.swing.JTextField txtSearchMaVe;
+    private String[] cols = new VeTour().getTitle().split(";");
+    private ArrayList<VeTour> dsVeTour = new ArrayList<VeTour>();
+    private String[] cbxItem = {"Sắp xếp theo mã vé", "Sắp xếp theo ngày đi", "Sắp xếp thep khách hàng"};
 
     public Employee_VeTour() {
 	setBackground(ColorConstant.BACKGROUND_NORMAL);
@@ -79,7 +84,6 @@ public class Employee_VeTour extends JPanel implements ActionListener {
 	 * Table
 	 */
 	{
-	    String[] cols = new VeTour().getTitle().split(";");
 	    tblModel = new javax.swing.table.DefaultTableModel(cols, 0);
 	    tblVeTour = new javax.swing.JTable(tblModel);
 	}
@@ -105,10 +109,8 @@ public class Employee_VeTour extends JPanel implements ActionListener {
 		new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	lblFilter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblFilter.setText("Loc Theo:");
+	lblFilter.setText("Lọc Theo:");
 
-	cbxFilter.setModel(
-		new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
 	scrData.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	scrData.setViewportView(tblVeTour);
@@ -220,6 +222,9 @@ public class Employee_VeTour extends JPanel implements ActionListener {
 					.addComponent(pnData, javax.swing.GroupLayout.DEFAULT_SIZE,
 						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addContainerGap()));
+		for(int i=0; i<cbxItem.length;i++) {
+			cbxFilter.addItem(cbxItem[i]);
+		}
     }
 
     private void event() {
@@ -397,16 +402,43 @@ public class Employee_VeTour extends JPanel implements ActionListener {
 	    tblModel.addRow(data);
 	}
     }
+    private void loadDataToTable(ArrayList<VeTour> dsIn, DefaultTableModel model) {
+    	model.setRowCount(0);
+    	for(VeTour vt:dsIn) {
+    		addOneRowToTable(vt, model);
+    	}
+    }
 
+    private void addOneRowToTable(VeTour vt, DefaultTableModel model) {
+		model.addRow(
+			new Object[] {vt.getMaVe(), vt.getHopDong().getKhachHang().getTenKhachHang(), vt.getHopDong().getTourDuLich().getTenTour(), vt.getHopDong().getTourDuLich().getNgayDi()});
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	Object o = e.getSource();
 	// Search
 	if (o.equals(btnSearchMaVe)) {
-
+		dsVeTour = DAO_VeTour.getAllVeTour();
+		if(txtSearchMaVe.getText().trim().equals("")||txtSearchMaVe.getText().trim().equals(null)) {
+			loadDataToTable(dsVeTour, tblModel);
+		} else {
+			loadDataToTable(CtrlVeTour.locVeTourTheoMaVe(dsVeTour, txtSearchMaVe.getText().trim()), tblModel);
+		}
+		txtSearchMaVe.setText("");
 	}
 
+	if(o.equals(cbxFilter)) {
+		//{"Sắp xếp theo mã vé", "Sắp xếp theo ngày đi", "Sắp xếp theo khách hàng"}
+		dsVeTour = DAO_VeTour.getAllVeTour();
+		if(cbxFilter.getSelectedIndex()==0) {
+			loadDataToTable(CtrlVeTour.sapXepVeTourTheoMa(dsVeTour), tblModel);
+		} else if(cbxFilter.getSelectedIndex()==1) {
+			loadDataToTable(CtrlVeTour.sapXepVeTourTheoNgay(dsVeTour), tblModel);
+		} else if(cbxFilter.getSelectedIndex()==2) {
+			loadDataToTable(CtrlVeTour.sapVeTourTheoTenKH(dsVeTour), tblModel);
+		}
+	}
 	// Action
 	if (o.equals(btnInfo)) {
 	    // Lấy chỉ số của hàng đang được chọn

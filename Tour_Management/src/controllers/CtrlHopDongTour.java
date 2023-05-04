@@ -8,9 +8,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import entity.HopDongTour;
-import entity.KhachHang;
-import entity.TourDuLich;
-import entity.HopDongTour;
 
 public class CtrlHopDongTour {
 	/**
