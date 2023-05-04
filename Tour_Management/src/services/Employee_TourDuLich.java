@@ -19,7 +19,7 @@ import controllers.CtrlTourDuLich;
 import entity.TourDuLich;
 import utils.constants.ColorConstant;
 
-public class Employee_TourDuLich extends JPanel  implements ActionListener,MouseListener{
+public class Employee_TourDuLich extends JPanel implements ActionListener, MouseListener {
 
     /**
      * 
@@ -54,9 +54,8 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
     private javax.swing.JTextField txtSearchTinhThanh;
     private javax.swing.JTextField txtSearchMaTour;
     private javax.swing.JTextField txtSearchThongTin;
-    
     private String[] cols = new TourDuLich().getTitle().split(";");
-    private ArrayList<TourDuLich> dsTourDuLich = new ArrayList<TourDuLich>();
+	ArrayList<TourDuLich> dsTourDuLich = new ArrayList<TourDuLich>();
 
     public Employee_TourDuLich() {
 	setBackground(ColorConstant.BACKGROUND_NORMAL);
@@ -179,17 +178,17 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 	// TODO Auto-generated method stub
 	javax.swing.GroupLayout pnSearchMaTourLayout = new javax.swing.GroupLayout(pnSearchMaTour);
 	pnSearchMaTour.setLayout(pnSearchMaTourLayout);
-	pnSearchMaTourLayout
-		.setHorizontalGroup(pnSearchMaTourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-			.addGroup(pnSearchMaTourLayout.createSequentialGroup().addContainerGap()
-				.addComponent(lblSearchMaTour, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
-					javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addGap(18, 18, 18)
-				.addComponent(txtSearchMaTour, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
-				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-				.addComponent(btnSearchMaTour, javax.swing.GroupLayout.PREFERRED_SIZE, 165,
-					javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addContainerGap()));
+	pnSearchMaTourLayout.setHorizontalGroup(pnSearchMaTourLayout
+		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		.addGroup(pnSearchMaTourLayout.createSequentialGroup().addContainerGap()
+			.addComponent(lblSearchMaTour, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
+				javax.swing.GroupLayout.PREFERRED_SIZE)
+			.addGap(18, 18, 18)
+			.addComponent(txtSearchMaTour, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+			.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+			.addComponent(btnSearchMaTour, javax.swing.GroupLayout.PREFERRED_SIZE, 165,
+				javax.swing.GroupLayout.PREFERRED_SIZE)
+			.addContainerGap()));
 	pnSearchMaTourLayout.setVerticalGroup(pnSearchMaTourLayout
 		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 		.addGroup(pnSearchMaTourLayout.createSequentialGroup().addContainerGap().addGroup(pnSearchMaTourLayout
@@ -271,24 +270,24 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 			.addContainerGap(9, Short.MAX_VALUE)));
 
 	tpnSearch.addTab("Tìm theo ngày đi", pnSearchNgayDi);
-	
-	pnSearchThongTinLayout.setVerticalGroup(pnSearchThongTinLayout
-			.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-			.addGroup(pnSearchThongTinLayout.createSequentialGroup().addContainerGap()
-				.addGroup(pnSearchThongTinLayout
-					.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-					.addGroup(pnSearchThongTinLayout
-						.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-						.addComponent(txtSearchThongTin, javax.swing.GroupLayout.PREFERRED_SIZE,
-							javax.swing.GroupLayout.DEFAULT_SIZE,
-							javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblSearchThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 31,
-							javax.swing.GroupLayout.PREFERRED_SIZE))
-					.addComponent(btnSearchThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
-						Short.MAX_VALUE))
-				.addContainerGap(9, Short.MAX_VALUE)));
 
-		tpnSearch.addTab("Tìm theo thông tin Tour", pnSearchThongTin);
+	pnSearchThongTinLayout.setVerticalGroup(pnSearchThongTinLayout
+		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		.addGroup(pnSearchThongTinLayout.createSequentialGroup().addContainerGap()
+			.addGroup(pnSearchThongTinLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+				.addGroup(pnSearchThongTinLayout
+					.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+					.addComponent(txtSearchThongTin, javax.swing.GroupLayout.PREFERRED_SIZE,
+						javax.swing.GroupLayout.DEFAULT_SIZE,
+						javax.swing.GroupLayout.PREFERRED_SIZE)
+					.addComponent(lblSearchThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 31,
+						javax.swing.GroupLayout.PREFERRED_SIZE))
+				.addComponent(btnSearchThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
+					Short.MAX_VALUE))
+			.addContainerGap(9, Short.MAX_VALUE)));
+
+	tpnSearch.addTab("Tìm theo thông tin Tour", pnSearchThongTin);
 
 	javax.swing.GroupLayout pnActionLayout = new javax.swing.GroupLayout(pnAction);
 	pnAction.setLayout(pnActionLayout);
@@ -338,7 +337,8 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 	pnDataLayout.setVerticalGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 		.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDataLayout.createSequentialGroup()
 			.addGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-				.addComponent(lblLocTheo).addComponent(cbxLocTheo, javax.swing.GroupLayout.PREFERRED_SIZE,
+				.addComponent(lblLocTheo)
+				.addComponent(cbxLocTheo, javax.swing.GroupLayout.PREFERRED_SIZE,
 					javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
 			.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 			.addComponent(scrData, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
@@ -372,7 +372,7 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 	
 	event();
     }
-    
+
     private void event() {
     	this.btnSearchMaTour.addActionListener(this);
     	this.btnSearchNgayDi.addActionListener(this);
@@ -398,20 +398,24 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
     	 * 
     	 * 
     	*/
-    	
     }
-    
+
     private void loadDataToTable(ArrayList<TourDuLich> dsIn, DefaultTableModel model) {
     	model.setRowCount(0);
     	for(TourDuLich tour:dsIn) {
     		addOneRowToTable(tour, model);
     	}
+	for (TourDuLich tour : dsIn) {
+	    addOneRowToTable(tour, model);
+	}
     }
-    
+
     private void addOneRowToTable(TourDuLich tour, DefaultTableModel model) {
-    	String trangThai;
-    	trangThai = tour.getTrangThaiTour()?"Hoạt động":"Đã đóng";
-    	model.addRow(new Object [] {tour.getMaTour(), tour.getTenTour(), tour.getMoTa(), tour.getNgayDi(), tour.getNoiDi(), tour.getSoNgayDuKien(), tour.getGiaTour(), trangThai, tour.getDiaDanh().getTenDiaDanh()});
+	String trangThai;
+	trangThai = tour.getTrangThaiTour() ? "Hoạt động" : "Đã đóng";
+	model.addRow(
+		new Object[] { tour.getMaTour(), tour.getTenTour(), tour.getMoTa(), tour.getNgayDi(), tour.getNoiDi(),
+			tour.getSoNgayDuKien(), tour.getGiaTour(), trangThai, tour.getDiaDanh().getTenDiaDanh() });
     }
 
 	@Override
@@ -486,33 +490,33 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 		
 	}
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void mouseClicked(MouseEvent e) {
+	// TODO Auto-generated method stub
 
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void mousePressed(MouseEvent e) {
+	// TODO Auto-generated method stub
 
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void mouseReleased(MouseEvent e) {
+	// TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+	// TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+	// TODO Auto-generated method stub
+
+    }
 }

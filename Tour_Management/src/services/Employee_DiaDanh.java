@@ -522,9 +522,116 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = -1776722057797549712L;
+	private javax.swing.JLabel lblMaDiaDanh;
+	private javax.swing.JLabel lblTenDiaDanh;
+	private javax.swing.JLabel lblTinhThanh;
+	private javax.swing.JPanel pnInfo;
+	private javax.swing.JTextField txtMaDiaDanh;
+	private javax.swing.JTextField txtTenDiaDanh;
+	private javax.swing.JTextField txtTenTinhThanh;
 
 	private FrameInfoDiaDanh(String[] data) {
+	    this.setTitle("SE Tourist - Thong Tin Dia Danh");
+	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
+	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	    this.setResizable(false);
+	    this.setLocationRelativeTo(null);
+	    this.setMaximumSize(new java.awt.Dimension(450, 290));
+	    this.setMinimumSize(new java.awt.Dimension(450, 290));
 
+	    this.init();
+	    this.style();
+	    this.preset();
+	    this.event(data);
+	}
+
+	private void init() {
+	    // TODO Auto-generated method stub
+	    pnInfo = new javax.swing.JPanel();
+	    lblMaDiaDanh = new javax.swing.JLabel();
+	    txtMaDiaDanh = new javax.swing.JTextField();
+	    lblTenDiaDanh = new javax.swing.JLabel();
+	    txtTenDiaDanh = new javax.swing.JTextField();
+	    lblTinhThanh = new javax.swing.JLabel();
+	    txtTenTinhThanh = new javax.swing.JTextField();
+	}
+
+	private void style() {
+	    // TODO Auto-generated method stub
+	    pnInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(
+		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
+		    "Thong Tin Dia Danh", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+
+	    lblMaDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    lblMaDiaDanh.setText("Ma Dia Danh:");
+
+	    txtMaDiaDanh.setEditable(false);
+	    txtMaDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+	    lblTenDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    lblTenDiaDanh.setText("Ten Dia Danh:");
+
+	    txtTenDiaDanh.setEditable(false);
+	    txtTenDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+	    lblTinhThanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    lblTinhThanh.setText("Tinh Thanh:");
+
+	    txtTenTinhThanh.setEditable(false);
+	    txtTenTinhThanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	}
+
+	private void preset() {
+	    // TODO Auto-generated method stub
+	    javax.swing.GroupLayout pnInfoLayout = new javax.swing.GroupLayout(pnInfo);
+	    pnInfo.setLayout(pnInfoLayout);
+	    pnInfoLayout.setHorizontalGroup(pnInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(pnInfoLayout.createSequentialGroup().addContainerGap().addGroup(pnInfoLayout
+			    .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			    .addComponent(txtMaDiaDanh, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+			    .addComponent(txtTenDiaDanh)
+			    .addComponent(lblMaDiaDanh, javax.swing.GroupLayout.PREFERRED_SIZE, 121,
+				    javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addComponent(lblTenDiaDanh).addComponent(lblTinhThanh)
+			    .addComponent(txtTenTinhThanh, javax.swing.GroupLayout.Alignment.TRAILING))
+			    .addContainerGap()));
+	    pnInfoLayout.setVerticalGroup(pnInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(pnInfoLayout.createSequentialGroup().addContainerGap().addComponent(lblMaDiaDanh)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addComponent(txtMaDiaDanh, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+			    .addComponent(lblTenDiaDanh)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addComponent(txtTenDiaDanh, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+			    .addComponent(lblTinhThanh)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+			    .addComponent(txtTenTinhThanh, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addContainerGap()));
+
+	    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+	    getContentPane().setLayout(layout);
+	    layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(layout.createSequentialGroup().addContainerGap().addComponent(pnInfo,
+			    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+			    .addContainerGap()));
+	    layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(layout.createSequentialGroup().addContainerGap()
+			    .addComponent(pnInfo, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+	}
+
+	private void event(String[] data) {
+	    // TODO Auto-generated method stub
+	    this.txtMaDiaDanh.setText(data[0]);
+	    this.txtTenDiaDanh.setText(data[1]);
+	    this.txtTenTinhThanh.setText(data[2]);
 	}
     }
 
@@ -618,12 +725,14 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	    btnAdd.setForeground(new java.awt.Color(255, 255, 255));
 	    btnAdd.setText("Them Dia Danh");
 	    btnAdd.setToolTipText("Them dia danh moi");
+	    btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
 	    btnCancel.setBackground(new java.awt.Color(255, 0, 0));
 	    btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnCancel.setForeground(new java.awt.Color(255, 255, 255));
 	    btnCancel.setText("Huy");
 	    btnCancel.setToolTipText("Huy thao tac them");
+	    btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 	}
 
 	private void preset() {
@@ -747,15 +856,298 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	}
     }
 
-    private class FrameModifyDiaDanh extends JFrame {
+    private class FrameModifyDiaDanh extends JFrame implements ActionListener {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7924417023540325361L;
+	private javax.swing.JButton btnCancel;
+	private javax.swing.JButton btnModify;
+	private javax.swing.JComboBox<String> cbxTinhThanhNew;
+	private javax.swing.JLabel lblMaDiaDanhNew;
+	private javax.swing.JLabel lblMaDiaDanhOld;
+	private javax.swing.JLabel lblTenDiaDanhNew;
+	private javax.swing.JLabel lblTenDiaDanhOld;
+	private javax.swing.JLabel lblTinhThanhNew;
+	private javax.swing.JLabel lblTinhThanhOld;
+	private javax.swing.JPanel pnAction;
+	private javax.swing.JPanel pnNew;
+	private javax.swing.JPanel pnOld;
+	private javax.swing.JTextField txtMaDiaDanhNew;
+	private javax.swing.JTextField txtMaDiaDanhOld;
+	private javax.swing.JTextField txtTenDiaDanhNew;
+	private javax.swing.JTextField txtTenDiaDanhOld;
+	private javax.swing.JTextField txtTenTinhThanhOld;
 
 	private FrameModifyDiaDanh(String[] data) {
+	    this.setTitle("SE Tourist - Thay Doi Dia Danh");
+	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
+	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	    this.setResizable(false);
+	    this.setLocationRelativeTo(null);
+	    this.setMaximumSize(new java.awt.Dimension(850, 390));
+	    this.setMinimumSize(new java.awt.Dimension(850, 390));
 
+	    this.init();
+	    this.style();
+	    this.preset();
+	    this.event(data);
+	}
+
+	private void init() {
+	    // TODO Auto-generated method stub
+	    pnOld = new javax.swing.JPanel();
+	    lblMaDiaDanhOld = new javax.swing.JLabel();
+	    txtMaDiaDanhOld = new javax.swing.JTextField();
+	    lblTenDiaDanhOld = new javax.swing.JLabel();
+	    txtTenDiaDanhOld = new javax.swing.JTextField();
+	    lblTinhThanhOld = new javax.swing.JLabel();
+	    txtTenTinhThanhOld = new javax.swing.JTextField();
+	    pnNew = new javax.swing.JPanel();
+	    lblMaDiaDanhNew = new javax.swing.JLabel();
+	    txtMaDiaDanhNew = new javax.swing.JTextField();
+	    lblTenDiaDanhNew = new javax.swing.JLabel();
+	    txtTenDiaDanhNew = new javax.swing.JTextField();
+	    lblTinhThanhNew = new javax.swing.JLabel();
+	    cbxTinhThanhNew = new javax.swing.JComboBox<>();
+	    pnAction = new javax.swing.JPanel();
+	    btnModify = new javax.swing.JButton();
+	    btnCancel = new javax.swing.JButton();
+	}
+
+	private void style() {
+	    // TODO Auto-generated method stub
+	    pnOld.setBorder(javax.swing.BorderFactory.createTitledBorder(
+		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Thong Tin Cu",
+		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+
+	    lblMaDiaDanhOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    lblMaDiaDanhOld.setText("Ma Dia Danh:");
+
+	    txtMaDiaDanhOld.setEditable(false);
+	    txtMaDiaDanhOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+	    lblTenDiaDanhOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    lblTenDiaDanhOld.setText("Ten Dia Danh:");
+
+	    txtTenDiaDanhOld.setEditable(false);
+	    txtTenDiaDanhOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+	    lblTinhThanhOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    lblTinhThanhOld.setText("Tinh Thanh:");
+
+	    txtTenTinhThanhOld.setEditable(false);
+	    txtTenTinhThanhOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+	    pnNew.setBorder(javax.swing.BorderFactory.createTitledBorder(
+		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Thong Tin Moi",
+		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+
+	    lblMaDiaDanhNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    lblMaDiaDanhNew.setText("Ma Dia Danh:");
+
+	    txtMaDiaDanhNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    txtMaDiaDanhNew.setEditable(false);
+
+	    lblTenDiaDanhNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    lblTenDiaDanhNew.setText("Ten Dia Danh:");
+
+	    txtTenDiaDanhNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+	    lblTinhThanhNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    lblTinhThanhNew.setText("Tinh Thanh:");
+
+	    cbxTinhThanhNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    cbxTinhThanhNew.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang",
+		    "Bà Rịa – Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định",
+		    "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk",
+		    "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội",
+		    "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang",
+		    "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An",
+		    "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi",
+		    "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên",
+		    "Thanh Hóa", "Thừa Thiên Huế", "Tiền Giang", "Thành phố Hồ Chí Minh", "Trà Vinh", "Tuyên Quang",
+		    "Vĩnh Long", "Vĩnh Phúc", "Yên Bái" }));
+	    cbxTinhThanhNew.setSelectedIndex(-1);
+	    cbxTinhThanhNew.setToolTipText("Chon Tinh Thanh");
+	    cbxTinhThanhNew.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chon Tac Vu",
+		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+
+	    btnModify.setBackground(new java.awt.Color(0, 255, 0));
+	    btnModify.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+	    btnModify.setForeground(new java.awt.Color(255, 255, 255));
+	    btnModify.setText("Thay Doi Dia Danh");
+	    btnModify.setToolTipText("Them dia danh moi");
+	    btnModify.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+	    btnCancel.setBackground(new java.awt.Color(255, 0, 0));
+	    btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+	    btnCancel.setForeground(new java.awt.Color(255, 255, 255));
+	    btnCancel.setText("Huy");
+	    btnCancel.setToolTipText("Huy thao tac them");
+	    btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+	}
+
+	private void preset() {
+	    // TODO Auto-generated method stub
+	    javax.swing.GroupLayout pnOldLayout = new javax.swing.GroupLayout(pnOld);
+	    pnOld.setLayout(pnOldLayout);
+	    pnOldLayout.setHorizontalGroup(pnOldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(pnOldLayout.createSequentialGroup().addContainerGap().addGroup(pnOldLayout
+			    .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			    .addComponent(txtMaDiaDanhOld, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+			    .addComponent(txtTenDiaDanhOld)
+			    .addComponent(lblMaDiaDanhOld, javax.swing.GroupLayout.PREFERRED_SIZE, 121,
+				    javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addComponent(lblTenDiaDanhOld).addComponent(lblTinhThanhOld)
+			    .addComponent(txtTenTinhThanhOld, javax.swing.GroupLayout.Alignment.TRAILING))
+			    .addContainerGap()));
+	    pnOldLayout.setVerticalGroup(pnOldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(pnOldLayout.createSequentialGroup().addContainerGap().addComponent(lblMaDiaDanhOld)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addComponent(txtMaDiaDanhOld, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+			    .addComponent(lblTenDiaDanhOld)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addComponent(txtTenDiaDanhOld, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+			    .addComponent(lblTinhThanhOld)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+			    .addComponent(txtTenTinhThanhOld, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addContainerGap()));
+
+	    javax.swing.GroupLayout pnNewLayout = new javax.swing.GroupLayout(pnNew);
+	    pnNew.setLayout(pnNewLayout);
+	    pnNewLayout.setHorizontalGroup(pnNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(pnNewLayout.createSequentialGroup().addContainerGap()
+			    .addGroup(pnNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				    .addComponent(txtMaDiaDanhNew).addComponent(txtTenDiaDanhNew)
+				    .addComponent(lblMaDiaDanhNew, javax.swing.GroupLayout.PREFERRED_SIZE, 121,
+					    javax.swing.GroupLayout.PREFERRED_SIZE)
+				    .addComponent(lblTenDiaDanhNew).addComponent(lblTinhThanhNew)
+				    .addComponent(cbxTinhThanhNew, 0, 362, Short.MAX_VALUE))
+			    .addContainerGap()));
+	    pnNewLayout.setVerticalGroup(pnNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(pnNewLayout.createSequentialGroup().addContainerGap().addComponent(lblMaDiaDanhNew)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addComponent(txtMaDiaDanhNew, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+			    .addComponent(lblTenDiaDanhNew)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addComponent(txtTenDiaDanhNew, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+			    .addComponent(lblTinhThanhNew)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+			    .addComponent(cbxTinhThanhNew, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addContainerGap()));
+
+	    javax.swing.GroupLayout pnActionLayout = new javax.swing.GroupLayout(pnAction);
+	    pnAction.setLayout(pnActionLayout);
+	    pnActionLayout
+		    .setHorizontalGroup(pnActionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			    .addGroup(pnActionLayout.createSequentialGroup().addContainerGap()
+				    .addComponent(btnModify, javax.swing.GroupLayout.PREFERRED_SIZE, 190,
+					    javax.swing.GroupLayout.PREFERRED_SIZE)
+				    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+				    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 184,
+					    javax.swing.GroupLayout.PREFERRED_SIZE)
+				    .addContainerGap(372, Short.MAX_VALUE)));
+
+	    pnActionLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL,
+		    new java.awt.Component[] { btnCancel, btnModify });
+
+	    pnActionLayout.setVerticalGroup(pnActionLayout
+		    .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(pnActionLayout.createSequentialGroup()
+			    .addGroup(pnActionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+				    .addComponent(btnModify).addComponent(btnCancel,
+					    javax.swing.GroupLayout.PREFERRED_SIZE, 40,
+					    javax.swing.GroupLayout.PREFERRED_SIZE))
+			    .addContainerGap()));
+
+	    pnActionLayout.linkSize(javax.swing.SwingConstants.VERTICAL,
+		    new java.awt.Component[] { btnCancel, btnModify });
+
+	    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+	    getContentPane().setLayout(layout);
+	    layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(layout.createSequentialGroup().addContainerGap()
+			    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				    .addGroup(layout.createSequentialGroup()
+					    .addComponent(pnOld, javax.swing.GroupLayout.PREFERRED_SIZE,
+						    javax.swing.GroupLayout.DEFAULT_SIZE,
+						    javax.swing.GroupLayout.PREFERRED_SIZE)
+					    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+					    .addComponent(pnNew, javax.swing.GroupLayout.PREFERRED_SIZE,
+						    javax.swing.GroupLayout.DEFAULT_SIZE,
+						    javax.swing.GroupLayout.PREFERRED_SIZE))
+				    .addComponent(pnAction, javax.swing.GroupLayout.PREFERRED_SIZE,
+					    javax.swing.GroupLayout.DEFAULT_SIZE,
+					    javax.swing.GroupLayout.PREFERRED_SIZE))
+			    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+	    layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout
+			    .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			    .addComponent(pnNew, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addComponent(pnOld, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addComponent(pnAction, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+	}
+
+	private void event(String[] data) {
+	    // TODO Auto-generated method stub
+	    // Text
+	    this.txtMaDiaDanhOld.setText(data[0]);
+	    this.txtMaDiaDanhNew.setText(data[0]);
+	    this.txtTenDiaDanhOld.setText(data[1]);
+	    this.txtTenTinhThanhOld.setText(data[2]);
+
+	    // Button
+	    this.btnModify.addActionListener(this);
+	    this.btnCancel.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+	    // TODO Auto-generated method stub
+	    Object o = e.getSource();
+
+	    if (o.equals(btnCancel))
+		this.dispose();
+	    if (o.equals(btnModify)) {
+		DiaDanh modifyDD = new DiaDanh(txtMaDiaDanhNew.getText(), txtTenDiaDanhNew.getText(),
+			cbxTinhThanhNew.getSelectedItem().toString());
+
+		if (DAO_DiaDanh.suaDiaDanh(modifyDD)) {
+		    JOptionPane.showInternalMessageDialog(null, "Cap Nhat Thanh Cong");
+		    tblModel.setRowCount(0);
+		    loadData();
+		    this.dispose();
+		} else {
+		    JOptionPane.showInternalMessageDialog(null, "Cap Nhat That Bai", "Loi Cap Nhat",
+			    JOptionPane.ERROR_MESSAGE);
+		    this.dispose();
+		}
+
+	    }
 	}
     }
 
