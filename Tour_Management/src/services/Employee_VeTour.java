@@ -8,10 +8,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
+import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
@@ -30,6 +32,7 @@ import com.itextpdf.text.DocumentException;
 import DAO.DAO_VeTour;
 import controllers.PrintTicket;
 import entity.VeTour;
+import utils.LoadSave;
 import utils.constants.ColorConstant;
 
 public class Employee_VeTour extends JPanel implements ActionListener {
@@ -501,9 +504,173 @@ public class Employee_VeTour extends JPanel implements ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = -5991069744176954328L;
+	private javax.swing.JLabel lblDiaDanh;
+	private javax.swing.JLabel lblLogo;
+	private javax.swing.JLabel lblMaVe;
+	private javax.swing.JLabel lblNgayDi;
+	private javax.swing.JLabel lblNgayIn;
+	private javax.swing.JLabel lblTenKH;
+	private javax.swing.JLabel lblTitle;
+	private javax.swing.JPanel pnInfo;
+	private javax.swing.JTextField txtDiaDanh;
+	private javax.swing.JTextField txtNgayDi;
+	private javax.swing.JTextField txtTenKH;
 
 	public FrameInfoVeTour(String[] data) {
-	    // TODO Auto-generated constructor stub
+	    this.setTitle("SE Tourist - Thong Tin Ve Tour");
+	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
+	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	    this.setResizable(false);
+	    this.setLocationRelativeTo(null);
+//	    this.setMaximumSize(new java.awt.Dimension(420, 500));
+//	    this.setMinimumSize(new java.awt.Dimension(420, 500));
+
+	    this.init();
+	    this.style();
+	    this.preset();
+	    this.event(data);
+	}
+
+	private void init() {
+	    // TODO Auto-generated method stub
+	    pnInfo = new javax.swing.JPanel();
+	    lblLogo = new javax.swing.JLabel(new ImageIcon(LoadSave.GetSpriteAtlas(LoadSave.LOGO_LABEL)));
+	    lblTitle = new javax.swing.JLabel();
+	    lblMaVe = new javax.swing.JLabel();
+	    lblTenKH = new javax.swing.JLabel();
+	    txtTenKH = new javax.swing.JTextField();
+	    lblDiaDanh = new javax.swing.JLabel();
+	    txtDiaDanh = new javax.swing.JTextField();
+	    lblNgayDi = new javax.swing.JLabel();
+	    txtNgayDi = new javax.swing.JTextField();
+	    lblNgayIn = new javax.swing.JLabel();
+	}
+
+	private void style() {
+	    // TODO Auto-generated method stub
+	    pnInfo.setBorder(javax.swing.BorderFactory
+		    .createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
+
+	    lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+	    lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+	    lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+	    lblTitle.setText("SE Tourist -Ve Tour Du Lich");
+
+	    lblMaVe.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+	    lblMaVe.setForeground(new java.awt.Color(255, 0, 0));
+	    lblMaVe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+	    lblMaVe.setText("Ma Ve: ");
+
+	    lblTenKH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    lblTenKH.setText("Ten Khach Hang:");
+
+	    txtTenKH.setEditable(false);
+
+	    lblDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    lblDiaDanh.setText("Dia Danh:");
+
+	    txtDiaDanh.setEditable(false);
+
+	    lblNgayDi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    lblNgayDi.setText("Ngay Di:");
+
+	    txtNgayDi.setEditable(false);
+
+	    lblNgayIn.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+	    lblNgayIn.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+	    lblNgayIn.setText("Ngay in ve: ");
+
+	}
+
+	private void preset() {
+	    // TODO Auto-generated method stub
+	    javax.swing.GroupLayout pnInfoLayout = new javax.swing.GroupLayout(pnInfo);
+	    pnInfo.setLayout(pnInfoLayout);
+	    pnInfoLayout.setHorizontalGroup(pnInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(pnInfoLayout.createSequentialGroup().addGroup(pnInfoLayout
+			    .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			    .addGroup(pnInfoLayout.createSequentialGroup().addContainerGap().addGroup(pnInfoLayout
+				    .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+				    .addGroup(pnInfoLayout.createSequentialGroup().addComponent(lblTenKH)
+					    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+					    .addComponent(txtTenKH))
+				    .addGroup(pnInfoLayout.createSequentialGroup()
+					    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 47,
+						    javax.swing.GroupLayout.PREFERRED_SIZE)
+					    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+					    .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 374,
+						    javax.swing.GroupLayout.PREFERRED_SIZE))))
+			    .addGroup(pnInfoLayout.createSequentialGroup().addContainerGap().addComponent(lblDiaDanh)
+				    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+				    .addComponent(txtDiaDanh))
+			    .addGroup(pnInfoLayout.createSequentialGroup().addContainerGap().addComponent(lblNgayDi)
+				    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+				    .addComponent(txtNgayDi))
+			    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+				    pnInfoLayout.createSequentialGroup()
+					    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					    .addComponent(lblNgayIn, javax.swing.GroupLayout.PREFERRED_SIZE, 219,
+						    javax.swing.GroupLayout.PREFERRED_SIZE))
+			    .addGroup(pnInfoLayout.createSequentialGroup().addGap(149, 149, 149)
+				    .addComponent(lblMaVe, javax.swing.GroupLayout.PREFERRED_SIZE, 163,
+					    javax.swing.GroupLayout.PREFERRED_SIZE)
+				    .addGap(0, 0, Short.MAX_VALUE)))
+			    .addContainerGap()));
+
+	    pnInfoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL,
+		    new java.awt.Component[] { lblDiaDanh, lblNgayDi, lblTenKH });
+
+	    pnInfoLayout.setVerticalGroup(pnInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(pnInfoLayout.createSequentialGroup().addContainerGap()
+			    .addGroup(pnInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+				    .addComponent(lblLogo, javax.swing.GroupLayout.DEFAULT_SIZE,
+					    javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				    .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(lblMaVe)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addGroup(pnInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+				    .addComponent(lblTenKH).addComponent(txtTenKH,
+					    javax.swing.GroupLayout.PREFERRED_SIZE,
+					    javax.swing.GroupLayout.DEFAULT_SIZE,
+					    javax.swing.GroupLayout.PREFERRED_SIZE))
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addGroup(pnInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+				    .addComponent(lblDiaDanh).addComponent(txtDiaDanh,
+					    javax.swing.GroupLayout.PREFERRED_SIZE,
+					    javax.swing.GroupLayout.DEFAULT_SIZE,
+					    javax.swing.GroupLayout.PREFERRED_SIZE))
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addGroup(pnInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+				    .addComponent(lblNgayDi).addComponent(txtNgayDi,
+					    javax.swing.GroupLayout.PREFERRED_SIZE,
+					    javax.swing.GroupLayout.DEFAULT_SIZE,
+					    javax.swing.GroupLayout.PREFERRED_SIZE))
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+			    .addComponent(lblNgayIn)
+			    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+
+	    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+	    getContentPane().setLayout(layout);
+	    layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(layout.createSequentialGroup().addContainerGap().addComponent(pnInfo,
+			    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+			    .addContainerGap()));
+	    layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(layout.createSequentialGroup().addContainerGap().addComponent(pnInfo,
+			    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+			    .addContainerGap()));
+
+	    pack();
+	}
+
+	private void event(String[] data) {
+	    // TODO Auto-generated method stub
+	    this.lblMaVe.setText(lblMaVe.getText() + data[0]);
+	    this.txtTenKH.setText(data[1]);
+	    this.txtDiaDanh.setText(data[2]);
+	    this.txtNgayDi.setText(data[3]);
+	    this.lblNgayIn.setText(lblNgayIn.getText() + LocalDate.now());
 	}
     }
 
