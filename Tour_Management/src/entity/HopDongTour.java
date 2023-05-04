@@ -119,12 +119,12 @@ public class HopDongTour {
 
     @Override
     public String toString() {
-	return maHopDong + ";" + thoiGianLap + ";" + ghiChu + ";" + tongTien + ";" + nhanVien.getMaNhanVien() + ";"
-		+ khachHang.getMaKhachHang() + ";" + tourDuLich.getTenTour() + ";" + dichVu.getMaDichVu();
+	return maHopDong + ";" + thoiGianLap + ";" + ghiChu + ";" + tongTien + ";" + nhanVien.getTenNhanVien() + ";"
+		+ khachHang.getTenKhachHang() + ";" + tourDuLich.getTenTour() + ";" + dichVu.getGiaDichVu();
     }
 
     public String getTitle() {
-	return "Mã Hợp Đồng;Thời Gian Lập;Ghi Chú;Tổng Tiền;Trạng Thái;Mã Nhân Viên;Mã Khách Hàng;Tour Du Lịch;Dịch Vụ";
+	return "Mã Hợp Đồng;Thời Gian Lập;Ghi Chú;Tổng Tiền;Tên Nhân Viên;Tên Khách Hàng;Tour Du Lịch;Tiền Dịch Vụ";
     }
 
 }

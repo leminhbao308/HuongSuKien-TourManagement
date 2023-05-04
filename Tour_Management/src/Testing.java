@@ -31,7 +31,7 @@ public class Testing extends JFrame {
 	    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 	    System.setProperty("apple.laf.useScreenMenuBar", "true");
 //	    new Testing().setVisible(true);
-	    PrintTicket.printContract();
+	    PrintTicket.printContract("HD002");
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}

@@ -24,12 +24,10 @@ public class PrintTicket {
     }
 
 //    public static void printContract(String maHopDong) throws FileNotFoundException, DocumentException {
-    public static void printContract() throws DocumentException, IOException {
+    public static void printContract(String maHDT) throws DocumentException, IOException {
 //	HopDongTour hopDongTour = DAO_HopDongTour.timKiemHopDong(maHopDong);
 
-	HopDongTour hopDongTour = new HopDongTour("HD001", LocalDate.now(), "", 19000000f,
-		DAO_NhanVien.timKiemNhanVien("NV005"), DAO_KhachHang.timKiemKhachHang("KH006"),
-		DAO_TourDuLich.timKiemTour("TDL001"), DAO_DichVu.timKiemDichVu("DV003"));
+	HopDongTour hopDongTour = DAO_HopDongTour.timKiemHopDong(maHDT);
 
 	PDFCreator.createContract(hopDongTour);
     }

@@ -333,7 +333,8 @@ public class PDFCreator {
 	cell.setBorder(Rectangle.BOTTOM);
 	table.addCell(cell);
 
-	cell = new PdfPCell(new Phrase(Integer.toString(hopDong.getTourDuLich().getSoNgayDuKien()) + " ngày", font));
+	cell = new PdfPCell(new Phrase(Integer.toString(hopDong.getTourDuLich().getSoNgayDuKien()) + " Ngày"
+		+ Integer.toString(hopDong.getTourDuLich().getSoNgayDuKien() - 1) + " Đêm", font));
 	cell.setBorder(Rectangle.BOTTOM);
 	table.addCell(cell);
 
@@ -349,15 +350,11 @@ public class PDFCreator {
 	table.setSpacingBefore(10f);
 	table.setSpacingAfter(10f);
 
-	// Thêm dòng "Tổng tiền" vào bảng
-	cell = new PdfPCell(new Phrase("Tổng tiền:", new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD)));
-	cell.setPadding(10);
-	cell.setBorderColor(BaseColor.WHITE);
-	table.addCell(cell);
-
 	// Lấy giá trị của giá tour và giá dịch vụ từ CSDL
 	float giaTour = hopDong.getTourDuLich().getGiaTour();
-//	float giaDichVu = hopDong.getDichVu().getGiaDichVu();
+	float giaDichVu = hopDong.getDichVu().getGiaDichVu();
+	System.out.println(giaTour);
+	System.err.println(giaDichVu);
 
 	// Tính tổng tiền
 	float tongTien = DAO_HopDongTour.getTongTienTour(hopDong.getDichVu().getMaDichVu(),
@@ -367,23 +364,39 @@ public class PDFCreator {
 	NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
 	String tongTienFormatted = format.format(tongTien);
 
-	// Thêm giá trị của giá tour và giá dịch vụ vào bảng
-	cell = new PdfPCell(new Phrase(format.format(giaTour), new Font(Font.FontFamily.TIMES_ROMAN, 12)));
-	cell.setPadding(10);
-	cell.setBorderColor(BaseColor.WHITE);
+	cell = new PdfPCell(new Phrase("Tiền Tour", tableHeader));
+	cell.setBorder(Rectangle.BOTTOM);
 	table.addCell(cell);
 
-//	cell = new PdfPCell(new Phrase(format.format(giaDichVu), new Font(Font.FontFamily.TIMES_ROMAN, 12)));
-//	cell.setPadding(10);
-//	cell.setBorderColor(BaseColor.WHITE);
-//	table.addCell(cell);
-
-	// Thêm giá trị của tổng tiền vào bảng
-	cell = new PdfPCell(new Phrase(tongTienFormatted, new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD)));
+	// Thêm giá trị của giá tour và giá dịch vụ vào bảng
+	cell = new PdfPCell(new Phrase(format.format(giaTour), new Font(Font.FontFamily.TIMES_ROMAN, 14)));
 	cell.setPadding(10);
-	cell.setBorderColor(BaseColor.WHITE);
+	cell.setBorder(Rectangle.BOTTOM);
 	cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
 	table.addCell(cell);
+
+	cell = new PdfPCell(new Phrase("Dịch Vụ", tableHeader));
+	cell.setBorder(Rectangle.BOTTOM);
+	table.addCell(cell);
+
+	cell = new PdfPCell(new Phrase(format.format(giaDichVu), new Font(Font.FontFamily.TIMES_ROMAN, 14)));
+	cell.setPadding(10);
+	cell.setBorder(Rectangle.BOTTOM);
+	cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+	table.addCell(cell);
+
+	// Thêm giá trị của tổng tiền vào bảng
+	cell = new PdfPCell(new Phrase("Tổng Tiền", tableHeader));
+	cell.setBorder(Rectangle.BOTTOM);
+	table.addCell(cell);
+
+	cell = new PdfPCell(new Phrase(tongTienFormatted, new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD)));
+	cell.setPadding(10);
+	cell.setBorder(Rectangle.BOTTOM);
+	cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+	table.addCell(cell);
+
+	document.add(table);
 
 	// Add Footer to the document
 	Paragraph footer = new Paragraph();
