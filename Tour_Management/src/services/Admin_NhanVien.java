@@ -12,7 +12,6 @@ import java.awt.event.KeyListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
 
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
@@ -35,12 +34,9 @@ import org.jdatepicker.JDatePicker;
 
 import DAO.DAO_NhanVien;
 import DAO.DAO_TaiKhoan;
-import DAO.DAO_TourDuLich;
 import controllers.CtrlNhanVien;
-import controllers.CtrlTourDuLich;
 import entity.NhanVien;
 import entity.TaiKhoan;
-import entity.TourDuLich;
 import utils.LoadSave;
 import utils.constants.ColorConstant;
 
@@ -157,10 +153,10 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 		btnInfo.setEnabled(false);
 		btnInfo.setToolTipText("Xem thông tin nhân viên được chọn (Ctrl + I)");
 
-		btnAdd.setText("Them Nhan Vien");
+		btnAdd.setText("Thêm nhân viên");
 		btnAdd.setToolTipText("Thêm nhân viên mới (Ctrl + T)");
 
-		btnDelete.setText("Xoa Nhan Vien");
+		btnDelete.setText("xóa nhân viên");
 		btnDelete.setEnabled(false);
 		btnDelete.setToolTipText("Xóa nhân viên được chọn (Ctrl + D)");
 
@@ -1989,8 +1985,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 				}
 			}
 		}
-
-	}
+ 	}
 
 	private void loadDataToTable(ArrayList<NhanVien> dsIn, DefaultTableModel model) {
 		model.setRowCount(0);

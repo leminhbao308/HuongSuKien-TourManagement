@@ -587,31 +587,31 @@ public class Employee_VeTour extends JPanel implements ActionListener {
 
 	    lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
 	    lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	    lblTitle.setText("SE Tourist -Ve Tour Du Lich");
+	    lblTitle.setText("SE Tourist -Vé tour du lịch");
 
 	    lblMaVe.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 	    lblMaVe.setForeground(new java.awt.Color(255, 0, 0));
 	    lblMaVe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	    lblMaVe.setText("Ma Ve: ");
+	    lblMaVe.setText("Mã vé: ");
 
 	    lblTenKH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTenKH.setText("Ten Khach Hang:");
+	    lblTenKH.setText("Tên khách hàng:");
 
 	    txtTenKH.setEditable(false);
 
 	    lblDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblDiaDanh.setText("Dia Danh:");
+	    lblDiaDanh.setText("Địa danh:");
 
 	    txtDiaDanh.setEditable(false);
 
 	    lblNgayDi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblNgayDi.setText("Ngay Di:");
+	    lblNgayDi.setText("Ngày đi:");
 
 	    txtNgayDi.setEditable(false);
 
 	    lblNgayIn.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
 	    lblNgayIn.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-	    lblNgayIn.setText("Ngay in ve: ");
+	    lblNgayIn.setText("Ngày in vé: ");
 
 	}
 

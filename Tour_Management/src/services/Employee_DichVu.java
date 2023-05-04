@@ -94,12 +94,12 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	// TODO Auto-generated method stub
 	lblSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	lblSearchMa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchMa.setText("Ma Dich Vu Can Tim:");
+	lblSearchMa.setText("Mã dịch vụ cần tìm:");
 
 	txtSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
 	btnSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	btnSearchMa.setText("Tim");
+	btnSearchMa.setText("Tìm kiếm");
 
 	pnData.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Danh Sach Dich Vu",
@@ -107,28 +107,28 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 		new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	lblFilter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblFilter.setText("Loc Theo:");
+	lblFilter.setText("Lọc theo:");
 
 	scrData.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	scrData.setViewportView(tblDichVu);
 
-	pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chon Tac Vu",
+	pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chọn tác vụ",
 		javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,
 		new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-	btnInfo.setText("Xem Thong Tin");
-	btnInfo.setToolTipText("Xem Thong Tin Dich Vu (Ctr + I)");
+	btnInfo.setText("Xem thông tin");
+	btnInfo.setToolTipText("Xen thông tin (Ctr + I)");
 	btnInfo.setEnabled(false);
 
-	btnAdd.setText("Them Dich Vu");
-	btnAdd.setToolTipText("Them Dich Vu Moi (Ctrl + T)");
+	btnAdd.setText("Thêm dịch vụ");
+	btnAdd.setToolTipText("Thêm dịch vụ (Ctrl + T)");
 
-	btnDelete.setText("Xoa Dich Vu");
-	btnDelete.setToolTipText("Xoa Dich Vu Duoc Chon (Ctrl + D)");
+	btnDelete.setText("Xóa dịch vụ");
+	btnDelete.setToolTipText("Xóa dịch vụ (Ctrl + D)");
 	btnDelete.setEnabled(false);
 
-	btnModify.setText("Sua Dich Vu");
-	btnModify.setToolTipText("Sua Thong Tin Dich Vu Duoc Chon (Ctrl +M)");
+	btnModify.setText("Sửa dịch vụ");
+	btnModify.setToolTipText("Sửa thông tin dịch vụ (Ctrl +M)");
 	btnModify.setEnabled(false);
     }
 
@@ -158,7 +158,7 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 			.addComponent(btnSearchMa, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
 			.addContainerGap(9, Short.MAX_VALUE)));
 
-	tpnSearch.addTab("Tim Theo Ma", pnSearchMa);
+	tpnSearch.addTab("Tìm theo mã", pnSearchMa);
 
 	javax.swing.GroupLayout pnActionLayout = new javax.swing.GroupLayout(pnAction);
 	pnAction.setLayout(pnActionLayout);
@@ -528,7 +528,7 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	private javax.swing.JTextField txtPhuongTien;
 
 	public FrameInfoDichVu(String[] data) {
-	    this.setTitle("SE Tourist - Thong Tin Dich Vu");
+	    this.setTitle("SE Tourist - Thông tin dịch vụ");
 	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
@@ -561,23 +561,23 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	    // TODO Auto-generated method stub
 	    pnInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
-		    "Thong Tin Dich Vu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    "Thông tin dịch vụ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblMaDV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaDV.setText("Ma Dich Vu");
+	    lblMaDV.setText("Mã dịch vụ");
 
 	    txtMaDV.setEditable(false);
 	    txtMaDV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblPhuongTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblPhuongTien.setText("Phuong Tien Di Chuyen");
+	    lblPhuongTien.setText("Phương tiện di chuyển");
 
 	    txtPhuongTien.setEditable(false);
 	    txtPhuongTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblChiTiet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblChiTiet.setText("Mo Ta Chi Tiet");
+	    lblChiTiet.setText("Mô tả chi tiết");
 
 	    taChiTiet.setEditable(false);
 	    taChiTiet.setColumns(20);
@@ -586,7 +586,7 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	    scrChiTiet.setViewportView(taChiTiet);
 
 	    lblGiaTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblGiaTien.setText("Gia Tien");
+	    lblGiaTien.setText("Giá tiền");
 
 	    lblDonVi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    lblDonVi.setText("VND");
@@ -703,7 +703,7 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	private javax.swing.JTextField txtMaDV;
 
 	private FrameAddDichVu() {
-	    this.setTitle("SE Tourist - Them Dich Vu");
+	    this.setTitle("SE Tourist - Thêm dịch vụ");
 	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
@@ -739,16 +739,16 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	    // TODO Auto-generated method stub
 	    pnInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
-		    "Thong Tin Dich Vu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    "Thông tin dịch vụ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblMaDV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaDV.setText("Ma Dich Vu");
+	    lblMaDV.setText("Mã dịch vụ");
 
 	    txtMaDV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblPhuongTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblPhuongTien.setText("Phuong Tien Di Chuyen");
+	    lblPhuongTien.setText("Phương tiện di chuyển");
 
 	    cbxPhuongTien.setModel(new javax.swing.DefaultComboBoxModel<>(
 		    new String[] { "Xe đạp", "Xe ô tô (4 chỗ)", "Xe ô tô (7 chỗ)", "Xe máy (Xe số)", "Xe máy (tay ga)",
@@ -757,7 +757,7 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	    cbxPhuongTien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
 	    lblChiTiet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblChiTiet.setText("Mo Ta Chi Tiet");
+	    lblChiTiet.setText("Mô tả chi tiết");
 
 	    taChiTiet.setColumns(20);
 	    taChiTiet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -765,7 +765,7 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	    scrChiTiet.setViewportView(taChiTiet);
 
 	    lblGiaTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblGiaTien.setText("Gia Tien");
+	    lblGiaTien.setText("Giá tiền");
 
 	    lblDonVi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    lblDonVi.setText("VND");
@@ -773,21 +773,21 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	    txtGiaTien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 	    txtGiaTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chon Tac Vu",
+	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chọn tác vụ",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    btnAdd.setBackground(new java.awt.Color(0, 255, 0));
 	    btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnAdd.setForeground(new java.awt.Color(255, 255, 255));
-	    btnAdd.setText("Them Dich Vu");
-	    btnAdd.setToolTipText("Them dich vu moi");
+	    btnAdd.setText("Thêm dịch vụ");
+	    btnAdd.setToolTipText("Thêm dịch vụ mới");
 
 	    btnCancel.setBackground(new java.awt.Color(255, 0, 0));
 	    btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnCancel.setForeground(new java.awt.Color(255, 255, 255));
-	    btnCancel.setText("Huy");
-	    btnCancel.setToolTipText("Huy thao tac them");
+	    btnCancel.setText("Hủy");
+	    btnCancel.setToolTipText("Hủy thao tác");
 	}
 
 	private void preset() {
@@ -909,12 +909,12 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 			taChiTiet.getText(), Float.parseFloat(txtGiaTien.getText()));
 
 		if (DAO_DichVu.themDichVu(newDV)) {
-		    JOptionPane.showInternalMessageDialog(null, "Them Thanh Cong");
+		    JOptionPane.showInternalMessageDialog(null, "Thêm thành công");
 		    tblModel.setRowCount(0);
 		    loadData();
 		    this.dispose();
 		} else {
-		    JOptionPane.showInternalMessageDialog(null, "Them That Bai", "That Bai", JOptionPane.ERROR_MESSAGE);
+		    JOptionPane.showInternalMessageDialog(null, "Thêm thấy bại", "Thất bại", JOptionPane.ERROR_MESSAGE);
 		    this.dispose();
 		}
 	    }
@@ -954,7 +954,7 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	private javax.swing.JTextField txtPhuongTienOld;
 
 	public FrameModifyDichVu(String[] data) {
-	    this.setTitle("SE Tourist - Thay Doi Dich Vu");
+	    this.setTitle("SE Tourist - Thay đổi dịch vụ");
 	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
@@ -1005,19 +1005,19 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblMaDVOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaDVOld.setText("Ma Dich Vu");
+	    lblMaDVOld.setText("Mã dịch vụ");
 
 	    txtMaDVOld.setEditable(false);
 	    txtMaDVOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblPhuongTienOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblPhuongTienOld.setText("Phuong Tien Di Chuyen");
+	    lblPhuongTienOld.setText("Phương tiện di chuyển");
 
 	    txtPhuongTienOld.setEditable(false);
 	    txtPhuongTienOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblChiTietOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblChiTietOld.setText("Mo Ta Chi Tiet");
+	    lblChiTietOld.setText("Mô tả chi tiết");
 
 	    taChiTietOld.setEditable(false);
 	    taChiTietOld.setColumns(20);
@@ -1026,7 +1026,7 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	    scrChiTietOld.setViewportView(taChiTietOld);
 
 	    lblGiaTienOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblGiaTienOld.setText("Gia Tien");
+	    lblGiaTienOld.setText("Giá tiền");
 
 	    lblDonViOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    lblDonViOld.setText("VND");
@@ -1041,13 +1041,13 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblMaDVNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaDVNew.setText("Ma Dich Vu");
+	    lblMaDVNew.setText("Mã dịch vụ");
 
 	    txtMaDVNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    txtMaDVNew.setEditable(false);
 
 	    lblPhuongTienNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblPhuongTienNew.setText("Phuong Tien Di Chuyen");
+	    lblPhuongTienNew.setText("Phương tiện di chuyển");
 
 	    cbxPhuongTienNew.setModel(new javax.swing.DefaultComboBoxModel<>(
 		    new String[] { "Xe đạp", "Xe ô tô (4 chỗ)", "Xe ô tô (7 chỗ)", "Xe máy (Xe số)", "Xe máy (tay ga)",
@@ -1056,7 +1056,7 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	    cbxPhuongTienNew.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
 	    lblChiTietNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblChiTietNew.setText("Mo Ta Chi Tiet");
+	    lblChiTietNew.setText("Mô tả chi tiết");
 
 	    taChiTiet.setColumns(20);
 	    taChiTiet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1064,7 +1064,7 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	    scrChiTietNew.setViewportView(taChiTiet);
 
 	    lblGiaTienNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblGiaTienNew.setText("Gia Tien");
+	    lblGiaTienNew.setText("Giá tiền");
 
 	    lblDonViNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    lblDonViNew.setText("VND");
@@ -1072,21 +1072,21 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 	    txtGiaTienNew.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 	    txtGiaTienNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chon Tac Vu",
+	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chọn tác vụ",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    btnModify.setBackground(new java.awt.Color(0, 255, 0));
 	    btnModify.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnModify.setForeground(new java.awt.Color(255, 255, 255));
-	    btnModify.setText("Thay Doi Dich Vu");
-	    btnModify.setToolTipText("Thay doi thong tin dich vu");
+	    btnModify.setText("Thay đổi dịch vụ");
+	    btnModify.setToolTipText("Thay đổi dịch vụ");
 
 	    btnCancel.setBackground(new java.awt.Color(255, 0, 0));
 	    btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnCancel.setForeground(new java.awt.Color(255, 255, 255));
-	    btnCancel.setText("Huy");
-	    btnCancel.setToolTipText("Huy thao tac thay doi");
+	    btnCancel.setText("Hủy");
+	    btnCancel.setToolTipText("Hủy thao tác");
 	}
 
 	private void preset() {
@@ -1280,12 +1280,12 @@ public class Employee_DichVu extends JPanel implements ActionListener {
 		DichVu modifyDV = new DichVu(txtMaDVNew.getText(), cbxPhuongTienNew.getSelectedItem().toString(),
 			taChiTiet.getText(), Float.parseFloat(txtGiaTienNew.getText()));
 		if (DAO_DichVu.suaDichVu(modifyDV)) {
-		    JOptionPane.showInternalMessageDialog(null, "Cap Nhat Thanh Cong");
+		    JOptionPane.showInternalMessageDialog(null, "Cập nhật thành công");
 		    tblModel.setRowCount(0);
 		    loadData();
 		    this.dispose();
 		} else {
-		    JOptionPane.showInternalMessageDialog(null, "Cap Nhat That Bai", "That Bai",
+		    JOptionPane.showInternalMessageDialog(null, "Cập nahtaj thất bại ", "Thất bại",
 			    JOptionPane.ERROR_MESSAGE);
 		    this.dispose();
 		}

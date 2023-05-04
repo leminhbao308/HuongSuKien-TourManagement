@@ -569,7 +569,7 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	private javax.swing.JTextField txtTenTinhThanh;
 
 	private FrameInfoDiaDanh(String[] data) {
-	    this.setTitle("SE Tourist - Thong Tin Dia Danh");
+	    this.setTitle("SE Tourist - Thông tin địa danh");
 	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
@@ -598,23 +598,23 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	    // TODO Auto-generated method stub
 	    pnInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
-		    "Thong Tin Dia Danh", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    "Thông tin địa danh", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblMaDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaDiaDanh.setText("Ma Dia Danh:");
+	    lblMaDiaDanh.setText("Mã địa danh:");
 
 	    txtMaDiaDanh.setEditable(false);
 	    txtMaDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblTenDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTenDiaDanh.setText("Ten Dia Danh:");
+	    lblTenDiaDanh.setText("Tên địa danh:");
 
 	    txtTenDiaDanh.setEditable(false);
 	    txtTenDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblTinhThanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTinhThanh.setText("Tinh Thanh:");
+	    lblTinhThanh.setText("Tỉnh thành:");
 
 	    txtTenTinhThanh.setEditable(false);
 	    txtTenTinhThanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -974,7 +974,7 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	    txtTenDiaDanhOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblTinhThanhOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTinhThanhOld.setText("Tinh Thanh:");
+	    lblTinhThanhOld.setText("Tỉnh thành:");
 
 	    txtTenTinhThanhOld.setEditable(false);
 	    txtTenTinhThanhOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
