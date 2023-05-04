@@ -19,10 +19,12 @@ import javax.swing.KeyStroke;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 import DAO.DAO_DiaDanh;
 import DAO.DAO_NhanVien;
 import DAO.DAO_TaiKhoan;
+import controllers.CtrlDiaDanh;
 import entity.DiaDanh;
 import utils.LoadSave;
 import utils.constants.ColorConstant;
@@ -39,8 +41,8 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
     private javax.swing.JButton btnModify;
     private javax.swing.JButton btnSearchMa;
     private javax.swing.JButton btnSearchTen;
-    private javax.swing.JComboBox<String> cbxFilter;
-    private javax.swing.JLabel lblFilter;
+    private javax.swing.JComboBox<String> cbxTinhThanh;
+    private javax.swing.JLabel lblTinhThanh;
     private javax.swing.JLabel lblSearchMa;
     private javax.swing.JLabel lblSearchTen;
     private javax.swing.JPanel pnAction;
@@ -53,6 +55,18 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
     private javax.swing.JTabbedPane tpnSearch;
     private javax.swing.JTextField txtSearchMa;
     private javax.swing.JTextField txtSearchTen;
+    private String[] cols = new DiaDanh().getTitle().split(";");
+    private ArrayList<DiaDanh> dsDiaDanh = new ArrayList<DiaDanh>();
+    private String[] tinhThanh = { "An Giang", "Bà Rịa – Vũng Tàu",
+	    "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước",
+	    "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên",
+	    "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương",
+	    "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu",
+	    "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận",
+	    "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị",
+	    "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên Huế",
+	    "Tiền Giang", "Thành phố Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc",
+	    "Yên Bái" };
 
     public Employee_DiaDanh() {
 	setBackground(ColorConstant.BACKGROUND_NORMAL);
@@ -77,15 +91,14 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	txtSearchTen = new javax.swing.JTextField();
 	btnSearchTen = new javax.swing.JButton();
 	pnData = new javax.swing.JPanel();
-	lblFilter = new javax.swing.JLabel();
-	cbxFilter = new javax.swing.JComboBox<>();
+	lblTinhThanh = new javax.swing.JLabel();
+	cbxTinhThanh = new javax.swing.JComboBox<>();
 	scrData = new javax.swing.JScrollPane();
 
 	/**
 	 * Table
 	 */
 	{
-	    String[] cols = new DiaDanh().getTitle().split(";");
 	    tblModel = new javax.swing.table.DefaultTableModel(cols, 0);
 	    tblDiaDanh = new javax.swing.JTable(tblModel);
 	}
@@ -100,32 +113,29 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	// TODO Auto-generated method stub
 	lblSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	lblSearchMa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchMa.setText("Ma Dia Danh Can Tim:");
+	lblSearchMa.setText("Mã địa danh cần tìm:");
 
 	txtSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
 	btnSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	btnSearchMa.setText("Tim");
+	btnSearchMa.setText("Tìm kiếm");
 
 	lblSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	lblSearchTen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchTen.setText("Ten Dia Danh Can Tim:");
+	lblSearchTen.setText("Tên địa danh cần tìm:");
 
 	txtSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
 	btnSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	btnSearchTen.setText("Tim");
+	btnSearchTen.setText("Tìm Kiếm");
 
 	pnData.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
-		"Danh Sach Dia Danh", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		"Danh Sách Địa Danh", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-	lblFilter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblFilter.setText("Loc Theo:");
-
-	cbxFilter.setModel(
-		new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+	lblTinhThanh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+	lblTinhThanh.setText("Lọc theo:");
 
 	scrData.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	scrData.setViewportView(tblDiaDanh);
@@ -134,19 +144,19 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 		javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,
 		new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-	btnInfo.setText("Xem Thong Tin");
-	btnInfo.setToolTipText("Xem thong tin Dia Danh (Ctrl + I)");
+	btnInfo.setText("Xem Thông Tin");
+	btnInfo.setToolTipText("Xem Thông tin địa danh (Ctrl + I)");
 	btnInfo.setEnabled(false);
 
-	btnAdd.setText("Them Dia Danh");
-	btnAdd.setToolTipText("Them Dia Danh moi (Ctrl + T)");
+	btnAdd.setText("Thêm địa danh");
+	btnAdd.setToolTipText("Thêm mới địa danh (Ctrl + T)");
 
-	btnDelete.setText("Xoa Dia Danh");
-	btnDelete.setToolTipText("Xoa Dia Danh duoc chon (Ctrl + D)");
+	btnDelete.setText("Xóa địa danh");
+	btnDelete.setToolTipText("Xóa địa danh (Ctrl + D)");
 	btnDelete.setEnabled(false);
 
-	btnModify.setText("Sua Dia Danh");
-	btnModify.setToolTipText("Sua thong tin Dia Danh duoc chon (Ctrl + M)");
+	btnModify.setText("Sửa địa danh");
+	btnModify.setToolTipText("Sửa Thông tin địa danh (Ctrl + M)");
 	btnModify.setEnabled(false);
 
     }
@@ -177,7 +187,7 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 			.addComponent(btnSearchMa, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
 			.addContainerGap(9, Short.MAX_VALUE)));
 
-	tpnSearch.addTab("Tim Theo Ma", pnSearchMa);
+	tpnSearch.addTab("Tìm theo mã", pnSearchMa);
 
 	javax.swing.GroupLayout pnSearchTenLayout = new javax.swing.GroupLayout(pnSearchTen);
 	pnSearchTen.setLayout(pnSearchTenLayout);
@@ -203,7 +213,7 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 			.addComponent(btnSearchTen, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
 			.addContainerGap(9, Short.MAX_VALUE)));
 
-	tpnSearch.addTab("Tim Theo Ten", pnSearchTen);
+	tpnSearch.addTab("Tìm theo tên", pnSearchTen);
 
 	javax.swing.GroupLayout pnActionLayout = new javax.swing.GroupLayout(pnAction);
 	pnAction.setLayout(pnActionLayout);
@@ -244,9 +254,9 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 		.addGroup(pnDataLayout.createSequentialGroup().addContainerGap()
 			.addGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGroup(pnDataLayout.createSequentialGroup().addGap(0, 0, Short.MAX_VALUE)
-					.addComponent(lblFilter)
+					.addComponent(lblTinhThanh)
 					.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-					.addComponent(cbxFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 154,
+					.addComponent(cbxTinhThanh, javax.swing.GroupLayout.PREFERRED_SIZE, 154,
 						javax.swing.GroupLayout.PREFERRED_SIZE))
 				.addComponent(scrData).addComponent(pnAction, javax.swing.GroupLayout.DEFAULT_SIZE,
 					javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -254,7 +264,7 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	pnDataLayout.setVerticalGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 		.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDataLayout.createSequentialGroup()
 			.addGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-				.addComponent(lblFilter).addComponent(cbxFilter, javax.swing.GroupLayout.PREFERRED_SIZE,
+				.addComponent(lblTinhThanh).addComponent(cbxTinhThanh, javax.swing.GroupLayout.PREFERRED_SIZE,
 					javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
 			.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 			.addComponent(scrData, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
@@ -279,6 +289,9 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 					.addComponent(pnData, javax.swing.GroupLayout.DEFAULT_SIZE,
 						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addContainerGap()));
+		for(int i=0; i<tinhThanh.length;i++) {
+			cbxTinhThanh.addItem(tinhThanh[i]);
+		}
     }
 
     private void event() {
@@ -286,6 +299,7 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	// Search
 	this.btnSearchMa.addActionListener(this);
 	this.btnSearchTen.addActionListener(this);
+	this.cbxTinhThanh.addActionListener(this);
 
 	// Action
 	this.btnInfo.addActionListener(this);
@@ -297,6 +311,7 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	this.tblDiaDanh.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
 	    @Override
+	   
 	    public void valueChanged(ListSelectionEvent e) {
 		// TODO Auto-generated method stub
 		// Kiểm tra xem có dòng nào được chọn hay không
@@ -378,7 +393,7 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 			int selectedRow = tblDiaDanh.getSelectedRow();
 			String data = tblDiaDanh.getValueAt(selectedRow, 0).toString();
 
-			DAO_NhanVien.xoaNhanVien(data);
+			DAO_DiaDanh.xoaDiaDanh(data);
 			tblModel.setRowCount(0);
 			loadData();
 		    }
@@ -460,10 +475,30 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	Object o = e.getSource();
 	// Search
 	if (o.equals(btnSearchMa)) {
-
+		if(txtSearchMa.getText().trim().equals("")||txtSearchMa.getText().trim().equals(null)) {
+			dsDiaDanh= DAO_DiaDanh.getAllDiaDanh();
+			loadDataToTable(dsDiaDanh, tblModel);
+		} else {
+			dsDiaDanh = CtrlDiaDanh.loTheoMaDiaDanh(dsDiaDanh, txtSearchMa.getText().trim());
+			loadDataToTable(dsDiaDanh, tblModel);
+		}
 	}
 	if (o.equals(btnSearchTen)) {
-
+		if(txtSearchTen.getText().trim().equals("")||txtSearchTen.getText().trim().equals(null)) {
+			dsDiaDanh= DAO_DiaDanh.getAllDiaDanh();
+			loadDataToTable(dsDiaDanh, tblModel);
+		} else {
+			dsDiaDanh = CtrlDiaDanh.locDiaDanhTheoTen(dsDiaDanh, txtSearchTen.getText().trim());
+			loadDataToTable(dsDiaDanh, tblModel);
+		}
+	}
+	if(o.equals(cbxTinhThanh)) {
+		for(int i=0; i<tinhThanh.length;i++) {
+			if(cbxTinhThanh.getSelectedIndex()==i) {
+				dsDiaDanh = CtrlDiaDanh.locDiaDanhTheoTinhThanh(dsDiaDanh, tinhThanh[i]);
+			}
+		}
+		loadDataToTable(dsDiaDanh, tblModel);
 	}
 	// Action
 	if (o.equals(btnInfo)) {
@@ -685,21 +720,21 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	    // TODO Auto-generated method stub
 	    pnInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
-		    "Thong Tin Dia Danh", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    "Thông tin địa danh", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblMaDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaDiaDanh.setText("Ma Dia Danh:");
+	    lblMaDiaDanh.setText("Mã địa danh:");
 
 	    txtMaDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblTenDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTenDiaDanh.setText("Ten Dia Danh:");
+	    lblTenDiaDanh.setText("Tên địa danh:");
 
 	    txtTenDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblTinhThanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTinhThanh.setText("Tinh Thanh:");
+	    lblTinhThanh.setText("Tỉnh thành");
 
 	    cbxTinhThanh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    cbxTinhThanh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang", "Bà Rịa – Vũng Tàu",
@@ -713,25 +748,25 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 		    "Tiền Giang", "Thành phố Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc",
 		    "Yên Bái" }));
 	    cbxTinhThanh.setSelectedIndex(-1);
-	    cbxTinhThanh.setToolTipText("Chon Tinh Thanh");
+	    cbxTinhThanh.setToolTipText("Chọn tỉnh thành");
 	    cbxTinhThanh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chon Tac Vu",
+	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chọn tác vụ",
 		    javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    btnAdd.setBackground(new java.awt.Color(0, 255, 0));
 	    btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnAdd.setForeground(new java.awt.Color(255, 255, 255));
-	    btnAdd.setText("Them Dia Danh");
-	    btnAdd.setToolTipText("Them dia danh moi");
+	    btnAdd.setText("Thêm địa danh");
+	    btnAdd.setToolTipText("Thêm địa danh mới");
 	    btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
 	    btnCancel.setBackground(new java.awt.Color(255, 0, 0));
 	    btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnCancel.setForeground(new java.awt.Color(255, 255, 255));
-	    btnCancel.setText("Huy");
-	    btnCancel.setToolTipText("Huy thao tac them");
+	    btnCancel.setText("Hủy");
+	    btnCancel.setToolTipText("Hủy thao tác thêm");
 	    btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 	}
 
@@ -822,38 +857,38 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 				    javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 	}
 
-	private void event() {
-	    // TODO Auto-generated method stub
-	    this.btnAdd.addActionListener(this);
-	    this.btnCancel.addActionListener(this);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-	    // TODO Auto-generated method stub
-	    Object o = e.getSource();
-
-	    if (o.equals(btnCancel)) {
-		this.dispose();
-	    }
-
-	    if (o.equals(btnAdd)) {
-		if (cbxTinhThanh.getSelectedIndex() == -1) {
-		    JOptionPane.showInternalMessageDialog(null, "Hay Chon Tinh Thanh", "Thieu Thong Tin",
-			    JOptionPane.ERROR_MESSAGE);
-		} else {
-		    DiaDanh newDD = new DiaDanh(txtMaDiaDanh.getText(), txtTenDiaDanh.getText(),
-			    cbxTinhThanh.getSelectedItem().toString());
-		    if (DAO_DiaDanh.themDiaDanh(newDD)) {
-			JOptionPane.showInternalMessageDialog(null, "Them Thanh Cong");
-			tblModel.setRowCount(0);
-			loadData();
-			this.dispose();
-		    } else
-			JOptionPane.showInternalMessageDialog(null, "Them That Bai");
+		private void event() {
+		    // TODO Auto-generated method stub
+		    this.btnAdd.addActionListener(this);
+		    this.btnCancel.addActionListener(this);
 		}
-	    }
-	}
+	
+		@Override
+		public void actionPerformed(ActionEvent e) {
+		    // TODO Auto-generated method stub
+		    Object o = e.getSource();
+	
+		    if (o.equals(btnCancel)) {
+			this.dispose();
+		    }
+	
+		    if (o.equals(btnAdd)) {
+				if (cbxTinhThanh.getSelectedIndex() == -1) {
+				    JOptionPane.showInternalMessageDialog(null, "Vui lòng chọn tỉnh thành !", "Thiếu thông tin !",
+					    JOptionPane.ERROR_MESSAGE);
+				} else {
+				    DiaDanh newDD = new DiaDanh(txtMaDiaDanh.getText(), txtTenDiaDanh.getText(),
+					    cbxTinhThanh.getSelectedItem().toString());
+				    if (DAO_DiaDanh.themDiaDanh(newDD)) {
+					JOptionPane.showInternalMessageDialog(null, "Thêm thành công");
+					tblModel.setRowCount(0);
+					loadData();
+					this.dispose();
+				    } else
+					JOptionPane.showInternalMessageDialog(null, "Thêm thất bại");
+				}
+		    }
+		}
     }
 
     private class FrameModifyDiaDanh extends JFrame implements ActionListener {
@@ -881,7 +916,7 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	private javax.swing.JTextField txtTenTinhThanhOld;
 
 	private FrameModifyDiaDanh(String[] data) {
-	    this.setTitle("SE Tourist - Thay Doi Dia Danh");
+	    this.setTitle("SE Tourist - Thay đổi địa danh");
 	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
 	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    this.setResizable(false);
@@ -924,13 +959,13 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblMaDiaDanhOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaDiaDanhOld.setText("Ma Dia Danh:");
+	    lblMaDiaDanhOld.setText("Mã địa danh:");
 
 	    txtMaDiaDanhOld.setEditable(false);
 	    txtMaDiaDanhOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblTenDiaDanhOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTenDiaDanhOld.setText("Ten Dia Danh:");
+	    lblTenDiaDanhOld.setText("Tên đia danh:");
 
 	    txtTenDiaDanhOld.setEditable(false);
 	    txtTenDiaDanhOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -947,18 +982,18 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	    lblMaDiaDanhNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblMaDiaDanhNew.setText("Ma Dia Danh:");
+	    lblMaDiaDanhNew.setText("Mã địa danh:");
 
 	    txtMaDiaDanhNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    txtMaDiaDanhNew.setEditable(false);
 
 	    lblTenDiaDanhNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTenDiaDanhNew.setText("Ten Dia Danh:");
+	    lblTenDiaDanhNew.setText("Tên địa danh:");
 
 	    txtTenDiaDanhNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
 	    lblTinhThanhNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-	    lblTinhThanhNew.setText("Tinh Thanh:");
+	    lblTinhThanhNew.setText("Tỉnh thành:");
 
 	    cbxTinhThanhNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 	    cbxTinhThanhNew.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang",
@@ -972,7 +1007,7 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 		    "Thanh Hóa", "Thừa Thiên Huế", "Tiền Giang", "Thành phố Hồ Chí Minh", "Trà Vinh", "Tuyên Quang",
 		    "Vĩnh Long", "Vĩnh Phúc", "Yên Bái" }));
 	    cbxTinhThanhNew.setSelectedIndex(-1);
-	    cbxTinhThanhNew.setToolTipText("Chon Tinh Thanh");
+	    cbxTinhThanhNew.setToolTipText("Chọn tỉnh thành");
 	    cbxTinhThanhNew.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
 	    pnAction.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chon Tac Vu",
@@ -982,15 +1017,15 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	    btnModify.setBackground(new java.awt.Color(0, 255, 0));
 	    btnModify.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnModify.setForeground(new java.awt.Color(255, 255, 255));
-	    btnModify.setText("Thay Doi Dia Danh");
-	    btnModify.setToolTipText("Them dia danh moi");
+	    btnModify.setText("Thay đổi địa danh");
+	    btnModify.setToolTipText("Thêm địa danh mới");
 	    btnModify.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
 	    btnCancel.setBackground(new java.awt.Color(255, 0, 0));
 	    btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 	    btnCancel.setForeground(new java.awt.Color(255, 255, 255));
-	    btnCancel.setText("Huy");
-	    btnCancel.setToolTipText("Huy thao tac them");
+	    btnCancel.setText("Hủy");
+	    btnCancel.setToolTipText("Hủy thêm");
 	    btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 	}
 
@@ -1125,30 +1160,41 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	    this.btnCancel.addActionListener(this);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-	    // TODO Auto-generated method stub
-	    Object o = e.getSource();
-
-	    if (o.equals(btnCancel))
-		this.dispose();
-	    if (o.equals(btnModify)) {
-		DiaDanh modifyDD = new DiaDanh(txtMaDiaDanhNew.getText(), txtTenDiaDanhNew.getText(),
-			cbxTinhThanhNew.getSelectedItem().toString());
-
-		if (DAO_DiaDanh.suaDiaDanh(modifyDD)) {
-		    JOptionPane.showInternalMessageDialog(null, "Cap Nhat Thanh Cong");
-		    tblModel.setRowCount(0);
-		    loadData();
-		    this.dispose();
-		} else {
-		    JOptionPane.showInternalMessageDialog(null, "Cap Nhat That Bai", "Loi Cap Nhat",
-			    JOptionPane.ERROR_MESSAGE);
-		    this.dispose();
+		@Override
+		public void actionPerformed(ActionEvent e) {
+		    // TODO Auto-generated method stub
+		    Object o = e.getSource();
+	
+		    if (o.equals(btnCancel))
+			this.dispose();
+		    if (o.equals(btnModify)) {
+		    	DiaDanh modifyDD = new DiaDanh(txtMaDiaDanhNew.getText(), txtTenDiaDanhNew.getText(),
+				cbxTinhThanhNew.getSelectedItem().toString());
+	
+				if (DAO_DiaDanh.suaDiaDanh(modifyDD)) {
+				    JOptionPane.showInternalMessageDialog(null, "Cập nhật thành công");
+				    tblModel.setRowCount(0);
+				    loadData();
+				    this.dispose();
+				} else {
+				    JOptionPane.showInternalMessageDialog(null, "Cập nhật thất bại !", "Lỗi cập nhật",
+					    JOptionPane.ERROR_MESSAGE);
+				    this.dispose();
+				}
+	
+		    }
 		}
-
-	    }
-	}
+    }
+    private void loadDataToTable(ArrayList<DiaDanh> dsIn, DefaultTableModel model) {
+    	model.setRowCount(0);
+    	for(DiaDanh tour:dsIn) {
+    		addOneRowToTable(tour, model);
+    	}
     }
 
+    private void addOneRowToTable(DiaDanh diaDanh, DefaultTableModel model) {
+	model.addRow(
+		new Object[] { diaDanh.getMaDiaDanh(), diaDanh.getTenDiaDanh(), diaDanh.getTinhThanh()});
+    }
 }
+

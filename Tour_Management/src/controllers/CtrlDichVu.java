@@ -36,7 +36,8 @@ public class CtrlDichVu {
      */
 	public static ArrayList<DichVu> sapXepGiaDichVuTang(ArrayList<DichVu> dsIn) {
 		ArrayList<DichVu> dsOut = new ArrayList<DichVu>();
-		Collections.sort(dsIn, new Comparator<DichVu>() {
+		dsOut = dsIn;
+		Collections.sort(dsOut, new Comparator<DichVu>() {
 			@Override
 			public int compare(DichVu o1, DichVu o2) {
 				// TODO Auto-generated method stub
@@ -53,7 +54,8 @@ public class CtrlDichVu {
      */
 	public static ArrayList<DichVu> sapXepGiaDichVuGiam(ArrayList<DichVu> dsIn) {
 		ArrayList<DichVu> dsOut = new ArrayList<DichVu>();
-		Collections.sort(dsIn, new Comparator<DichVu>() {
+		dsOut = dsIn;
+		Collections.sort(dsOut, new Comparator<DichVu>() {
 			@Override
 			public int compare(DichVu o1, DichVu o2) {
 				// TODO Auto-generated method stub
