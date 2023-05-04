@@ -4,12 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 import DAO.DAO_TourDuLich;
+import controllers.CtrlTourDuLich;
 import entity.TourDuLich;
 import utils.constants.ColorConstant;
 
@@ -23,20 +29,21 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnModify;
-    private javax.swing.JButton btnSearchDiaDanh;
+    private javax.swing.JButton btnSearchTinhThanh;
     private javax.swing.JButton btnSearchMaTour;
     private javax.swing.JButton btnSearchNgayDi;
     private javax.swing.JButton btnSearchThongTin;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JComboBox<String> cbxLocTheo;
     private org.jdatepicker.JDatePicker dpkNgayDi;
     private javax.swing.JLabel lblLocTheo;
-    private javax.swing.JLabel lblSearchDiaDanh;
+    private javax.swing.JLabel lblSearchTinhThanh;
     private javax.swing.JLabel lblSearchMaTour;
     private javax.swing.JLabel lblSearchNgayDi;
     private javax.swing.JLabel lblSearchThongTin;
     private javax.swing.JPanel pnAction;
     private javax.swing.JPanel pnData;
-    private javax.swing.JPanel pnSearchDiaDanh;
+    private javax.swing.JPanel pnSearchTinhThanh;
     private javax.swing.JPanel pnSearchMaTour;
     private javax.swing.JPanel pnSearchNgayDi;
     private javax.swing.JPanel pnSearchThongTin;
@@ -44,10 +51,11 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
     private javax.swing.JTable tblTourDuLich;
     private javax.swing.table.DefaultTableModel tblModel;
     private javax.swing.JTabbedPane tpnSearch;
-    private javax.swing.JTextField txtSearchDiaDanh;
+    private javax.swing.JTextField txtSearchTinhThanh;
     private javax.swing.JTextField txtSearchMaTour;
     private javax.swing.JTextField txtSearchThongTin;
     
+    private String[] cols = new TourDuLich().getTitle().split(";");
     private ArrayList<TourDuLich> dsTourDuLich = new ArrayList<TourDuLich>();
 
     public Employee_TourDuLich() {
@@ -66,10 +74,10 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 	lblSearchMaTour = new javax.swing.JLabel();
 	txtSearchMaTour = new javax.swing.JTextField();
 	btnSearchMaTour = new javax.swing.JButton();
-	pnSearchDiaDanh = new javax.swing.JPanel();
-	lblSearchDiaDanh = new javax.swing.JLabel();
-	txtSearchDiaDanh = new javax.swing.JTextField();
-	btnSearchDiaDanh = new javax.swing.JButton();
+	pnSearchTinhThanh = new javax.swing.JPanel();
+	lblSearchTinhThanh = new javax.swing.JLabel();
+	txtSearchTinhThanh = new javax.swing.JTextField();
+	btnSearchTinhThanh = new javax.swing.JButton();
 	pnSearchThongTin = new javax.swing.JPanel();
 	lblSearchThongTin = new javax.swing.JLabel();
 	txtSearchThongTin = new javax.swing.JTextField();
@@ -81,12 +89,12 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 	pnData = new javax.swing.JPanel();
 	lblLocTheo = new javax.swing.JLabel();
 	cbxLocTheo = new javax.swing.JComboBox<>();
+	btnRefresh = new JButton();
 	scrData = new javax.swing.JScrollPane();
 	/**
 	 * Table
 	 */
 	{
-	    String[] cols = new TourDuLich().getTitle().split(";");
 	    tblModel = new javax.swing.table.DefaultTableModel(cols, 0);
 	    tblTourDuLich = new javax.swing.JTable(tblModel);
 	}
@@ -108,14 +116,14 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 	btnSearchMaTour.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	btnSearchMaTour.setText("Tìm kiếm");
 
-	lblSearchDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	lblSearchDiaDanh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchDiaDanh.setText("Địa danh cần tìm :");
+	lblSearchTinhThanh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	lblSearchTinhThanh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+	lblSearchTinhThanh.setText("Địa danh cần tìm :");
 
-	txtSearchDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	txtSearchTinhThanh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-	btnSearchDiaDanh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	btnSearchDiaDanh.setText("Tìm Kiếm");
+	btnSearchTinhThanh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	btnSearchTinhThanh.setText("Tìm Kiếm");
 
 	lblSearchThongTin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	lblSearchThongTin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -139,7 +147,7 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 		javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	lblLocTheo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblLocTheo.setText("Chọn tỉnh thành:");
+	lblLocTheo.setText("Lọc theo:");
 
 	scrData.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	scrData.setViewportView(tblTourDuLich);
@@ -149,12 +157,22 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 		new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
 	btnInfo.setText("Xem Thông Tin");
+	btnInfo.setEnabled(false);
+	btnInfo.setToolTipText("Xem Thông Tin Tour (Ctrl + I)");
 
 	btnAdd.setText("Thêm Tour");
+	btnAdd.setToolTipText("Thêm Tour Mới (Ctrl + T)");
 
 	btnDelete.setText("Xóa Tour");
+	btnDelete.setEnabled(false);
+	btnDelete.setToolTipText("Xóa Tour Được Chọn (Ctrl + D)");
 
 	btnModify.setText("Sửa Tour");
+	btnModify.setEnabled(false);
+	btnModify.setToolTipText("Sửa Thông Tin Tour Được Chọn (Ctrl + M)");
+	
+	btnRefresh.setText("Làm mới");
+	btnRefresh.setToolTipText("Làm mới thông tin (F5)");
     }
 
     private void preset() {
@@ -186,31 +204,31 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 
 	tpnSearch.addTab("Tìm với mã Tour", pnSearchMaTour);
 
-	javax.swing.GroupLayout pnSearchDiaDanhLayout = new javax.swing.GroupLayout(pnSearchDiaDanh);
-	pnSearchDiaDanh.setLayout(pnSearchDiaDanhLayout);
-	pnSearchDiaDanhLayout.setHorizontalGroup(pnSearchDiaDanhLayout
+	javax.swing.GroupLayout pnSearchTinhThanhLayout = new javax.swing.GroupLayout(pnSearchTinhThanh);
+	pnSearchTinhThanh.setLayout(pnSearchTinhThanhLayout);
+	pnSearchTinhThanhLayout.setHorizontalGroup(pnSearchTinhThanhLayout
 		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-		.addGroup(pnSearchDiaDanhLayout.createSequentialGroup().addContainerGap()
-			.addComponent(lblSearchDiaDanh, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
+		.addGroup(pnSearchTinhThanhLayout.createSequentialGroup().addContainerGap()
+			.addComponent(lblSearchTinhThanh, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
 				javax.swing.GroupLayout.PREFERRED_SIZE)
 			.addGap(18, 18, 18)
-			.addComponent(txtSearchDiaDanh, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+			.addComponent(txtSearchTinhThanh, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
 			.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-			.addComponent(btnSearchDiaDanh, javax.swing.GroupLayout.PREFERRED_SIZE, 165,
+			.addComponent(btnSearchTinhThanh, javax.swing.GroupLayout.PREFERRED_SIZE, 165,
 				javax.swing.GroupLayout.PREFERRED_SIZE)
 			.addContainerGap()));
-	pnSearchDiaDanhLayout.setVerticalGroup(pnSearchDiaDanhLayout
+	pnSearchTinhThanhLayout.setVerticalGroup(pnSearchTinhThanhLayout
 		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-		.addGroup(pnSearchDiaDanhLayout.createSequentialGroup().addContainerGap().addGroup(pnSearchDiaDanhLayout
+		.addGroup(pnSearchTinhThanhLayout.createSequentialGroup().addContainerGap().addGroup(pnSearchTinhThanhLayout
 			.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-			.addGroup(pnSearchDiaDanhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-				.addComponent(txtSearchDiaDanh, javax.swing.GroupLayout.PREFERRED_SIZE,
+			.addGroup(pnSearchTinhThanhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+				.addComponent(txtSearchTinhThanh, javax.swing.GroupLayout.PREFERRED_SIZE,
 					javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addComponent(lblSearchDiaDanh))
-			.addComponent(btnSearchDiaDanh, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+				.addComponent(lblSearchTinhThanh))
+			.addComponent(btnSearchTinhThanh, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
 			.addContainerGap(9, Short.MAX_VALUE)));
 
-	tpnSearch.addTab("Tìm theo địa danh", pnSearchDiaDanh);
+	tpnSearch.addTab("Tìm theo Tỉnh Thành", pnSearchTinhThanh);
 
 	javax.swing.GroupLayout pnSearchThongTinLayout = new javax.swing.GroupLayout(pnSearchThongTin);
 	pnSearchThongTin.setLayout(pnSearchThongTinLayout);
@@ -286,7 +304,6 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 			.addComponent(btnModify, javax.swing.GroupLayout.PREFERRED_SIZE, 104,
 				javax.swing.GroupLayout.PREFERRED_SIZE)
 			.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-
 	pnActionLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL,
 		new java.awt.Component[] { btnAdd, btnDelete, btnInfo, btnModify });
 
@@ -346,19 +363,21 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 					.addComponent(pnData, javax.swing.GroupLayout.DEFAULT_SIZE,
 						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addContainerGap()));
-	String[] tinhThanh = {"Hà Nội", "Hồ Chí Minh", "Hải Phòng", "Cần Thơ", "Đà Nẵng", "Hà Giang", "Cao Bằng", "Bắc Kạn", "Lạng Sơn", "Tuyên Quang", "Thái Nguyên", "Yên Bái", "Lào Cai", "Điện Biên", "Lai Châu", "Sơn La", "Hòa Bình", "Thái Bình", "Nam Định", "Ninh Bình", "Thanh Hóa", "Nghệ An", "Hà Tĩnh", "Quảng Bình", "Quảng Trị", "Thừa Thiên Huế", "Quảng Nam", "Quảng Ngãi", "Bình Định", "Phú Yên", "Khánh Hòa", "Ninh Thuận", "Bình Thuận", "Kon Tum", "Gia Lai", "Đắk Lắk", "Đắk Nông", "Lâm Đồng", "Bình Phước", "Tây Ninh", "Bình Dương", "Đồng Nai", "Bà Rịa - Vũng Tàu", "Long An", "Tiền Giang", "Bến Tre", "Trà Vinh", "Vĩnh Long", "Đồng Tháp", "An Giang", "Kiên Giang", "Cần Thơ", "Hậu Giang", "Sóc Trăng", "Bạc Liêu", "Cà Mau", "Điện Biên", "Đăk Nông", "Hà Nam", "Hưng Yên", "Nam Định", "Phú Thọ", "Vĩnh Phúc", "Bắc Giang", "Bắc Ninh", "Hải Dương", "Hải Dương", "Hưng Yên", "Ninh Bình"};
-    for(int i=0; i<tinhThanh.length;i++) {
-    	cbxLocTheo.addItem(tinhThanh[i]);
+	String[] locTheo = {"Tất cả tour","Tour sau hôm nay", "Gía Tour giảm dần", "Giá Tour tăng dần", "Tour đã đóng", "Tour đang mở"};
+    for(int i=0; i<locTheo.length;i++) {
+    	cbxLocTheo.addItem(locTheo[i]);
     }
 	dsTourDuLich = DAO_TourDuLich.getAllTourDuLich();
 	loadDataToTable(dsTourDuLich, tblModel);
+	
+	event();
     }
     
     private void event() {
     	this.btnSearchMaTour.addActionListener(this);
     	this.btnSearchNgayDi.addActionListener(this);
     	this.btnSearchThongTin.addActionListener(this);
-    	this.btnSearchDiaDanh.addActionListener(this);
+    	this.btnSearchTinhThanh.addActionListener(this);
     	this.cbxLocTheo.addActionListener(this);
     	
     	this.btnInfo.addActionListener(this);
@@ -367,9 +386,23 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
     	this.btnModify.addActionListener(this);
     	
     	this.tblTourDuLich.addMouseListener(this);
+    	
+    	/* Table 
+    	 * 
+    	 * 
+    	 * 
+    	*/
+    	
+    	/* shotcut 
+    	 * 
+    	 * 
+    	 * 
+    	*/
+    	
     }
     
     private void loadDataToTable(ArrayList<TourDuLich> dsIn, DefaultTableModel model) {
+    	model.setRowCount(0);
     	for(TourDuLich tour:dsIn) {
     		addOneRowToTable(tour, model);
     	}
@@ -383,7 +416,73 @@ public class Employee_TourDuLich extends JPanel  implements ActionListener,Mouse
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		Object o = e.getSource();
+		if(o.equals(btnSearchMaTour)) {
+			if(txtSearchMaTour.getText().trim().equals("")||txtSearchMaTour.getText().trim().equals(null)) {
+				JOptionPane.showMessageDialog(this, "Vui lòng nhập mã cần tìm !");
+			} else {
+				dsTourDuLich = CtrlTourDuLich.locTourTheoMaTour(DAO_TourDuLich.getAllTourDuLich(), txtSearchMaTour.getText().trim());
+				if(dsTourDuLich.size()==0) {
+					JOptionPane.showMessageDialog(this, "Không có dữ liệu phù hợp !");
+				} else {
+					loadDataToTable(dsTourDuLich, tblModel);
+				}
+			}
+		} else if(o.equals(btnSearchThongTin)) {
+			if(txtSearchThongTin.getText().trim().equals("")||txtSearchThongTin.getText().trim().equals(null)) {
+				JOptionPane.showMessageDialog(this, "Vui lòng nhập thông tin cần tìm !");
+			} else {
+				dsTourDuLich = CtrlTourDuLich.locTourTheoThongTinTour(DAO_TourDuLich.getAllTourDuLich(), txtSearchThongTin.getText().trim());
+				if(dsTourDuLich.size()==0) {
+					JOptionPane.showMessageDialog(this, "Không có dữ liệu phù hợp !");
+				} else {
+					loadDataToTable(dsTourDuLich, tblModel);
+				}
+			}
+		}else if(o.equals(btnSearchTinhThanh)) {
+			if(txtSearchTinhThanh.getText().trim().equals("")||txtSearchTinhThanh.getText().trim().equals(null)) {
+				JOptionPane.showMessageDialog(this, "Vui lòng nhập tỉnh thành cần tìm !");
+			} else {
+				dsTourDuLich = CtrlTourDuLich.locTourTheoTinhThanh(DAO_TourDuLich.getAllTourDuLich(), txtSearchTinhThanh.getText().trim());
+				if(dsTourDuLich.size()==0) {
+					JOptionPane.showMessageDialog(this, "Không có dữ liệu phù hợp !");
+				} else {
+					loadDataToTable(dsTourDuLich, tblModel);
+				}
+			}
+		} else if(o.equals(btnSearchNgayDi)) {
+			if(dpkNgayDi.equals(null)) {
+				JOptionPane.showMessageDialog(this, "Vui lòng Chọn ngày đi cần tìm !");
+			} else {
+				// Lấy giá trị ngày tháng được chọn từ JDatePicker
+				Date date = (Date) dpkNgayDi.getModel().getValue();
+				// Chuyển đổi java.util.Date sang java.time.LocalDate
+				LocalDate ngayDi = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+				dsTourDuLich = CtrlTourDuLich.locTourTheoNgayDi(DAO_TourDuLich.getAllTourDuLich(), ngayDi);
+				if(dsTourDuLich.size()==0) {
+					JOptionPane.showMessageDialog(this, "Không có dữ liệu phù hợp !");
+				} else {
+					loadDataToTable(dsTourDuLich, tblModel);
+				}
+			}
+		} else if(o.equals(cbxLocTheo)) {
+			//"Tất cả tour","Tour sau hôm nay", "Gía Tour giảm dần", "Giá Tour tăng dần", "Tour đã đóng", "Tour đang mở"
+			if(cbxLocTheo.getSelectedIndex()==0) {
+				loadDataToTable(dsTourDuLich, tblModel);
+			} else if(cbxLocTheo.getSelectedIndex()==1) {
+				loadDataToTable(CtrlTourDuLich.locTourNgayDiTuNgay(dsTourDuLich, LocalDate.now()), tblModel);
+			} else if(cbxLocTheo.getSelectedIndex()==2) {
+				loadDataToTable(CtrlTourDuLich.sapXepGiaTourGiam(dsTourDuLich), tblModel);
+			}else if(cbxLocTheo.getSelectedIndex()==3) {
+				loadDataToTable(CtrlTourDuLich.sapXepGiaTourTang(dsTourDuLich), tblModel);
+			}else if(cbxLocTheo.getSelectedIndex()==4) {
+				loadDataToTable(CtrlTourDuLich.locTourDaDong(dsTourDuLich), tblModel);
+			}else if(cbxLocTheo.getSelectedIndex()==5) {
+				loadDataToTable(CtrlTourDuLich.locTourDangMo(dsTourDuLich), tblModel);
+			}
+		}else {
+			JOptionPane.showMessageDialog(this, "Hi");
+		}
 		
 	}
 
