@@ -17,6 +17,7 @@ import java.util.Iterator;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -1343,6 +1344,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	private javax.swing.JTextField txtSDTOld;
 	private javax.swing.JTextField txtTenNVNew;
 	private javax.swing.JTextField txtTenNVOld;
+	private ButtonGroup btnGroupGender;
 
 	private FrameModifyNhanVien(String[] data) {
 	    this.setTitle("SE Tourist - Chinh Sua Nhan Vien");
@@ -1369,6 +1371,9 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	    pnGioiTinhNew = new javax.swing.JPanel();
 	    radNamNew = new javax.swing.JRadioButton();
 	    radNuNew = new javax.swing.JRadioButton();
+	    this.btnGroupGender = new ButtonGroup();
+	    btnGroupGender.add(radNamNew);
+	    btnGroupGender.add(radNuNew);
 	    pnNgaySinhNew = new javax.swing.JPanel();
 	    dpkNgaySinhNew = new org.jdatepicker.JDatePicker();
 	    lblDiaChiNew = new javax.swing.JLabel();
@@ -1387,6 +1392,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	    pnGioiTinhOld = new javax.swing.JPanel();
 	    radNamOld = new javax.swing.JRadioButton();
 	    radNuOld = new javax.swing.JRadioButton();
+	    
 	    pnNgaySinhOld = new javax.swing.JPanel();
 	    txtNgaySinhOld = new javax.swing.JTextField();
 	    lblDiaChiOld = new javax.swing.JLabel();
