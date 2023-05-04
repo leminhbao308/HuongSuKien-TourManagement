@@ -37,6 +37,7 @@ public class LoadSave {
     public static final String ICON_TICKET = "icon/ticket.png";
     public static final String ICON_ADD = "icon/add.png";
     public static final String ICON_CANCEL = "icon/cancel.png";
+    public static final String ICON_PASS = "icon/pass.png";
 
     /**
      * Láº¥y hÃ¬nh áº£nh tá»« Ä‘Æ°á»�ng dáº«n
