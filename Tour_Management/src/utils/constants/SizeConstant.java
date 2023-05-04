@@ -1,12 +1,12 @@
 package utils.constants;
 
 /**
- * CÃ¡c háº±ng sá»‘ vá»� thiáº¿t káº¿ sá»­ dá»¥ng trong chÆ°Æ¡ng trÃ¬nh
+ * Thiết lập kích thước sử dụng trong chương trình
  * 
- * @author LeMinhBao
+ * @author Le Hoang Nam
  *
  */
 public class SizeConstant {
-	public static final int LEFT_ALIGN = 50;
-	public static final int RIGHT_ALIGN = 50;
+    public static final int LEFT_ALIGN = 50;
+    public static final int RIGHT_ALIGN = 50;
 }
