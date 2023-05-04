@@ -12,6 +12,7 @@ import java.awt.event.KeyListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
@@ -27,13 +28,18 @@ import javax.swing.KeyStroke;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 import org.jdatepicker.JDatePicker;
 
 import DAO.DAO_NhanVien;
 import DAO.DAO_TaiKhoan;
+import DAO.DAO_TourDuLich;
+import controllers.CtrlNhanVien;
+import controllers.CtrlTourDuLich;
 import entity.NhanVien;
 import entity.TaiKhoan;
+import entity.TourDuLich;
 import utils.LoadSave;
 import utils.constants.ColorConstant;
 
@@ -62,6 +68,9 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
     private javax.swing.JTabbedPane tpnSearch;
     private javax.swing.JTextField txtSearchMa;
     private javax.swing.JTextField txtSearchTen;
+    private ArrayList<NhanVien> dsNhanVien = new ArrayList<NhanVien>();
+    private String[] cols = new NhanVien().getTitle().split(";");
+    private String[] itemChucVu = {"Quản lý kinh doanh", "Nhân viên bán hàng", "Sắp xếp theo tên","Sắp xếp theo mã" };
 
     public Admin_NhanVien() {
 
@@ -95,7 +104,6 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	 * Table
 	 */
 	{
-	    String[] cols = new NhanVien().getTitle().split(";");
 	    tblModel = new javax.swing.table.DefaultTableModel(cols, 0);
 	    tblNhanVien = new javax.swing.JTable(tblModel);
 	}
@@ -122,7 +130,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 
 	lblSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	lblSearchTen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchTen.setText("Tên Nhân Viên Cần Tìm:");
+	lblSearchTen.setText("Tên Nhân viên Cần Tìm:");
 
 	txtSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
@@ -136,9 +144,6 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 
 	lblFilter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 	lblFilter.setText("Lọc Theo:");
-
-	cbxFilter.setModel(
-		new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
 	scrData.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	scrData.setViewportView(tblNhanVien);
@@ -215,7 +220,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 			.addComponent(btnSearchTen, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
 			.addContainerGap(9, Short.MAX_VALUE)));
 
-	tpnSearch.addTab("Tìm Theo Tên", pnSearchTen);
+	tpnSearch.addTab("Tìm Theo tên", pnSearchTen);
 
 	javax.swing.GroupLayout pnActionLayout = new javax.swing.GroupLayout(pnAction);
 	pnAction.setLayout(pnActionLayout);
@@ -291,6 +296,9 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 					.addComponent(pnData, javax.swing.GroupLayout.DEFAULT_SIZE,
 						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addContainerGap()));
+		for(int i=0; i<itemChucVu.length;i++) {
+			cbxFilter.addItem(itemChucVu[i]);
+		}
     }
 
     private void event() {
@@ -298,6 +306,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	// Search
 	this.btnSearchMa.addActionListener(this);
 	this.btnSearchTen.addActionListener(this);
+	this.cbxFilter.addActionListener(this);
 	// Action
 	this.btnInfo.addActionListener(this);
 	this.btnAdd.addActionListener(this);
@@ -472,10 +481,42 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	Object o = e.getSource();
 	// Search
 	if (o.equals(btnSearchMa)) {
-
+		dsNhanVien = DAO_NhanVien.getAllNhanVien();
+		if(txtSearchMa.getText().trim().equals("")||txtSearchMa.getText().trim().equals(null)) {
+			loadDataToTable(dsNhanVien, tblModel);
+		} else {
+			dsNhanVien = CtrlNhanVien.locNhanVienTheoMa(dsNhanVien, txtSearchMa.getText().trim());
+			if(dsNhanVien.size()==0) {
+				JOptionPane.showMessageDialog(this, "Không có dữ liệu phù hợp !");
+			} else {
+				loadDataToTable(dsNhanVien, tblModel);
+			}
+		}
 	}
 	if (o.equals(btnSearchTen)) {
-
+		dsNhanVien = DAO_NhanVien.getAllNhanVien();
+		if(txtSearchTen.getText().trim().equals("")||txtSearchTen.getText().trim().equals(null)) {
+			loadDataToTable(dsNhanVien, tblModel);
+		} else {
+			dsNhanVien = CtrlNhanVien.locNhanVienTheoThongTin(dsNhanVien, txtSearchTen.getText().trim());
+			if(dsNhanVien.size()==0) {
+				JOptionPane.showMessageDialog(this, "Không có dữ liệu phù hợp !");
+			} else {
+				loadDataToTable(dsNhanVien, tblModel);
+			}
+		}
+	}
+	if(o.equals(cbxFilter)) {
+		dsNhanVien = DAO_NhanVien.getAllNhanVien();
+		if(cbxFilter.getSelectedIndex()==0) {
+			loadDataToTable(CtrlNhanVien.locNhanVienTheoChucVu(dsNhanVien, itemChucVu[0]), tblModel);
+		} else if(cbxFilter.getSelectedIndex()==1)  {
+			loadDataToTable(CtrlNhanVien.locNhanVienTheoChucVu(dsNhanVien, itemChucVu[1]), tblModel);
+		} else if(cbxFilter.getSelectedIndex()==2) {
+			loadDataToTable(CtrlNhanVien.sapXepNhanVienTheoTen(dsNhanVien), tblModel);
+		}else if(cbxFilter.getSelectedIndex()==3) {
+			loadDataToTable(CtrlNhanVien.sapXepNhanVienTheoMa(dsNhanVien), tblModel);
+		}
 	}
 	// Action
 	if (o.equals(btnInfo)) {
@@ -1939,5 +1980,18 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 	    }
 	}
 
+    }
+    private void loadDataToTable(ArrayList<NhanVien> dsIn, DefaultTableModel model) {
+    	model.setRowCount(0);
+    	for(NhanVien nv:dsIn) {
+    		addOneRowToTable(nv, model);
+    	}
+    }
+
+    private void addOneRowToTable(NhanVien nv, DefaultTableModel model) {
+		String gioiTinh;
+		gioiTinh = nv.isGioiTinh() ? "Nam" : "Nữ";
+		model.addRow(
+			new Object[] {nv.getMaNhanVien(), nv.getTenNhanVien(), gioiTinh, nv.getNgaySinh(), nv.getDiaChi(), nv.getEmail(), nv.getSoDienThoai(), nv.getChucVu() });
     }
 }

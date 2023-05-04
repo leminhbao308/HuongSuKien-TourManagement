@@ -21,11 +21,14 @@ import javax.swing.KeyStroke;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 import DAO.DAO_DichVu;
 import DAO.DAO_KhachHang;
 import entity.DichVu;
+import entity.KhachHang;
+import entity.TourDuLich;
 import utils.LoadSave;
 import utils.constants.ColorConstant;
 

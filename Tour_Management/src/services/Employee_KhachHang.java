@@ -26,8 +26,12 @@ import javax.swing.KeyStroke;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 import DAO.DAO_KhachHang;
+import DAO.DAO_TourDuLich;
+import controllers.CtrlKHachHang;
+import controllers.CtrlTourDuLich;
 import entity.KhachHang;
 import utils.LoadSave;
 import utils.constants.ColorConstant;
@@ -43,21 +47,24 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
     private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnModify;
     private javax.swing.JButton btnSearchMa;
-    private javax.swing.JButton btnSearchTen;
+    private javax.swing.JButton btnSearchCC_HC;
     private javax.swing.JComboBox<String> cbxFilter;
     private javax.swing.JLabel lblFilter;
     private javax.swing.JLabel lblSearchMa;
-    private javax.swing.JLabel lblSearchTen;
+    private javax.swing.JLabel lblSearchCCCD_HC;
     private javax.swing.JPanel pnAction;
     private javax.swing.JPanel pnData;
     private javax.swing.JPanel pnSearchMa;
-    private javax.swing.JPanel pnSearchTen;
+    private javax.swing.JPanel pnSearchCCCD_HC;
     private javax.swing.JScrollPane scrData;
     private javax.swing.JTable tblKhachHang;
     private javax.swing.table.DefaultTableModel tblModel;
     private javax.swing.JTabbedPane tpnSearch;
     private javax.swing.JTextField txtSearchMa;
-    private javax.swing.JTextField txtSearchTen;
+    private javax.swing.JTextField txtSearchCC_HC;
+    private String[] cols = new KhachHang().getTitle().split(";");
+    private String[] cbxItem = {"Sắp xếp theo mã", "Sắp xếp theo tên"};
+    private ArrayList<KhachHang> dsKhachHangs = new ArrayList<KhachHang>();
 
     public Employee_KhachHang() {
 	setBackground(ColorConstant.BACKGROUND_NORMAL);
@@ -77,10 +84,10 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	lblSearchMa = new javax.swing.JLabel();
 	txtSearchMa = new javax.swing.JTextField();
 	btnSearchMa = new javax.swing.JButton();
-	pnSearchTen = new javax.swing.JPanel();
-	lblSearchTen = new javax.swing.JLabel();
-	txtSearchTen = new javax.swing.JTextField();
-	btnSearchTen = new javax.swing.JButton();
+	pnSearchCCCD_HC = new javax.swing.JPanel();
+	lblSearchCCCD_HC = new javax.swing.JLabel();
+	txtSearchCC_HC = new javax.swing.JTextField();
+	btnSearchCC_HC = new javax.swing.JButton();
 	pnData = new javax.swing.JPanel();
 	lblFilter = new javax.swing.JLabel();
 	cbxFilter = new javax.swing.JComboBox<>();
@@ -89,7 +96,6 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	 * Table
 	 */
 	{
-	    String[] cols = new KhachHang().getTitle().split(";");
 	    tblModel = new javax.swing.table.DefaultTableModel(cols, 0);
 	    tblKhachHang = new javax.swing.JTable(tblModel);
 	}
@@ -111,14 +117,14 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	btnSearchMa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 	btnSearchMa.setText("Tìm");
 
-	lblSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	lblSearchTen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-	lblSearchTen.setText("Tên Khách Hàng Cần Tìm:");
+	lblSearchCCCD_HC.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	lblSearchCCCD_HC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+	lblSearchCCCD_HC.setText("Số CCCD_HC cần tìm:");
 
-	txtSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	txtSearchCC_HC.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-	btnSearchTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-	btnSearchTen.setText("Tìm");
+	btnSearchCC_HC.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+	btnSearchCC_HC.setText("Tìm Kiếm");
 
 	pnData.setBorder(javax.swing.BorderFactory.createTitledBorder(
 		javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
@@ -128,8 +134,6 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	lblFilter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 	lblFilter.setText("Lọc Theo:");
 
-	cbxFilter.setModel(
-		new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
 	scrData.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	scrData.setViewportView(tblKhachHang);
@@ -182,31 +186,31 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 
 	tpnSearch.addTab("Tìm Theo Mã", pnSearchMa);
 
-	javax.swing.GroupLayout pnSearchTenLayout = new javax.swing.GroupLayout(pnSearchTen);
-	pnSearchTen.setLayout(pnSearchTenLayout);
-	pnSearchTenLayout
-		.setHorizontalGroup(pnSearchTenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-			.addGroup(pnSearchTenLayout.createSequentialGroup().addContainerGap()
-				.addComponent(lblSearchTen, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
+	javax.swing.GroupLayout pnSearchCCCD_HCLayout = new javax.swing.GroupLayout(pnSearchCCCD_HC);
+	pnSearchCCCD_HC.setLayout(pnSearchCCCD_HCLayout);
+	pnSearchCCCD_HCLayout
+		.setHorizontalGroup(pnSearchCCCD_HCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			.addGroup(pnSearchCCCD_HCLayout.createSequentialGroup().addContainerGap()
+				.addComponent(lblSearchCCCD_HC, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
 					javax.swing.GroupLayout.PREFERRED_SIZE)
 				.addGap(18, 18, 18)
-				.addComponent(txtSearchTen, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+				.addComponent(txtSearchCC_HC, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
 				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-				.addComponent(btnSearchTen, javax.swing.GroupLayout.PREFERRED_SIZE, 165,
+				.addComponent(btnSearchCC_HC, javax.swing.GroupLayout.PREFERRED_SIZE, 165,
 					javax.swing.GroupLayout.PREFERRED_SIZE)
 				.addContainerGap()));
-	pnSearchTenLayout.setVerticalGroup(pnSearchTenLayout
+	pnSearchCCCD_HCLayout.setVerticalGroup(pnSearchCCCD_HCLayout
 		.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-		.addGroup(pnSearchTenLayout.createSequentialGroup().addContainerGap().addGroup(pnSearchTenLayout
+		.addGroup(pnSearchCCCD_HCLayout.createSequentialGroup().addContainerGap().addGroup(pnSearchCCCD_HCLayout
 			.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-			.addGroup(pnSearchTenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-				.addComponent(txtSearchTen, javax.swing.GroupLayout.PREFERRED_SIZE,
+			.addGroup(pnSearchCCCD_HCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+				.addComponent(txtSearchCC_HC, javax.swing.GroupLayout.PREFERRED_SIZE,
 					javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addComponent(lblSearchTen))
-			.addComponent(btnSearchTen, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+				.addComponent(lblSearchCCCD_HC))
+			.addComponent(btnSearchCC_HC, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
 			.addContainerGap(9, Short.MAX_VALUE)));
 
-	tpnSearch.addTab("Tìm Theo Tên", pnSearchTen);
+	tpnSearch.addTab("Tìm Theo CCCD-HC", pnSearchCCCD_HC);
 
 	javax.swing.GroupLayout pnActionLayout = new javax.swing.GroupLayout(pnAction);
 	pnAction.setLayout(pnActionLayout);
@@ -282,13 +286,17 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 					.addComponent(pnData, javax.swing.GroupLayout.DEFAULT_SIZE,
 						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addContainerGap()));
+		for(int i=0; i<cbxItem.length; i++) {
+			cbxFilter.addItem(cbxItem[i]);
+		}
     }
 
     private void event() {
 	// TODO Auto-generated method stub
 	// Search
 	this.btnSearchMa.addActionListener(this);
-	this.btnSearchTen.addActionListener(this);
+	this.btnSearchCC_HC.addActionListener(this);
+	cbxFilter.addActionListener(this);
 
 	// Action
 	this.btnInfo.addActionListener(this);
@@ -458,7 +466,19 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 	    tblModel.addRow(data);
 	}
     }
+    private void loadDataToTable(ArrayList<KhachHang> dsIn, DefaultTableModel model) {
+    	model.setRowCount(0);
+    	for(KhachHang kh:dsIn) {
+    		addOneRowToTable(kh, model);
+    	}
+    }
 
+    private void addOneRowToTable(KhachHang kh, DefaultTableModel model) {
+		String gioiTinh;
+		gioiTinh = kh.isGioiTinh() ? "Nam" : "Nữ";
+		model.addRow(
+			new Object[] {kh.getMaKhachHang(), kh.getSoCCCD_HC(), kh.getTenKhachHang(), gioiTinh, kh.getNgaySinh(), kh.getEmail(), kh.getSoDienThoai()});
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
@@ -466,10 +486,42 @@ public class Employee_KhachHang extends JPanel implements ActionListener {
 
 	// Search
 	if (o.equals(btnSearchMa)) {
-
+		dsKhachHangs = DAO_KhachHang.getAllKhachHang();
+		if(txtSearchMa.getText().trim().equals("")||txtSearchMa.getText().trim().equals(null)) {
+			loadDataToTable(dsKhachHangs, tblModel);
+		} else {
+			dsKhachHangs = CtrlKHachHang.locKhachHangTheoMa(dsKhachHangs, txtSearchMa.getText().trim());
+			if(dsKhachHangs.size()==0) {
+				JOptionPane.showMessageDialog(this, "Không có dữ liệu phù hợp !");
+			} else {
+				loadDataToTable(dsKhachHangs, tblModel);
+			}
+		}
+		txtSearchMa.setText("");
 	}
-	if (o.equals(btnSearchTen)) {
-
+	if (o.equals(btnSearchCC_HC)) {
+		dsKhachHangs = DAO_KhachHang.getAllKhachHang();
+		if(txtSearchCC_HC.getText().trim().equals("")||txtSearchCC_HC.getText().trim().equals(null)) {
+			loadDataToTable(dsKhachHangs, tblModel);
+		} else {
+			dsKhachHangs = CtrlKHachHang.timKhachHangTheoCCCD_HC(dsKhachHangs, txtSearchCC_HC.getText().trim());
+			if(dsKhachHangs.size()==0) {
+				JOptionPane.showMessageDialog(this, "Không có dữ liệu phù hợp !");
+			} else {
+				loadDataToTable(dsKhachHangs, tblModel);
+			}
+		}
+		txtSearchCC_HC.setText("");
+	}
+	
+	if(o.equals(cbxFilter)) {
+		dsKhachHangs = DAO_KhachHang.getAllKhachHang();
+		//{"Sắp xếp theo mã", "Sắp xếp theo tên"}
+		if(cbxFilter.getSelectedIndex()==0) {
+			loadDataToTable(CtrlKHachHang.sapXepKhachHangTheoMa(dsKhachHangs), tblModel);
+		} else {
+			loadDataToTable(CtrlKHachHang.sapXepKhachHangTheoTen(dsKhachHangs), tblModel);
+		}
 	}
 
 	// Action

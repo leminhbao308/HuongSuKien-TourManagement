@@ -475,24 +475,27 @@ public class Employee_DiaDanh extends JPanel implements ActionListener {
 	Object o = e.getSource();
 	// Search
 	if (o.equals(btnSearchMa)) {
+		dsDiaDanh = DAO_DiaDanh.getAllDiaDanh();
 		if(txtSearchMa.getText().trim().equals("")||txtSearchMa.getText().trim().equals(null)) {
-			dsDiaDanh= DAO_DiaDanh.getAllDiaDanh();
 			loadDataToTable(dsDiaDanh, tblModel);
 		} else {
 			dsDiaDanh = CtrlDiaDanh.loTheoMaDiaDanh(dsDiaDanh, txtSearchMa.getText().trim());
 			loadDataToTable(dsDiaDanh, tblModel);
 		}
+		txtSearchMa.setText("");
 	}
 	if (o.equals(btnSearchTen)) {
+		dsDiaDanh = DAO_DiaDanh.getAllDiaDanh();
 		if(txtSearchTen.getText().trim().equals("")||txtSearchTen.getText().trim().equals(null)) {
-			dsDiaDanh= DAO_DiaDanh.getAllDiaDanh();
 			loadDataToTable(dsDiaDanh, tblModel);
 		} else {
 			dsDiaDanh = CtrlDiaDanh.locDiaDanhTheoTen(dsDiaDanh, txtSearchTen.getText().trim());
 			loadDataToTable(dsDiaDanh, tblModel);
 		}
+		txtSearchTen.setText("");
 	}
 	if(o.equals(cbxTinhThanh)) {
+		dsDiaDanh = DAO_DiaDanh.getAllDiaDanh();
 		for(int i=0; i<tinhThanh.length;i++) {
 			if(cbxTinhThanh.getSelectedIndex()==i) {
 				dsDiaDanh = CtrlDiaDanh.locDiaDanhTheoTinhThanh(dsDiaDanh, tinhThanh[i]);

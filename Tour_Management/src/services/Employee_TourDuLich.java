@@ -430,6 +430,7 @@ public class Employee_TourDuLich extends JPanel implements ActionListener, Mouse
 					loadDataToTable(dsTourDuLich, tblModel);
 				}
 			}
+			txtSearchMaTour.setText("");
 		} else if(o.equals(btnSearchThongTin)) {
 			if(txtSearchThongTin.getText().trim().equals("")||txtSearchThongTin.getText().trim().equals(null)) {
 				JOptionPane.showMessageDialog(this, "Vui lòng nhập thông tin cần tìm !");
@@ -441,6 +442,7 @@ public class Employee_TourDuLich extends JPanel implements ActionListener, Mouse
 					loadDataToTable(dsTourDuLich, tblModel);
 				}
 			}
+			txtSearchThongTin.setText("");
 		}else if(o.equals(btnSearchTinhThanh)) {
 			if(txtSearchTinhThanh.getText().trim().equals("")||txtSearchTinhThanh.getText().trim().equals(null)) {
 				JOptionPane.showMessageDialog(this, "Vui lòng nhập tỉnh thành cần tìm !");
