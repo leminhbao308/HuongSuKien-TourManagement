@@ -401,7 +401,99 @@ public class Employee_VeTour extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
+	Object o = e.getSource();
+	// Search
+	if (o.equals(btnSearchMaVe)) {
 
+	}
+
+	// Action
+	if (o.equals(btnInfo)) {
+	    // Lấy chỉ số của hàng đang được chọn
+	    int selectedRow = tblVeTour.getSelectedRow();
+
+	    // Lấy số cột của bảng
+	    int columnsCount = tblVeTour.getColumnCount();
+
+	    // Tạo một mảng String để chứa dữ liệu của hàng đang được chọn
+	    String[] data = new String[columnsCount];
+
+	    // Duyệt qua các cột của hàng đang được chọn và lưu giá trị vào mảng data
+	    for (int i = 0; i < columnsCount; i++) {
+		data[i] = tblVeTour.getValueAt(selectedRow, i).toString();
+	    }
+	    new FrameInfoVeTour(data).setVisible(true);
+	}
+
+	if (o.equals(btnPrint)) {
+	    // Lấy chỉ số của hàng đang được chọn
+	    int selectedRow = tblVeTour.getSelectedRow();
+
+	    // Lấy số cột của bảng
+	    int columnsCount = tblVeTour.getColumnCount();
+
+	    // Tạo một mảng String để chứa dữ liệu của hàng đang được chọn
+	    String[] data = new String[columnsCount];
+
+	    // Duyệt qua các cột của hàng đang được chọn và lưu giá trị vào mảng data
+	    for (int i = 0; i < columnsCount; i++) {
+		data[i] = tblVeTour.getValueAt(selectedRow, i).toString();
+	    }
+	    JFileChooser fileChooser = new JFileChooser();
+	    fileChooser.setDialogTitle("Chon Vi Tri Luu Hop Dong");
+	    // Chỉ cho phép lưu file với định dạng .pdf
+	    fileChooser.setFileFilter(new FileNameExtensionFilter("PDF files", "pdf"));
+	    // Hiển thị hộp thoại để chọn vị trí lưu file
+	    int result = fileChooser.showSaveDialog(null);
+	    if (result == JFileChooser.APPROVE_OPTION) {
+		// Lấy đường dẫn đã chọn
+		String filePath = fileChooser.getSelectedFile().getPath();
+		// Kiểm tra xem có đuôi mở rộng của file không
+		if (!filePath.endsWith(".pdf")) {
+		    filePath += ".pdf";
+		}
+		// Kiểm tra nếu file đã tồn tại
+		File file = fileChooser.getSelectedFile();
+		if (file.exists()) {
+		    int response = JOptionPane.showConfirmDialog(null,
+			    "File đã tồn tại, bạn có muốn ghi đè lên file này?", "Cảnh báo", JOptionPane.YES_NO_OPTION,
+			    JOptionPane.WARNING_MESSAGE);
+		    if (response == JOptionPane.YES_OPTION) {
+			// Lưu file
+			try {
+			    PrintTicket.printTicket(data[0], filePath);
+			} catch (DocumentException | IOException e1) {
+			    // TODO Auto-generated catch block
+			    e1.printStackTrace();
+			}
+			// Mở file vừa lưu
+			if (Desktop.isDesktopSupported()) {
+			    try {
+				Desktop.getDesktop().open(file);
+			    } catch (IOException e1) {
+				e1.printStackTrace();
+			    }
+			}
+		    }
+		} else {
+		    // Lưu file
+		    try {
+			PrintTicket.printTicket(data[0], filePath);
+		    } catch (DocumentException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		    }
+		    // Mở file vừa lưu
+		    if (Desktop.isDesktopSupported()) {
+			try {
+			    Desktop.getDesktop().open(file);
+			} catch (IOException e1) {
+			    e1.printStackTrace();
+			}
+		    }
+		}
+	    }
+	}
     }
 
     private class FrameInfoVeTour extends JFrame {

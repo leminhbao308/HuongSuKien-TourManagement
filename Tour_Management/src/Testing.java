@@ -25,13 +25,9 @@ public class Testing extends JFrame {
     }
 
     public static void main(String args[]) {
-	try {
-	    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	    System.setProperty("apple.laf.useScreenMenuBar", "true");
-//	    new Testing().setVisible(true);
-//	    PrintTicket.printContract("HD002");
-	} catch (Exception e) {
-	    e.printStackTrace();
-	}
+	String maHD = "HD001";
+	String maVe = maHD.replaceAll("HD", "VT");
+	System.out.println(maHD + "\n");
+	System.out.println(maVe + "\n");
     }
 }
