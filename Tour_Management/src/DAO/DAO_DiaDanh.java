@@ -80,13 +80,8 @@ public class DAO_DiaDanh {
 		ConnnectDB.getInstance();
 		Connection con = ConnnectDB.getConnection();
 		PreparedStatement statement = null;
-		String sql = "delete from [dbo].[DiaDanh]" + "where maDiaDanh=?";
+		String sql = "delete from [dbo].[DiaDanh]" + "where [maDiaDanh]= ?";
 		try {
-			ArrayList<TourDuLich> dsTour = DAO_TourDuLich.getAllTourDuLich();
-			for (TourDuLich tour : dsTour) {
-				if (tour.getDiaDanh().getMaDiaDanh().equals(ma))
-					return false;
-			}
 			statement = con.prepareStatement(sql);
 			statement.setString(1, ma);
 			statement.executeUpdate();

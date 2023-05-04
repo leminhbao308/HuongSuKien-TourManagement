@@ -26,11 +26,17 @@ public class TestDAO {
 	 *             từ SQL
 	 */
 		public static void main(String[] args) {
-//		ArrayList<DiaDanh> dsDD = new ArrayList<DiaDanh>();
-//		dsDD = DAO_DiaDanh.getAllDiaDanh();
-//		for(DiaDanh hd:dsDD) {
-//			System.out.println(hd.toString());
-//		}
+		ArrayList<DiaDanh> dsDD = new ArrayList<DiaDanh>();
+		dsDD = DAO_DiaDanh.getAllDiaDanh();
+		for(DiaDanh hd:dsDD) {
+			System.out.println(hd.toString());
+		}
+		DAO_DiaDanh.xoaDiaDanh("DD003");
+			ArrayList<DiaDanh> dsDDt = new ArrayList<DiaDanh>();
+			dsDDt = DAO_DiaDanh.getAllDiaDanh();
+			for(DiaDanh hd:dsDDt) {
+				System.out.println(hd.toString());
+			}
 //		
 //		
 //		ArrayList<NhanVien> dsNV = new ArrayList<NhanVien>();
@@ -112,11 +118,11 @@ public class TestDAO {
 //			System.out.println(hd.toString());
 //		}
 //		System.out.println("-----------------");
-//		DichVu dt = new DichVu("DVTest", "Thành công", "Update success", 5);
-//		//DAO_DichVu.themDichVu(dt);
-//		//DAO_DichVu.suaDichVu(dt);
-//		DAO_DichVu.xoaDichVu("DVTest");
-//		System.out.println("-----------------");
+//		DichVu dt = new DichVu("DVT", "Thành công", "Update success", 5);
+		//DAO_DichVu.themDichVu(dt);
+		//DAO_DichVu.suaDichVu(dt);
+		//DAO_DichVu.xoaDichVu("DV005");
+		System.out.println("-----------------");
 //		ArrayList<DichVu> dsDVt = new ArrayList<DichVu>();
 //		dsDVt = DAO_DichVu.getAllDichVu();
 //		for(DichVu hd:dsDVt) {

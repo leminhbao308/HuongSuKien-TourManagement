@@ -37,34 +37,35 @@ public class CtrlDichVu {
      * @param dsIn Danh sách dữ liệu cần sắp xếp
      * @return dsOut ArrayList sau khi sắp xếp
      */
-    public static ArrayList<DichVu> sapXepGiaDichVuTang(ArrayList<DichVu> dsIn) {
-	ArrayList<DichVu> dsOut = new ArrayList<DichVu>();
-	Collections.sort(dsIn, new Comparator<DichVu>() {
-	    @Override
-	    public int compare(DichVu o1, DichVu o2) {
-		// TODO Auto-generated method stub
-		return Float.compare(o1.getGiaDichVu(), o2.getGiaDichVu());
-	    }
-	});
-	return dsOut;
-    }
-
-    /**
+	public static ArrayList<DichVu> sapXepGiaDichVuTang(ArrayList<DichVu> dsIn) {
+		ArrayList<DichVu> dsOut = new ArrayList<DichVu>();
+		dsOut = dsIn;
+		Collections.sort(dsOut, new Comparator<DichVu>() {
+			@Override
+			public int compare(DichVu o1, DichVu o2) {
+				// TODO Auto-generated method stub
+				return Float.compare(o1.getGiaDichVu(), o2.getGiaDichVu());
+			}
+		});
+		return dsOut;
+	}
+	/**
      * Sắp xếp danh sách dịch vụ giảm dần theo giá
      * 
      * @author : Pham Nhat Linh
      * @param dsIn Danh sách dữ liệu cần sắp xếp
      * @return dsOut ArrayList sau khi sắp xếp
      */
-    public static ArrayList<DichVu> sapXepGiaDichVuGiam(ArrayList<DichVu> dsIn) {
-	ArrayList<DichVu> dsOut = new ArrayList<DichVu>();
-	Collections.sort(dsIn, new Comparator<DichVu>() {
-	    @Override
-	    public int compare(DichVu o1, DichVu o2) {
-		// TODO Auto-generated method stub
-		return Float.compare(o2.getGiaDichVu(), o1.getGiaDichVu());
-	    }
-	});
-	return dsOut;
-    }
+	public static ArrayList<DichVu> sapXepGiaDichVuGiam(ArrayList<DichVu> dsIn) {
+		ArrayList<DichVu> dsOut = new ArrayList<DichVu>();
+		dsOut = dsIn;
+		Collections.sort(dsOut, new Comparator<DichVu>() {
+			@Override
+			public int compare(DichVu o1, DichVu o2) {
+				// TODO Auto-generated method stub
+				return Float.compare(o2.getGiaDichVu(), o1.getGiaDichVu());
+			}
+		});
+		return dsOut;
+	}
 }
