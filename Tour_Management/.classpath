@@ -8,9 +8,9 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/02.PortfolioProject/Tour_Management/module/itextpdf-5.5.13.3.jar"/>
-	<classpathentry kind="lib" path="E:/02.PortfolioProject/Tour_Management/module/jbcrypt-0.4.jar"/>
-	<classpathentry kind="lib" path="E:/02.PortfolioProject/Tour_Management/module/jdatepicker-2.0.3.jar"/>
-	<classpathentry kind="lib" path="E:/02.PortfolioProject/Tour_Management/module/sqljdbc4-3.0.jar"/>
+	<classpathentry kind="lib" path="E:/Years2/HK2/HuongSuKien/projectCuoiKhoa/HuongSuKien-TourManagement/Tour_Management/module/itextpdf-5.5.13.3.jar"/>
+	<classpathentry kind="lib" path="E:/Years2/HK2/HuongSuKien/projectCuoiKhoa/HuongSuKien-TourManagement/Tour_Management/module/jbcrypt-0.4.jar"/>
+	<classpathentry kind="lib" path="E:/Years2/HK2/HuongSuKien/projectCuoiKhoa/HuongSuKien-TourManagement/Tour_Management/module/jdatepicker-2.0.3.jar"/>
+	<classpathentry kind="lib" path="E:/Years2/HK2/HuongSuKien/projectCuoiKhoa/HuongSuKien-TourManagement/Tour_Management/module/sqljdbc4-3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
