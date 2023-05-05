@@ -40,10 +40,12 @@ import entity.TaiKhoan;
 import utils.LoadSave;
 import utils.constants.ColorConstant;
 
+/**
+ * 
+ * @author LE MINH BAO
+ * @author TRAN HIEN VINH
+ */
 public class Admin_NhanVien extends JPanel implements ActionListener {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -945332098123420809L;
 	private javax.swing.JButton btnAdd;
 	private javax.swing.JButton btnDelete;
@@ -1985,7 +1987,7 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 				}
 			}
 		}
- 	}
+	}
 
 	private void loadDataToTable(ArrayList<NhanVien> dsIn, DefaultTableModel model) {
 		model.setRowCount(0);

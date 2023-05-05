@@ -10,6 +10,8 @@ import javax.swing.JPasswordField;
  * Field Password được bo góc
  * 
  * @author LeMinhBao
+ * @author LE HOANG NAM
+ * @author TRAN HIEN VINH
  * @see RoundPanel
  * @see RoundJTextField
  * @see RoundJButton

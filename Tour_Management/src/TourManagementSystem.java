@@ -15,7 +15,6 @@ public class TourManagementSystem {
 
 		try {
 			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); // Nimbus
-//	    UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel"); // Metal
 			new Login().setVisible(true);
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 				| UnsupportedLookAndFeelException ex) {

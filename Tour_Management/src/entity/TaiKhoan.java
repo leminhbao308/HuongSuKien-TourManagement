@@ -1,7 +1,11 @@
 package entity;
 
 import java.util.Objects;
-
+/**
+ * 
+ * @author LE HOANG NAM
+ *
+ */
 public class TaiKhoan {
     private NhanVien nhanVien;
     private String matKhau;

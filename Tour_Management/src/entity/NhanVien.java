@@ -123,8 +123,8 @@ public class NhanVien {
 
 	@Override
 	public String toString() {
-	    return maNhanVien + ";" + tenNhanVien + ";" + gioiTinh + ";" + ngaySinh + ";" + diaChi + ";" + email + ";"
-				+ soDienThoai + ";" + chucVu + ";" ;
+		return maNhanVien + ";" + tenNhanVien + ";" + gioiTinh + ";" + ngaySinh + ";" + diaChi + ";" + email + ";"
+				+ soDienThoai + ";" + chucVu + ";";
 	}
 
 	public String getTitle() {

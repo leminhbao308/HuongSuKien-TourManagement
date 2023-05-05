@@ -12,10 +12,11 @@ import javax.swing.JPanel;
 import utils.LoadSave;
 
 /**
- * Táº¡o má»™t Panel vá»›i background lÃ  má»™t hÃ¬nh áº£nh Ä‘Æ°á»£c truyá»�n
- * vÃ o
+ * Tạo một panel mới background là một hình ảnh được truyền vào
  * 
  * @author LeMinhBao
+ * @author LE HOANG NAM
+ * @author TRAN HIEN VINH
  * @see #ImagePanel(BufferedImage)
  * @see #ImagePanel(BufferedImage, float)
  */
@@ -29,9 +30,9 @@ public class ImagePanel extends JPanel {
 	private float opacity;
 
 	/**
-	 * Khá»Ÿi táº¡o má»™t Panel vá»›i background lÃ  hÃ¬nh áº£nh
+	 * Khởi tạo panel với background là hình ảnh
 	 * 
-	 * @param img HÃ¬nh áº£nh truyá»�n vÃ o
+	 * @param img hình ảnh truyền vào
 	 * @see LoadSave
 	 */
 	public ImagePanel(BufferedImage img) {
@@ -44,10 +45,10 @@ public class ImagePanel extends JPanel {
 	}
 
 	/**
-	 * Khá»Ÿi táº¡o má»™t Panel vá»›i background lÃ  hÃ¬nh áº£nh Ä‘Æ°á»£c lÃ m má»�
+	 * Khởi tạo background là hình ảnh được làm mờ
 	 * 
-	 * @param img     HÃ¬nh áº£nh truyá»�n vÃ o
-	 * @param opacity Ä�á»™ má»� áº£nh (0.5f = 50%)
+	 * @param img     Hình ảnh truyền vào
+	 * @param opacity độ mờ của hình ảnh (0.5f = 50%)
 	 * @see LoadSave
 	 */
 	public ImagePanel(BufferedImage img, float opacity) {
@@ -60,34 +61,30 @@ public class ImagePanel extends JPanel {
 	}
 
 	/**
-	 * CÄƒn chá»‰nh kÃ­ch thÆ°á»›c hÃ¬nh áº£nh láº¥p trá»�n panel
+	 * Căn chỉnh hình ảnh kích thước vừa với panel
 	 */
 	private void scaleImage() {
-		// Láº¥y kÃ­ch thÆ°á»›c cá»§a mÃ n hÃ¬nh
+		// Lấy kích thước của màn hình
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int screenWidth = (int) screenSize.getWidth();
 		int screenHeight = (int) screenSize.getHeight();
 
-		// Láº¥y kÃ­ch thÆ°á»›c cá»§a hÃ¬nh áº£nh
+		// Lấy kích thước của hình ảnh
 		int imageWidth = image.getWidth();
 		int imageHeight = image.getHeight();
 
-		// TÃ­nh toÃ¡n tá»· lá»‡ giá»¯a chiá»�u rá»™ng cá»§a mÃ n hÃ¬nh vÃ  chiá»�u
-		// rá»™ng cá»§a hÃ¬nh áº£nh
+		// Tính toán tỉ lệ độ rộng
 		float widthRatio = (float) screenWidth / imageWidth;
-		// TÃ­nh toÃ¡n tá»· lá»‡ giá»¯a chiá»�u cao cá»§a mÃ n hÃ¬nh vÃ  chiá»�u cao
-		// cá»§a hÃ¬nh áº£nh
+		// Tính toán tỉ lệ chiều cao
 		float heightRatio = (float) screenHeight / imageHeight;
 
-		// Chá»�n tá»· lá»‡ nÃ o nhá»� hÆ¡n giá»¯a hai tá»· lá»‡ trÃªn
 		float ratio = Math.min(widthRatio, heightRatio);
 
-		// Sá»­ dá»¥ng tá»· lá»‡ Ä‘á»ƒ tÃ­nh toÃ¡n kÃ­ch thÆ°á»›c má»›i cá»§a hÃ¬nh
-		// áº£nh
+		// scale kích thước hình ảnh bằng với tỉ lệ đã tính toán
 		int newWidth = (int) (imageWidth * ratio);
 		int newHeight = (int) (imageHeight * ratio);
 
-		// Cáº­p nháº­t kÃ­ch thÆ°á»›c cá»§a hÃ¬nh áº£nh
+		// Cập nhật lại kích thước hình ảnh
 		setPreferredSize(new Dimension(newWidth, newHeight));
 	}
 

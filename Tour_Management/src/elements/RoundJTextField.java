@@ -10,6 +10,8 @@ import javax.swing.JTextField;
  * TextField được bo góc
  * 
  * @author LeMinhBao
+ * @author LE HOANG NAM
+ * @author TRAN HIEN VINH
  * @see RoundPanel
  * @see RoundJButton
  * @see RoundJPasswordField

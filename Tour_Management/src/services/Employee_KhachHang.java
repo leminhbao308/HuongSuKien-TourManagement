@@ -29,13 +29,15 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import DAO.DAO_KhachHang;
-import DAO.DAO_TourDuLich;
 import controllers.CtrlKHachHang;
-import controllers.CtrlTourDuLich;
 import entity.KhachHang;
 import utils.LoadSave;
 import utils.constants.ColorConstant;
-
+/**
+ * 
+ * @author TRAN HIEN VINH
+ *
+ */
 public class Employee_KhachHang extends JPanel implements ActionListener {
 
     /**

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import connect.ConnnectDB;
 import entity.DiaDanh;
-import entity.TourDuLich;
 
 /**
  * Truy vấn dữ liệu về Địa Danh

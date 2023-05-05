@@ -10,6 +10,8 @@ import javax.swing.JPanel;
  * Panel được bo góc
  * 
  * @author LeMinhBao
+ * @author LE HOANG NAM
+ * @author TRAN HIEN VINH
  * @see RoundJButton
  * @see RoundJTextField
  * @see RoundJPasswordField

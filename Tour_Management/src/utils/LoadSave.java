@@ -7,14 +7,14 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 /**
- * Load cÃ¡c tÃ i nguyÃªn (HÃ¬nh áº¢nh) vÃ o á»©ng dá»¥ng
+ * Load các tài nguyên hình ảnh và icon vào ứng dụng
  * 
  * @author LeMinhBao
  * 
  */
 public class LoadSave {
     /**
-     * Táº¡o cÃ¡c Ä‘Æ°á»�ng dáº«n theo cÃº phÃ¡p: "folderLocation/name.extension"
+     * Tạo các đường dẫn theo cú pháp: "folderLocation/name.extension"
      */
     public static final String LOGO_PIC = "logo/logo.png";
     public static final String LOGO_ICON = "logo/logo01.png";
@@ -40,10 +40,10 @@ public class LoadSave {
     public static final String ICON_PASS = "icon/pass.png";
 
     /**
-     * Láº¥y hÃ¬nh áº£nh tá»« Ä‘Æ°á»�ng dáº«n
+     * lấy hình ảnh bằng đường dẫn
      * 
-     * @param fileName Ä�Æ°á»�ng dáº«n file
-     * @return HÃ¬nh áº£nh táº¡i Ä‘Æ°á»�ng dáº«n
+     * @param fileName đường dẫn file
+     * @return Hình ảnh lấy từ đường dẫn
      */
     public static BufferedImage GetSpriteAtlas(String fileName) {
 

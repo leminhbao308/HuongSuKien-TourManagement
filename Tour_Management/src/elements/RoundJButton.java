@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import utils.constants.ColorConstant;
 
 /**
- * Button Ä‘Æ°á»£c bo gÃ³c vá»›i cÃ¡c thiáº¿t láº­p tÃ¹y chá»‰nh
+ * Button VỚI VIỀN BO GÓC
  * 
  * @author LeMinhBao
  * @see RoundPanel
@@ -21,10 +21,6 @@ import utils.constants.ColorConstant;
  * @see #RoundJButton(String)
  */
 public class RoundJButton extends JButton {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7128508965765743677L;
 	Color colorDefault = new Color(235, 100, 64);
 	Color colorOver = Color.WHITE;
@@ -33,9 +29,9 @@ public class RoundJButton extends JButton {
 	boolean over;
 
 	/**
-	 * Khá»Ÿi táº¡o má»™t Button bo gÃ³c vá»›i tiÃªu Ä‘á»� tÃ¹y chá»‰nh
+	 * Khởi tạo button bo góc với tiêu đề
 	 * 
-	 * @param name TiÃªu Ä‘á»� cá»§a Button
+	 * @param name Tiều dề của button
 	 */
 	public RoundJButton(String name) {
 		super(name);
@@ -44,6 +40,9 @@ public class RoundJButton extends JButton {
 
 		setContentAreaFilled(false);
 		// Add event mouse
+		/**
+		 * Effect hover click move out down up over
+		 */
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent me) {
@@ -79,6 +78,13 @@ public class RoundJButton extends JButton {
 		});
 	}
 
+	/**
+	 * Khởi tạo button bo góc với
+	 * 
+	 * @param name   tên
+	 * @param width  chiều rộng
+	 * @param height chiều cao
+	 */
 	public RoundJButton(String name, int width, int height) {
 		super(name);
 		super.setSize(width, height);
@@ -87,6 +93,9 @@ public class RoundJButton extends JButton {
 
 		setContentAreaFilled(false);
 		// Add event mouse
+		/**
+		 * Effect hover click move out down up over
+		 */
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent me) {
@@ -122,6 +131,9 @@ public class RoundJButton extends JButton {
 		});
 	}
 
+	/**
+	 * vẽ bo góc button
+	 */
 	@Override
 	protected void paintComponent(Graphics grphcs) {
 		Graphics2D g2 = (Graphics2D) grphcs;
