@@ -3,15 +3,15 @@ package entity;
 import java.time.LocalDate;
 
 public class TourDuLich {
-    private String maTour;
-    private String tenTour;
+    private String maTour;//
+    private String tenTour;//
     private String moTa;
-    private LocalDate ngayDi;
-    private String noiDi;
-    private int soNgayDuKien;
+    private LocalDate ngayDi;//
+    private String noiDi;//
+    private int soNgayDuKien;//
     private float giaTour;
-    private boolean trangThaiTour;
-    private DiaDanh diaDanh;
+    private boolean trangThaiTour;//
+    private DiaDanh diaDanh;//
 
     public TourDuLich(String maTour, String tenTour, String moTa, LocalDate ngayDi, String noiDi, int soNgayDuKien,
 	    float giaTour, boolean trangThaiTour, DiaDanh diaDanh) {
@@ -110,6 +110,6 @@ public class TourDuLich {
     }
 
     public String getTitle() {
-	return "Mã Tour;Tên Tour;Mô Tả;Ngày Đi;Nơi Đi;Số Ngày Dự Kiến;Giá Tour;Trạng Thái Tour;Tên Địa Danh";
+	return "Mã Tour;Tên Tour;Mô Tả;Ngày Đi;Nơi Khởi Hành;Số Ngày Dự Kiến;Giá Tour;Trạng Thái Tour;Tên Địa Danh";
     }
 }

@@ -1,16 +1,27 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import DAO.DAO_NhanVien;
+import DAO.DAO_TaiKhoan;
+import controllers.CtrlLogin;
+import elements.ImagePanel;
+import entity.TaiKhoan;
 import services.Admin_NhanVien;
 import services.Admin_TaiKhoan;
 import services.Employee_DiaDanh;
@@ -23,7 +34,7 @@ import utils.LoadSave;
 import utils.constants.ColorConstant;
 
 /**
- * Giao diá»‡n chÃ­nh cá»§a chÆ°Æ¡ng trÃ¬nh
+ * Giao Diện của Admin (Quản lý)
  * 
  * @author LeMinhBao
  *
@@ -49,11 +60,13 @@ public class Dashboard_Admin extends JFrame implements ActionListener {
     private JButton btnVeTour;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JMenuBar mnMain;
+    private javax.swing.JMenuItem mniChangePass;
     private javax.swing.JMenuItem mniLogout;
     private javax.swing.JPanel pnHeader;
     private javax.swing.JPanel pnMain;
+    private String maNV;
 
-    public Dashboard_Admin() {
+    public Dashboard_Admin(String maNV) {
 	Dimension DimMax = Toolkit.getDefaultToolkit().getScreenSize();
 	this.setPreferredSize(new Dimension(1920, 1080));
 	this.setResizable(false);
@@ -65,6 +78,7 @@ public class Dashboard_Admin extends JFrame implements ActionListener {
 	this.setBackground(ColorConstant.BACKGROUND_NORMAL);
 	this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	this.maNV = maNV;
 
 	init();
 	style();
@@ -83,13 +97,14 @@ public class Dashboard_Admin extends JFrame implements ActionListener {
 	btnDichVu = new JButton();
 	btnHopDongTour = new JButton();
 	btnVeTour = new JButton();
-	pnMain = new javax.swing.JPanel();
+	pnMain = new ImagePanel(LoadSave.GetSpriteAtlas(LoadSave.BACKGROUND_DASHBOARD), 0.5f);
 	mnMain = new javax.swing.JMenuBar();
 	btnMnFile = new javax.swing.JMenu();
 	btnMnEdit = new javax.swing.JMenu();
 	btnMnSetting = new javax.swing.JMenu();
 	btnMnHelp = new javax.swing.JMenu();
 	btnMnAccount = new javax.swing.JMenu();
+	mniChangePass = new javax.swing.JMenuItem();
 	mniLogout = new javax.swing.JMenuItem();
     }
 
@@ -134,6 +149,11 @@ public class Dashboard_Admin extends JFrame implements ActionListener {
 
 	btnMnAccount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 	btnMnAccount.setText("Account");
+
+	mniChangePass.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F11,
+		java.awt.event.InputEvent.ALT_DOWN_MASK));
+	mniChangePass.setText("Change Password");
+	mniChangePass.setIcon(new ImageIcon(LoadSave.GetSpriteAtlas(LoadSave.ICON_PASS)));
 
 	mniLogout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F12,
 		java.awt.event.InputEvent.ALT_DOWN_MASK));
@@ -209,6 +229,7 @@ public class Dashboard_Admin extends JFrame implements ActionListener {
 
 	getContentPane().add(pnMain, java.awt.BorderLayout.CENTER);
 
+	btnMnAccount.add(mniChangePass);
 	btnMnAccount.add(mniLogout);
 
 	mnMain.add(btnMnFile);
@@ -231,6 +252,7 @@ public class Dashboard_Admin extends JFrame implements ActionListener {
 	this.btnVeTour.addActionListener(this);
 
 	this.mniLogout.addActionListener(this);
+	this.mniChangePass.addActionListener(this);
     }
 
     @Override
@@ -299,6 +321,273 @@ public class Dashboard_Admin extends JFrame implements ActionListener {
 		this.dispose();
 		Login login = new Login();
 		login.setVisible(true);
+	    }
+	}
+	if (o.equals(mniChangePass)) {
+	    new FrameChangePassword().setVisible(true);
+	}
+    }
+
+    private class FrameChangePassword extends JFrame implements ActionListener, FocusListener, KeyListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6967948219796007619L;
+	private javax.swing.JButton btnChange;
+	private javax.swing.JLabel lblPassConfirm;
+	private javax.swing.JLabel lblPassNew;
+	private javax.swing.JLabel lblPassOld;
+	private javax.swing.JPanel pnPass;
+	private javax.swing.JPasswordField txtPassConfirm;
+	private javax.swing.JPasswordField txtPassNew;
+	private javax.swing.JPasswordField txtPassOld;
+
+	public FrameChangePassword() {
+	    this.setTitle("SE Tourist - Thay Đổi Mật Khẩu");
+	    this.setIconImage(LoadSave.GetSpriteAtlas(LoadSave.LOGO_ICON));
+	    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	    this.setResizable(false);
+	    this.setLocationRelativeTo(null);
+//	    this.setMaximumSize(new java.awt.Dimension(420, 500));
+//	    this.setMinimumSize(new java.awt.Dimension(420, 500));
+
+	    this.init();
+	    this.style();
+	    this.preset();
+	    this.event();
+	}
+
+	private void init() {
+	    // TODO Auto-generated method stub
+	    pnPass = new javax.swing.JPanel();
+	    lblPassOld = new javax.swing.JLabel();
+	    txtPassOld = new javax.swing.JPasswordField();
+	    txtPassNew = new javax.swing.JPasswordField();
+	    lblPassNew = new javax.swing.JLabel();
+	    txtPassConfirm = new javax.swing.JPasswordField();
+	    lblPassConfirm = new javax.swing.JLabel();
+	    btnChange = new javax.swing.JButton();
+	}
+
+	private void style() {
+	    // TODO Auto-generated method stub
+	    pnPass.setBorder(javax.swing.BorderFactory.createTitledBorder(
+		    javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED),
+		    "Thay Đổi Mật Khẩu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+		    javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14),
+		    new java.awt.Color(255, 0, 0))); // NOI18N
+
+	    lblPassOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    lblPassOld.setText("Mật khẩu hiện tại");
+
+	    txtPassOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+	    txtPassNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+	    lblPassNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    lblPassNew.setText("Mật khẩu mới");
+
+	    txtPassConfirm.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+	    lblPassConfirm.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+	    lblPassConfirm.setText("Nhập lại mật khẩu");
+
+	    btnChange.setBackground(new java.awt.Color(255, 0, 0));
+	    btnChange.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+	    btnChange.setForeground(new java.awt.Color(255, 255, 255));
+	    btnChange.setText("Đổi Mật Khẩu");
+	}
+
+	private void preset() {
+	    // TODO Auto-generated method stub
+	    javax.swing.GroupLayout pnPassLayout = new javax.swing.GroupLayout(pnPass);
+	    pnPass.setLayout(pnPassLayout);
+	    pnPassLayout.setHorizontalGroup(pnPassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(pnPassLayout.createSequentialGroup().addGroup(pnPassLayout
+			    .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(txtPassOld)
+			    .addGroup(pnPassLayout.createSequentialGroup().addContainerGap().addGroup(pnPassLayout
+				    .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				    .addComponent(txtPassNew).addComponent(txtPassConfirm)
+				    .addComponent(btnChange, javax.swing.GroupLayout.DEFAULT_SIZE,
+					    javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				    .addGroup(pnPassLayout.createSequentialGroup().addGroup(pnPassLayout
+					    .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+					    .addComponent(lblPassOld, javax.swing.GroupLayout.PREFERRED_SIZE, 172,
+						    javax.swing.GroupLayout.PREFERRED_SIZE)
+					    .addComponent(lblPassNew, javax.swing.GroupLayout.PREFERRED_SIZE, 172,
+						    javax.swing.GroupLayout.PREFERRED_SIZE)
+					    .addComponent(lblPassConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 172,
+						    javax.swing.GroupLayout.PREFERRED_SIZE))
+					    .addGap(0, 129, Short.MAX_VALUE)))))
+			    .addContainerGap()));
+	    pnPassLayout.setVerticalGroup(pnPassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(pnPassLayout.createSequentialGroup().addContainerGap().addComponent(lblPassOld)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addComponent(txtPassOld, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addComponent(lblPassNew)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addComponent(txtPassNew, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addComponent(lblPassConfirm)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addComponent(txtPassConfirm, javax.swing.GroupLayout.PREFERRED_SIZE,
+				    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+			    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+			    .addComponent(btnChange, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+			    .addContainerGap()));
+
+	    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+	    getContentPane().setLayout(layout);
+	    layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(layout.createSequentialGroup().addContainerGap().addComponent(pnPass,
+			    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+			    .addContainerGap()));
+	    layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		    .addGroup(layout.createSequentialGroup().addContainerGap().addComponent(pnPass,
+			    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+			    .addContainerGap()));
+
+	    pack();
+	}
+
+	private void event() {
+	    // TODO Auto-generated method stub
+	    // Text
+	    this.txtPassOld.addFocusListener(this);
+	    this.txtPassNew.addFocusListener(this);
+	    this.txtPassConfirm.addFocusListener(this);
+	    this.txtPassOld.addKeyListener(this);
+	    this.txtPassNew.addKeyListener(this);
+	    this.txtPassConfirm.addKeyListener(this);
+
+	    // Action
+	    this.btnChange.addActionListener(this);
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+	    // TODO Auto-generated method stub
+	    char[] charPassOld = txtPassOld.getPassword();
+	    char[] charPassNew = txtPassNew.getPassword();
+	    char[] charPassConfirm = txtPassConfirm.getPassword();
+	    String passOld = new String(charPassOld);
+	    String passNew = new String(charPassNew);
+	    String passConfirm = new String(charPassConfirm);
+
+	    if (CtrlLogin.checkLoginStatus(maNV, passOld)) {
+		if (passNew.matches("^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-.]).{8,}$")
+			&& passNew.equals(passConfirm)) {
+
+		    TaiKhoan modifyTK = new TaiKhoan(DAO_NhanVien.timKiemNhanVien(maNV), passNew);
+		    if (DAO_TaiKhoan.suaTaiKhoan(modifyTK)) {
+			JOptionPane.showMessageDialog(null, "Cập Nhật Thành Công\nHãy Đăng Nhập Lại");
+			this.dispose();
+		    } else {
+			JOptionPane.showMessageDialog(null, "Cập Nhật Thất Bại");
+			this.dispose();
+		    }
+		} else {
+		    JOptionPane.showMessageDialog(null, "Kiểm tra lại thông tin nhập vào");
+		}
+	    } else {
+		JOptionPane.showMessageDialog(null, "Vui lòng nhập mật khẩu cũ");
+	    }
+	}
+
+	@Override
+	public void focusGained(FocusEvent e) {
+	    // TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void focusLost(FocusEvent e) {
+	    // TODO Auto-generated method stub
+	    Object o = e.getSource();
+
+	    if (o.equals(txtPassNew)) {
+		String regex = "^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-.]).{8,}$"; // Regex kiểm tra Mật Khẩu
+		char[] pass = txtPassNew.getPassword();
+		String newPass = new String(pass);
+		if (!newPass.matches(regex)) {
+		    // Nếu dữ liệu nhập vào không đúng, đổi màu viền sang đỏ
+		    txtPassNew.setBorder(BorderFactory.createLineBorder(Color.RED));
+		} else {
+		    // Nếu dữ liệu nhập vào đúng, đổi màu viền sang xanh
+		    txtPassNew.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+		}
+	    }
+
+	    if (o.equals(txtPassConfirm)) {
+		char[] pass = txtPassNew.getPassword();
+		String newPass = new String(pass);
+		char[] confirm = txtPassConfirm.getPassword();
+		String confirmPass = new String(confirm);
+		// chuỗi
+		if ((!confirmPass.matches("^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-.]).{8,}$")
+			&& !confirmPass.equals(newPass))
+			|| (!confirmPass.matches("^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-.]).{8,}$")
+				&& confirmPass.equals(newPass))) {
+		    // Nếu dữ liệu nhập vào không đúng, đổi màu viền sang đỏ
+		    txtPassConfirm.setBorder(BorderFactory.createLineBorder(Color.RED));
+		} else {
+		    // Nếu dữ liệu nhập vào đúng, đổi màu viền sang xanh
+		    txtPassConfirm.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+		}
+	    }
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+	    // TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+	    // TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+	    // TODO Auto-generated method stub
+	    Object o = e.getSource();
+
+	    if (o.equals(txtPassNew)) {
+		String regex = "^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-.]).{8,}$"; // Regex kiểm tra Mật Khẩu
+		char[] pass = txtPassNew.getPassword();
+		String newPass = new String(pass);
+		if (!newPass.matches(regex)) {
+		    // Nếu dữ liệu nhập vào không đúng, đổi màu viền sang đỏ
+		    txtPassNew.setBorder(BorderFactory.createLineBorder(Color.RED));
+		} else {
+		    // Nếu dữ liệu nhập vào đúng, đổi màu viền sang xanh
+		    txtPassNew.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+		}
+	    }
+
+	    if (o.equals(txtPassConfirm)) {
+		char[] pass = txtPassNew.getPassword();
+		String newPass = new String(pass);
+		char[] confirm = txtPassConfirm.getPassword();
+		String confirmPass = new String(confirm);
+		// chuỗi
+		if ((!confirmPass.matches("^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-.]).{8,}$")
+			&& !confirmPass.equals(newPass))
+			|| (!confirmPass.matches("^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-.]).{8,}$")
+				&& confirmPass.equals(newPass))) {
+		    // Nếu dữ liệu nhập vào không đúng, đổi màu viền sang đỏ
+		    txtPassConfirm.setBorder(BorderFactory.createLineBorder(Color.RED));
+		} else {
+		    // Nếu dữ liệu nhập vào đúng, đổi màu viền sang xanh
+		    txtPassConfirm.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+		}
 	    }
 	}
     }

@@ -1,9 +1,9 @@
 package utils.constants;
 
 /**
- * CÃ¡c háº±ng sá»‘ vá»� Database sá»­ dá»¥ng trong chÆ°Æ¡ng trÃ¬nh
+ * Thiết lập Database
  * 
- * @author LeMinhBao
+ * @author Le Hoang Nam
  *
  */
 public class DatabaseConstant {

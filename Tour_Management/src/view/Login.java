@@ -7,12 +7,21 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import controllers.CtrlLogin;
 import elements.RoundJButton;
 import elements.RoundJPasswordField;
 import elements.RoundJTextField;
 import utils.LoadSave;
 
+/**
+ * Giao diện đăng nhập
+ * 
+ * @author Le Minh Bao
+ *
+ */
 public class Login extends JFrame implements ActionListener {
 
     /**
@@ -147,7 +156,7 @@ public class Login extends JFrame implements ActionListener {
 		layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(loginPanel,
 			javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 	txtMaNV.setText("NV001");
-	txtMatKhau.setText("NV001");
+	txtMatKhau.setText("leminhbao308.");
     }
 
     private void event() {
@@ -162,42 +171,41 @@ public class Login extends JFrame implements ActionListener {
 	/**
 	 * Kiểm tra mật khẩu
 	 */
-//		if (o.equals(btnLogin)) {
-//			String account = txtMaNV.getText();
-//			char[] passwordChars = txtMatKhau.getPassword();
-//			String password = new String(passwordChars);
-//
-//			if (CtrlLogin.checkLoginStatus(account, password)) {
-//				if (CtrlLogin.checkAccountType(account) == 1) {
-//					JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công!");
-////					new Dashboard_Admin().setVisible(true);
-//					Dashboard_Admin admin = new Dashboard_Admin();
-//					admin.setVisible(true);
-//					admin.requestFocus();
-//					admin.setAlwaysOnTop(true);
-//					admin.setAlwaysOnTop(false);
-//				} else if (CtrlLogin.checkAccountType(account) == 2) {
-//					JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công!");
-////					new Dashboard_Employee().setVisible(true);
-//					Dashboard_Employee ey = new Dashboard_Employee();
-//					ey.setVisible(true);
-//					ey.requestFocus();
-//					ey.setAlwaysOnTop(true);
-//					ey.setAlwaysOnTop(false);
-//				}
-//			} else {
-//				JOptionPane.showMessageDialog(null,
-//						"Mã Nhân Viên không tồn tại \n\t               Hoặc \nMật Khẩu không chính xác");
-//			}
-//		}
-
 	if (o.equals(btnLogin)) {
-	    this.dispose();
-	    Dashboard_Admin admin = new Dashboard_Admin();
-	    admin.setVisible(true);
-	    admin.requestFocus();
-	    admin.setAlwaysOnTop(true);
-	    admin.setAlwaysOnTop(false);
+	    String account = txtMaNV.getText();
+	    char[] passwordChars = txtMatKhau.getPassword();
+	    String password = new String(passwordChars);
+
+	    if (CtrlLogin.checkLoginStatus(account, password)) {
+		if (CtrlLogin.checkAccountType(account) == 1) {
+		    JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công!");
+		    this.dispose();
+		    Dashboard_Admin admin = new Dashboard_Admin(account);
+		    admin.setVisible(true);
+		    admin.requestFocus();
+		    admin.setAlwaysOnTop(true);
+		    admin.setAlwaysOnTop(false);
+		} else if (CtrlLogin.checkAccountType(account) == 2) {
+		    JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công!");
+		    this.dispose();
+		    Dashboard_Employee ey = new Dashboard_Employee(account);
+		    ey.setVisible(true);
+		    ey.requestFocus();
+		    ey.setAlwaysOnTop(true);
+		    ey.setAlwaysOnTop(false);
+		}
+	    } else {
+		JOptionPane.showMessageDialog(null,
+			"Mã Nhân Viên không tồn tại \n\t               Hoặc \nMật Khẩu không chính xác");
+	    }
+
+//	    this.dispose();
+//	    Dashboard_Admin admin = new Dashboard_Admin();
+//	    admin.setVisible(true);
+//	    admin.requestFocus();
+//	    admin.setAlwaysOnTop(true);
+//	    admin.setAlwaysOnTop(false);
 	}
+
     }
 }

@@ -153,10 +153,10 @@ public class Admin_NhanVien extends JPanel implements ActionListener {
 		btnInfo.setEnabled(false);
 		btnInfo.setToolTipText("Xem thông tin nhân viên được chọn (Ctrl + I)");
 
-		btnAdd.setText("Them Nhan Vien");
+		btnAdd.setText("Thêm nhân viên");
 		btnAdd.setToolTipText("Thêm nhân viên mới (Ctrl + T)");
 
-		btnDelete.setText("Xoa Nhan Vien");
+		btnDelete.setText("xóa nhân viên");
 		btnDelete.setEnabled(false);
 		btnDelete.setToolTipText("Xóa nhân viên được chọn (Ctrl + D)");
 

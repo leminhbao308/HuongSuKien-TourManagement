@@ -30,7 +30,6 @@ import DAO.DAO_TaiKhoan;
 import controllers.CtrlTaiKhoan;
 import entity.TaiKhoan;
 import utils.LoadSave;
-import utils.PasswordEncoder;
 import utils.constants.ColorConstant;
 
 public class Admin_TaiKhoan extends JPanel implements ActionListener {
@@ -56,8 +55,7 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
     private javax.swing.JTextField txtSearchMa;
     private String[] cols = new TaiKhoan().getTitle().split(";");
     private ArrayList<TaiKhoan> dsTaiKhoan = new ArrayList<TaiKhoan>();
-    private String[] cbxItem = {"sắp xếp theo mã"};
-    
+    private String[] cbxItem = { "sắp xếp theo mã" };
 
     public Admin_TaiKhoan() {
 
@@ -238,9 +236,9 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 					.addComponent(pnData, javax.swing.GroupLayout.DEFAULT_SIZE,
 						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addContainerGap()));
-		for(int i=0; i<cbxItem.length;i++) {
-			cbxFilter.addItem(cbxItem[i]);
-		}
+	for (int i = 0; i < cbxItem.length; i++) {
+	    cbxFilter.addItem(cbxItem[i]);
+	}
     }
 
     private void event() {
@@ -337,6 +335,7 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 
 	for (TaiKhoan taiKhoan : dstk) {
 	    String[] data = taiKhoan.toString().split(";");
+	    data[1] = "********";
 	    // Create a font with a larger size
 	    Font largerFont = tblTaiKhoan.getFont().deriveFont(14f);
 
@@ -367,16 +366,16 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
     }
 
     private void loadDataToTable(ArrayList<TaiKhoan> dsIn, DefaultTableModel model) {
-    	model.setRowCount(0);
-    	for(TaiKhoan tk:dsIn) {
-    		addOneRowToTable(tk, model);
-    	}
+	model.setRowCount(0);
+	for (TaiKhoan tk : dsIn) {
+	    addOneRowToTable(tk, model);
+	}
     }
 
     private void addOneRowToTable(TaiKhoan tk, DefaultTableModel model) {
-		model.addRow(
-			new Object[] {tk.getNhanVien().getMaNhanVien(), tk.getMatKhau()});
+	model.addRow(new Object[] { tk.getNhanVien().getMaNhanVien(), tk.getMatKhau() });
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
@@ -384,20 +383,20 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 
 	// Search
 	if (o.equals(btnSearchMa)) {
-		dsTaiKhoan = DAO_TaiKhoan.getAllTaiKhoan();
-		if(txtSearchMa.getText().trim().equals("")||txtSearchMa.getText().trim().equals(null)) {
-			loadDataToTable(dsTaiKhoan, tblModel);
-		} else {
-			loadDataToTable(CtrlTaiKhoan.locTaiKHoanTheoMaNV(dsTaiKhoan, txtSearchMa.getText().trim()), tblModel);
-		}
-		txtSearchMa.setText("");
+	    dsTaiKhoan = DAO_TaiKhoan.getAllTaiKhoan();
+	    if (txtSearchMa.getText().trim().equals("") || txtSearchMa.getText().trim().equals(null)) {
+		loadDataToTable(dsTaiKhoan, tblModel);
+	    } else {
+		loadDataToTable(CtrlTaiKhoan.locTaiKHoanTheoMaNV(dsTaiKhoan, txtSearchMa.getText().trim()), tblModel);
+	    }
+	    txtSearchMa.setText("");
 	}
-	
-	if(o.equals(cbxFilter)) {
-		dsTaiKhoan = DAO_TaiKhoan.getAllTaiKhoan();
-		if(cbxFilter.getSelectedIndex()==0) {
-			loadDataToTable(CtrlTaiKhoan.sapXepTaiKhoanTheoMa(dsTaiKhoan), tblModel);
-		}
+
+	if (o.equals(cbxFilter)) {
+	    dsTaiKhoan = DAO_TaiKhoan.getAllTaiKhoan();
+	    if (cbxFilter.getSelectedIndex() == 0) {
+		loadDataToTable(CtrlTaiKhoan.sapXepTaiKhoanTheoMa(dsTaiKhoan), tblModel);
+	    }
 	}
 
 	// Action
@@ -761,8 +760,7 @@ public class Admin_TaiKhoan extends JPanel implements ActionListener {
 		if (newpass.matches("^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-.]).{8,}$")
 			&& newpass.equals(confirmpass)) {
 
-		    TaiKhoan modifyTK = new TaiKhoan(DAO_NhanVien.timKiemNhanVien(this.data[0]),
-			    PasswordEncoder.hashPassword(newpass));
+		    TaiKhoan modifyTK = new TaiKhoan(DAO_NhanVien.timKiemNhanVien(this.data[0]), newpass);
 		    if (DAO_TaiKhoan.suaTaiKhoan(modifyTK)) {
 			JOptionPane.showMessageDialog(null, "Cập Nhật Thành Công");
 			tblModel.setRowCount(0);
