@@ -315,6 +315,7 @@ public class Employee_VeTour extends JPanel implements ActionListener {
 		    fileChooser.setDialogTitle("Chọn Vị Trí Lưu Vé Tour");
 		    // Chỉ cho phép lưu file với định dạng .pdf
 		    fileChooser.setFileFilter(new FileNameExtensionFilter("PDF files", "pdf"));
+		    fileChooser.setSelectedFile(new File("vetour_" + data[0] + ".pdf"));
 		    // Hiển thị hộp thoại để chọn vị trí lưu file
 		    int result = fileChooser.showSaveDialog(null);
 		    if (result == JFileChooser.APPROVE_OPTION) {
@@ -479,6 +480,7 @@ public class Employee_VeTour extends JPanel implements ActionListener {
 	    fileChooser.setDialogTitle("Chọn Vị Trí Lưu Vé Tour");
 	    // Chỉ cho phép lưu file với định dạng .pdf
 	    fileChooser.setFileFilter(new FileNameExtensionFilter("PDF files", "pdf"));
+	    fileChooser.setSelectedFile(new File("vetour_" + data[0] + ".pdf"));
 	    // Hiển thị hộp thoại để chọn vị trí lưu file
 	    int result = fileChooser.showSaveDialog(null);
 	    if (result == JFileChooser.APPROVE_OPTION) {
